@@ -43,9 +43,9 @@
       a {
         color: inherit;
         text-decoration: none;
-        transition: color 1s ease;
+        transition: color 0.25s ease;
         &:hover {
-          color: black;
+          color: #404040;
           text-shadow: 0rem 0.2rem 0.2rem #e0ded8;
         }
       }
