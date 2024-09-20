@@ -45,9 +45,9 @@
 .container .me h3 a {
   color: inherit;
   text-decoration: none;
-  transition: color 1s ease;
+  transition: color 0.25s ease;
 }
 .container .me h3 a:hover {
-  color: black;
+  color: #404040;
   text-shadow: 0rem 0.2rem 0.2rem #e0ded8;
 }
