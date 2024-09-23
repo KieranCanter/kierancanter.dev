@@ -1,0 +1,62 @@
+@font-face {
+  font-family: "GeistSans";
+  font-style: normal;
+  font-weight: 100 900;
+  src: url("./fonts/GeistVF.woff") format("woff");
+}
+$font-geist-sans: 'GeistSans';
+
+$bg: var(--bg);
+$fg: var(--fg-soft);
+
+/* Light Accented Mode */
+:root[data-theme="plush"] {
+  --bg: rgba(185, 172, 174, 1);
+  --fg-soft: rgba(43, 36, 37, 0.6);
+  --fg-hard: rgba(43, 36, 37, 0.87);
+  --fg-contrast: rgba(90, 0, 0, 0.87);
+  
+  --tone-icon-color: rgba(90, 0, 0, 0.87);
+  --icon-color1: rgba(229, 229, 229, 1);
+  --icon-color2: rgba(18, 18, 18, 1);
+  --icon-color3: rgba(72, 168, 228, 1);
+}
+
+/* Dark Accented Mode */
+:root[data-theme="sombre"] {
+  --bg: rgba(43, 36, 37, 1);
+  --fg-soft: rgba(185, 172, 174, 0.6);
+  --fg-hard: rgba(185, 172, 174, 0.87);
+  --fg-contrast: rgba(255, 227, 181, 0.87);
+  
+  --tone-icon-color: rgba(255, 227, 181, 0.87);
+  --icon-color1: rgba(18, 18, 18, 1);
+  --icon-color2: rgba(229, 229, 229, 1);
+  --icon-color3: rgba(72, 168, 228, 1);
+}
+
+/* Light Colorful Mode */
+:root[data-theme="brilliant"] {
+  --bg: rgba(229, 229, 229, 1);
+  --fg-soft: rgba(18, 18, 18, 0.6);
+  --fg-hard: rgba(18, 18, 18, 0.87);
+  --fg-contrast: rgba(233, 223, 98, 0.87);
+  
+  --tone-icon-color: rgba(72, 168, 228, 0.87);
+  --icon-color1: rgba(43, 36, 37, 1);
+  --icon-color2: rgba(185, 172, 174, 1);
+  --icon-color3: rgba(90, 0, 0, 1);
+}
+
+/* Dark Colorful Mode */
+:root[data-theme="luminous"] {
+  --bg: rgba(18, 18, 18, 1);
+  --fg-soft: rgba(229, 229, 229, 0.6);
+  --fg-hard: rgba(229, 229, 229, 0.87);
+  --fg-contrast: rgba(72, 168, 228, 0.87);
+  
+  --tone-icon-color: rgba(233, 223, 98, 0.87);
+  --icon-color1: rgba(185, 172, 174, 1);
+  --icon-color2: rgba(43, 36, 37, 1);
+  --icon-color3: rgba(255, 227, 181, 1);
+}
