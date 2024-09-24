@@ -13,8 +13,16 @@
   }
 }
 
-body {
-  color: $fg;
-  background-color: $bg;
-  font-family: $font-geist-sans, Arial, Helvetica, sans-serif;
+// Themes
+.plush {
+  @apply bg-plush-bg text-plush-fgSoft;
+}
+.sombre {
+  @apply bg-sombre-bg text-sombre-fgSoft;
+}
+.brilliant {
+  @apply bg-brilliant-bg text-brilliant-fgSoft;
+}
+.luminous {
+  @apply bg-luminous-bg text-luminous-fgSoft;
 }
