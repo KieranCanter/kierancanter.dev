@@ -19,23 +19,13 @@ export default function BusinessCard() {
       });
   
       // Gyroscope for mobile
-      const handleOrientation = (event: DeviceOrientationEvent) => {
-        if (window.innerWidth <= 768) { // Only apply on mobile devices
-          const beta = event.beta ? event.beta : 0;
-          const gamma = event.gamma ? event.gamma : 0;
-          
-          businessCard.style.transform = `rotateX(${beta}deg) rotateY(${gamma}deg)`;
-        }
-      };
-  
-      if (window.DeviceOrientationEvent) {
-        window.addEventListener('deviceorientation', handleOrientation);
-      }
-  
-      // Cleanup function
-      return () => {
-        window.removeEventListener('deviceorientation', handleOrientation);
-      };
+      window.addEventListener('deviceorientation', function(event) {
+        const alpha = event.alpha;
+        const beta = event.beta;
+        const gamma = event.gamma;
+
+        businessCard.style.transform = `rotateX(${beta ? beta * -1 : 0}deg) rotateY(${gamma}deg) rotateZ(${alpha}deg)`;
+      });
     }
   }, []);
   
