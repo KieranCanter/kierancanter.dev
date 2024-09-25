@@ -15,8 +15,6 @@ export default function BusinessCard() {
         reverse: true,
         max: 15,
         speed: 3000,
-        glare: true,
-        'max-glare': 0.5,
       });
     }
   }, []);
@@ -25,9 +23,9 @@ export default function BusinessCard() {
     <div id="container" className="flex justify-center items-center h-fit-content w-fit-content">
       <div id="business-card" className="flex relative w-[28rem] h-64 m-auto text-[#1e1e1e] bg-[#f8f5ec] rounded-[0.1rem] [box-shadow:0rem_0.1rem_0.4rem_0rem_rgba(0,_0,_0,_0.3)] font-['Bona_Nova_SC',_Serif] [font-variant:small-caps] font-bold selection:bg-[#1e1e1e] selection:text-[#f8f5ec]">
 
-        <a id="phone" className="absolute w-[fit-content] h-[fit-content] left-[0] top-[0] ml-4 mt-4 text-[0.9rem] no-underline [color:inherit] hover:text-[#6f5d60] selection:hover:bg-[#6f5d60] transition-colors duration-250 ease-in-out" href="tel:+12402846363" title="Phone">+1 240.284.6363</a>
+        <a id="phone" className="absolute w-[fit-content] h-[fit-content] left-[0] top-[0] ml-4 mt-4 text-[0.9rem] no-underline selection:bg-black hover:text-black hover:-translate-y-0.5 active:opacity-85 transition-all duration-250 ease-in-out" href="tel:+12402846363" title="Phone">+1 240.284.6363</a>
 
-        <a id="logo" className="absolute w-[fit-content] h-[fit-content] right-[0] top-[0] mr-4 mt-4 hover:text-[#6f5d60] transition-colors duration-250 ease-in-out" href="https://codepen.io/Kieran-Canter/pen/oNrMozK" title="Hmm, impressive. Let's see Paul Allen's card.">
+        <a id="logo" className="absolute w-[fit-content] h-[fit-content] right-[0] top-[0] mr-4 mt-4 selection:bg-black hover:text-black hover:-translate-y-0.5 active:opacity-85 transition-all duration-250 ease-in-out" href="https://codepen.io/Kieran-Canter/pen/oNrMozK" title="Hmm, impressive. Let's see Paul Allen's card.">
           <FontAwesomeIcon icon={faAddressCard} className="fa-sharp fa-regular fa-xl" />
         </a>
 
@@ -37,19 +35,19 @@ export default function BusinessCard() {
         </div>
 
         <div id="socials" className="absolute bottom-4 left-0 right-0 flex justify-center space-x-4">
-          <a href="mailto:contact@kierancanter.dev" title="Email" className="hover:text-[#6f5d60] transition-colors duration-250 ease-in-out">
+          <a href="mailto:contact@kierancanter.dev" title="Email" className="hover:text-black selection:bg-black hover:-translate-y-0.5 active:opacity-85 transition-all duration-250 ease-in-out">
             <FontAwesomeIcon icon={faPaperPlane} className="fa-sharp fa-regular" />
           </a>
-          <a href="https://github.com/kierancanter/" title="GitHub" className="hover:text-[#6f5d60] transition-colors duration-250 ease-in-out">
+          <a href="https://github.com/kierancanter/" title="GitHub" className="hover:text-black selection:bg-black hover:-translate-y-0.5 active:opacity-85 transition-all duration-250 ease-in-out">
             <FontAwesomeIcon icon={faGithub} className="fa-sharp fa-regular" />
           </a>
-          <a href="https://linkedin.com/in/kierancanter/" title="LinkedIn" className="hover:text-[#6f5d60] transition-colors duration-250 ease-in-out">
+          <a href="https://linkedin.com/in/kierancanter/" title="LinkedIn" className="hover:text-black selection:bg-black hover:-translate-y-0.5 active:opacity-85 transition-all duration-250 ease-in-out">
             <FontAwesomeIcon icon={faLinkedin} className="fa-sharp fa-regular" />
           </a>
-          <a href="https://codepen.io/kierancanter/" title="CodePen" className="hover:text-[#6f5d60] transition-colors duration-250 ease-in-out">
+          <a href="https://codepen.io/kierancanter/" title="CodePen" className="hover:text-black selection:bg-black hover:-translate-y-0.5 active:opacity-85 transition-all duration-250 ease-in-out">
             <FontAwesomeIcon icon={faCodepen} className="fa-sharp fa-regular" />
           </a>
-          <a href="https://behance.net/kierancanter" title="Behance" className="hover:text-[#6f5d60] transition-colors duration-250 ease-in-out">
+          <a href="https://behance.net/kierancanter" title="Behance" className="hover:text-black selection:bg-black hover:-translate-y-0.5 active:opacity-85 transition-all duration-250 ease-in-out">
             <FontAwesomeIcon icon={faBehance} className="fa-sharp fa-regular" />
           </a>
         </div>

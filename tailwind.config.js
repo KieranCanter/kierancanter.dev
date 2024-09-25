@@ -35,7 +35,7 @@ module.exports = {
           fgHard: "var(--luminous-fg-hard)",
           fgContrast: "var(--luminous-fg-contrast)",
         }
-      }
+      },
     },
   },
   plugins: [],
