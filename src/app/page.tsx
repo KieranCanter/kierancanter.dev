@@ -2,8 +2,8 @@
 
 import '@/app/globals.scss';
 import React, { useState, useEffect } from 'react';
-import ThemeSwitcher from '@/components/themeSwitcher';
-import BusinessCard from "@/components/businessCard";
+import ThemeSwitcher from '@/app/components/themeSwitcher';
+import BusinessCard from "@/app/components/businessCard";
 
 
 const Home: React.FC = () => {
