@@ -1,5 +1,5 @@
 // Variables
-@import 'variables.scss';
+@import '@/app/variables.scss';
 
 // Tailwind
 @import 'tailwindcss/base';
@@ -13,16 +13,11 @@
   }
 }
 
-// Themes
-.plush {
-  @apply bg-plush-bg text-plush-fgSoft;
+.selection-default > * {
+  @apply selection:bg-fgSoft selection:text-bg;
 }
-.sombre {
-  @apply bg-sombre-bg text-sombre-fgSoft;
-}
-.brilliant {
-  @apply bg-brilliant-bg text-brilliant-fgSoft;
-}
-.luminous {
-  @apply bg-luminous-bg text-luminous-fgSoft;
+
+// Add transition for smooth theme changes
+:root {
+  transition: background-color 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out;
 }
