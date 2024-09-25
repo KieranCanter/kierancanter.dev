@@ -6,6 +6,140 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
+// Fonts
+
+// Spectral SC
+@font-face {
+  font-family: 'Spectral SC';
+  src: url('./fonts/Spectral_SC/SpectralSC-ExtraLight.ttf') format('truetype');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Spectral SC';
+  src: url('./fonts/Spectral_SC/SpectralSC-ExtraLightItalic.ttf') format('truetype');
+  font-weight: 200;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Spectral SC';
+  src: url('./fonts/Spectral_SC/SpectralSC-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Spectral SC';
+  src: url('./fonts/Spectral_SC/SpectralSC-LightItalic.ttf') format('truetype');
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Spectral SC';
+  src: url('./fonts/Spectral_SC/SpectralSC-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Spectral SC';
+  src: url('./fonts/Spectral_SC/SpectralSC-Italic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Spectral SC';
+  src: url('./fonts/Spectral_SC/SpectralSC-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Spectral SC';
+  src: url('./fonts/Spectral_SC/SpectralSC-MediumItalic.ttf') format('truetype');
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Spectral SC';
+  src: url('./fonts/Spectral_SC/SpectralSC-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Spectral SC';
+  src: url('./fonts/Spectral_SC/SpectralSC-SemiBoldItalic.ttf') format('truetype');
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Spectral SC';
+  src: url('./fonts/Spectral_SC/SpectralSC-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Spectral SC';
+  src: url('./fonts/Spectral_SC/SpectralSC-BoldItalic.ttf') format('truetype');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Spectral SC';
+  src: url('./fonts/Spectral_SC/SpectralSC-ExtraBold.ttf') format('truetype');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Spectral SC';
+  src: url('./fonts/Spectral_SC/SpectralSC-ExtraBoldItalic.ttf') format('truetype');
+  font-weight: 800;
+  font-style: italic;
+  font-display: swap;
+}
+
+// PT Serif
+@font-face {
+  font-family: 'PT Serif';
+  src: url('./fonts/PT_Serif/PTSerif-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'PT Serif';
+  src: url('./fonts/PT_Serif/PTSerif-Italic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'PT Serif';
+  src: url('./fonts/PT_Serif/PTSerif-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'PT Serif';
+  src: url('./fonts/PT_Serif/PTSerif-BoldItalic.ttf') format('truetype');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+
+
 // Tailwind  Utilities
 @layer utilities {
   .text-balance {

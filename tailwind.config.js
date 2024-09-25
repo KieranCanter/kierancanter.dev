@@ -36,6 +36,10 @@ module.exports = {
           fgContrast: "var(--luminous-fg-contrast)",
         }
       },
+      fontFamily: {
+        'spectral-sc': ['Spectral SC', 'Georgia', 'Times New Roman', 'serif'],
+        'pt-serif': ['PT Serif', 'Didot', 'Times New Roman', 'serif'],
+      },
     },
   },
   plugins: [],
