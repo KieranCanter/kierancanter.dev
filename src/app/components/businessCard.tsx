@@ -19,13 +19,25 @@ export default function BusinessCard() {
       });
   
       // Gyroscope for mobile
-      window.addEventListener('deviceorientation', function(event) {
-        const alpha = event.alpha;
-        const beta = event.beta;
-        const gamma = event.gamma;
-
-        businessCard.style.transform = `rotateX(${beta ? beta * -1 : 0}deg) rotateY(${gamma}deg) rotateZ(${alpha}deg)`;
-      });
+      const handleOrientation = (event: DeviceOrientationEvent) => {
+        if (event.beta === null || event.gamma === null) return;
+  
+        const tiltX = Math.min(Math.max(event.beta, -45), 45);
+        const tiltY = Math.min(Math.max(event.gamma, -45), 45);
+  
+        businessCard.style.transform = `rotateX(${-tiltX}deg) rotateY(${tiltY}deg)`;
+      };
+  
+      if (window.DeviceOrientationEvent) {
+        window.addEventListener('deviceorientation', handleOrientation);
+      }
+  
+      // Cleanup function
+      return () => {
+        if (window.DeviceOrientationEvent) {
+          window.removeEventListener('deviceorientation', handleOrientation);
+        }
+      };
     }
   }, []);
   
