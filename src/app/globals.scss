@@ -7,138 +7,89 @@
 @import 'tailwindcss/utilities';
 
 // Fonts
-
-// Spectral SC
-@font-face {
-  font-family: 'Spectral SC';
-  src: url('./fonts/Spectral_SC/SpectralSC-ExtraLight.ttf') format('truetype');
-  font-weight: 200;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Spectral SC';
-  src: url('./fonts/Spectral_SC/SpectralSC-ExtraLightItalic.ttf') format('truetype');
-  font-weight: 200;
-  font-style: italic;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Spectral SC';
-  src: url('./fonts/Spectral_SC/SpectralSC-Light.ttf') format('truetype');
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Spectral SC';
-  src: url('./fonts/Spectral_SC/SpectralSC-LightItalic.ttf') format('truetype');
-  font-weight: 300;
-  font-style: italic;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Spectral SC';
-  src: url('./fonts/Spectral_SC/SpectralSC-Regular.ttf') format('truetype');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Spectral SC';
-  src: url('./fonts/Spectral_SC/SpectralSC-Italic.ttf') format('truetype');
-  font-weight: 400;
-  font-style: italic;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Spectral SC';
-  src: url('./fonts/Spectral_SC/SpectralSC-Medium.ttf') format('truetype');
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Spectral SC';
-  src: url('./fonts/Spectral_SC/SpectralSC-MediumItalic.ttf') format('truetype');
-  font-weight: 500;
-  font-style: italic;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Spectral SC';
-  src: url('./fonts/Spectral_SC/SpectralSC-SemiBold.ttf') format('truetype');
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Spectral SC';
-  src: url('./fonts/Spectral_SC/SpectralSC-SemiBoldItalic.ttf') format('truetype');
-  font-weight: 600;
-  font-style: italic;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Spectral SC';
-  src: url('./fonts/Spectral_SC/SpectralSC-Bold.ttf') format('truetype');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Spectral SC';
-  src: url('./fonts/Spectral_SC/SpectralSC-BoldItalic.ttf') format('truetype');
-  font-weight: 700;
-  font-style: italic;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Spectral SC';
-  src: url('./fonts/Spectral_SC/SpectralSC-ExtraBold.ttf') format('truetype');
-  font-weight: 800;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Spectral SC';
-  src: url('./fonts/Spectral_SC/SpectralSC-ExtraBoldItalic.ttf') format('truetype');
-  font-weight: 800;
-  font-style: italic;
-  font-display: swap;
+@mixin font-face($family, $file, $weight, $style) {
+  @font-face {
+    font-family: $family;
+    src: url('./fonts/#{$file}.ttf') format('truetype');
+    font-weight: $weight;
+    font-style: $style;
+    font-display: swap;
+  }
 }
 
-// PT Serif
-@font-face {
-  font-family: 'PT Serif';
-  src: url('./fonts/PT_Serif/PTSerif-Regular.ttf') format('truetype');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'PT Serif';
-  src: url('./fonts/PT_Serif/PTSerif-Italic.ttf') format('truetype');
-  font-weight: 400;
-  font-style: italic;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'PT Serif';
-  src: url('./fonts/PT_Serif/PTSerif-Bold.ttf') format('truetype');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'PT Serif';
-  src: url('./fonts/PT_Serif/PTSerif-BoldItalic.ttf') format('truetype');
-  font-weight: 700;
-  font-style: italic;
-  font-display: swap;
-}
+.fonts {
+  // IBM Plex Mono
+  &-ibm-plex-mono {
+    @include font-face('IBM Plex Mono', 'IBM_Plex_Mono/IBMPlexMono-Thin', 100, normal);
+    @include font-face('IBM Plex Mono', 'IBM_Plex_Mono/IBMPlexMono-ThinItalic', 100, italic);
+    @include font-face('IBM Plex Mono', 'IBM_Plex_Mono/IBMPlexMono-ExtraLight', 200, normal);
+    @include font-face('IBM Plex Mono', 'IBM_Plex_Mono/IBMPlexMono-ExtraLightItalic', 200, italic);
+    @include font-face('IBM Plex Mono', 'IBM_Plex_Mono/IBMPlexMono-Light', 300, normal);
+    @include font-face('IBM Plex Mono', 'IBM_Plex_Mono/IBMPlexMono-LightItalic', 300, italic);
+    @include font-face('IBM Plex Mono', 'IBM_Plex_Mono/IBMPlexMono-Regular', 400, normal);
+    @include font-face('IBM Plex Mono', 'IBM_Plex_Mono/IBMPlexMono-Italic', 400, italic);
+    @include font-face('IBM Plex Mono', 'IBM_Plex_Mono/IBMPlexMono-Medium', 500, normal);
+    @include font-face('IBM Plex Mono', 'IBM_Plex_Mono/IBMPlexMono-MediumItalic', 500, italic);
+    @include font-face('IBM Plex Mono', 'IBM_Plex_Mono/IBMPlexMono-SemiBold', 600, normal);
+    @include font-face('IBM Plex Mono', 'IBM_Plex_Mono/IBMPlexMono-SemiBoldItalic', 600, italic);
+    @include font-face('IBM Plex Mono', 'IBM_Plex_Mono/IBMPlexMono-Bold', 700, normal);
+    @include font-face('IBM Plex Mono', 'IBM_Plex_Mono/IBMPlexMono-BoldItalic', 700, italic);
+  }
 
+  // IBM Plex Sans
+  &-ibm-plex-sans {
+    @include font-face('IBM Plex Sans', 'IBM_Plex_Sans/IBMPlexSans-Thin', 100, normal);
+    @include font-face('IBM Plex Sans', 'IBM_Plex_Sans/IBMPlexSans-ThinItalic', 100, italic);
+    @include font-face('IBM Plex Sans', 'IBM_Plex_Sans/IBMPlexSans-ExtraLight', 200, normal);
+    @include font-face('IBM Plex Sans', 'IBM_Plex_Sans/IBMPlexSans-ExtraLightItalic', 200, italic);
+    @include font-face('IBM Plex Sans', 'IBM_Plex_Sans/IBMPlexSans-Light', 300, normal);
+    @include font-face('IBM Plex Sans', 'IBM_Plex_Sans/IBMPlexSans-LightItalic', 300, italic);
+    @include font-face('IBM Plex Sans', 'IBM_Plex_Sans/IBMPlexSans-Regular', 400, normal);
+    @include font-face('IBM Plex Sans', 'IBM_Plex_Sans/IBMPlexSans-Italic', 400, italic);
+    @include font-face('IBM Plex Sans', 'IBM_Plex_Sans/IBMPlexSans-Medium', 500, normal);
+    @include font-face('IBM Plex Sans', 'IBM_Plex_Sans/IBMPlexSans-MediumItalic', 500, italic);
+    @include font-face('IBM Plex Sans', 'IBM_Plex_Sans/IBMPlexSans-SemiBold', 600, normal);
+    @include font-face('IBM Plex Sans', 'IBM_Plex_Sans/IBMPlexSans-SemiBoldItalic', 600, italic);
+    @include font-face('IBM Plex Sans', 'IBM_Plex_Sans/IBMPlexSans-Bold', 700, normal);
+    @include font-face('IBM Plex Sans', 'IBM_Plex_Sans/IBMPlexSans-BoldItalic', 700, italic);
+  }
 
+  // IBM Plex Serif
+  &-ibm-plex-serif {
+    @include font-face('IBM Plex Serif', 'IBM_Plex_Serif/IBMPlexSerif-Thin', 100, normal);
+    @include font-face('IBM Plex Serif', 'IBM_Plex_Serif/IBMPlexSerif-ThinItalic', 100, italic);
+    @include font-face('IBM Plex Serif', 'IBM_Plex_Serif/IBMPlexSerif-ExtraLight', 200, normal);
+    @include font-face('IBM Plex Serif', 'IBM_Plex_Serif/IBMPlexSerif-ExtraLightItalic', 200, italic);
+    @include font-face('IBM Plex Serif', 'IBM_Plex_Serif/IBMPlexSerif-Light', 300, normal);
+    @include font-face('IBM Plex Serif', 'IBM_Plex_Serif/IBMPlexSerif-LightItalic', 300, italic);
+    @include font-face('IBM Plex Serif', 'IBM_Plex_Serif/IBMPlexSerif-Regular', 400, normal);
+    @include font-face('IBM Plex Serif', 'IBM_Plex_Serif/IBMPlexSerif-Italic', 400, italic);
+    @include font-face('IBM Plex Serif', 'IBM_Plex_Serif/IBMPlexSerif-Medium', 500, normal);
+    @include font-face('IBM Plex Serif', 'IBM_Plex_Serif/IBMPlexSerif-MediumItalic', 500, italic);
+    @include font-face('IBM Plex Serif', 'IBM_Plex_Serif/IBMPlexSerif-SemiBold', 600, normal);
+    @include font-face('IBM Plex Serif', 'IBM_Plex_Serif/IBMPlexSerif-SemiBoldItalic', 600, italic);
+    @include font-face('IBM Plex Serif', 'IBM_Plex_Serif/IBMPlexSerif-Bold', 700, normal);
+    @include font-face('IBM Plex Serif', 'IBM_Plex_Serif/IBMPlexSerif-BoldItalic', 700, italic);
+  }
+
+  // Spectral SC
+  &-spectral-sc {
+    @include font-face('Spectral SC', 'Spectral_SC/SpectralSC-ExtraLight', 200, normal);
+    @include font-face('Spectral SC', 'Spectral_SC/SpectralSC-ExtraLightItalic', 200, italic);
+    @include font-face('Spectral SC', 'Spectral_SC/SpectralSC-Light', 300, normal);
+    @include font-face('Spectral SC', 'Spectral_SC/SpectralSC-LightItalic', 300, italic);
+    @include font-face('Spectral SC', 'Spectral_SC/SpectralSC-Regular', 400, normal);
+    @include font-face('Spectral SC', 'Spectral_SC/SpectralSC-Italic', 400, italic);
+    @include font-face('Spectral SC', 'Spectral_SC/SpectralSC-Medium', 500, normal);
+    @include font-face('Spectral SC', 'Spectral_SC/SpectralSC-MediumItalic', 500, italic);
+    @include font-face('Spectral SC', 'Spectral_SC/SpectralSC-SemiBold', 600, normal);
+    @include font-face('Spectral SC', 'Spectral_SC/SpectralSC-SemiBoldItalic', 600, italic);
+    @include font-face('Spectral SC', 'Spectral_SC/SpectralSC-Bold', 700, normal);
+    @include font-face('Spectral SC', 'Spectral_SC/SpectralSC-BoldItalic', 700, italic);
+    @include font-face('Spectral SC', 'Spectral_SC/SpectralSC-ExtraBold', 800, normal);
+    @include font-face('Spectral SC', 'Spectral_SC/SpectralSC-ExtraBoldItalic', 800, italic);
+  }
+}
 
 // Tailwind  Utilities
 @layer utilities {
@@ -151,7 +102,7 @@
   @apply selection:bg-fgSoft selection:text-bg;
 }
 
-// Add transition for smooth theme changes
+// Global transitions
 :root {
   transition: background-color 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out;
 }
