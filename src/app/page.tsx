@@ -37,12 +37,10 @@ const Home: React.FC = () => {
 
   return (
     <div id="home" className="flex flex-col items-center justify-between min-h-screen p-4 transition-colors duration-250 ease-in-out bg-bg text-fgSoft selection-default">
-      <div className="w-full max-w-3xl mx-auto">
-        <div className="flex justify-center mb-4">
+      <div className="w-full max-w-full mx-auto relative">
+        <div className="flex flex-col items-center mb-4">
           <ThemeSwitcher onThemeChange={handleThemeChange} />
-        </div>
-        <div className="text-center mb-4">
-          <p className="font-mono px-2 py-1 inline-block">
+          <p className="font-mono px-2 py-1 inline-block mt-2 md:mt-0 md:absolute md:top-0 md:right-0">
             <span className="transition-colors duration-250 ease-in-out font-bold text-fgContrast selection:bg-fgContrast selection:text-bg">{theme}</span>
           </p>
         </div>
