@@ -11,33 +11,37 @@ export default function BusinessCard() {
   useEffect(() => {
     const businessCard = document.getElementById('business-card');
     if (businessCard) {
-      // VanillaTilt for desktop/cursor
-      VanillaTilt.init(businessCard, {
-        reverse: true,
-        max: 15,
-        speed: 3000,
-      });
-  
-      // Gyroscope for mobile
-      const handleOrientation = (event: DeviceOrientationEvent) => {
-        if (event.beta === null || event.gamma === null) return;
-  
-        const tiltX = Math.min(Math.max(event.beta, -45), 45);
-        const tiltY = Math.min(Math.max(event.gamma, -45), 45);
-  
-        businessCard.style.transform = `rotateX(${-tiltX}deg) rotateY(${tiltY}deg)`;
-      };
-  
-      if (window.DeviceOrientationEvent) {
-        window.addEventListener('deviceorientation', handleOrientation);
-      }
-  
-      // Cleanup function
-      return () => {
+      const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+      if (!isMobile) {
+        // VanillaTilt for desktop/cursor
+        VanillaTilt.init(businessCard, {
+          reverse: true,
+          max: 15,
+          speed: 3000,
+        });
+      } else {
+        // Gyroscope for mobile
+        const handleOrientation = (event: DeviceOrientationEvent) => {
+          if (event.beta === null || event.gamma === null) return;
+
+          const tiltX = Math.min(Math.max(event.beta, -45), 45);
+          const tiltY = Math.min(Math.max(event.gamma, -45), 45);
+
+          businessCard.style.transform = `rotateX(${-tiltX}deg) rotateY(${tiltY}deg)`;
+        };
+
         if (window.DeviceOrientationEvent) {
-          window.removeEventListener('deviceorientation', handleOrientation);
+          window.addEventListener('deviceorientation', handleOrientation);
         }
-      };
+
+        // Cleanup function for mobile
+        return () => {
+          if (window.DeviceOrientationEvent) {
+            window.removeEventListener('deviceorientation', handleOrientation);
+          }
+        };
+      }
     }
   }, []);
   
