@@ -22,14 +22,24 @@ export default function BusinessCard() {
         });
       } else {
         // Gyroscope for mobile
+        let initialBeta: number | null = null;
+        let initialGamma: number | null = null;
+
         const handleOrientation = (event: DeviceOrientationEvent) => {
           if (event.beta === null || event.gamma === null) return;
 
-          // Cap the range at -30/30 degrees
-          const tiltX = Math.min(Math.max(event.beta, -30), 30);
-          const tiltY = Math.min(Math.max(event.gamma, -30), 30);
+          // Set initial values if not set
+          if (initialBeta === null) initialBeta = event.beta;
+          if (initialGamma === null) initialGamma = event.gamma;
 
-          // Remove the multiplication to make it less dramatic
+          // Calculate the difference from initial position
+          const deltaBeta = event.beta - initialBeta;
+          const deltaGamma = event.gamma - initialGamma;
+
+          // Cap the range at -30/30 degrees
+          const tiltX = Math.min(Math.max(deltaBeta, -30), 30);
+          const tiltY = Math.min(Math.max(deltaGamma, -30), 30);
+
           businessCard.style.transform = `rotateX(${-tiltX}deg) rotateY(${tiltY}deg)`;
         };
 
