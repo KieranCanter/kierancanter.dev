@@ -21,18 +21,18 @@ const Home: React.FC = () => {
   }, []);
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen transition-colors duration-250 ease-in-out bg-bg text-fgSoft selection-default">
-      <div className="relative w-full m-auto mt-4 px-4">
-        <div className="flex justify-center">
+    <div id="home" className="flex flex-col items-center justify-between min-h-screen p-4 transition-colors duration-250 ease-in-out bg-bg text-fgSoft selection-default">
+      <div className="w-full max-w-3xl mx-auto">
+        <div className="flex justify-center mb-4">
           <ThemeSwitcher onThemeChange={handleThemeChange} />
         </div>
-        <div className="absolute right-4 top-1/2 transform -translate-y-1/2">
-          <p className="font-mono px-2 py-1">
+        <div className="text-center mb-4">
+          <p className="font-mono px-2 py-1 inline-block">
             <span className="transition-colors duration-250 ease-in-out font-bold text-fgContrast selection:bg-fgContrast selection:text-bg">{theme}</span>
           </p>
         </div>
       </div>
-      <div className="flex absolute justify-center items-center">
+      <div className="flex-grow flex items-center justify-center w-full">
         <BusinessCard />
       </div>
     </div>
