@@ -25,9 +25,11 @@ export default function BusinessCard() {
         const handleOrientation = (event: DeviceOrientationEvent) => {
           if (event.beta === null || event.gamma === null) return;
 
-          const tiltX = Math.min(Math.max(event.beta, -45), 45);
-          const tiltY = Math.min(Math.max(event.gamma, -45), 45);
+          // Cap the range at -30/30 degrees
+          const tiltX = Math.min(Math.max(event.beta, -30), 30);
+          const tiltY = Math.min(Math.max(event.gamma, -30), 30);
 
+          // Remove the multiplication to make it less dramatic
           businessCard.style.transform = `rotateX(${-tiltX}deg) rotateY(${tiltY}deg)`;
         };
 
