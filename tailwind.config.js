@@ -38,7 +38,9 @@ module.exports = {
       },
       fontFamily: {
         'spectral-sc': ['Spectral SC', 'Georgia', 'Times New Roman', 'serif'],
-        'pt-serif': ['PT Serif', 'Didot', 'Times New Roman', 'serif'],
+        'ibm-plex-mono': ['IBM Plex Mono', 'Monospace', 'Courier New', 'Courier'],
+        'ibm-plex-sans': ['IBM Plex Sans', 'Arial', 'Helvetica', 'Arial Unicode MS'],
+        'ibm-plex-serif': ['IBM Plex Serif', 'Georgia', 'Times New Roman','serif'],
       },
     },
   },
