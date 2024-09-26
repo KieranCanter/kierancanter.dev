@@ -5,19 +5,34 @@ import React, { useState, useEffect } from 'react';
 import ThemeSwitcher from '@/app/components/themeSwitcher';
 import BusinessCard from "@/app/components/businessCard";
 
-
 const Home: React.FC = () => {
   const [theme, setTheme] = useState('plush');
 
   const handleThemeChange = (newTheme: string) => {
     setTheme(newTheme);
+    localStorage.setItem('theme', newTheme);
     document.documentElement.setAttribute('data-theme', newTheme);
   };
 
   useEffect(() => {
-    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    const initialTheme = prefersDark ? "sombre" : "plush"; // Set default theme based on system preference
-    handleThemeChange(initialTheme);
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+      handleThemeChange(savedTheme);
+    } else {
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      const initialTheme = prefersDark ? "sombre" : "plush";
+      handleThemeChange(initialTheme);
+    }
+
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+    const handleChange = (e: MediaQueryListEvent) => {
+      if (!localStorage.getItem('theme')) {
+        handleThemeChange(e.matches ? "sombre" : "plush");
+      }
+    };
+
+    mediaQuery.addEventListener("change", handleChange);
+    return () => mediaQuery.removeEventListener("change", handleChange);
   }, []);
 
   return (
