@@ -1,10 +1,42 @@
 import type { Metadata } from "next";
 import "./globals.scss";
 import "./variables.scss";
+import { useEffect } from 'react';
 
 export const metadata: Metadata = {
   title: "kierancanter.dev",
   description: "If you're reading this, drink more milk",
+  applicationName: "kierancanter.dev",
+  authors: [{ name: "Kieran Canter" }],
+  keywords: ["development", "portfolio"],
+  creator: "Kieran Canter",
+  publisher: "Kieran Canter",
+  formatDetection: {
+    telephone: false,
+    date: true,
+    address: false,
+    email: true,
+    url: true
+  },
+  metadataBase: new URL("https://kierancanter.dev"),
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: "kierancanter.dev",
+    description: "If you're reading this, drink more milk",
+    url: "https://kierancanter.dev",
+    siteName: "kierancanter.dev",
+    locale: "en_US",
+    type: "website",
+  },
+  viewport: {
+    width: "device-width",
+    initialScale: 1,
+    maximumScale: 1,
+    userScalable: false,
+  },
+  themeColor: "auto",
 };
 
 export default function RootLayout({
@@ -12,13 +44,29 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+  useEffect(() => {
+    // Function to update theme color
+    const updateThemeColor = () => {
+      const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.querySelector('meta[name="theme-color"]')?.setAttribute('content', isDarkMode ? '#000000' : '#ffffff');
+    };
+
+    // Initial call
+    updateThemeColor();
+
+    // Listen for changes in color scheme preference
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', updateThemeColor);
+
+    // Cleanup
+    return () => {
+      window.matchMedia('(prefers-color-scheme: dark)').removeEventListener('change', updateThemeColor);
+    };
+  }, []);
+
   return (
     <html lang="en">
       <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
-        <meta name="theme-color" content="auto" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="auto" />
-        
         {/* Standard favicons */}
         <link rel="icon" type="image/x-icon" href="/assets/favicons/ICO/logo-light.ico" />
         <link rel="icon" type="image/x-icon" href="/assets/favicons/ICO/logo-dark.ico" />
@@ -43,6 +91,9 @@ export default function RootLayout({
         
         {/* Web App Manifest */}
         <link rel="manifest" href="/site.webmanifest" />
+
+        {/* Theme color */}
+        <meta name="theme-color" content="" />
 
       </head>
       <body className="antialiased">
