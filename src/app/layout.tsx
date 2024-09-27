@@ -34,7 +34,8 @@ export const metadata: Metadata = {
     initialScale: 1,
     maximumScale: 1,
     userScalable: false,
-  }
+  },
+  themeColor: "auto",
 };
 
 export default function RootLayout({
@@ -75,19 +76,6 @@ export default function RootLayout({
 
       </head>
       <body className="antialiased">
-        <nav style={{
-          backgroundColor: '#000000',
-          color: '#ffffff',
-          // Uncomment and adjust these as needed:
-          // padding: '1rem',
-          // position: 'fixed',
-          // top: 0,
-          // left: 0,
-          // right: 0,
-          // zIndex: 1000,
-        }}>
-          {/* Add your navigation items here */}
-        </nav>
         {children}
       </body>
     </html>
