@@ -1,0 +1,108 @@
+// Variables
+@import '@/app/variables.scss';
+
+// Tailwind
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+// Fonts
+@mixin font-face($family, $file, $weight, $style) {
+  @font-face {
+    font-family: $family;
+    src: url('/assets/fonts/#{$file}.ttf') format('truetype');
+    font-weight: $weight;
+    font-style: $style;
+    font-display: swap;
+  }
+}
+
+.fonts {
+  // IBM Plex Mono
+  &-ibm-plex-mono {
+    @include font-face('IBM Plex Mono', 'IBM_Plex_Mono/IBMPlexMono-Thin', 100, normal);
+    @include font-face('IBM Plex Mono', 'IBM_Plex_Mono/IBMPlexMono-ThinItalic', 100, italic);
+    @include font-face('IBM Plex Mono', 'IBM_Plex_Mono/IBMPlexMono-ExtraLight', 200, normal);
+    @include font-face('IBM Plex Mono', 'IBM_Plex_Mono/IBMPlexMono-ExtraLightItalic', 200, italic);
+    @include font-face('IBM Plex Mono', 'IBM_Plex_Mono/IBMPlexMono-Light', 300, normal);
+    @include font-face('IBM Plex Mono', 'IBM_Plex_Mono/IBMPlexMono-LightItalic', 300, italic);
+    @include font-face('IBM Plex Mono', 'IBM_Plex_Mono/IBMPlexMono-Regular', 400, normal);
+    @include font-face('IBM Plex Mono', 'IBM_Plex_Mono/IBMPlexMono-Italic', 400, italic);
+    @include font-face('IBM Plex Mono', 'IBM_Plex_Mono/IBMPlexMono-Medium', 500, normal);
+    @include font-face('IBM Plex Mono', 'IBM_Plex_Mono/IBMPlexMono-MediumItalic', 500, italic);
+    @include font-face('IBM Plex Mono', 'IBM_Plex_Mono/IBMPlexMono-SemiBold', 600, normal);
+    @include font-face('IBM Plex Mono', 'IBM_Plex_Mono/IBMPlexMono-SemiBoldItalic', 600, italic);
+    @include font-face('IBM Plex Mono', 'IBM_Plex_Mono/IBMPlexMono-Bold', 700, normal);
+    @include font-face('IBM Plex Mono', 'IBM_Plex_Mono/IBMPlexMono-BoldItalic', 700, italic);
+  }
+
+  // IBM Plex Sans
+  &-ibm-plex-sans {
+    @include font-face('IBM Plex Sans', 'IBM_Plex_Sans/IBMPlexSans-Thin', 100, normal);
+    @include font-face('IBM Plex Sans', 'IBM_Plex_Sans/IBMPlexSans-ThinItalic', 100, italic);
+    @include font-face('IBM Plex Sans', 'IBM_Plex_Sans/IBMPlexSans-ExtraLight', 200, normal);
+    @include font-face('IBM Plex Sans', 'IBM_Plex_Sans/IBMPlexSans-ExtraLightItalic', 200, italic);
+    @include font-face('IBM Plex Sans', 'IBM_Plex_Sans/IBMPlexSans-Light', 300, normal);
+    @include font-face('IBM Plex Sans', 'IBM_Plex_Sans/IBMPlexSans-LightItalic', 300, italic);
+    @include font-face('IBM Plex Sans', 'IBM_Plex_Sans/IBMPlexSans-Regular', 400, normal);
+    @include font-face('IBM Plex Sans', 'IBM_Plex_Sans/IBMPlexSans-Italic', 400, italic);
+    @include font-face('IBM Plex Sans', 'IBM_Plex_Sans/IBMPlexSans-Medium', 500, normal);
+    @include font-face('IBM Plex Sans', 'IBM_Plex_Sans/IBMPlexSans-MediumItalic', 500, italic);
+    @include font-face('IBM Plex Sans', 'IBM_Plex_Sans/IBMPlexSans-SemiBold', 600, normal);
+    @include font-face('IBM Plex Sans', 'IBM_Plex_Sans/IBMPlexSans-SemiBoldItalic', 600, italic);
+    @include font-face('IBM Plex Sans', 'IBM_Plex_Sans/IBMPlexSans-Bold', 700, normal);
+    @include font-face('IBM Plex Sans', 'IBM_Plex_Sans/IBMPlexSans-BoldItalic', 700, italic);
+  }
+
+  // IBM Plex Serif
+  &-ibm-plex-serif {
+    @include font-face('IBM Plex Serif', 'IBM_Plex_Serif/IBMPlexSerif-Thin', 100, normal);
+    @include font-face('IBM Plex Serif', 'IBM_Plex_Serif/IBMPlexSerif-ThinItalic', 100, italic);
+    @include font-face('IBM Plex Serif', 'IBM_Plex_Serif/IBMPlexSerif-ExtraLight', 200, normal);
+    @include font-face('IBM Plex Serif', 'IBM_Plex_Serif/IBMPlexSerif-ExtraLightItalic', 200, italic);
+    @include font-face('IBM Plex Serif', 'IBM_Plex_Serif/IBMPlexSerif-Light', 300, normal);
+    @include font-face('IBM Plex Serif', 'IBM_Plex_Serif/IBMPlexSerif-LightItalic', 300, italic);
+    @include font-face('IBM Plex Serif', 'IBM_Plex_Serif/IBMPlexSerif-Regular', 400, normal);
+    @include font-face('IBM Plex Serif', 'IBM_Plex_Serif/IBMPlexSerif-Italic', 400, italic);
+    @include font-face('IBM Plex Serif', 'IBM_Plex_Serif/IBMPlexSerif-Medium', 500, normal);
+    @include font-face('IBM Plex Serif', 'IBM_Plex_Serif/IBMPlexSerif-MediumItalic', 500, italic);
+    @include font-face('IBM Plex Serif', 'IBM_Plex_Serif/IBMPlexSerif-SemiBold', 600, normal);
+    @include font-face('IBM Plex Serif', 'IBM_Plex_Serif/IBMPlexSerif-SemiBoldItalic', 600, italic);
+    @include font-face('IBM Plex Serif', 'IBM_Plex_Serif/IBMPlexSerif-Bold', 700, normal);
+    @include font-face('IBM Plex Serif', 'IBM_Plex_Serif/IBMPlexSerif-BoldItalic', 700, italic);
+  }
+
+  // Spectral SC
+  &-spectral-sc {
+    @include font-face('Spectral SC', 'Spectral_SC/SpectralSC-ExtraLight', 200, normal);
+    @include font-face('Spectral SC', 'Spectral_SC/SpectralSC-ExtraLightItalic', 200, italic);
+    @include font-face('Spectral SC', 'Spectral_SC/SpectralSC-Light', 300, normal);
+    @include font-face('Spectral SC', 'Spectral_SC/SpectralSC-LightItalic', 300, italic);
+    @include font-face('Spectral SC', 'Spectral_SC/SpectralSC-Regular', 400, normal);
+    @include font-face('Spectral SC', 'Spectral_SC/SpectralSC-Italic', 400, italic);
+    @include font-face('Spectral SC', 'Spectral_SC/SpectralSC-Medium', 500, normal);
+    @include font-face('Spectral SC', 'Spectral_SC/SpectralSC-MediumItalic', 500, italic);
+    @include font-face('Spectral SC', 'Spectral_SC/SpectralSC-SemiBold', 600, normal);
+    @include font-face('Spectral SC', 'Spectral_SC/SpectralSC-SemiBoldItalic', 600, italic);
+    @include font-face('Spectral SC', 'Spectral_SC/SpectralSC-Bold', 700, normal);
+    @include font-face('Spectral SC', 'Spectral_SC/SpectralSC-BoldItalic', 700, italic);
+    @include font-face('Spectral SC', 'Spectral_SC/SpectralSC-ExtraBold', 800, normal);
+    @include font-face('Spectral SC', 'Spectral_SC/SpectralSC-ExtraBoldItalic', 800, italic);
+  }
+}
+
+// Tailwind  Utilities
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+.selection-default > * {
+  @apply selection:bg-fgSoft selection:text-bg;
+}
+
+// Global transitions
+:root {
+  transition: background-color 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out;
+}

@@ -1,0 +1,63 @@
+/* All Themes */
+:root {
+  // Plush
+  --plush-bg: rgba(185, 172, 174, 1);
+  --plush-fg-soft: rgba(43, 36, 37, 0.6);
+  --plush-fg-hard: rgba(43, 36, 37, 0.87);
+  --plush-fg-contrast: rgba(90, 0, 0, 0.87);
+
+  // Sombre
+  --sombre-bg: rgba(43, 36, 37, 1);
+  --sombre-fg-soft: rgba(185, 172, 174, 0.6);
+  --sombre-fg-hard: rgba(185, 172, 174, 0.87);
+  --sombre-fg-contrast: rgba(255, 227, 181, 0.87);
+
+  // Brilliant
+  --brilliant-bg: rgba(229, 229, 229, 1);
+  --brilliant-fg-soft: rgba(18, 18, 18, 0.6);
+  --brilliant-fg-hard: rgba(18, 18, 18, 0.87);
+  --brilliant-fg-contrast: rgba(46, 125, 50, 0.87);
+
+  // Luminous
+  --luminous-bg: rgba(38, 38, 38, 1);
+  --luminous-fg-soft: rgba(229, 229, 229, 0.6);
+  --luminous-fg-hard: rgba(229, 229, 229, 0.87);
+  --luminous-fg-contrast: rgba(0, 229, 255, 0.87);
+}
+
+/* Light Accented Mode */
+:root[data-theme="plush"] {
+  --bg: var(--plush-bg);
+  --fg-soft: var(--plush-fg-soft);
+  --fg-hard: var(--plush-fg-hard);
+  --fg-contrast: var(--plush-fg-contrast);
+}
+
+/* Dark Accented Mode */
+:root[data-theme="sombre"] {
+  --bg: var(--sombre-bg);
+  --fg-soft: var(--sombre-fg-soft);
+  --fg-hard: var(--sombre-fg-hard);
+  --fg-contrast: var(--sombre-fg-contrast);
+}
+
+/* Light Colorful Mode */
+:root[data-theme="brilliant"] {
+  --bg: var(--brilliant-bg);
+  --fg-soft: var(--brilliant-fg-soft);
+  --fg-hard: var(--brilliant-fg-hard);
+  --fg-contrast: var(--brilliant-fg-contrast);
+}
+
+/* Dark Colorful Mode */
+:root[data-theme="luminous"] {
+  --bg: var(--luminous-bg);
+  --fg-soft: var(--luminous-fg-soft);
+  --fg-hard: var(--luminous-fg-hard);
+  --fg-contrast: var(--luminous-fg-contrast);
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}

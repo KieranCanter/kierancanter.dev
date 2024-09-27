@@ -1,0 +1,106 @@
+{
+  "name": "kierancanter.dev",
+  "short_name": "Kieran Canter",
+  "description": "If you're reading this, drink more milk",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "transparent",
+  "theme_color": "auto",
+  "categories": ["development", "portfolio"],
+  "lang": "en",
+  "dir": "ltr",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "/assets/favicons/PNG/favicon-light_16.png",
+      "sizes": "16x16",
+      "type": "image/png",
+      "purpose": "any",
+      "media": "(prefers-color-scheme: light)"
+    },
+    {
+      "src": "/assets/favicons/PNG/favicon-light_32.png",
+      "sizes": "32x32",
+      "type": "image/png",
+      "purpose": "any",
+      "media": "(prefers-color-scheme: light)"
+    },
+    {
+      "src": "/assets/favicons/PNG/favicon-light_512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable",
+      "media": "(prefers-color-scheme: light)"
+    },
+    {
+      "src": "/assets/favicons/PNG/favicon-dark_16.png",
+      "sizes": "16x16",
+      "type": "image/png",
+      "purpose": "any",
+      "media": "(prefers-color-scheme: dark)"
+    },
+    {
+      "src": "/assets/favicons/PNG/favicon-dark_32.png",
+      "sizes": "32x32",
+      "type": "image/png",
+      "purpose": "any",
+      "media": "(prefers-color-scheme: dark)"
+    },
+    {
+      "src": "/assets/favicons/PNG/favicon-dark_512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable",
+      "media": "(prefers-color-scheme: dark)"
+    },
+    {
+      "src": "/assets/favicons/PNG/favicon-light_android.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable",
+      "media": "(prefers-color-scheme: light)"
+    },
+    {
+      "src": "/assets/favicons/PNG/favicon-dark_android.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable",
+      "media": "(prefers-color-scheme: dark)"
+    },
+    {
+      "src": "/assets/favicons/PNG/favicon-light_apple.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any",
+      "media": "(prefers-color-scheme: light)"
+    },
+    {
+      "src": "/assets/favicons/PNG/favicon-dark_apple.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any",
+      "media": "(prefers-color-scheme: dark)"
+    },
+    {
+      "src": "/assets/favicons/SVG/favicon-light.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable monochrome",
+      "media": "(prefers-color-scheme: light)"
+    },
+    {
+      "src": "/assets/favicons/SVG/favicon-dark.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable monochrome",
+      "media": "(prefers-color-scheme: dark)"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Home",
+      "url": "/"
+    }
+  ],
+  "prefer_related_applications": false
+}
