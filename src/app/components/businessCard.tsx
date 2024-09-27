@@ -77,7 +77,7 @@ export default function BusinessCard() {
 
         <a id="logo" className="absolute right-4 top-4 selection:bg-black hover:text-black hover:-translate-y-0.5 active:opacity-85 transition-all duration-250 ease-in-out" href="https://codepen.io/Kieran-Canter/pen/oNrMozK" title="Hmm, impressive. Let's see Paul Allen's card.">
           <Image 
-            src="/assets/favicons/logo-light.svg"
+            src="/assets/logo-light.svg"
             alt="Logo"
             width={24}
             height={24}
