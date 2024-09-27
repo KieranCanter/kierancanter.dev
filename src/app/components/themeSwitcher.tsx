@@ -8,12 +8,12 @@ interface ThemeSwitcherProps {
 
 const ThemeSwitcher: React.FC<ThemeSwitcherProps> = ({ onThemeChange }) => {
   useEffect(() => {
-    const updateMetaTags = (theme: string) => {
+    const updateMetaTags = () => {
       document.head.querySelector<HTMLMetaElement>('[name="theme-color"]')!.setAttribute('content', `var(--bg)`);
       document.head.querySelector<HTMLMetaElement>('[name="apple-mobile-web-app-status-bar-style"]')!.setAttribute('content', `var(--bg)`);
     };
 
-    updateMetaTags(localStorage.getItem('theme') || 'plush');
+    updateMetaTags();
   }, []);
 
   const getThemeClasses = (theme: string) => {
