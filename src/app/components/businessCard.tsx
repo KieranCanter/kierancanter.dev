@@ -36,9 +36,9 @@ export default function BusinessCard() {
           const deltaBeta = event.beta - initialBeta;
           const deltaGamma = event.gamma - initialGamma;
 
-          // Cap the range at -30/30 degrees
-          const tiltX = Math.min(Math.max(deltaBeta, -30), 30);
-          const tiltY = Math.min(Math.max(deltaGamma, -30), 30);
+          // Cap the range at -60/60 degrees
+          const tiltX = Math.min(Math.max(deltaBeta, -60), 60);
+          const tiltY = Math.min(Math.max(deltaGamma, -60), 60);
 
           businessCard.style.transform = `rotateX(${-tiltX}deg) rotateY(${tiltY}deg)`;
         };
