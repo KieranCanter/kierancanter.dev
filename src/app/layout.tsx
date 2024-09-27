@@ -10,6 +10,7 @@ export const metadata: Metadata = {
   keywords: ["development", "portfolio"],
   creator: "Kieran Canter",
   publisher: "Kieran Canter",
+  manifest: "/site.webmanifest",
   formatDetection: {
     telephone: false,
     date: true,
@@ -36,6 +37,7 @@ export const viewport: Viewport = {
   initialScale: 1,
   maximumScale: 1,
   userScalable: false,
+  themeColor: "#333",
 };
 
 export default function RootLayout({
@@ -68,9 +70,6 @@ export default function RootLayout({
 
         {/* For Legacy Systems */}
         <link rel="shortcut icon" href="./favicon.ico" />
-        
-        {/* Web App Manifest */}
-        <link rel="manifest" href="/site.webmanifest" />
 
       </head>
       <body className="antialiased">
