@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.scss";
 import "./variables.scss";
-import { MetaThemeUpdater } from "./components/metaThemeUpdater";
 
 export const metadata: Metadata = {
   title: "kierancanter.dev",
@@ -73,12 +72,10 @@ export default function RootLayout({
         {/* Web App Manifest */}
         <link rel="manifest" href="/site.webmanifest" />
 
-        {/* Theme color */}
-        <meta name="theme-color" content="" />
+        <meta name="theme-color" content="#000000" id="theme-color-meta" />
 
       </head>
       <body className="antialiased">
-        <MetaThemeUpdater />
         {children}
       </body>
     </html>
