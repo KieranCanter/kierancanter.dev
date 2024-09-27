@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
-import "./globals.scss";
-import "./variables.scss";
+import "@/styles/globals.scss";
+import "@/styles/variables.scss";
 
 export const metadata: Metadata = {
   title: "kierancanter.dev",
