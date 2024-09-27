@@ -25,6 +25,12 @@ export default function BusinessCard() {
         let initialBeta: number | null = null;
         let initialGamma: number | null = null;
 
+        const resetOrientation = () => {
+          initialBeta = null;
+          initialGamma = null;
+          businessCard.style.transform = 'none';
+        };
+
         const handleOrientation = (event: DeviceOrientationEvent) => {
           if (event.beta === null || event.gamma === null) return;
 
@@ -45,12 +51,14 @@ export default function BusinessCard() {
 
         if (window.DeviceOrientationEvent) {
           window.addEventListener('deviceorientation', handleOrientation);
+          window.addEventListener('orientationchange', resetOrientation);
         }
 
         // Cleanup function for mobile
         return () => {
           if (window.DeviceOrientationEvent) {
             window.removeEventListener('deviceorientation', handleOrientation);
+            window.removeEventListener('orientationchange', resetOrientation);
           }
         };
       }
