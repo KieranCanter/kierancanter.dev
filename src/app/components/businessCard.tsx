@@ -43,11 +43,11 @@ export default function BusinessCard() {
           const deltaGamma = event.gamma - initialGamma;
 
           // Cap the range at -60/60 degrees
-          const tiltX = Math.min(Math.max(deltaBeta, -60), 60);
-          const tiltY = Math.min(Math.max(deltaGamma, -60), 60);
+          const tiltX = Math.min(Math.max(deltaBeta, -90), 90);
+          const tiltY = Math.min(Math.max(deltaGamma, -90), 90);
 
           // Check the orientation and apply the appropriate rotation
-          if (window.orientation === 0) {
+          if (screen.orientation.type.includes('portrait')) {
             businessCard.style.transform = `rotateX(${-tiltX}deg) rotateY(${tiltY}deg)`;
           } else {
             businessCard.style.transform = `rotateX(${tiltY}deg) rotateY(${-tiltX}deg)`;
