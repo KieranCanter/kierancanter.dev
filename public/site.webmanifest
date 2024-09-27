@@ -1,0 +1,94 @@
+{
+  "name": "kierancanter.dev",
+  "short_name": "Kieran Canter",
+  "description": "If you're reading this, drink more milk",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "transparent",
+  "theme_color": "auto",
+  "categories": ["development", "portfolio"],
+  "lang": "en",
+  "dir": "ltr",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "/assets/favicons/PNG/logo-light_16.png",
+      "sizes": "16x16",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/favicons/PNG/logo-light_32.png",
+      "sizes": "32x32",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/favicons/PNG/logo-light_512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/favicons/PNG/logo-dark_16.png",
+      "sizes": "16x16",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/favicons/PNG/logo-dark_32.png",
+      "sizes": "32x32",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/favicons/PNG/logo-dark_512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/favicons/PNG/logo-light_android.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/favicons/PNG/logo-dark_android.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/favicons/PNG/logo-light_apple.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/favicons/PNG/logo-dark_apple.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/favicons/SVG/logo-light.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable monochrome"
+    },
+    {
+      "src": "/assets/favicons/SVG/logo-dark.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable monochrome"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Home",
+      "url": "/"
+    }
+  ],
+  "prefer_related_applications": false
+}
