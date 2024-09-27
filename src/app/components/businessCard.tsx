@@ -46,7 +46,12 @@ export default function BusinessCard() {
           const tiltX = Math.min(Math.max(deltaBeta, -60), 60);
           const tiltY = Math.min(Math.max(deltaGamma, -60), 60);
 
-          businessCard.style.transform = `rotateX(${-tiltX}deg) rotateY(${tiltY}deg)`;
+          // Check the orientation and apply the appropriate rotation
+          if (window.orientation === 0) {
+            businessCard.style.transform = `rotateX(${-tiltX}deg) rotateY(${tiltY}deg)`;
+          } else {
+            businessCard.style.transform = `rotateX(${tiltY}deg) rotateY(${-tiltX}deg)`;
+          }
         };
 
         if (window.DeviceOrientationEvent) {
