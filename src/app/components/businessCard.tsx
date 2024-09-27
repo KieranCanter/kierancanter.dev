@@ -104,7 +104,7 @@ export default function BusinessCard() {
           aria-label="Logo: Link to an American Psycho video reference"
         >
           <Image 
-            src="/assets/logo-light.svg"
+            src="/assets/logo.svg"
             alt="Kieran Canter's personal logo"
             width={20}
             height={20}

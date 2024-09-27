@@ -1,12 +1,20 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect} from 'react';
 
 interface ThemeSwitcherProps {
   onThemeChange: (theme: string) => void;
 }
 
 const ThemeSwitcher: React.FC<ThemeSwitcherProps> = ({ onThemeChange }) => {
+  useEffect(() => {
+    const updateMetaTags = (theme: string) => {
+      document.head.querySelector<HTMLMetaElement>('[name="theme-color"]')!.setAttribute('content', `var(--bg)`);
+      document.head.querySelector<HTMLMetaElement>('[name="apple-mobile-web-app-status-bar-style"]')!.setAttribute('content', `var(--bg)`);
+    };
+
+    updateMetaTags(localStorage.getItem('theme') || 'plush');
+  }, []);
 
   const getThemeClasses = (theme: string) => {
     const baseClasses = 'hover:-translate-y-0.5';
@@ -23,6 +31,24 @@ const ThemeSwitcher: React.FC<ThemeSwitcherProps> = ({ onThemeChange }) => {
         return '';
     }
   };
+
+  return (
+    <div id="theme-switcher" className="flex flex-row justify-center gap-2 w-full max-w-md">
+      {['plush', 'sombre', 'brilliant', 'luminous'].map((theme) => (
+        <button
+          key={theme}
+          onClick={() => {
+            onThemeChange(theme);
+            localStorage.setItem('theme', theme);
+          }}
+          className={`flex-1 w-1/4 p-2 rounded-sm border transition-all duration-250 ease-in-out text-sm ${getThemeClasses(theme)}`}
+        >
+          {theme.charAt(0).toUpperCase() + theme.slice(1)}
+        </button>
+      ))}
+    </div>
+  );
+};
 
   return (
     <div id="theme-switcher" className="flex flex-row justify-center gap-2 w-full max-w-md">
