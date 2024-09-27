@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.scss";
 import "./variables.scss";
-import { useEffect } from 'react';
+import { MetaThemeUpdater } from "./components/metaThemeUpdater";
 
 export const metadata: Metadata = {
   title: "kierancanter.dev",
@@ -45,25 +45,6 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
 
-  useEffect(() => {
-    // Function to update theme color
-    const updateThemeColor = () => {
-      const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      document.querySelector('meta[name="theme-color"]')?.setAttribute('content', isDarkMode ? '#000000' : '#ffffff');
-    };
-
-    // Initial call
-    updateThemeColor();
-
-    // Listen for changes in color scheme preference
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', updateThemeColor);
-
-    // Cleanup
-    return () => {
-      window.matchMedia('(prefers-color-scheme: dark)').removeEventListener('change', updateThemeColor);
-    };
-  }, []);
-
   return (
     <html lang="en">
       <head>
@@ -97,6 +78,7 @@ export default function RootLayout({
 
       </head>
       <body className="antialiased">
+        <MetaThemeUpdater />
         {children}
       </body>
     </html>
