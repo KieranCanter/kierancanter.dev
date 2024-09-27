@@ -9,7 +9,7 @@ import Image from 'next/image';
 
 // Define social media links
 const socialLinks = [
-  { title: 'Email', href: 'mailto:kieran@kierancanter.com', icon: faEnvelope },
+  { title: 'Email', href: 'mailto:contact@kierancanter.dev', icon: faEnvelope },
   { title: 'GitHub', href: 'https://github.com/kierancanter', icon: faGithub },
   { title: 'LinkedIn', href: 'https://www.linkedin.com/in/kierancanter/', icon: faLinkedin },
   { title: 'CodePen', href: 'https://codepen.io/kierancanter', icon: faCodepen },
@@ -88,6 +88,8 @@ export default function BusinessCard() {
           href="tel:+12402846363" 
           title="Phone" 
           aria-label="Phone number: +1 240.284.6363"
+          target="_blank"
+          rel="noopener noreferrer"
         >
           +1 240.284.6363
         </a>
@@ -127,6 +129,8 @@ export default function BusinessCard() {
               title={`Visit Kieran's ${link.title} ${link.title === 'Email' ? 'address' : 'profile'}`} 
               className="hover:text-black selection:bg-black hover:-translate-y-0.5 active:opacity-85 transition-all duration-250 ease-in-out"
               aria-label={`${link.title}: ${link.href}`}
+              target="_blank"
+              rel="noopener noreferrer"
             >
               <FontAwesomeIcon 
                 icon={link.icon} 
