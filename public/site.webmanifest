@@ -5,8 +5,6 @@
   "start_url": "/",
   "display": "standalone",
   "categories": ["development", "portfolio"],
-  "theme_color": "#333",
-  "background_color": "#333",
   "lang": "en",
   "dir": "ltr",
   "orientation": "any",
@@ -88,6 +86,11 @@
       "media": "(prefers-color-scheme: dark)"
     }
   ],
+  "theme_color": "#333",
+  "background_color": "#333",
+  "maskable": true,
+  "maskable_icon": "/assets/favicons/SVG/favicon.svg",
+
   "shortcuts": [
     {
       "name": "Home",
