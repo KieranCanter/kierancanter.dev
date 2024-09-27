@@ -3,9 +3,9 @@
 import React, { useEffect } from 'react';
 import VanillaTilt from 'vanilla-tilt';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAddressCard, faPaperPlane } from '@fortawesome/free-regular-svg-icons';
+import { faPaperPlane } from '@fortawesome/free-regular-svg-icons';
 import { faGithub, faLinkedin, faCodepen, faBehance } from '@fortawesome/free-brands-svg-icons';
-
+import Image from 'next/image';
 
 export default function BusinessCard() {
   useEffect(() => {
@@ -76,7 +76,13 @@ export default function BusinessCard() {
         <a id="phone" className="absolute left-4 top-4 text-sm font-ibm-plex-serif font-bold selection:bg-black hover:text-black hover:-translate-y-0.5 active:opacity-85 transition-all duration-250 ease-in-out" href="tel:+12402846363" title="Phone">+1 240.284.6363</a>
 
         <a id="logo" className="absolute right-4 top-4 selection:bg-black hover:text-black hover:-translate-y-0.5 active:opacity-85 transition-all duration-250 ease-in-out" href="https://codepen.io/Kieran-Canter/pen/oNrMozK" title="Hmm, impressive. Let's see Paul Allen's card.">
-          <FontAwesomeIcon icon={faAddressCard} className="fa-sharp fa-regular fa-lg sm:fa-xl" />
+          <Image 
+            src="/assets/favicons/logo-light.svg"
+            alt="Logo"
+            width={24}
+            height={24}
+            className="w-6 h-6 sm:w-8 sm:h-8 text-current"
+          />
         </a>
 
         <div id="me" className="flex flex-col w-full h-full items-center font-spectral-sc justify-center">
