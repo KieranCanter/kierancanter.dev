@@ -10,7 +10,7 @@
 @mixin font-face($family, $file, $weight, $style) {
   @font-face {
     font-family: $family;
-    src: url('../assets/fonts/#{$file}.ttf') format('truetype');
+    src: url('/public/assets/fonts/#{$file}.ttf') format('truetype');
     font-weight: $weight;
     font-style: $style;
     font-display: swap;
