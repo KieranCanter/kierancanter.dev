@@ -47,9 +47,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <meta name="theme-color" content="black-translucent" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"></meta>
-
         {/* SVG favicon for modern browsers */}
         <link rel="icon" type="image/svg+xml" sizes="any" href="/assets/favicons/SVG/favicon.svg" />
 
