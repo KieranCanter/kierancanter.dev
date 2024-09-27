@@ -6,6 +6,7 @@ interface ThemeSwitcherProps {
   onThemeChange: (theme: string) => void;
 }
 
+/*************  ✨ Codeium Command 🌟  *************/
 const ThemeSwitcher: React.FC<ThemeSwitcherProps> = ({ onThemeChange }) => {
   const getThemeClasses = (theme: string) => {
     const baseClasses = 'hover:-translate-y-0.5';
