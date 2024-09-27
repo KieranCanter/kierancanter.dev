@@ -3,9 +3,18 @@
 import React, { useEffect } from 'react';
 import VanillaTilt from 'vanilla-tilt';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPaperPlane } from '@fortawesome/free-regular-svg-icons';
-import { faGithub, faLinkedin, faCodepen, faBehance } from '@fortawesome/free-brands-svg-icons';
+import { faGithub, faLinkedin, faBehance, faCodepen } from '@fortawesome/free-brands-svg-icons';
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import Image from 'next/image';
+
+// Define social media links
+const socialLinks = [
+  { title: 'Email', href: 'mailto:kieran@kierancanter.com', icon: faEnvelope },
+  { title: 'GitHub', href: 'https://github.com/kierancanter', icon: faGithub },
+  { title: 'LinkedIn', href: 'https://www.linkedin.com/in/kierancanter/', icon: faLinkedin },
+  { title: 'CodePen', href: 'https://codepen.io/kierancanter', icon: faCodepen },
+  { title: 'Behance', href: 'https://www.behance.net/kierancanter', icon: faBehance },
+];
 
 export default function BusinessCard() {
   useEffect(() => {
@@ -71,42 +80,63 @@ export default function BusinessCard() {
   }, []);
   
   return (
-    <div id="container" className="w-full max-w-md">
+    <div id="container" className="w-full max-w-md" role="region" aria-label="Kieran Canter's Business Card">
       <div id="business-card" className="flex relative aspect-[7/4] w-full max-w-md mx-auto text-[#1e1e1e] bg-[#f8f5ec] rounded-[0.1rem] [box-shadow:0rem_0.1rem_0.4rem_0rem_rgba(0,_0,_0,_0.3)] selection:bg-[#1e1e1e] selection:text-[#f8f5ec]">
-        <a id="phone" className="absolute left-4 top-4 text-sm font-ibm-plex-serif font-bold selection:bg-black hover:text-black hover:-translate-y-0.5 active:opacity-85 transition-all duration-250 ease-in-out" href="tel:+12402846363" title="Phone">+1 240.284.6363</a>
+        <a 
+          id="phone" 
+          className="absolute left-4 top-4 text-xs font-ibm-plex-serif font-bold selection:bg-black hover:text-black hover:-translate-y-0.5 active:opacity-85 transition-all duration-250 ease-in-out" 
+          href="tel:+12402846363" 
+          title="Phone" 
+          aria-label="Phone number: +1 240.284.6363"
+        >
+          +1 240.284.6363
+        </a>
 
-        <a id="logo" className="absolute right-4 top-4 selection:bg-black hover:text-black hover:-translate-y-0.5 active:opacity-85 transition-all duration-250 ease-in-out" href="https://codepen.io/Kieran-Canter/pen/oNrMozK" title="Hmm, impressive. Let's see Paul Allen's card.">
+        <a 
+          id="logo" 
+          className="absolute right-4 top-4 selection:bg-black hover:text-black hover:-translate-y-0.5 active:opacity-85 transition-all duration-250 ease-in-out" 
+          href="https://www.youtube.com/watch?v=YHgwxVCiMyI" 
+          title="Impressive. Very nice. Let's see Paul Allen's card." 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          aria-label="Logo: Link to an American Psycho video reference"
+        >
           <Image 
             src="/assets/logo-light.svg"
-            alt="Logo"
-            width={24}
-            height={24}
-            className="w-6 h-6 sm:w-8 sm:h-8 text-current"
+            alt="Kieran Canter's personal logo"
+            width={20}
+            height={20}
+            className="w-5 h-5 sm:w-6.75 sm:h-6.75 text-current"
           />
         </a>
 
-        <div id="me" className="flex flex-col w-full h-full items-center font-spectral-sc justify-center">
+        <div id="me" className="flex flex-col w-full h-full items-center font-spectral-sc justify-center" aria-labelledby="name title">
           <h1 id="name" className="text-lg font-bold">Kieran CANTER</h1>
           <h2 id="title" className="text-sm font-semibold">Computer Scientist</h2>
         </div>
 
-        <div id="socials" className="absolute bottom-4 left-0 right-0 flex justify-center space-x-4">
-          <a href="mailto:contact@kierancanter.dev" title="Email" className="hover:text-black selection:bg-black hover:-translate-y-0.5 active:opacity-85 transition-all duration-250 ease-in-out">
-            <FontAwesomeIcon icon={faPaperPlane} className="fa-sharp fa-regular" />
-          </a>
-          <a href="https://github.com/kierancanter/" title="GitHub" className="hover:text-black selection:bg-black hover:-translate-y-0.5 active:opacity-85 transition-all duration-250 ease-in-out">
-            <FontAwesomeIcon icon={faGithub} className="fa-sharp fa-regular" />
-          </a>
-          <a href="https://linkedin.com/in/kierancanter/" title="LinkedIn" className="hover:text-black selection:bg-black hover:-translate-y-0.5 active:opacity-85 transition-all duration-250 ease-in-out">
-            <FontAwesomeIcon icon={faLinkedin} className="fa-sharp fa-regular" />
-          </a>
-          <a href="https://codepen.io/kierancanter/" title="CodePen" className="hover:text-black selection:bg-black hover:-translate-y-0.5 active:opacity-85 transition-all duration-250 ease-in-out">
-            <FontAwesomeIcon icon={faCodepen} className="fa-sharp fa-regular" />
-          </a>
-          <a href="https://behance.net/kierancanter" title="Behance" className="hover:text-black selection:bg-black hover:-translate-y-0.5 active:opacity-85 transition-all duration-250 ease-in-out">
-            <FontAwesomeIcon icon={faBehance} className="fa-sharp fa-regular" />
-          </a>
-        </div>
+        <nav 
+          id="socials" 
+          className="absolute bottom-4 left-0 right-0 flex justify-center space-x-4"
+          aria-label="Social media links"
+        >
+          {socialLinks.map((link) => (
+            <a 
+              key={link.title}
+              href={link.href} 
+              title={`Visit Kieran's ${link.title} ${link.title === 'Email' ? 'address' : 'profile'}`} 
+              className="hover:text-black selection:bg-black hover:-translate-y-0.5 active:opacity-85 transition-all duration-250 ease-in-out"
+              aria-label={`${link.title}: ${link.href}`}
+            >
+              <FontAwesomeIcon 
+                icon={link.icon} 
+                className="fa-sharp fa-regular" 
+                aria-hidden="true" 
+              />
+              <span className="sr-only">{link.title}</span>
+            </a>
+          ))}
+        </nav>
         
       </div>
     </div>
