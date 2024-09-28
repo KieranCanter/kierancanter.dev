@@ -33,63 +33,74 @@ export default function BusinessCard() {
           max: 15,
           speed: 3000,
         });
-      } 
-      
-      else {
-        // Request permission to access motion/orientation data
-        if (typeof (DeviceMotionEvent as unknown as DeviceMotionEventWithPermission).requestPermission === 'function') {
-          (DeviceMotionEvent as unknown as DeviceMotionEventWithPermission).requestPermission?.()
-            .then(permissionState => {
+      } else {
+        // Gyroscope for mobile
+        const requestMotionPermission = async () => {
+          if (typeof (DeviceMotionEvent as unknown as DeviceMotionEventWithPermission).requestPermission === 'function') {
+            try {
+              const permissionState = await (DeviceMotionEvent as unknown as DeviceMotionEventWithPermission).requestPermission?.();
               if (permissionState === 'granted') {
-                // Gyroscope for mobile
-                let initialBeta: number | null = null;
-                let initialGamma: number | null = null;
-
-                const resetOrientation = () => {
-                  initialBeta = null;
-                  initialGamma = null;
-                  businessCard.style.transform = 'none';
-                };
-
-                const handleOrientation = (event: DeviceOrientationEvent) => {
-                  if (event.beta === null || event.gamma === null) return;
-
-                  // Set initial values if not set
-                  if (initialBeta === null) initialBeta = event.beta;
-                  if (initialGamma === null) initialGamma = event.gamma;
-
-                  // Calculate the difference from initial position
-                  const deltaBeta = event.beta - initialBeta;
-                  const deltaGamma = event.gamma - initialGamma;
-
-                  // Cap the range at -89/89 degrees
-                  const tiltX = Math.min(Math.max(deltaBeta, -89), 89);
-                  const tiltY = Math.min(Math.max(deltaGamma, -89), 89);
-
-                  // Check the orientation and apply the appropriate rotation
-                  if (screen.orientation.type.includes('portrait')) {
-                    businessCard.style.transform = `rotateX(${-tiltX}deg) rotateY(${tiltY}deg)`;
-                  } else {
-                    businessCard.style.transform = `rotateX(${tiltY}deg) rotateY(${-tiltX}deg)`;
-                  }
-                };
-
-                if (window.DeviceOrientationEvent) {
-                  window.addEventListener('deviceorientation', handleOrientation);
-                  window.addEventListener('orientationchange', resetOrientation);
-                }
-
-                // Cleanup function for mobile
-                return () => {
-                  if (window.DeviceOrientationEvent) {
-                    window.removeEventListener('deviceorientation', handleOrientation);
-                    window.removeEventListener('orientationchange', resetOrientation);
-                  }
-                };
+                setupGyroscope();
+              } else {
+                console.log('Motion permission denied');
               }
-            })
-            .catch(console.error);
-        }
+            } catch (error) {
+              console.error('Error requesting motion permission:', error);
+            }
+          } else {
+            // For non-iOS devices or older iOS versions
+            setupGyroscope();
+          }
+        };
+
+        const setupGyroscope = () => {
+          let initialBeta: number | null = null;
+          let initialGamma: number | null = null;
+
+          const resetOrientation = () => {
+            initialBeta = null;
+            initialGamma = null;
+            businessCard.style.transform = 'none';
+          };
+
+          const handleOrientation = (event: DeviceOrientationEvent) => {
+            if (event.beta === null || event.gamma === null) return;
+
+            // Set initial values if not set
+            if (initialBeta === null) initialBeta = event.beta;
+            if (initialGamma === null) initialGamma = event.gamma;
+
+            // Calculate the difference from initial position
+            const deltaBeta = event.beta - initialBeta;
+            const deltaGamma = event.gamma - initialGamma;
+
+            // Cap the range at -89/89 degrees
+            const tiltX = Math.min(Math.max(deltaBeta, -89), 89);
+            const tiltY = Math.min(Math.max(deltaGamma, -89), 89);
+
+            // Check the orientation and apply the appropriate rotation
+            if (screen.orientation.type.includes('portrait')) {
+              businessCard.style.transform = `rotateX(${-tiltX}deg) rotateY(${tiltY}deg)`;
+            } else {
+              businessCard.style.transform = `rotateX(${tiltY}deg) rotateY(${-tiltX}deg)`;
+            }
+          };
+
+          if (window.DeviceOrientationEvent) {
+            window.addEventListener('deviceorientation', handleOrientation);
+            window.addEventListener('orientationchange', resetOrientation);
+          }
+
+          // Cleanup function for mobile
+          return () => {
+            if (window.DeviceOrientationEvent) {
+              window.removeEventListener('deviceorientation', handleOrientation);
+              window.removeEventListener('orientationchange', resetOrientation);
+            }
+          };
+        };
+
+        requestMotionPermission();
       }
     }
   }, []);
