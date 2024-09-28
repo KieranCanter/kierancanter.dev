@@ -12,14 +12,7 @@ const Home: React.FC = () => {
     setTheme(newTheme);
     localStorage.setItem('theme', newTheme);
     document.documentElement.setAttribute('data-theme', newTheme);
-
-    fetch('/site.webmanifest')
-      .then(response => response.json())
-      .then(manifest => {
-        manifest.theme_color = getComputedStyle(document.documentElement).getPropertyValue(`--bg`);
-        manifest.background_color = getComputedStyle(document.documentElement).getPropertyValue(`--bg`);
-      });
-  };
+  }
 
   useEffect(() => {
     const savedTheme = localStorage.getItem('theme');
