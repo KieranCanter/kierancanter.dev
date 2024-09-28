@@ -92,8 +92,8 @@
       "theme": "dark"
     }
   ],
-  "theme_color": "#333",
-  "background_color": "#333",
+  "theme_color": "#000000",
+  "background_color": "#000000",
 
   "shortcuts": [
     {
