@@ -6,7 +6,6 @@ interface ThemeSwitcherProps {
   onThemeChange: (theme: string) => void;
 }
 
-/*************  ✨ Codeium Command 🌟  *************/
 const ThemeSwitcher: React.FC<ThemeSwitcherProps> = ({ onThemeChange }) => {
   const getThemeClasses = (theme: string) => {
     const baseClasses = 'hover:-translate-y-0.5';
@@ -25,7 +24,7 @@ const ThemeSwitcher: React.FC<ThemeSwitcherProps> = ({ onThemeChange }) => {
   };
 
   return (
-    <div id="theme-switcher" className="flex flex-row justify-center gap-2 w-full max-w-md">
+    <div id="theme-switcher" className="flex flex-row justify-center gap-2 w-full max-w-md" aria-label="Theme Switcher">
       {['plush', 'sombre', 'brilliant', 'luminous'].map((theme) => (
         <button
           key={theme}
@@ -34,6 +33,7 @@ const ThemeSwitcher: React.FC<ThemeSwitcherProps> = ({ onThemeChange }) => {
             localStorage.setItem('theme', theme);
           }}
           className={`flex-1 w-1/4 p-2 rounded-sm border transition-all duration-250 ease-in-out text-sm ${getThemeClasses(theme)}`}
+          aria-label={`Switch to the ${theme} theme`}
         >
           {theme.charAt(0).toUpperCase() + theme.slice(1)}
         </button>
