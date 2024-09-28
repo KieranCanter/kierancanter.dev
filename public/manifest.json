@@ -94,8 +94,6 @@
   ],
   "theme_color": "#333",
   "background_color": "#333",
-  "maskable": true,
-  "maskable_icon": "/assets/images/PWA/pwa.svg",
 
   "shortcuts": [
     {
