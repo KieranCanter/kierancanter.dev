@@ -52,7 +52,7 @@ export default function RootLayout({
         {/* SVG favicon for modern browsers */}
         <link rel="icon" type="image/svg+xml" sizes="any" href="/assets/images/favicons/SVG/favicon.svg" />
 
-        {/* Standard Fsrc/app/favicon.icoavicons */}
+        {/* Standard Favicons */}
         <link rel="icon-light" type="image/png" sizes="16x16" href="/assets/images/favicons/PNG/favicon-light_16.png" />
         <link rel="icon-light" type="image/png" sizes="32x32" href="/assets/images/favicons/PNG/favicon-light_32.png" />
         <link rel="icon-light" type="image/png" sizes="512x512" href="/assets/images/favicons/PNG/favicon-light_512.png" />
@@ -69,7 +69,7 @@ export default function RootLayout({
         <link rel="apple-touch-icon-dark" sizes="180x180" href="/assets/images/favicons/PNG/favicon-dark_apple.png" />
 
         {/* For Legacy Systems */}
-        <link rel="shortcut icon" href="./favicon.ico" />
+        <link rel="shortcut icon" href="/favicon.ico" />
 
       </head>
       <body className="antialiased">
