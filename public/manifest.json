@@ -13,7 +13,7 @@
       "src": "/assets/images/PWA/pwa.svg",
       "sizes": "any",
       "type": "image/svg+xml",
-      "purpose": "any maskable monochrome"
+      "purpose": "any maskable "
     },
     {
       "src": "/assets/images/favicons/SVG/favicon.svg",
