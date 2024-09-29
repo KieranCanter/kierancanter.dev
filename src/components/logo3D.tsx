@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import * as THREE from 'three';
-import { SVGLoader } from 'three/examples/jsm/loaders/SVGLoader.js';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 
 interface LogoProps {
   color: THREE.Color;
@@ -18,7 +18,8 @@ const Logo: React.FC<LogoProps> = ({ color, onRender, animate = false }) => {
     let scene: THREE.Scene,
       renderer: THREE.WebGLRenderer,
       camera: THREE.PerspectiveCamera,
-      diamond: THREE.Mesh;
+      diamond: THREE.Mesh,
+      logoModel: THREE.Group;
 
     const initScene = () => {
       scene = new THREE.Scene();
@@ -30,45 +31,34 @@ const Logo: React.FC<LogoProps> = ({ color, onRender, animate = false }) => {
       renderer.setPixelRatio(window.devicePixelRatio);
     };
 
-    let svgLoaded = false;
+    let modelLoaded = false;
     let diamondCreated = false;
 
-    const loadSVG = () => {
-      const loader = new SVGLoader();
-      loader.load('/assets/images/logo-no_diamond.svg', (data) => {
-        const group = createSVGGroup(data.paths);
-        positionSVGGroup(group);
-        scene.add(group);
-        svgLoaded = true;
+    const loadGLTF = () => {
+      const loader = new GLTFLoader();
+      loader.load('/assets/images/logo3D.gltf', (gltf) => {
+        logoModel = gltf.scene;
+        positionLogoModel(logoModel);
+        scene.add(logoModel);
+        modelLoaded = true;
         renderIfReady();
       });
     };
 
-    const createSVGGroup = (paths: THREE.ShapePath[]) => {
-      const group = new THREE.Group();
-      paths.forEach(path => {
-        const material = new THREE.MeshBasicMaterial({
-          color: color,
-          side: THREE.DoubleSide,
-          depthWrite: false
-        });
-        const shapes = SVGLoader.createShapes(path);
-        shapes.forEach(shape => {
-          const geometry = new THREE.ShapeGeometry(shape);
-          const mesh = new THREE.Mesh(geometry, material);
-          group.add(mesh);
-        });
+    const positionLogoModel = (model: THREE.Group) => {
+      const scalar = 40;
+      model.position.set(0, 0, 0);
+      model.scale.multiplyScalar(scalar);
+      
+      // Apply the color and material to the logo model
+      model.traverse((child) => {
+        if (child instanceof THREE.Mesh) {
+          child.material = new THREE.MeshPhongMaterial({ 
+            color: color,
+            shininess: 100, // Adjust this value to match the diamond's shininess
+          });
+        }
       });
-      return group;
-    };
-
-    const positionSVGGroup = (group: THREE.Group) => {
-      const box = new THREE.Box3().setFromObject(group);
-      const center = box.getCenter(new THREE.Vector3());
-      const scalar = 0.0125;
-      center.x = center.y + 55.7844;
-      group.position.set(-center.x * scalar, -center.y * scalar, 1);
-      group.scale.multiplyScalar(scalar);
     };
 
     const createDiamond = () => {
@@ -77,6 +67,7 @@ const Logo: React.FC<LogoProps> = ({ color, onRender, animate = false }) => {
       
       const material = new THREE.MeshPhongMaterial({ color: color });
       diamond = new THREE.Mesh(geometry, material);
+      diamond.position.x = 1.5;
       scene.add(diamond);
       diamondCreated = true;
       renderIfReady();
@@ -89,7 +80,7 @@ const Logo: React.FC<LogoProps> = ({ color, onRender, animate = false }) => {
 
       const aspectRatio = 1;
       camera = new THREE.PerspectiveCamera(60, aspectRatio, 0.1, 1000);
-      camera.position.z = 15;
+      camera.position.z = 20;
     };
 
     const setupLighting = () => {
@@ -104,6 +95,10 @@ const Logo: React.FC<LogoProps> = ({ color, onRender, animate = false }) => {
         directionalLight.position.set(...light.position as [number, number, number]);
         scene.add(directionalLight);
       });
+
+      // Add ambient light for both diamond and logo
+      const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+      scene.add(ambientLight);
     };
 
     const rotationDuration = 2500;
@@ -137,7 +132,7 @@ const Logo: React.FC<LogoProps> = ({ color, onRender, animate = false }) => {
     };
 
     const renderIfReady = () => {
-      if (svgLoaded && diamondCreated) {
+      if (modelLoaded && diamondCreated) {
         renderer.render(scene, camera);
         if (onRender) onRender();
 
@@ -151,7 +146,7 @@ const Logo: React.FC<LogoProps> = ({ color, onRender, animate = false }) => {
 
     const init = () => {
       initScene();
-      loadSVG();
+      loadGLTF();
       createDiamond();
       setupCamera();
       setupLighting();
