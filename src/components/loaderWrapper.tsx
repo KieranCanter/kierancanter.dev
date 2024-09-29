@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import LogoLoader from '@/components/loader';
 import Home from '@/app/home';
 import '@/styles/variables.scss';
@@ -13,11 +13,6 @@ const LogoLoaderWrapper: React.FC = () => {
     setIsLoading(false);
     setShowHome(true);
   };
-
-  useEffect(() => {
-    console.log("LogoLoaderWrapper mounted");
-    return () => console.log("LogoLoaderWrapper unmounted");
-  }, []);
 
   return (
     <>

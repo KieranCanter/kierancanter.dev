@@ -1,7 +1,7 @@
 'use client';
 
 import '@/styles/globals.scss';
-import LogoLoaderWrapper from '@/util/loaderWrapper';
+import LogoLoaderWrapper from '@/components/loaderWrapper';
 
 const Page: React.FC = () => {
   return <LogoLoaderWrapper />;
