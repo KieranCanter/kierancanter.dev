@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState, useContext } from 'react';
 import LogoLoader from '@/components/loader';
 import Home from '@/app/home';

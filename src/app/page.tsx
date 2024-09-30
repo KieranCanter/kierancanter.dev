@@ -1,10 +1,6 @@
-'use client';
-
 import '@/styles/globals.scss';
 import LogoLoaderWrapper from '@/components/loaderWrapper';
 
-const Page: React.FC = () => {
+export default function Page() {
   return <LogoLoaderWrapper />;
-};
-
-export default Page;
+}
