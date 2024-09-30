@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
-import "./globals.scss";
-import "./variables.scss";
+import "@/styles/globals.scss";
+import "@/styles/variables.scss";
 
 export const metadata: Metadata = {
   title: "kierancanter.dev",
@@ -10,6 +10,7 @@ export const metadata: Metadata = {
   keywords: ["development", "portfolio"],
   creator: "Kieran Canter",
   publisher: "Kieran Canter",
+  manifest: "/manifest.json",
   formatDetection: {
     telephone: false,
     date: true,
@@ -36,7 +37,7 @@ export const viewport: Viewport = {
   initialScale: 1,
   maximumScale: 1,
   userScalable: false,
-  themeColor: "auto",
+  themeColor: "#000000",
 };
 
 export default function RootLayout({
@@ -48,33 +49,31 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* Standard favicons */}
-        <link rel="icon" type="image/x-icon" href="/assets/favicons/ICO/favicon-light.ico" />
-        <link rel="icon" type="image/x-icon" href="/assets/favicons/ICO/favicon-dark.ico" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/PNG/favicon-light_16.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/PNG/favicon-light_32.png" />
-        <link rel="icon" type="image/png" sizes="512x512" href="/assets/favicons/PNG/favicon-light_512.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/PNG/favicon-dark_16.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/PNG/favicon-dark_32.png" />
-        <link rel="icon" type="image/png" sizes="512x512" href="/assets/favicons/PNG/favicon-dark_512.png" />
+        {/* SVG favicon for modern browsers */}
+        <link rel="icon" type="image/svg+xml" sizes="any" href="/assets/images/favicons/SVG/favicon.svg" />
+
+        {/* Standard Favicons */}
+        <link rel="icon-light" type="image/png" sizes="16x16" href="/assets/images/favicons/PNG/favicon-light_16.png" />
+        <link rel="icon-light" type="image/png" sizes="32x32" href="/assets/images/favicons/PNG/favicon-light_32.png" />
+        <link rel="icon-light" type="image/png" sizes="512x512" href="/assets/images/favicons/PNG/favicon-light_512.png" />
+        <link rel="icon-dark" type="image/png" sizes="16x16" href="/assets/images/favicons/PNG/favicon-dark_16.png" />
+        <link rel="icon-dark" type="image/png" sizes="32x32" href="/assets/images/favicons/PNG/favicon-dark_32.png" />
+        <link rel="icon-dark" type="image/png" sizes="512x512" href="/assets/images/favicons/PNG/favicon-dark_512.png" />
         
         {/* Android Icon */}
-        <link rel="icon" sizes="192x192" href="/assets/favicons/PNG/favicon-light_android.png" />
-        <link rel="icon" sizes="192x192" href="/assets/favicons/PNG/favicon-dark_android.png" />
+        <link rel="icon-light" sizes="192x192" href="/assets/images/favicons/PNG/favicon-light_android.png" />
+        <link rel="icon-dark" sizes="192x192" href="/assets/images/favicons/PNG/favicon-dark_android.png" />
 
         {/* Apple Touch Icon */}
-        <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/PNG/favicon-light_apple.png" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/PNG/favicon-dark_apple.png" />
-        
-        {/* SVG favicon for modern browsers */}
-        <link rel="icon" type="image/svg+xml" href="/assets/favicons/SVG/favicon-light.svg" />
-        <link rel="icon" type="image/svg+xml" href="/assets/favicons/SVG/favicon-dark.svg" />
-        
-        {/* Web App Manifest */}
-        <link rel="manifest" href="/site.webmanifest" />
+        <link rel="apple-touch-icon-light" sizes="180x180" href="/assets/images/favicons/PNG/favicon-light_apple.png" />
+        <link rel="apple-touch-icon-dark" sizes="180x180" href="/assets/images/favicons/PNG/favicon-dark_apple.png" />
+
+        {/* For Legacy Systems */}
+        <link rel="shortcut icon" href="/favicon.ico" />
 
       </head>
       <body className="antialiased">
+        <a href="#main-content" className="sr-only focus:not-sr-only">Skip to main content</a>
         {children}
       </body>
     </html>

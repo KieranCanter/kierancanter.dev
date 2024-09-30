@@ -1,5 +1,5 @@
 // Variables
-@import '@/app/variables.scss';
+@import '@/styles/variables.scss';
 
 // Tailwind
 @import 'tailwindcss/base';
@@ -105,4 +105,12 @@
 // Global transitions
 :root {
   transition: background-color 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out;
+}
+
+meta[name="theme-color"] {
+  content: var(--bg);
+}
+
+met[name="apple-mobile-web-app-status-bar-style"] {
+  content: var(--bg);
 }

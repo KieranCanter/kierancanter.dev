@@ -16,6 +16,10 @@ const socialLinks = [
   { title: 'Behance', href: 'https://www.behance.net/kierancanter', icon: faBehance },
 ];
 
+type DeviceMotionEventWithPermission = DeviceMotionEvent & {
+  requestPermission?: () => Promise<PermissionState>;
+};
+
 export default function BusinessCard() {
   useEffect(() => {
     const businessCard = document.getElementById('business-card');
@@ -31,50 +35,72 @@ export default function BusinessCard() {
         });
       } else {
         // Gyroscope for mobile
-        let initialBeta: number | null = null;
-        let initialGamma: number | null = null;
-
-        const resetOrientation = () => {
-          initialBeta = null;
-          initialGamma = null;
-          businessCard.style.transform = 'none';
-        };
-
-        const handleOrientation = (event: DeviceOrientationEvent) => {
-          if (event.beta === null || event.gamma === null) return;
-
-          // Set initial values if not set
-          if (initialBeta === null) initialBeta = event.beta;
-          if (initialGamma === null) initialGamma = event.gamma;
-
-          // Calculate the difference from initial position
-          const deltaBeta = event.beta - initialBeta;
-          const deltaGamma = event.gamma - initialGamma;
-
-          // Cap the range at -89/89 degrees
-          const tiltX = Math.min(Math.max(deltaBeta, -89), 89);
-          const tiltY = Math.min(Math.max(deltaGamma, -89), 89);
-
-          // Check the orientation and apply the appropriate rotation
-          if (screen.orientation.type.includes('portrait')) {
-            businessCard.style.transform = `rotateX(${-tiltX}deg) rotateY(${tiltY}deg)`;
+        const requestMotionPermission = async () => {
+          if (typeof (DeviceMotionEvent as unknown as DeviceMotionEventWithPermission).requestPermission === 'function') {
+            try {
+              const permissionState = await (DeviceMotionEvent as unknown as DeviceMotionEventWithPermission).requestPermission?.();
+              if (permissionState === 'granted') {
+                setupGyroscope();
+              } else {
+                console.log('Motion permission denied');
+              }
+            } catch (error) {
+              console.error('Error requesting motion permission:', error);
+            }
           } else {
-            businessCard.style.transform = `rotateX(${tiltY}deg) rotateY(${-tiltX}deg)`;
+            // For non-iOS devices or older iOS versions
+            setupGyroscope();
           }
         };
 
-        if (window.DeviceOrientationEvent) {
-          window.addEventListener('deviceorientation', handleOrientation);
-          window.addEventListener('orientationchange', resetOrientation);
-        }
+        const setupGyroscope = () => {
+          let initialBeta: number | null = null;
+          let initialGamma: number | null = null;
 
-        // Cleanup function for mobile
-        return () => {
+          const resetOrientation = () => {
+            initialBeta = null;
+            initialGamma = null;
+            businessCard.style.transform = 'none';
+          };
+
+          const handleOrientation = (event: DeviceOrientationEvent) => {
+            if (event.beta === null || event.gamma === null) return;
+
+            // Set initial values if not set
+            if (initialBeta === null) initialBeta = event.beta;
+            if (initialGamma === null) initialGamma = event.gamma;
+
+            // Calculate the difference from initial position
+            const deltaBeta = event.beta - initialBeta;
+            const deltaGamma = event.gamma - initialGamma;
+
+            // Cap the range at -89/89 degrees
+            const tiltX = Math.min(Math.max(deltaBeta, -89), 89);
+            const tiltY = Math.min(Math.max(deltaGamma, -89), 89);
+
+            // Check the orientation and apply the appropriate rotation
+            if (screen.orientation.type.includes('portrait')) {
+              businessCard.style.transform = `rotateX(${-tiltX}deg) rotateY(${tiltY}deg)`;
+            } else {
+              businessCard.style.transform = `rotateX(${tiltY}deg) rotateY(${-tiltX}deg)`;
+            }
+          };
+
           if (window.DeviceOrientationEvent) {
-            window.removeEventListener('deviceorientation', handleOrientation);
-            window.removeEventListener('orientationchange', resetOrientation);
+            window.addEventListener('deviceorientation', handleOrientation);
+            window.addEventListener('orientationchange', resetOrientation);
           }
+
+          // Cleanup function for mobile
+          return () => {
+            if (window.DeviceOrientationEvent) {
+              window.removeEventListener('deviceorientation', handleOrientation);
+              window.removeEventListener('orientationchange', resetOrientation);
+            }
+          };
         };
+
+        requestMotionPermission();
       }
     }
   }, []);
@@ -104,7 +130,7 @@ export default function BusinessCard() {
           aria-label="Logo: Link to an American Psycho video reference"
         >
           <Image 
-            src="/assets/logo-light.svg"
+            src="/assets/images/logo.svg"
             alt="Kieran Canter's personal logo"
             width={20}
             height={20}

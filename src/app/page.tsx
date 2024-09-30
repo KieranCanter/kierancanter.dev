@@ -1,9 +1,9 @@
 'use client';
 
-import '@/app/globals.scss';
+import '@/styles/globals.scss';
 import React, { useState, useEffect } from 'react';
-import ThemeSwitcher from '@/app/components/themeSwitcher';
-import BusinessCard from "@/app/components/businessCard";
+import ThemeSwitcher from '@/components/themeSwitcher';
+import BusinessCard from "@/components/businessCard";
 
 const Home: React.FC = () => {
   const [theme, setTheme] = useState('plush');
@@ -12,7 +12,7 @@ const Home: React.FC = () => {
     setTheme(newTheme);
     localStorage.setItem('theme', newTheme);
     document.documentElement.setAttribute('data-theme', newTheme);
-  };
+  }
 
   useEffect(() => {
     const savedTheme = localStorage.getItem('theme');
