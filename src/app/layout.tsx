@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import "@/styles/globals.scss";
 import "@/styles/variables.scss";
+import { ThemeProvider } from '@/context/themeContext';
 
 export const metadata: Metadata = {
   title: "kierancanter.dev",
@@ -73,8 +74,10 @@ export default function RootLayout({
 
       </head>
       <body className="antialiased">
-        <a href="#main-content" className="sr-only focus:not-sr-only">Skip to main content</a>
-        {children}
+        <ThemeProvider>
+          <a href="#main-content" className="sr-only focus:not-sr-only">Skip to main content</a>
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

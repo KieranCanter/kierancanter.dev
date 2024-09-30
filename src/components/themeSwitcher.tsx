@@ -1,15 +1,14 @@
 'use client';
 
-import React from 'react';
+import React, { useContext } from 'react';
+import { ThemeContext } from '@/context/themeContext';
 
-interface ThemeSwitcherProps {
-  onThemeChange: (theme: string) => void;
-}
+const ThemeSwitcher: React.FC = () => {
+  const { theme, setTheme } = useContext(ThemeContext);
 
-const ThemeSwitcher: React.FC<ThemeSwitcherProps> = ({ onThemeChange }) => {
-  const getThemeClasses = (theme: string) => {
+  const getThemeClasses = (selectedTheme: string) => {
     const baseClasses = 'hover:-translate-y-0.5';
-    switch (theme) {
+    switch (selectedTheme) {
       case 'plush':
         return `${baseClasses} bg-plush-bg text-plush-fgSoft border-plush-fgSoft hover:text-plush-fgContrast hover:shadow-plush-fgContrast hover:shadow-sm active:opacity-85`;
       case 'sombre':
@@ -25,17 +24,15 @@ const ThemeSwitcher: React.FC<ThemeSwitcherProps> = ({ onThemeChange }) => {
 
   return (
     <div id="theme-switcher" className="flex flex-row justify-center gap-2 w-full max-w-md" aria-label="Theme Switcher">
-      {['plush', 'sombre', 'brilliant', 'luminous'].map((theme) => (
+      {['plush', 'sombre', 'brilliant', 'luminous'].map((selectedTheme) => (
         <button
-          key={theme}
-          onClick={() => {
-            onThemeChange(theme);
-            localStorage.setItem('theme', theme);
-          }}
-          className={`flex-1 w-1/4 p-2 rounded-sm border transition-all duration-250 ease-in-out text-sm ${getThemeClasses(theme)}`}
-          aria-label={`Switch to the ${theme} theme`}
+          key={selectedTheme}
+          onClick={() => setTheme(selectedTheme as 'plush' | 'sombre' | 'brilliant' | 'luminous')}
+          className={`flex-1 w-1/4 p-2 border rounded-sm transition-all duration-250 ease-in-out text-sm ${getThemeClasses(selectedTheme)} ${theme === selectedTheme ? '-translate-y-0.5 shadow-fgContrast shadow-sm' : ''}`}
+          aria-label={`Switch to the ${selectedTheme} theme`}
+          aria-pressed={theme === selectedTheme}
         >
-          {theme.charAt(0).toUpperCase() + theme.slice(1)}
+          {selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)}
         </button>
       ))}
     </div>
