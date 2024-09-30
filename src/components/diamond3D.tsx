@@ -64,13 +64,13 @@ const Logo: React.FC<LogoProps> = ({
 
     const setupLighting = () => {
       const lights = [
-        { position: [0, 0, 5] },
-        { position: [0, 5, 0] },
-        { position: [5, 0, 0] }
+        { position: [0, 0, 5], intensity: 2 },
+        { position: [0, 5, 0], intensity: 2 },
+        { position: [5, 0, 0], intensity: 2 }
       ];
 
       lights.forEach(light => {
-        const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+        const directionalLight = new THREE.DirectionalLight(0xffffff, light.intensity);
         directionalLight.position.set(...light.position as [number, number, number]);
         scene.add(directionalLight);
       });
