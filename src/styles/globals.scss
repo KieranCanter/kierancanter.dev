@@ -107,7 +107,7 @@
 }
 
 .header-link {
-  @apply text-fgSoft hover:text-fgContrast transition-colors duration-[250ms];
+  @apply text-fgSoft font-ibm-plex-sans font-semibold hover:text-fgContrast hover:selection:bg-fgContrast transition-all duration-[250ms];
 }
 
 meta[name="theme-color"] {
