@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useContext } from 'react';
-import LogoLoader from '@/components/loader';
+import LogoLoader from '@/app/components/loader';
 import Home from '@/app/home';
 import '@/styles/variables.scss';
 import { ThemeContext } from '@/context/themeContext';

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import * as THREE from 'three';
-import Diamond3D, { LOGO_ANIMATION_DURATION, LOGO_ROTATIONS } from '@/components/diamond3D';
+import Diamond3D, { LOGO_ANIMATION_DURATION, LOGO_ROTATIONS } from '@/app/components/diamond3D';
 
 interface LogoLoaderProps {
   onAnimationComplete: () => void;
