@@ -1,12 +1,5 @@
 import React from 'react';
 
-type LogoSVGProps = {
-    width: string;
-    height: string;
-    color: string;
-    hoverColor: string;
-};
-
 const logoSVG: React.FC = () => {
     return (
         <svg 
