@@ -103,9 +103,8 @@
 }
 
 .trefoil-classes {
-  @apply absolute w-4 h-4 rounded-full transition-all duration-[250ms] transform -translate-x-1/2 -translate-y-1/2 hover:opacity-100;
+  @apply absolute w-4 h-4 rounded-full transition-all duration-[250ms] transform -translate-x-1/2 -translate-y-1/2 opacity-75 group-hover:opacity-100;
 }
-
 
 meta[name="theme-color"] {
   content: var(--bg);
