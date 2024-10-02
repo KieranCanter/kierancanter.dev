@@ -51,8 +51,8 @@ const ThemeSwitcher: React.FC = () => {
             { top: startTop, left: startLeft, scale: 1, offset: 0 },
             { top: '50%', left: '50%', scale: 1, offset: 0.25 },
             { top: '50%', left: '50%', scale: 1, offset: 0.75 },
-            { scale: 1.1, offset: 0.85 },
-            { scale: 1.1, offset: 0.95 },
+            { scale: 1.1, offset: 0.8 },
+            { scale: 1.1, offset: 0.9 },
             { top: startTop, left: startLeft, scale: 1, offset: 1 },
           ],
           {
@@ -102,7 +102,7 @@ const ThemeSwitcher: React.FC = () => {
           <FontAwesomeIcon
             id="tone-icon"
             icon={toneIcon}
-            className="fa-sharp fa-regular text-fgSoft text-2xl group-hover:text-toneColor transition-all duration-[250ms]"
+            className="fa-sharp fa-regular text-toneColor text-2xl opacity-60 group-hover:opacity-100 transition-all duration-[250ms]"
             aria-hidden="true"
           />
       </button>
