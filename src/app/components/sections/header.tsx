@@ -8,7 +8,7 @@ export const Header: React.FC = () => {
   const { theme } = useContext(ThemeContext);
 
   return (
-    <header id="header-logo" className="md:flex flex flex-row bg-bg/50 justify-between items-center max-w-full h-fit mx-auto px-16 py-6 backdrop-blur-[0.15rem]">
+    <header id="header-logo" className="flex flex-row bg-bg/50 justify-between items-center max-w-full h-fit mx-auto px-16 py-6 backdrop-blur-[0.15rem] md-flex">
       <div className="relative flex flex-1">
         <Link href="https://kierancanter.dev" className="w-10 h-10 fill-fgSoft hover:fill-fgContrast transition duration-[250ms]">
           <LogoSVG/>
