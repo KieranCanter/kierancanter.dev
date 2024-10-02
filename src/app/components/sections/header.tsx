@@ -8,14 +8,14 @@ export const Header: React.FC = () => {
   const { theme } = useContext(ThemeContext);
 
   return (
-    <header className="flex flex-row bg-bg/50 justify-between items-center max-w-full h-fit mx-auto px-16 py-6 backdrop-blur-[0.15rem]">
+    <header id="header-logo" className="md:flex flex flex-row bg-bg/50 justify-between items-center max-w-full h-fit mx-auto px-16 py-6 backdrop-blur-[0.15rem]">
       <div className="relative flex flex-1">
         <Link href="https://kierancanter.dev" className="w-10 h-10 fill-fgSoft hover:fill-fgContrast transition duration-[250ms]">
           <LogoSVG/>
         </Link>
       </div>
 
-      <div className="relative flex flex-row justify-between items-center w-fit h-fit gap-8">
+      <div id="header-links"className="relative flex flex-row justify-between items-center w-fit h-fit gap-8">
         <Link href="https://kierancanter.dev/about" className="header-link">ABOUT</Link>
         <Link href="https://kierancanter.dev/experience" className="header-link">EXPERIENCE</Link>
         <Link href="https://kierancanter.dev/works" className="header-link">WORKS</Link>
