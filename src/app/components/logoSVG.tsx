@@ -2,20 +2,21 @@ import React from 'react';
 import Link from 'next/link';
 
 type LogoSVGProps = {
-    color: string;
     width: string;
     height: string;
+    color: string;
+    hoverColor: string;
 };
 
-const logoSVG: React.FC<LogoSVGProps> = ({ color, width, height }) => {
+const logoSVG: React.FC<LogoSVGProps> = ({ width, height, color, hoverColor }) => {
     return (
-        <Link href="https://kierancanter.dev">
+        <Link href="https://kierancanter.dev" title="KIC">
             <svg 
             xmlns="http://www.w3.org/2000/svg" 
             viewBox="0 0 1080 1080"
-            fill={color}
             width={width}
             height={height}
+            className={`w-$width h-$height fill-${color} hover:fill-${hoverColor} hover:-translate-y-1 hover:shadow-black hover:shadow-[0_0.5rem_0.5rem_-0.375rem] transition-all duration-[250ms]`}
             >
                 
         <path d="M738.26,0h-285.24L0,540l453.02,540h285.24l-453.02-540L738.26,0ZM648.44,1058.61h-85L128.18,540,563.44,21.39h85L213.18,540l435.27,518.61Z"/>
