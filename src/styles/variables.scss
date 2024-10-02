@@ -16,11 +16,11 @@
   --brilliant-bg: rgba(229, 229, 229, 1);
   --brilliant-fg-soft: rgba(18, 18, 18, 0.6);
   --brilliant-fg-hard: rgba(18, 18, 18, 0.87);
-  --brilliant-fg-contrast: rgb(204, 169, 27);
+  --brilliant-fg-contrast: rgba(204, 169, 27, 1);
 
-  --brilliant-accent1: rgb(173, 57, 44, 1);
-  --brilliant-accent2: rgb(31, 146, 79, 1);
-  --brilliant-accent3: rgb(32, 106, 155, 1);
+  --brilliant-accent1: rgba(173, 57, 44, 1);
+  --brilliant-accent2: rgba(31, 146, 79, 1);
+  --brilliant-accent3: rgba(32, 106, 155, 1);
 
   // Luminous
   --luminous-bg: rgba(38, 38, 38, 1);
@@ -29,7 +29,7 @@
   --luminous-fg-contrast: rgba(199, 184, 234, 1);
 
   --luminous-accent1: rgba(255, 197, 197, 1);
-  --luminous-accent2: rgb(162, 231, 179, 1);
+  --luminous-accent2: rgba(162, 231, 179, 1);
   --luminous-accent3: rgba(173, 216, 230, 1);
 }
 
@@ -40,10 +40,10 @@
   --fg-hard: var(--plush-fg-hard);
   --fg-contrast: var(--plush-fg-contrast);
 
-  --tone-color: rgb(90, 0, 0);
-  --trefoil1: rgb(229, 229, 229);
-  --trefoil2: rgb(199, 184, 234);
-  --trefoil3: rgb(173, 57, 44);
+  --tone-color: rgba(255, 227, 181, 1);
+  --trefoil1: rgba(229, 229, 229, 1);
+  --trefoil2: rgba(204, 169, 27, 1);
+  --trefoil3: rgba(173, 57, 44, 1);
 }
 
 /* Dark Accented Mode */
@@ -53,10 +53,10 @@
   --fg-hard: var(--sombre-fg-hard);
   --fg-contrast: var(--sombre-fg-contrast);
 
-  --tone-color: rgb(255, 227, 181);
-  --trefoil1: rgb(38, 38, 38);
-  --trefoil2: rgb(199, 184, 234);
-  --trefoil3: rgb(255, 197, 197);
+  --tone-color: rgba(90, 0, 0, 1);
+  --trefoil1: rgba(38, 38, 38, 1);
+  --trefoil2: rgba(199, 184, 234, 1);
+  --trefoil3: rgba(255, 197, 197, 1);
 }
 
 /* Light Colorful Mode */
@@ -66,10 +66,10 @@
   --fg-hard: var(--brilliant-fg-hard);
   --fg-contrast: var(--brilliant-fg-contrast);
 
-  --tone-color: rgb(199, 184, 234);
-  --trefoil1: rgb(185, 172, 174);
-  --trefoil2: rgb(43, 36, 37);
-  --trefoil3: rgb(90, 0, 0);
+  --tone-color: rgba(199, 184, 234, 1);
+  --trefoil1: rgba(185, 172, 174, 1);
+  --trefoil2: rgba(43, 36, 37, 1);
+  --trefoil3: rgba(90, 0, 0, 1);
 }
 
 /* Dark Colorful Mode */
@@ -79,8 +79,8 @@
   --fg-hard: var(--luminous-fg-hard);
   --fg-contrast: var(--luminous-fg-contrast);
 
-  --tone-color: rgb(204, 169, 27);
-  --trefoil1: rgb(43, 36, 37);
-  --trefoil2: rgb(185, 172, 174);
-  --trefoil3: rgb(255, 227, 181);
+  --tone-color: rgba(204, 169, 27, 1);
+  --trefoil1: rgba(43, 36, 37, 1);
+  --trefoil2: rgba(185, 172, 174, 1);
+  --trefoil3: rgba(255, 227, 181, 1);
 }
