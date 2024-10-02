@@ -10,6 +10,11 @@ module.exports = {
         fgSoft: "var(--fg-soft)",
         fgHard: "var(--fg-hard)",
         fgContrast: "var(--fg-contrast)",
+        
+        toneColor: "var(--tone-color)",
+        trefoil1: "var(--trefoil1)",
+        trefoil2: "var(--trefoil2)",
+        trefoil3: "var(--trefoil3)",
 
         plush: {
           bg: "var(--plush-bg)",
@@ -28,12 +33,20 @@ module.exports = {
           fgSoft: "var(--brilliant-fg-soft)",
           fgHard: "var(--brilliant-fg-hard)",
           fgContrast: "var(--brilliant-fg-contrast)",
+
+          accent1: "var(--brilliant-accent1)",
+          accent2: "var(--brilliant-accent2)",
+          accent3: "var(--brilliant-accent3)",
         },
         luminous: {
           bg: "var(--luminous-bg)",
           fgSoft: "var(--luminous-fg-soft)",
           fgHard: "var(--luminous-fg-hard)",
           fgContrast: "var(--luminous-fg-contrast)",
+
+          accent1: "var(--luminous-accent1)",
+          accent2: "var(--luminous-accent2)",
+          accent3: "var(--luminous-accent3)",
         }
       },
       fontFamily: {

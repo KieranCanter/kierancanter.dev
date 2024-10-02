@@ -102,6 +102,10 @@
   @apply selection:bg-fgSoft selection:text-bg;
 }
 
+.trefoil-classes {
+  @apply absolute w-4 h-4 rounded-full transition-all duration-[250] ease-in-out transform -translate-x-1/2 -translate-y-1/2 hover:opacity-100;
+}
+
 // Global transitions
 :root {
   transition: background-color 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out;

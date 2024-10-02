@@ -2,41 +2,61 @@
 
 import React, { useContext } from 'react';
 import { ThemeContext } from '@/context/themeContext';
+import '@/styles/variables.scss';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
 
 const ThemeSwitcher: React.FC = () => {
+  type Theme = 'plush' | 'sombre' | 'brilliant' | 'luminous';
   const { theme, setTheme } = useContext(ThemeContext);
 
-  const getThemeClasses = (selectedTheme: string) => {
-    const baseClasses = 'hover:-translate-y-0.5';
-    switch (selectedTheme) {
-      case 'plush':
-        return `${baseClasses} bg-plush-bg text-plush-fgSoft border-plush-fgSoft hover:text-plush-fgContrast hover:shadow-plush-fgContrast hover:shadow-sm active:opacity-85`;
-      case 'sombre':
-        return `${baseClasses} bg-sombre-bg text-sombre-fgSoft border-sombre-fgSoft hover:text-sombre-fgContrast hover:shadow-sombre-fgContrast hover:shadow-sm active:opacity-85`;
-      case 'brilliant':
-        return `${baseClasses} bg-brilliant-bg text-brilliant-fgSoft border-brilliant-fgSoft hover:text-brilliant-fgContrast hover:shadow-brilliant-fgContrast hover:shadow-sm active:opacity-85`;
-      case 'luminous':
-        return `${baseClasses} bg-luminous-bg text-luminous-fgSoft border-luminous-fgSoft hover:text-luminous-fgContrast hover:shadow-luminous-fgContrast hover:shadow-sm active:opacity-85`;
-      default:
-        return '';
+  const toggleTheme = (newTheme: Theme) => {
+    setTheme(newTheme);
+  };
+
+  const toggleDarkMode = () => {
+    if (theme === 'plush') {
+      toggleTheme('sombre');
+    } else if (theme === 'sombre') {
+      toggleTheme('plush');
+    } else if (theme === 'brilliant') {
+      toggleTheme('luminous');
+    } else {
+      toggleTheme('brilliant');
     }
   };
 
+  const toggleColorful = () => {
+    if (theme === 'plush') {
+      toggleTheme('brilliant');
+    } else if (theme === 'brilliant') {
+      toggleTheme('plush');
+    } else if (theme === 'sombre') {
+      toggleTheme('luminous');
+    } else {
+      toggleTheme('sombre');
+    }
+  };
+
+
   return (
-    <div id="theme-switcher" className="flex flex-row justify-center gap-2 w-full max-w-md" aria-label="Theme Switcher">
-      {['plush', 'sombre', 'brilliant', 'luminous'].map((selectedTheme) => (
-        <button
-          key={selectedTheme}
-          onClick={() => setTheme(selectedTheme as 'plush' | 'sombre' | 'brilliant' | 'luminous')}
-          className={`flex-1 w-1/4 p-2 border rounded-sm transition-all duration-250 ease-in-out text-sm ${getThemeClasses(selectedTheme)} ${theme === selectedTheme ? '-translate-y-0.5 shadow-fgContrast shadow-sm' : ''}`}
-          aria-label={`Switch to the ${selectedTheme} theme`}
-          aria-pressed={theme === selectedTheme}
-        >
-          {selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)}
-        </button>
-      ))}
-    </div>
-  );
+    <div id="theme-switcher" className="flex flex-row justify-center gap-4 w-fit" aria-label="Theme Switcher">
+      <button id="tone-button" className={`relative flex items-center justify-center w-12 h-12 cursor-pointer bg-fgSoft border-[0.2rem] border-fgSoft rounded-sm opacity-80 transition-all duration-[250] ease-in-out hover:-translate-y-0.5 hover:shadow-fgContrast hover:shadow-sm hover:opacity-100 active:opacity-85`} 
+        onClick={toggleDarkMode}>
+          <FontAwesomeIcon
+          id="tone-icon"
+          icon={theme === 'plush' ? faSun : faMoon}
+          className="text-toneColor fa-xl fa-sharp fa-regular"
+          aria-hidden="true"
+          />
+      </button>
+      <button id="color-button" className="relative flex items-center justify-center w-12 h-12 cursor-pointer bg-fgSoft border-[0.2rem] border-fgSoft rounded-sm opacity-80 hover:opacity-100 transition-all duration-[250] ease-in-out hover:-translate-y-0.5 hover:shadow-fgContrast hover:shadow-sm active:opacity-85"
+        onClick={toggleColorful}>
+        <div id="trefoil1"className="trefoil-classes bg-trefoil1 left-[50%] top-[37%] z-30"></div>
+        <div id="trefoil2" className="trefoil-classes bg-trefoil2 left-[37%] top-[63%] z-20"></div>
+        <div id="trefoil3" className="trefoil-classes bg-trefoil3 left-[63%] top-[63%] z-10"></div>
+      </button>
+    </div>  );
 };
 
 export default ThemeSwitcher;
