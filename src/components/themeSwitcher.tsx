@@ -97,7 +97,7 @@ const ThemeSwitcher: React.FC = () => {
 
   return (
     <div id="theme-switcher" className="flex flex-row justify-center gap-4 w-fit" aria-label="Theme Switcher">
-      <button id="tone-button" className="group relative flex items-center justify-center w-12 h-12 cursor-pointer bg-fgSoft border-[0.2rem] border-fgSoft rounded-sm opacity-80 transition-all duration-[250ms] hover:-translate-y-0.5 hover:shadow-fgContrast hover:shadow-sm hover:opacity-100 active:opacity-85" 
+      <button id="tone-button" className="group relative flex items-center justify-center w-12 h-12 cursor-pointer bg-fgSoft border-[0.2rem] border-fgSoft rounded-sm transition-all duration-[250ms] hover:-translate-y-0.25 hover:shadow-black hover:shadow-[0_0.5rem_0.5rem_-0.375rem] hover:-translate-y-1 hover:opacity-100 active:opacity-85" 
         onClick={toggleDarkMode} aria-label="Toggle Dark Mode">
           <FontAwesomeIcon
             id="tone-icon"
@@ -106,7 +106,7 @@ const ThemeSwitcher: React.FC = () => {
             aria-hidden="true"
           />
       </button>
-      <button id="color-button" className="group relative flex items-center justify-center w-12 h-12 cursor-pointer bg-fgSoft border-[0.2rem] border-fgSoft rounded-sm opacity-80 hover:opacity-100 transition-all duration-[250ms] hover:-translate-y-0.5 hover:shadow-fgContrast hover:shadow-sm active:opacity-85"
+      <button id="color-button" className="group relative flex items-center justify-center w-12 h-12 cursor-pointer bg-fgSoft border-[0.2rem] border-fgSoft rounded-sm transition-all duration-[250ms] hover:-translate-y-0.25 hover:shadow-black hover:shadow-[0_0.5rem_0.5rem_-0.375rem] hover:-translate-y-1 hover:opacity-100 active:opacity-85"
         onClick={toggleColorful} aria-label="Toggle Colorful Mode">
         <div id="trefoil1" className="trefoil-classes bg-trefoil1 left-[50%] top-[40%] z-30"></div>
         <div id="trefoil2" className="trefoil-classes bg-trefoil2 left-[40%] top-[60%] z-20"></div>
