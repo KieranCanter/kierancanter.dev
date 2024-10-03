@@ -111,7 +111,7 @@
 }
 
 .header-link {
-  @apply text-fgSoft text-[1rem] font-ibm-plex-sans font-semibold hover:text-fgContrast hover:selection:bg-fgContrast transition-all duration-[250ms];
+  @apply text-fgHard text-[1rem] font-ibm-plex-sans font-semibold hover:text-fgContrast hover:selection:bg-fgContrast transition-all duration-[250ms];
 }
 
 meta[name="theme-color"] {

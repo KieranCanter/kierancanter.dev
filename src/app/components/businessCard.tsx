@@ -109,7 +109,7 @@ export default function BusinessCard() {
     <div id="business-card" className="flex relative aspect-[7/4] w-[28rem] md:w-[50%] md:max-w-[28rem] h-auto max-w-full mx-4 text-[#1e1e1e] bg-[#f8f5ec] rounded-[0.1rem] [box-shadow:0rem_0.1rem_0.4rem_0rem_rgba(0,_0,_0,_0.3)] selection:bg-[#1e1e1e] selection:text-[#f8f5ec]" aria-label="Kieran Canter's Business Card">
       <a 
         id="phone" 
-        className="absolute left-4 top-4 text-xs font-ibm-plex-serif font-bold selection:bg-black hover:text-black hover:-translate-y-0.5 active:opacity-85 transition-all duration-[250ms]" 
+        className="absolute left-4 top-4 text-xs font-ibm-plex-serif font-bold selection:bg-black hover:text-gray-500 active:opacity-85 transition-all duration-[250ms]" 
         href="tel:+12402846363" 
         title="Phone" 
         aria-label="Phone number: +1 240.284.6363"
@@ -121,7 +121,7 @@ export default function BusinessCard() {
 
       <a 
         id="logo" 
-        className="absolute right-4 top-4 selection:bg-black hover:text-black hover:-translate-y-0.5 active:opacity-85 transition-all duration-[250ms]" 
+        className="absolute right-4 top-4 selection:bg-black hover:text-gray-500 active:opacity-85 transition-all duration-[250ms]" 
         href="https://www.youtube.com/watch?v=YHgwxVCiMyI" 
         title="Impressive. Very nice. Let's see Paul Allen's card." 
         target="_blank" 
@@ -152,7 +152,7 @@ export default function BusinessCard() {
             key={link.title}
             href={link.href} 
             title={`Visit Kieran's ${link.title} ${link.title === 'Email' ? 'address' : 'profile'}`} 
-            className="hover:text-black selection:bg-black hover:-translate-y-0.5 active:opacity-85 transition-all duration-[250ms]"
+            className="hover:text-gray-500 selection:bg-black active:opacity-85 transition-all duration-[250ms]"
             aria-label={`${link.title}: ${link.href}`}
             target="_blank"
             rel="noopener noreferrer"
