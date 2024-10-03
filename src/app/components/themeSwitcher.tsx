@@ -108,9 +108,9 @@ const ThemeSwitcher: React.FC = () => {
       </button>
       <button id="color-button" className="group theme-button-classes"
         onClick={toggleColorful} aria-label="Toggle Colorful Mode">
-        <div id="trefoil1" className={`trefoil-classes bg-trefoil1 left-[${trefoilStartLeft[0]}] top-[${trefoilStartTop[0]}] z-30`}></div>
-        <div id="trefoil2" className={`trefoil-classes bg-trefoil2 left-[${trefoilStartLeft[1]}] top-[${trefoilStartTop[1]}] z-20`}></div>
-        <div id="trefoil3" className={`trefoil-classes bg-trefoil3 left-[${trefoilStartLeft[2]}] top-[${trefoilStartTop[2]}] z-10`}></div>
+        <div id="trefoil1" className="trefoil-classes bg-trefoil1 left-[50%] top-[40%] z-30"></div>
+        <div id="trefoil2" className="trefoil-classes bg-trefoil2 left-[40%] top-[60%] z-20"></div>
+        <div id="trefoil3" className="trefoil-classes bg-trefoil3 left-[60%] top-[60%] z-10"></div>
       </button>
     </div>  );
 };
