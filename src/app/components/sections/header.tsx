@@ -29,7 +29,7 @@ const Header: React.FC = () => {
 
 
   return (
-    <header id="header" className="fixed w-full max-w-full h-fit top-0 mx-auto z-[100] flex flex-row bg-bg/30 justify-between items-center px-4 lg:px-16 py-3 md:py-4 lg:py-6 backdrop-blur-[0.5rem] backdrop-brightness-50 transition duration-[250ms] shadow-black shadow-[0rem_-1rem_2rem_rgba(0,0,0,0.5)]">
+    <header id="header" className="fixed w-full max-w-full h-fit top-0 mx-auto z-[100] flex flex-row bg-bg/30 justify-between items-center px-4 lg:px-16 py-3 md:py-4 lg:py-6 backdrop-blur-[0.5rem] backdrop-brightness-[0.6] transition duration-[250ms] shadow-black shadow-[0rem_-1rem_2rem_rgba(0,0,0,0.5)]">
       <div id="header-logo" className="relative flex flex-1">
         <Link href="https://kierancanter.dev" className="aspect-square w-8 md:w-10 h-auto fill-fgHard hover:fill-fgContrast transition duration-[250ms]">
           <LogoSVG />
