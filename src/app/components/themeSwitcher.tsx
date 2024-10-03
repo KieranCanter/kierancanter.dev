@@ -10,7 +10,7 @@ const ThemeSwitcher: React.FC = () => {
   type Theme = 'plush' | 'sombre' | 'brilliant' | 'luminous';
   const { theme, setTheme } = useContext(ThemeContext);
   const [toneIcon, setToneIcon] = useState(theme === 'plush' || theme === 'brilliant' ? faMoon : faSun);
-  const toneDuration = 500;
+  const toneDuration = 250;
   const colorDuration = 500;
 
   const toggleTheme = (newTheme: Theme) => {
@@ -37,23 +37,23 @@ const ThemeSwitcher: React.FC = () => {
     }
   };
 
+  const trefoilStartLeft = ['50%', '40%', '60%'];
+  const trefoilStartTop = ['40%', '60%', '60%'];
   const animateTrefoils = () => {
-    const trefoils = ['trefoil1', 'trefoil2', 'trefoil3'];
+    const trefoils = [1, 2, 3];
 
-    trefoils.forEach((id) => {
-      const element = document.getElementById(id);
-      if (element) {
-        const startTop = getComputedStyle(element).top;
-        const startLeft = getComputedStyle(element).left;
+    trefoils.forEach((idx: number) => {
+      const trefoil = document.getElementById('trefoil' + `${idx}`);
+      if (trefoil) {
 
-        element.animate(
+        trefoil.animate(
           [
-            { top: startTop, left: startLeft, scale: 1, offset: 0 },
+            { left: trefoilStartLeft[idx - 1], top: trefoilStartTop[idx - 1], scale: 1, offset: 0 },
             { top: '50%', left: '50%', scale: 1, offset: 0.25 },
             { top: '50%', left: '50%', scale: 1, offset: 0.75 },
             { scale: 1.1, offset: 0.8 },
             { scale: 1.1, offset: 0.9 },
-            { top: startTop, left: startLeft, scale: 1, offset: 1 },
+            { left: trefoilStartLeft[idx - 1], top: trefoilStartTop[idx - 1], scale: 1, offset: 1 },
           ],
           {
             duration: colorDuration,
@@ -108,9 +108,9 @@ const ThemeSwitcher: React.FC = () => {
       </button>
       <button id="color-button" className="group theme-button-classes"
         onClick={toggleColorful} aria-label="Toggle Colorful Mode">
-        <div id="trefoil1" className="trefoil-classes bg-trefoil1 left-[50%] top-[40%] z-30"></div>
-        <div id="trefoil2" className="trefoil-classes bg-trefoil2 left-[40%] top-[60%] z-20"></div>
-        <div id="trefoil3" className="trefoil-classes bg-trefoil3 left-[60%] top-[60%] z-10"></div>
+        <div id="trefoil1" className={`trefoil-classes bg-trefoil1 left-[${trefoilStartLeft[0]}] top-[${trefoilStartTop[0]}] z-30`}></div>
+        <div id="trefoil2" className={`trefoil-classes bg-trefoil2 left-[${trefoilStartLeft[1]}] top-[${trefoilStartTop[1]}] z-20`}></div>
+        <div id="trefoil3" className={`trefoil-classes bg-trefoil3 left-[${trefoilStartLeft[2]}] top-[${trefoilStartTop[2]}] z-10`}></div>
       </button>
     </div>  );
 };
