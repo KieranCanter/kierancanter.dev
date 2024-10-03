@@ -124,7 +124,7 @@ export default function BusinessCard() {
 
         <Link 
           id="logo" 
-          className="relative aspect-square w-5 md:w-6 lg:w-7 h-fit active:opacity-85 fill-fgHard hover:fill-gray-500 transition duration-[250ms]" 
+          className="relative aspect-square w-5 md:w-6 lg:w-7 h-fit active:opacity-85 fill-[#1e1e1e] hover:fill-gray-500 transition duration-[250ms]" 
           href="https://www.youtube.com/watch?v=YHgwxVCiMyI" 
           title="Impressive. Very nice. Let's see Paul Allen's card." 
           target="_blank" 
