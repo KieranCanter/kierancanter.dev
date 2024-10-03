@@ -103,11 +103,15 @@
 }
 
 .trefoil-classes {
-  @apply absolute w-4 h-4 rounded-full transition-all duration-[250ms] transform -translate-x-1/2 -translate-y-1/2 opacity-75 group-hover:opacity-100;
+  @apply absolute aspect-square w-3 md:w-4 h-auto rounded-full transition-all duration-[250ms] transform -translate-x-1/2 -translate-y-1/2 opacity-75 group-hover:opacity-100;
+}
+
+.theme-button-classes {
+  @apply relative flex items-center justify-center aspect-square w-10 md:w-12 h-auto cursor-pointer bg-fgSoft border-[0.2rem] border-fgSoft rounded-sm transition-all duration-[250ms] hover:shadow-black hover:shadow-[0_0.5rem_0.5rem_-0.375rem] hover:-translate-y-1 hover:opacity-100 active:opacity-85
 }
 
 .header-link {
-  @apply text-fgSoft font-ibm-plex-sans font-semibold hover:text-fgContrast hover:selection:bg-fgContrast transition-all duration-[250ms];
+  @apply text-fgSoft text-[1rem] font-ibm-plex-sans font-semibold hover:text-fgContrast hover:selection:bg-fgContrast transition-all duration-[250ms];
 }
 
 meta[name="theme-color"] {

@@ -8,14 +8,33 @@ import BusinessCard from "@/app/components/businessCard";
 const Home: React.FC = () => {
 
   return (
-    <div id="home" className="flex flex-col items-center justify-between min-h-screen transition-colors duration-[250ms] bg-bg text-fgSoft selection-default">
-      <div className="fixed w-full max-w-full top-0 mx-auto z-[100]">
-        <Header />
-      </div>
+    <div id="home" className="flex flex-col min-h-screen transition-all duration-[250ms] bg-bg text-fgSoft selection-default">
+      <Header />
 
-      <div className="flex-grow flex items-center justify-center w-full">
+      <div className="relative flex items-center justify-center mt-[60vh] lg:mt-[50vh] -translate-y-1/2 mb-[50vh]">
         <BusinessCard />
       </div>
+
+      <div className="relative flex items-center justify-center w-full mb-10">
+        <BusinessCard />
+      </div>
+
+      <div className="relative flex items-center justify-center w-full mb-10">
+        <BusinessCard />
+      </div>
+
+      <div className="relative flex items-center justify-center w-full mb-10">
+        <BusinessCard />
+      </div>
+
+      <div className="relative flex items-center justify-center w-full mb-10">
+        <BusinessCard />
+      </div>
+
+      <div className="relative flex items-center justify-center w-full mb-10">
+        <BusinessCard />
+      </div>
+
     </div>
   );
 };

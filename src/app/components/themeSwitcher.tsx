@@ -10,7 +10,7 @@ const ThemeSwitcher: React.FC = () => {
   type Theme = 'plush' | 'sombre' | 'brilliant' | 'luminous';
   const { theme, setTheme } = useContext(ThemeContext);
   const [toneIcon, setToneIcon] = useState(theme === 'plush' || theme === 'brilliant' ? faMoon : faSun);
-  const toneDuration = 250;
+  const toneDuration = 500;
   const colorDuration = 500;
 
   const toggleTheme = (newTheme: Theme) => {
@@ -97,16 +97,16 @@ const ThemeSwitcher: React.FC = () => {
 
   return (
     <div id="theme-switcher" className="flex flex-row justify-center gap-4 w-fit" aria-label="Theme Switcher">
-      <button id="tone-button" className="group relative flex items-center justify-center w-12 h-12 cursor-pointer bg-fgSoft border-[0.2rem] border-fgSoft rounded-sm transition-all duration-[250ms] hover:-translate-y-0.25 hover:shadow-black hover:shadow-[0_0.5rem_0.5rem_-0.375rem] hover:-translate-y-1 hover:opacity-100 active:opacity-85" 
+      <button id="tone-button" className="group theme-button-classes" 
         onClick={toggleDarkMode} aria-label="Toggle Dark Mode">
           <FontAwesomeIcon
             id="tone-icon"
             icon={toneIcon}
-            className="fa-sharp fa-regular text-toneColor text-2xl opacity-60 group-hover:opacity-100 transition-all duration-[250ms]"
+            className="fa-sharp fa-regular text-toneColor text-lg md:text-2xl opacity-60 group-hover:opacity-100 transition-all duration-[250ms]"
             aria-hidden="true"
           />
       </button>
-      <button id="color-button" className="group relative flex items-center justify-center w-12 h-12 cursor-pointer bg-fgSoft border-[0.2rem] border-fgSoft rounded-sm transition-all duration-[250ms] hover:-translate-y-0.25 hover:shadow-black hover:shadow-[0_0.5rem_0.5rem_-0.375rem] hover:-translate-y-1 hover:opacity-100 active:opacity-85"
+      <button id="color-button" className="group theme-button-classes"
         onClick={toggleColorful} aria-label="Toggle Colorful Mode">
         <div id="trefoil1" className="trefoil-classes bg-trefoil1 left-[50%] top-[40%] z-30"></div>
         <div id="trefoil2" className="trefoil-classes bg-trefoil2 left-[40%] top-[60%] z-20"></div>

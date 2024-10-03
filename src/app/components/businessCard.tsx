@@ -106,69 +106,67 @@ export default function BusinessCard() {
   }, []);
   
   return (
-    <div id="container" className="w-full max-w-md" role="region" aria-label="Kieran Canter's Business Card">
-      <div id="business-card" className="flex relative aspect-[7/4] w-full max-w-md mx-auto text-[#1e1e1e] bg-[#f8f5ec] rounded-[0.1rem] [box-shadow:0rem_0.1rem_0.4rem_0rem_rgba(0,_0,_0,_0.3)] selection:bg-[#1e1e1e] selection:text-[#f8f5ec]">
-        <a 
-          id="phone" 
-          className="absolute left-4 top-4 text-xs font-ibm-plex-serif font-bold selection:bg-black hover:text-black hover:-translate-y-0.5 active:opacity-85 transition-all duration-[250ms]" 
-          href="tel:+12402846363" 
-          title="Phone" 
-          aria-label="Phone number: +1 240.284.6363"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          +1 240.284.6363
-        </a>
+    <div id="business-card" className="flex relative aspect-[7/4] w-[28rem] md:w-[50%] md:max-w-[28rem] h-auto max-w-full mx-4 text-[#1e1e1e] bg-[#f8f5ec] rounded-[0.1rem] [box-shadow:0rem_0.1rem_0.4rem_0rem_rgba(0,_0,_0,_0.3)] selection:bg-[#1e1e1e] selection:text-[#f8f5ec]" aria-label="Kieran Canter's Business Card">
+      <a 
+        id="phone" 
+        className="absolute left-4 top-4 text-xs font-ibm-plex-serif font-bold selection:bg-black hover:text-black hover:-translate-y-0.5 active:opacity-85 transition-all duration-[250ms]" 
+        href="tel:+12402846363" 
+        title="Phone" 
+        aria-label="Phone number: +1 240.284.6363"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        +1 240.284.6363
+      </a>
 
-        <a 
-          id="logo" 
-          className="absolute right-4 top-4 selection:bg-black hover:text-black hover:-translate-y-0.5 active:opacity-85 transition-all duration-[250ms]" 
-          href="https://www.youtube.com/watch?v=YHgwxVCiMyI" 
-          title="Impressive. Very nice. Let's see Paul Allen's card." 
-          target="_blank" 
-          rel="noopener noreferrer" 
-          aria-label="Logo: Link to an American Psycho video reference"
-        >
-          <Image 
-            src="/assets/images/logo.svg"
-            alt="Kieran Canter's personal logo"
-            width={20}
-            height={20}
-            className="w-5 h-5 sm:w-6.75 sm:h-6.75 text-current"
-          />
-        </a>
+      <a 
+        id="logo" 
+        className="absolute right-4 top-4 selection:bg-black hover:text-black hover:-translate-y-0.5 active:opacity-85 transition-all duration-[250ms]" 
+        href="https://www.youtube.com/watch?v=YHgwxVCiMyI" 
+        title="Impressive. Very nice. Let's see Paul Allen's card." 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        aria-label="Logo: Link to an American Psycho video reference"
+      >
+        <Image 
+          src="/assets/images/logo.svg"
+          alt="Kieran Canter's personal logo"
+          width={20}
+          height={20}
+          className="w-5 h-5 sm:w-6.75 sm:h-6.75 text-current"
+        />
+      </a>
 
-        <div id="me" className="flex flex-col w-full h-full items-center font-spectral-sc justify-center" aria-labelledby="name title">
-          <h1 id="name" className="text-lg font-bold">Kieran CANTER</h1>
-          <h2 id="title" className="text-sm font-semibold">Computer Scientist</h2>
-        </div>
-
-        <nav 
-          id="socials" 
-          className="absolute bottom-4 left-0 right-0 flex justify-center space-x-4"
-          aria-label="Social media links"
-        >
-          {socialLinks.map((link) => (
-            <a 
-              key={link.title}
-              href={link.href} 
-              title={`Visit Kieran's ${link.title} ${link.title === 'Email' ? 'address' : 'profile'}`} 
-              className="hover:text-black selection:bg-black hover:-translate-y-0.5 active:opacity-85 transition-all duration-[250ms]"
-              aria-label={`${link.title}: ${link.href}`}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FontAwesomeIcon 
-                icon={link.icon} 
-                className="fa-sharp fa-regular" 
-                aria-hidden="true" 
-              />
-              <span className="sr-only">{link.title}</span>
-            </a>
-          ))}
-        </nav>
-        
+      <div id="me" className="flex flex-col w-full h-full items-center font-spectral-sc justify-center" aria-labelledby="name title">
+        <h1 id="name" className="text-lg font-bold">Kieran CANTER</h1>
+        <h2 id="title" className="text-sm font-semibold">Computer Scientist</h2>
       </div>
+
+      <nav 
+        id="socials" 
+        className="absolute bottom-4 left-0 right-0 flex justify-center space-x-4"
+        aria-label="Social media links"
+      >
+        {socialLinks.map((link) => (
+          <a 
+            key={link.title}
+            href={link.href} 
+            title={`Visit Kieran's ${link.title} ${link.title === 'Email' ? 'address' : 'profile'}`} 
+            className="hover:text-black selection:bg-black hover:-translate-y-0.5 active:opacity-85 transition-all duration-[250ms]"
+            aria-label={`${link.title}: ${link.href}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FontAwesomeIcon 
+              icon={link.icon} 
+              className="fa-sharp fa-regular" 
+              aria-hidden="true" 
+            />
+            <span className="sr-only">{link.title}</span>
+          </a>
+        ))}
+      </nav>
+      
     </div>
   );
 }
