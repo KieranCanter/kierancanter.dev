@@ -80,7 +80,7 @@ export default function BusinessCard() {
             const tiltY = Math.min(Math.max(deltaGamma, -89), 89);
 
             // Check the orientation and apply the appropriate rotation
-            if (screen.orientation.type.includes('portrait')) {
+            if (window.matchMedia('(orientation: portrait)').matches) {
               businessCard.style.transform = `rotateX(${-tiltX}deg) rotateY(${tiltY}deg)`;
             } else {
               businessCard.style.transform = `rotateX(${tiltY}deg) rotateY(${-tiltX}deg)`;
