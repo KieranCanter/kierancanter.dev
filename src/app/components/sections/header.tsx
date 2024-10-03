@@ -13,7 +13,7 @@ const Header: React.FC = () => {
     let prevScrollPos = window.scrollY;
     const header = document.getElementById("header");
     const handleScroll = () => {
-      let currScrollPos =window.scrollY;
+      const currScrollPos = window.scrollY;
       if (prevScrollPos > currScrollPos) {
         (header as HTMLElement).classList.remove("-translate-y-full");
       } else {
