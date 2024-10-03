@@ -16,11 +16,11 @@
   --brilliant-bg: rgba(229, 229, 229, 1);
   --brilliant-fg-soft: rgba(18, 18, 18, 0.6);
   --brilliant-fg-hard: rgba(18, 18, 18, 0.87);
-  --brilliant-fg-contrast: rgba(204, 169, 27, 1);
+  --brilliant-fg-contrast: rgb(17, 55, 80);
 
   --brilliant-accent1: rgba(173, 57, 44, 1);
   --brilliant-accent2: rgba(31, 146, 79, 1);
-  --brilliant-accent3: rgba(32, 106, 155, 1);
+  --brilliant-accent3: rgba(204, 169, 27, 1);
 
   // Luminous
   --luminous-bg: rgba(38, 38, 38, 1);
@@ -66,7 +66,7 @@
   --fg-hard: var(--brilliant-fg-hard);
   --fg-contrast: var(--brilliant-fg-contrast);
 
-  --tone-color: rgba(199, 184, 234, 1);
+  --tone-color: var(--luminous-fg-contrast);
   --trefoil1: rgba(185, 172, 174, 1);
   --trefoil2: rgba(43, 36, 37, 1);
   --trefoil3: rgba(90, 0, 0, 1);
@@ -79,7 +79,7 @@
   --fg-hard: var(--luminous-fg-hard);
   --fg-contrast: var(--luminous-fg-contrast);
 
-  --tone-color: rgba(206, 172, 39, 1);
+  --tone-color: var(--brilliant-fg-contrast);
   --trefoil1: rgba(43, 36, 37, 1);
   --trefoil2: rgba(185, 172, 174, 1);
   --trefoil3: rgba(255, 227, 181, 1);
