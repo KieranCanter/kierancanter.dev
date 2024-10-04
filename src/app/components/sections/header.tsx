@@ -12,14 +12,24 @@ const Header: React.FC = () => {
   useEffect(() => {
     let prevScrollPos = window.scrollY;
     const header = document.getElementById("header");
+    const backdrop = document.getElementById("backdrop");
     const handleScroll = () => {
       const currScrollPos = window.scrollY;
       if (prevScrollPos > currScrollPos) {
-        (header as HTMLElement).classList.remove("-translate-y-full");
+        header?.classList.remove("-translate-y-full");
       } else {
-        (header as HTMLElement).classList.add("-translate-y-full");
+        header?.classList.add("-translate-y-full");
       }
       prevScrollPos = currScrollPos;
+
+      // Add or remove shadow based on scroll position
+      if (currScrollPos <= 20) {
+        header?.classList.remove("shadow-black", "shadow-[0rem_-1rem_2rem_rgba(0,0,0,0.5)]", "backdrop-blur-[0.5rem]");
+        backdrop?.classList.add("hidden");
+      } else {
+        header?.classList.add("shadow-black", "shadow-[0rem_-1rem_2rem_rgba(0,0,0,0.5)]", "backdrop-blur-[0.5rem]");
+        backdrop?.classList.remove("hidden");
+      }
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -29,7 +39,8 @@ const Header: React.FC = () => {
 
 
   return (
-    <header id="header" className="fixed w-full max-w-full h-fit top-0 mx-auto z-[100] flex flex-row bg-bg/30 justify-between items-center px-4 lg:px-16 py-3 md:py-4 lg:py-6 backdrop-blur-[0.5rem] backdrop-brightness-[0.6] transition duration-[350ms] shadow-black shadow-[0rem_-1rem_2rem_rgba(0,0,0,0.5)]">
+    <header id="header" className="fixed w-full max-w-full h-fit top-0 mx-auto z-[100] flex flex-row justify-between items-center px-4 lg:px-16 py-3 md:py-4 lg:py-6 backdrop-blur-[0.5rem] transition duration-[350ms]">
+      <div id="backdrop" className="absolute inset-0 w-full h-full bg-bg opacity-80 transition duration-[250ms] hidden"></div>
       <div id="header-logo" className="relative flex flex-1">
         <Link href="https://kierancanter.dev" className="aspect-square w-8 md:w-10 h-auto fill-fgHard hover:fill-fgContrast transition duration-[250ms]">
           <LogoSVG />
