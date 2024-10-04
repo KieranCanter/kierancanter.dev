@@ -17,8 +17,8 @@ const ThemeSwitcher: React.FC = () => {
     setTheme(newTheme);
   };
 
-  const toneIconRef = document.getElementById('tone-icon');
   const animateToneIcon = () => {
+    const toneIconRef = document.getElementById('tone-icon');
     if (toneIconRef) {
       toneIconRef.animate([
         { transform: 'rotate(0deg) scale(1)', offset: 0 },
