@@ -2,7 +2,6 @@
 
 import React, { useEffect, useRef } from 'react';
 import VanillaTilt from 'vanilla-tilt';
-import ScrollReveal from 'scrollreveal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub, faLinkedin, faBehance, faCodepen } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
