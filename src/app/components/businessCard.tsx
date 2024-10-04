@@ -1,7 +1,8 @@
 "use client";
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import VanillaTilt from 'vanilla-tilt';
+import ScrollReveal from 'scrollreveal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub, faLinkedin, faBehance, faCodepen } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
@@ -22,14 +23,16 @@ type DeviceMotionEventWithPermission = DeviceMotionEvent & {
 };
 
 export default function BusinessCard() {
+  const businessCardRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
-    const businessCard = document.getElementById('business-card');
-    if (businessCard) {
+
+    if (businessCardRef.current) {
       const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
       if (!isMobile) {
         // VanillaTilt for desktop/cursor
-        VanillaTilt.init(businessCard, {
+        VanillaTilt.init(businessCardRef.current, {
           reverse: true,
           max: 15,
           speed: 3000,
@@ -61,7 +64,9 @@ export default function BusinessCard() {
           const resetOrientation = () => {
             initialBeta = null;
             initialGamma = null;
-            businessCard.style.transform = 'none';
+            if (businessCardRef.current) {
+              businessCardRef.current.style.transform = 'none';
+            }
           };
 
           const handleOrientation = (event: DeviceOrientationEvent) => {
@@ -81,9 +86,13 @@ export default function BusinessCard() {
 
             // Check the orientation and apply the appropriate rotation
             if (window.matchMedia('(orientation: portrait)').matches) {
-              businessCard.style.transform = `rotateX(${-tiltX}deg) rotateY(${tiltY}deg)`;
+              if (businessCardRef.current) {
+                businessCardRef.current.style.transform = `rotateX(${-tiltX}deg) rotateY(${tiltY}deg)`;
+              }
             } else {
-              businessCard.style.transform = `rotateX(${tiltY}deg) rotateY(${-tiltX}deg)`;
+              if (businessCardRef.current) {
+                businessCardRef.current.style.transform = `rotateX(${tiltY}deg) rotateY(${-tiltX}deg)`;
+              }
             }
           };
 
@@ -107,7 +116,12 @@ export default function BusinessCard() {
   }, []);
   
   return (
-    <div id="business-card" className="flex flex-col justify-between relative aspect-[7/4] w-[28rem] md:w-[50%] md:max-w-[28rem] h-auto mx-4 p-2 lg:p-3 text-[#1e1e1e] bg-[#f8f5ec] rounded-[0.1rem] [box-shadow:0rem_0.1rem_0.4rem_0rem_rgba(0,_0,_0,_0.3)] selection:bg-[#1e1e1e] selection:text-[#f8f5ec]" aria-label="Kieran Canter's Business Card">
+    <div 
+      ref={businessCardRef}
+      id="business-card" 
+      className="flex flex-col justify-between relative aspect-[7/4] w-[28rem] md:w-[50%] md:max-w-[28rem] h-auto mx-4 p-2 lg:p-3 text-[#1e1e1e] bg-[#f8f5ec] rounded-[0.1rem] [box-shadow:0rem_0.1rem_0.4rem_0rem_rgba(0,_0,_0,_0.3)] selection:bg-[#1e1e1e] selection:text-[#f8f5ec]" 
+      aria-label="Kieran Canter's Business Card"
+    >
       
       <div id="phone-and-logo" className="relative flex flex-row flex-[40%] justify-between w-full h-fit">
         <Link 
