@@ -113,6 +113,7 @@
 .header-link {
   @apply text-fgHard text-[1rem] font-ibm-plex-sans font-semibold hover:text-fgContrast hover:selection:bg-fgContrast transition-all duration-[250ms];
 }
+
 meta[name="theme-color"] {
   content: var(--bg);
 }
@@ -124,7 +125,7 @@ met[name="apple-mobile-web-app-status-bar-style"] {
 /* Scrollbar styles for Firefox */
 * {
   scrollbar-width: thin;
-  scrollbar-color: var(--fg-hard) var(--bg);
+  scrollbar-color: var(--fg-soft) var(--bg);
 }
 
 /* Scrollbar styles for Webkit browsers (Chrome, Safari, newer versions of Edge) */
@@ -139,13 +140,13 @@ met[name="apple-mobile-web-app-status-bar-style"] {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: var(--fg-hard);
+  background-color: var(--fg-soft);
   border-radius: 5px;
   border: 2px solid var(--bg);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background-color: var(--fg-hard);
+  background-color: var(--fg-soft);
   border: 1px solid var(--bg);
 }
 
@@ -156,10 +157,10 @@ met[name="apple-mobile-web-app-status-bar-style"] {
 /* For Internet Explorer and Edge (older versions) */
 body {
   -ms-overflow-style: scrollbar;
-  scrollbar-base-color: var(--fg-hard);
-  scrollbar-face-color: var(--fg-hard);
-  scrollbar-3dlight-color: var(--fg-hard);
-  scrollbar-highlight-color: var(--fg-hard);
+  scrollbar-base-color: var(--fg-soft);
+  scrollbar-face-color: var(--fg-soft);
+  scrollbar-3dlight-color: var(--fg-soft);
+  scrollbar-highlight-color: var(--fg-soft);
   scrollbar-track-color: var(--bg);
-  scrollbar-shadow-color: var(--fg-hard);
+  scrollbar-shadow-color: var(--fg-soft);
 }
