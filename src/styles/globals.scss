@@ -163,4 +163,7 @@ body {
   scrollbar-highlight-color: var(--fg-soft);
   scrollbar-track-color: var(--bg);
   scrollbar-shadow-color: var(--fg-soft);
+
+  background-color: var(--bg);
+  transition: background-color 0.25s ease;
 }

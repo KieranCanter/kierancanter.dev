@@ -50,6 +50,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+
+        {/* Theme Color */}
+        <meta name="theme-color" content="#FFFFFF" />
+
         {/* SVG favicon for modern browsers */}
         <link rel="icon" type="image/svg+xml" sizes="any" href="/assets/images/favicons/SVG/favicon.svg" />
 
