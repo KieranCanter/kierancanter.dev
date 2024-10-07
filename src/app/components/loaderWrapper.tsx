@@ -20,7 +20,7 @@ const LogoLoaderWrapper: React.FC = () => {
     <>
       {isLoading && (
         <div 
-          className="fixed w-screen h-screen inset-0 z-40 transition-colors bg-bg" 
+          className="absolute inset-0 m-auto w-screen h-[100dvh] flex items-center justify-center transition-colors bg-bg" 
           data-theme={theme}
         >
           <LogoLoader onAnimationComplete={handleAnimationComplete} />

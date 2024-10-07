@@ -46,10 +46,10 @@ const LogoLoader: React.FC<LogoLoaderProps> = ({ onAnimationComplete }) => {
 
   return (
     <div 
-    className="absolute top-1/2 left-1/2 transform duration-[250ms] -translate-x-1/2 -translate-y-1/2 z-50 transition-opacity"
-    style={{
-      opacity: opacity,
-    }}>
+      className="absolute inset-0 m-auto w-screen h-[100dvh] flex items-center justify-center z-50 transition-opacity duration-[250ms]"
+      style={{
+        opacity: opacity,
+      }}>
       <Diamond3D 
         color={diamondColor} 
         animate={true} 
