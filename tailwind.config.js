@@ -19,17 +19,29 @@ module.exports = {
         trefoil2: "var(--trefoil2)",
         trefoil3: "var(--trefoil3)",
 
+        accent1: "var(--accent1)",
+        accent2: "var(--accent2)",
+        accent3: "var(--accent3)",
+
         plush: {
           bg: "var(--plush-bg)",
           fgSoft: "var(--plush-fg-soft)",
           fgHard: "var(--plush-fg-hard)",
           fgContrast: "var(--plush-fg-contrast)",
+
+          accent1: "var(--plush-fg-contrast)",
+          accent2: "var(--plush-fg-contrast)",
+          accent3: "var(--plush-fg-contrast)",
         },
         sombre: {
           bg: "var(--sombre-bg)",
           fgSoft: "var(--sombre-fg-soft)",
           fgHard: "var(--sombre-fg-hard)",
           fgContrast: "var(--sombre-fg-contrast)",
+
+          accent1: "var(--sombre-fg-contrast)",
+          accent2: "var(--sombre-fg-contrast)",
+          accent3: "var(--sombre-fg-contrast)",
         },
         brilliant: {
           bg: "var(--brilliant-bg)",
