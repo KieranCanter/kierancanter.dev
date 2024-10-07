@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useContext } from 'react';
-import LogoLoader from '@/components/loader';
+import LogoLoader from '@/app/components/loader';
 import Home from '@/app/home';
 import '@/styles/variables.scss';
 import { ThemeContext } from '@/context/themeContext';
@@ -20,7 +20,7 @@ const LogoLoaderWrapper: React.FC = () => {
     <>
       {isLoading && (
         <div 
-          className="fixed inset-0 z-40 transition-colors bg-bg" 
+          className="absolute inset-0 m-auto w-screen h-[100dvh] flex items-center justify-center transition-colors bg-bg" 
           data-theme={theme}
         >
           <LogoLoader onAnimationComplete={handleAnimationComplete} />

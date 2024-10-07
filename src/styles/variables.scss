@@ -4,25 +4,33 @@
   --plush-bg: rgba(185, 172, 174, 1);
   --plush-fg-soft: rgba(43, 36, 37, 0.6);
   --plush-fg-hard: rgba(43, 36, 37, 0.87);
-  --plush-fg-contrast: rgba(90, 0, 0, 0.87);
+  --plush-fg-contrast: rgba(90, 0, 0, 1);
 
   // Sombre
   --sombre-bg: rgba(43, 36, 37, 1);
   --sombre-fg-soft: rgba(185, 172, 174, 0.6);
   --sombre-fg-hard: rgba(185, 172, 174, 0.87);
-  --sombre-fg-contrast: rgba(255, 227, 181, 0.87);
+  --sombre-fg-contrast: rgba(255, 227, 181, 1);
 
   // Brilliant
   --brilliant-bg: rgba(229, 229, 229, 1);
   --brilliant-fg-soft: rgba(18, 18, 18, 0.6);
   --brilliant-fg-hard: rgba(18, 18, 18, 0.87);
-  --brilliant-fg-contrast: rgba(46, 125, 50, 0.87);
+  --brilliant-fg-contrast: rgba(17, 55, 80, 1);
+
+  --brilliant-accent1: rgba(173, 57, 44, 1);
+  --brilliant-accent2: rgba(31, 146, 79, 1);
+  --brilliant-accent3: rgba(204, 169, 27, 1);
 
   // Luminous
   --luminous-bg: rgba(38, 38, 38, 1);
   --luminous-fg-soft: rgba(229, 229, 229, 0.6);
   --luminous-fg-hard: rgba(229, 229, 229, 0.87);
-  --luminous-fg-contrast: rgba(0, 229, 255, 0.87);
+  --luminous-fg-contrast: rgba(199, 184, 234, 1);
+
+  --luminous-accent1: rgba(255, 197, 197, 1);
+  --luminous-accent2: rgba(162, 231, 179, 1);
+  --luminous-accent3: rgba(173, 216, 230, 1);
 }
 
 /* Light Accented Mode */
@@ -31,6 +39,11 @@
   --fg-soft: var(--plush-fg-soft);
   --fg-hard: var(--plush-fg-hard);
   --fg-contrast: var(--plush-fg-contrast);
+
+  --tone-color: var(--sombre-fg-contrast);
+  --trefoil1: rgba(229, 229, 229, 1);
+  --trefoil2: var(--brilliant-fg-contrast);
+  --trefoil3: var(--brilliant-accent1);
 }
 
 /* Dark Accented Mode */
@@ -39,6 +52,11 @@
   --fg-soft: var(--sombre-fg-soft);
   --fg-hard: var(--sombre-fg-hard);
   --fg-contrast: var(--sombre-fg-contrast);
+
+  --tone-color: var(--plush-fg-contrast);
+  --trefoil1: rgba(38, 38, 38, 1);
+  --trefoil2: var(--luminous-fg-contrast);
+  --trefoil3: var(--luminous-accent1);
 }
 
 /* Light Colorful Mode */
@@ -47,6 +65,11 @@
   --fg-soft: var(--brilliant-fg-soft);
   --fg-hard: var(--brilliant-fg-hard);
   --fg-contrast: var(--brilliant-fg-contrast);
+
+  --tone-color: var(--luminous-fg-contrast);
+  --trefoil1: rgba(185, 172, 174, 1);
+  --trefoil2: rgba(43, 36, 37, 1);
+  --trefoil3: var(--plush-fg-contrast);
 }
 
 /* Dark Colorful Mode */
@@ -55,4 +78,9 @@
   --fg-soft: var(--luminous-fg-soft);
   --fg-hard: var(--luminous-fg-hard);
   --fg-contrast: var(--luminous-fg-contrast);
+
+  --tone-color: var(--brilliant-fg-contrast);
+  --trefoil1: rgba(43, 36, 37, 1);
+  --trefoil2: rgba(185, 172, 174, 1);
+  --trefoil3: var(--sombre-fg-contrast);
 }

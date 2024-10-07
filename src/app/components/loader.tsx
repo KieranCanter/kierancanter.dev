@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import * as THREE from 'three';
-import Diamond3D, { LOGO_ANIMATION_DURATION, LOGO_ROTATIONS } from '@/components/diamond3D';
+import Diamond3D, { LOGO_ANIMATION_DURATION, LOGO_ROTATIONS } from '@/app/components/diamond3D';
 
 interface LogoLoaderProps {
   onAnimationComplete: () => void;
@@ -46,10 +46,10 @@ const LogoLoader: React.FC<LogoLoaderProps> = ({ onAnimationComplete }) => {
 
   return (
     <div 
-    className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 transition-opacity duration-500 ease-in-out"
-    style={{
-      opacity: opacity,
-    }}>
+      className="absolute inset-0 m-auto w-screen h-[100dvh] flex items-center justify-center z-50 transition-opacity duration-[250ms]"
+      style={{
+        opacity: opacity,
+      }}>
       <Diamond3D 
         color={diamondColor} 
         animate={true} 

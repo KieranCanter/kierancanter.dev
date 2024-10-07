@@ -1,27 +1,20 @@
 'use client';
 
 import '@/styles/globals.scss';
-import React, { useContext } from 'react';
-import ThemeSwitcher from '@/components/themeSwitcher';
-import BusinessCard from "@/components/businessCard";
-import { ThemeContext } from '@/context/themeContext';
+import React from 'react';
+import Header from '@/app/components/sections/header';
+import BusinessCard from "@/app/components/businessCard";
 
 const Home: React.FC = () => {
-  const { theme } = useContext(ThemeContext);
 
   return (
-    <div id="home" className="flex flex-col items-center justify-between min-h-screen p-4 transition-colors duration-250 ease-in-out bg-bg text-fgSoft selection-default">
-      <div className="w-full max-w-full mx-auto relative">
-        <div className="flex flex-col items-center mb-4">
-          <ThemeSwitcher />
-          <p className="font-mono px-2 py-1 inline-block mt-2 md:mt-0 md:absolute md:top-0 md:right-0">
-            <span className="transition-colors duration-250 ease-in-out font-bold text-fgContrast selection:bg-fgContrast selection:text-bg">{theme}</span>
-          </p>
-        </div>
-      </div>
-      <div className="flex-grow flex items-center justify-center w-full">
+    <div id="home" className="flex flex-col min-h-screen transition-all duration-[250ms] bg-bg text-fgSoft selection-default">
+      <Header />
+
+      <div className="relative flex items-center justify-center mt-[50vh] md:mt-[60vh] lg:mt-[50vh] -translate-y-1/2 mb-[50vh]">
         <BusinessCard />
       </div>
+
     </div>
   );
 };
