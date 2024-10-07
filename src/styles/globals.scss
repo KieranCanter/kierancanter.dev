@@ -103,7 +103,7 @@
 }
 
 .trefoil-classes {
-  @apply absolute aspect-square w-3 md:w-4 h-auto rounded-full transition-all duration-[250ms] transform -translate-x-1/2 -translate-y-1/2 opacity-60 group-hover:opacity-100;
+  @apply absolute aspect-square w-3 md:w-4 h-auto rounded-full transition-all duration-[250ms] transform -translate-x-1/2 -translate-y-1/2 group-hover:opacity-100;
 }
 
 .theme-button-classes {
