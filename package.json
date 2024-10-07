@@ -20,6 +20,7 @@
     "next": "^14.2.13",
     "postcss-import": "^16.1.0",
     "react": "^18.3.1",
+    "react-device-detect": "^2.2.3",
     "react-dom": "^18",
     "sass": "^1.79.3",
     "scrollreveal": "^4.0.9",

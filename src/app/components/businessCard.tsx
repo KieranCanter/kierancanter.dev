@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef } from 'react';
 import VanillaTilt from 'vanilla-tilt';
+import { isMobile } from 'react-device-detect';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub, faLinkedin, faBehance, faCodepen } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
@@ -17,106 +18,28 @@ const socialLinks = [
   { title: 'Behance', href: 'https://www.behance.net/kierancanter', icon: faBehance },
 ];
 
-type DeviceMotionEventWithPermission = DeviceMotionEvent & {
-  requestPermission?: () => Promise<PermissionState>;
-};
 
 export default function BusinessCard() {
-  const businessCardRef = useRef<HTMLDivElement>(null);
+  const businessCardRef = document.getElementById("business-card");
 
   useEffect(() => {
-
-    if (businessCardRef.current) {
-      const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-
-      if (!isMobile) {
+    if (businessCardRef) {
         // VanillaTilt for desktop/cursor
-        VanillaTilt.init(businessCardRef.current, {
-          reverse: true,
-          max: 15,
-          speed: 3000,
-        });
-      } else {
-        // Gyroscope for mobile
-        const requestMotionPermission = async () => {
-          if (typeof (DeviceMotionEvent as unknown as DeviceMotionEventWithPermission).requestPermission === 'function') {
-            try {
-              const permissionState = await (DeviceMotionEvent as unknown as DeviceMotionEventWithPermission).requestPermission?.();
-              if (permissionState === 'granted') {
-                setupGyroscope();
-              } else {
-                console.log('Motion permission denied');
-              }
-            } catch (error) {
-              console.error('Error requesting motion permission:', error);
-            }
-          } else {
-            // For non-iOS devices or older iOS versions
-            setupGyroscope();
-          }
-        };
-
-        const setupGyroscope = () => {
-          let initialBeta: number | null = null;
-          let initialGamma: number | null = null;
-
-          const resetOrientation = () => {
-            initialBeta = null;
-            initialGamma = null;
-            if (businessCardRef.current) {
-              businessCardRef.current.style.transform = 'none';
-            }
-          };
-
-          const handleOrientation = (event: DeviceOrientationEvent) => {
-            if (event.beta === null || event.gamma === null) return;
-
-            // Set initial values if not set
-            if (initialBeta === null) initialBeta = event.beta;
-            if (initialGamma === null) initialGamma = event.gamma;
-
-            // Calculate the difference from initial position
-            const deltaBeta = event.beta - initialBeta;
-            const deltaGamma = event.gamma - initialGamma;
-
-            // Cap the range at -89/89 degrees
-            const tiltX = Math.min(Math.max(deltaBeta, -89), 89);
-            const tiltY = Math.min(Math.max(deltaGamma, -89), 89);
-
-            // Check the orientation and apply the appropriate rotation
-            if (window.matchMedia('(orientation: portrait)').matches) {
-              if (businessCardRef.current) {
-                businessCardRef.current.style.transform = `rotateX(${-tiltX}deg) rotateY(${tiltY}deg)`;
-              }
-            } else {
-              if (businessCardRef.current) {
-                businessCardRef.current.style.transform = `rotateX(${tiltY}deg) rotateY(${-tiltX}deg)`;
-              }
-            }
-          };
-
-          if (window.DeviceOrientationEvent) {
-            window.addEventListener('deviceorientation', handleOrientation);
-            window.addEventListener('orientationchange', resetOrientation);
-          }
-
-          // Cleanup function for mobile
-          return () => {
-            if (window.DeviceOrientationEvent) {
-              window.removeEventListener('deviceorientation', handleOrientation);
-              window.removeEventListener('orientationchange', resetOrientation);
-            }
-          };
-        };
-
-        requestMotionPermission();
-      }
+      VanillaTilt.init(businessCardRef, {
+        reverse: true,
+        max: 15,
+        speed: 3000,
+        gyroscope: true,
+        gyroscopeMinAngleX: -89,
+        gyroscopeMaxAngleX: 89,
+        gyroscopeMinAngleY: -89,
+        gyroscopeMaxAngleY: 89,
+      });
     }
-  }, []);
+  });
   
   return (
     <div 
-      ref={businessCardRef}
       id="business-card" 
       className="flex flex-col justify-between relative aspect-[7/4] w-[28rem] md:w-[50%] md:max-w-[28rem] h-auto mx-4 p-2 lg:p-3 text-[#1e1e1e] bg-[#f8f5ec] rounded-[0.1rem] [box-shadow:0rem_0.1rem_0.4rem_0rem_rgba(0,_0,_0,_0.3)] selection:bg-[#1e1e1e] selection:text-[#f8f5ec]" 
       aria-label="Kieran Canter's Business Card"
