@@ -15,26 +15,6 @@ const Home: React.FC = () => {
         <BusinessCard />
       </div>
 
-      <div className="relative flex items-center justify-center w-full mb-10">
-        <BusinessCard />
-      </div>
-
-      <div className="relative flex items-center justify-center w-full mb-10">
-        <BusinessCard />
-      </div>
-
-      <div className="relative flex items-center justify-center w-full mb-10">
-        <BusinessCard />
-      </div>
-
-      <div className="relative flex items-center justify-center w-full mb-10">
-        <BusinessCard />
-      </div>
-
-      <div className="relative flex items-center justify-center w-full mb-10">
-        <BusinessCard />
-      </div>
-
     </div>
   );
 };
