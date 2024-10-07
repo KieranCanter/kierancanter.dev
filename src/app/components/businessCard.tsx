@@ -1,8 +1,7 @@
 "use client";
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect } from 'react';
 import VanillaTilt from 'vanilla-tilt';
-import { isMobile } from 'react-device-detect';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub, faLinkedin, faBehance, faCodepen } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
@@ -24,7 +23,6 @@ export default function BusinessCard() {
 
   useEffect(() => {
     if (businessCardRef) {
-        // VanillaTilt for desktop/cursor
       VanillaTilt.init(businessCardRef, {
         reverse: true,
         max: 15,
@@ -41,7 +39,7 @@ export default function BusinessCard() {
   return (
     <div 
       id="business-card" 
-      className="flex flex-col justify-between relative aspect-[7/4] w-[28rem] md:w-[50%] md:max-w-[28rem] h-auto mx-4 p-2 lg:p-3 text-[#1e1e1e] bg-[#f8f5ec] rounded-[0.1rem] [box-shadow:0rem_0.1rem_0.4rem_0rem_rgba(0,_0,_0,_0.3)] selection:bg-[#1e1e1e] selection:text-[#f8f5ec]" 
+      className="data-tilt flex flex-col justify-between relative aspect-[7/4] w-[28rem] md:w-[50%] md:max-w-[28rem] h-auto mx-4 p-2 lg:p-3 text-[#1e1e1e] bg-[#f8f5ec] rounded-[0.1rem] [box-shadow:0rem_0.1rem_0.4rem_0rem_rgba(0,_0,_0,_0.3)] selection:bg-[#1e1e1e] selection:text-[#f8f5ec]" 
       aria-label="Kieran Canter's Business Card"
     >
       
