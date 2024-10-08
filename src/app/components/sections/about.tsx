@@ -31,7 +31,7 @@ const About: React.FC = () => {
             Ex adipiscing diam dignissim accumsan dapibus:`}
           </p>
 
-          <ul className="relative columns-2 font-ibm-plex-mono text-sm text-fgSoft list-inside marker-arrow mt-2 ">
+          <ul className="relative columns-2 pl-4 font-ibm-plex-mono text-sm text-fgSoft list-outside marker-arrow mt-2">
             <li>Python</li>
             <li>HTML + SCSS</li>
             <li>JavaScript/TypeScript</li>
