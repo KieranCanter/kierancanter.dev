@@ -5,7 +5,7 @@ import Image from 'next/image';
 const About: React.FC = () => {
 
   return (
-    <div className="*:outline flex flex-col w-[calc(100%-4rem)] lg:w-kic-width justify-center items-center">
+    <div className="flex flex-col w-[calc(100%-4rem)] lg:w-kic-width justify-center items-center">
       <SectionTitle title="About" />
       <div className="relative flex flex-col md:flex-row mt-8 w-full h-fit">
         <Image 
