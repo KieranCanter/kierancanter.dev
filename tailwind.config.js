@@ -64,6 +64,9 @@ module.exports = {
           accent3: "var(--luminous-accent3)",
         }
       },
+      width: {
+        'kic-width': "var(--kic-width)"
+      },
       fontFamily: {
         'spectral-sc': ['Spectral SC', 'Georgia', 'Times New Roman', 'serif'],
         'ibm-plex-mono': ['IBM Plex Mono', 'Monospace', 'Courier New', 'Courier'],
