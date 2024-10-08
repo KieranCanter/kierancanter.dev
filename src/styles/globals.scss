@@ -123,31 +123,35 @@ met[name="apple-mobile-web-app-status-bar-style"] {
 }
 
 /* Scrollbar styles for Firefox */
-* {
+html {
   scrollbar-width: thin;
   scrollbar-color: var(--fg-soft) var(--bg);
 }
 
 /* Scrollbar styles for Webkit browsers (Chrome, Safari, newer versions of Edge) */
 ::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
+  width: 0.5rem;
+}
+
+::-webkit-scrollbar:hover {
+  width: 1rem;
+  height: 1rem;
 }
 
 ::-webkit-scrollbar-track {
   background: var(--bg);
-  border-radius: 5px;
+  border-radius: 0.5rem;
 }
 
 ::-webkit-scrollbar-thumb {
   background-color: var(--fg-soft);
-  border-radius: 5px;
-  border: 2px solid var(--bg);
+  border-radius: 0.3125rem;
+  border: 0.125rem solid var(--bg);
 }
 
 ::-webkit-scrollbar-thumb:hover {
   background-color: var(--fg-soft);
-  border: 1px solid var(--bg);
+  border: 0.0625rem solid var(--bg);
 }
 
 ::-webkit-scrollbar-thumb:active {
@@ -165,5 +169,4 @@ body {
   scrollbar-shadow-color: var(--fg-soft);
 
   background-color: var(--bg);
-  transition: background-color 0.25s ease;
 }
