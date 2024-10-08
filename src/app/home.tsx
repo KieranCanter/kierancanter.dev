@@ -11,7 +11,7 @@ const Home: React.FC = () => {
     <div id="home" className="flex flex-col min-h-screen transition-all duration-[250ms] bg-bg text-fgSoft selection-default">
       <Header />
 
-      <div className="relative flex items-center justify-center mt-[50vh] md:mt-[60vh] lg:mt-[50vh] -translate-y-1/2 mb-[50vh]">
+      <div className="relative flex items-center justify-center mt-[50dvh] md:mt-[60vh] lg:mt-[max(50vh,16rem)] -translate-y-1/2 mb-[50vh]">
         <BusinessCard />
       </div>
 
