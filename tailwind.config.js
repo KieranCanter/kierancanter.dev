@@ -4,7 +4,7 @@ module.exports = {
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
   future: {
-    hoverOnlyWhenSupported: true,
+    hoverOnlyWhenSupported: false,
   },
   theme: {
     extend: {
