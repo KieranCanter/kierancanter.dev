@@ -3,9 +3,6 @@ module.exports = {
   content: [
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
-  future: {
-    hoverOnlyWhenSupported: false,
-  },
   theme: {
     extend: {
       colors: {
