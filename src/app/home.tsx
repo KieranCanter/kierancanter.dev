@@ -5,6 +5,7 @@ import React from 'react';
 import Header from '@/app/components/sections/header';
 import BusinessCard from "@/app/components/businessCard";
 import About from "@/app/components/sections/about";
+import Experience from "@/app/components/sections/experience";
 
 const Home: React.FC = () => {
 
@@ -16,8 +17,12 @@ const Home: React.FC = () => {
         <BusinessCard />
       </div>
 
-      <div className="relative flex items-center justify-center mb-[40rem]">
+      <div className="relative flex items-center justify-center mb-kic-margin">
         <About />
+      </div>
+
+      <div className="relative flex items-center justify-center mb-kic-margin">
+        <Experience />
       </div>
 
     </div>
