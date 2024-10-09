@@ -64,6 +64,9 @@ module.exports = {
       width: {
         'kic-width': "var(--kic-width)"
       },
+      margin: {
+        'kic-margin': "var(--kic-margin)"
+      },
       fontFamily: {
         'spectral-sc': ['Spectral SC', 'Georgia', 'Times New Roman', 'serif'],
         'ibm-plex-mono': ['IBM Plex Mono', 'Monospace', 'Courier New', 'Courier'],
