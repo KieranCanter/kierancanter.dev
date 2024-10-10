@@ -10,14 +10,14 @@ const About: React.FC = () => {
       <SectionTitle title="About" />
       <div className="relative flex flex-col md:flex-row mt-8 w-full h-fit">
         
-        <div className="relative flex flex-[1] aspect-square w-[17rem] h-auto m-auto md:ml-[0.01rem] md:mt-0 justify-center items-center image-effects">
+        <div className="image-effects relative flex flex-[1] aspect-square w-[17rem] h-auto m-auto md:mt-[0.1rem] md:ml-[0.1rem] justify-center items-center select-none object-cover -scale-x-100">
           <Image 
             src="/assets/images/headshot.jpg" 
             alt="Headshot" 
             width= {0}
             height= {0}
             sizes="100vw"
-            className="w-full h-full relative flex select-none object-cover transition duration-[250ms]" 
+            className="w-full h-full relative flex" 
           />
         </div>
         
