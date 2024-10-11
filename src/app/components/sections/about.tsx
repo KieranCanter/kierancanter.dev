@@ -10,7 +10,7 @@ const About: React.FC = () => {
       <SectionTitle title="About" />
       <div className="relative flex flex-col md:flex-row mt-8 w-full h-fit">
         
-        <div className="image-effects relative flex flex-[1] aspect-square w-[17rem] h-auto m-auto md:mt-[0.1rem] md:ml-[0.1rem] justify-center items-center select-none object-cover -scale-x-100">
+        <div className="image-effects relative flex flex-[1] aspect-square w-[17rem] h-auto m-auto md:mt-[0.1rem] md:ml-[0.1rem] justify-center items-center select-none object-cover">
           <Image 
             src="/assets/images/headshot.jpg" 
             alt="Headshot" 
@@ -23,7 +23,7 @@ const About: React.FC = () => {
         
 
         <div id="text-container" className="relative flex flex-col flex-[2] mt-8 md:mt-0 md:ml-8">
-          <p className="relative font-ibm-plex-sans text-md text-fgSoft break-words whitespace-pre-line">
+          <p className="relative font-ibm-plex-sans text-sm md:text-base text-fgSoft break-words whitespace-pre-line">
             {`Lorem ipsum odor amet, consectetuer adipiscing elit. Suspendisse vulputate commodo semper torquent aliquam. Pretium molestie donec hendrerit dui tempor commodo lacus. Condimentum taciti nunc mauris phasellus curabitur gravida. Laoreet molestie amet bibendum rhoncus dolor luctus neque id.
 
             Ac parturient id facilisi maecenas litora, montes ridiculus mi. At litora sollicitudin praesent commodo non. Quam habitasse pulvinar pretium nulla magnis per magna pharetra gravida. Morbi cras dignissim mattis risus imperdiet accumsan libero semper. Semper auctor elit litora inceptos curae amet.
@@ -31,13 +31,13 @@ const About: React.FC = () => {
             Ex adipiscing diam dignissim accumsan dapibus:`}
           </p>
 
-          <ul className="relative columns-2 pl-4 font-ibm-plex-mono text-sm text-fgSoft list-outside marker-arrow mt-2">
+          <ul className="relative columns-2 pl-5 md:pl-6 font-ibm-plex-mono text-xs md:text-sm text-fgSoft list-outside marker-arrow mt-2">
             <li>Python</li>
             <li>HTML + SCSS</li>
+            <li>C/C++</li>
             <li>JavaScript/TypeScript</li>
             <li>ReactJS/NextJS</li>
             <li>Tailwind CSS</li>
-            <li>C/C++</li>
           </ul>
         </div>             
       </div>
