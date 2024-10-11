@@ -6,11 +6,11 @@ import Image from 'next/image';
 const About: React.FC = () => {
 
   return (
-    <div className="flex flex-col w-[calc(100%-4rem)] xl:w-kic-width justify-center items-center">
+    <div className="flex flex-col w-[calc(100%-4rem)] lg:w-kic-width justify-center items-center">
       <SectionTitle title="About" />
-      <div className="relative flex flex-col md:flex-row mt-8 w-full h-fit">
+      <div className="relative flex flex-col md:flex-row mt-8 w-full h-fit justify-center items-center">
         
-        <div className="image-effects relative flex flex-[1] aspect-square w-[17rem] h-auto m-auto md:mt-[0.1rem] md:ml-[0.1rem] justify-center items-center select-none object-cover">
+        <div className="image-effects relative flex flex-[1] aspect-square min-w-[15rem] w-[17rem] h-auto m-auto md:mt-[0.1rem] md:ml-[0.1rem] justify-center items-center select-none object-cover">
           <Image 
             src="/assets/images/headshot.jpg" 
             alt="Headshot" 
