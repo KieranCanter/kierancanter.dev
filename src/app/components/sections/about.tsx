@@ -17,6 +17,7 @@ const About: React.FC = () => {
             width= {0}
             height= {0}
             sizes="100vw"
+            quality={100}
             className="w-full h-full relative flex" 
           />
         </div>
