@@ -148,9 +148,9 @@ export default function BusinessCard() {
 
       <div id="centerpiece" className = "flex flex-col flex-[60%] w-fit mx-auto justify-between h-fit">
 
-        <div id="me" className="flex flex-col mx-auto w-fit h-fit items-center font-spectral-sc justify-center" aria-labelledby="name title">
-          <h1 id="name" className="text-base lg:text-lg font-bold">Kieran CANTER</h1>
-          <h2 id="title" className="text-xs lg:text-sm font-semibold">Computer Scientist</h2>
+        <div id="me" className="flex flex-col mx-auto w-fit h-fit items-center justify-center" aria-labelledby="name title">
+          <h2 id="name" className="text-base lg:text-lg font-bold">Kieran CANTER</h2>
+          <h3 id="title" className="text-xs lg:text-sm font-semibold">Computer Scientist</h3>
         </div>
 
         <nav 
