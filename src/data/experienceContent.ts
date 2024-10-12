@@ -2,7 +2,7 @@ export const experienceContent = [
   {
     id: 'tab1',
     position: 'Cyber Software Engineer',
-    company: 'Peraton',
+    company: 'Peraton Inc.',
     period: 'October 2023 — Present',
     bullets: [
       'Drove the design and development of a custom clipboard monitoring solution for specific Linux-based systems using <span class="highlight">C</span> and <span class="highlight">JavaScript</span>',
@@ -17,9 +17,9 @@ export const experienceContent = [
     company: 'U.S. Army Reserve',
     period: 'March 2019 — March 2025',
     bullets: [
-      'Developed feature X',
-      'Led team for project Y',
-      'Implemented technology Z',
+      'As Platoon Guide, <span class="highlight">led a 50-man unit through high-pressure challenges</span> including ruck marches, emergency field care & aid, and patrol base establishment',
+      '<span class="highlight">Led small teams (≤7 personnel)</span> in conducting fuel operations, coordinating the issue and receipt of over 20,000 gallons of diesel fuel with precision',
+      '<span class="highlight">Conducted presentations and taught classes to medium-sized groups of soldiers</span>, communicating complex procedures in an accessible fashion',
     ],
   },
   
