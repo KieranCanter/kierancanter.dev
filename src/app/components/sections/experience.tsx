@@ -14,13 +14,13 @@ const Experience: React.FC = () => {
     content: (
       <div>
         <div className="flex justify-between text-lg font-ibm-plex-sans mb-2 leading-tight">
-          <h3 className="text-fgHard font-semibold text-left">{content.position}</h3>
-          <h4 className="text-fgContrast font-bold text-right selection:bg-fgContrast">{content.company}</h4>
+          <h3 className="text-fgHard font-bold text-left selection:bg-fgHard">{content.position}</h3>
+          <h4 className="text-fgContrast font-base text-right selection:bg-fgContrast">{content.company}</h4>
         </div>
-        <h5 className="text-xs text-fgHard font-ibm-plex-mono font-semibold mb-6">{content.period}</h5>
-        <ul className="text-sm md:text-base text-fgSoft font-ibm-plex-sans marker-arrow list-outside pl-3">
+        <h5 className="text-xs text-fgHard font-ibm-plex-mono font-semibold mb-6 selection:bg-fgHard">{content.period}</h5>
+        <ul className="text-sm md:text-base text-fgSoft font-ibm-plex-sans marker-arrow list-outside pl-2">
           {content.bullets.map((bullet, index) => (
-            <li key={index} className="pl-2">{bullet}</li>
+            <li key={index} className="mb-4" dangerouslySetInnerHTML={{ __html: bullet }}></li>
           ))}
         </ul>
       </div>
