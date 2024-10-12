@@ -13,11 +13,11 @@ const Experience: React.FC = () => {
     label: content.company,
     content: (
       <div>
-        <div className="flex justify-between text-lg font-ibm-plex-sans mb-2 leading-tight">
-          <h3 className="text-fgHard font-bold text-left selection:bg-fgHard">{content.position}</h3>
-          <h4 className="text-fgContrast font-base text-right selection:bg-fgContrast">{content.company}</h4>
+        <div className="flex justify-between text-lg mb-2 leading-tight">
+          <h4 className="text-fgHard font-bold text-left selection:bg-fgHard">{content.position}</h4>
+          <h5 className="text-fgContrast font-base text-right selection:bg-fgContrast">{content.company}</h5>
         </div>
-        <h5 className="text-xs text-fgHard font-ibm-plex-mono font-semibold mb-6 selection:bg-fgHard">{content.period}</h5>
+        <h6 className="text-xs text-fgHard font-semibold mb-6 selection:bg-fgHard">{content.period}</h6>
         <ul className="text-sm md:text-base text-fgSoft font-ibm-plex-sans marker-arrow list-outside pl-2">
           {content.bullets.map((bullet, index) => (
             <li key={index} className="mb-4" dangerouslySetInnerHTML={{ __html: bullet }}></li>
@@ -59,7 +59,7 @@ const Experience: React.FC = () => {
   }
 
   return (
-    <div className="flex flex-col w-[calc(100%-4rem)] lg:w-kic-width justify-center items-center">
+    <div className="flex flex-col w-[calc(100%-4rem)] xl:w-kic-width justify-center items-center">
       <SectionTitle title="Experience" />
       <div className="w-full h-full flex flex-col mt-8">
         <div className="relative flex w-max h-fit justify-start whitespace-nowrap">
