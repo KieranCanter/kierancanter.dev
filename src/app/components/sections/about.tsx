@@ -32,7 +32,7 @@ const About: React.FC = () => {
             Ex adipiscing diam dignissim accumsan dapibus:`}
           </p>
 
-          <ul className="[&_*]:pl-1 relative columns-2 pl-4 font-ibm-plex-mono text-xs md:text-sm text-fgSoft list-outside marker-arrow mt-2">
+          <ul className="[&_*]:pl-1 relative columns-2 pl-2 font-ibm-plex-mono text-xs md:text-sm text-fgSoft list-outside marker-arrow mt-2">
             <li>Python</li>
             <li>HTML + SCSS</li>
             <li>C/C++</li>
