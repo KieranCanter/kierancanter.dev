@@ -1,36 +1,36 @@
 /* All Themes */
 :root {
   // Plush
-  --plush-bg: rgba(185, 172, 174, 1);
-  --plush-fg-soft: rgba(43, 36, 37, 0.6);
-  --plush-fg-hard: rgba(43, 36, 37, 0.87);
-  --plush-fg-contrast: rgba(90, 0, 0, 1);
+  --plush-bg: rgb(185, 172, 174);
+  --plush-fg-soft: rgb(86, 73, 75);
+  --plush-fg-hard: rgb(43, 36, 37);
+  --plush-fg-contrast: rgb(90, 0, 0);
 
   // Sombre
-  --sombre-bg: rgba(43, 36, 37, 1);
-  --sombre-fg-soft: rgba(185, 172, 174, 0.6);
-  --sombre-fg-hard: rgba(185, 172, 174, 0.87);
-  --sombre-fg-contrast: rgba(255, 227, 181, 1);
+  --sombre-bg: rgb(43, 36, 37);
+  --sombre-fg-soft: rgb(150, 132, 135);
+  --sombre-fg-hard: rgb(185, 172, 174);
+  --sombre-fg-contrast: rgb(255, 227, 181);
 
   // Brilliant
-  --brilliant-bg: rgba(229, 229, 229, 1);
-  --brilliant-fg-soft: rgba(18, 18, 18, 0.6);
-  --brilliant-fg-hard: rgba(18, 18, 18, 0.87);
-  --brilliant-fg-contrast: rgba(17, 55, 80, 1);
+  --brilliant-bg: rgb(229, 229, 229);
+  --brilliant-fg-soft: rgb(81, 81, 81);
+  --brilliant-fg-hard: rgb(18, 18, 18);
+  --brilliant-fg-contrast: rgb(255, 175, 25); 
 
-  --brilliant-accent1: rgba(173, 57, 44, 1);
-  --brilliant-accent2: rgba(31, 146, 79, 1);
-  --brilliant-accent3: rgba(204, 169, 27, 1);
+  --brilliant-accent1: rgb(255, 140, 174);
+  --brilliant-accent2: rgb(80, 200, 120);
+  --brilliant-accent3: rgb(245, 96, 96);
 
   // Luminous
-  --luminous-bg: rgba(38, 38, 38, 1);
-  --luminous-fg-soft: rgba(229, 229, 229, 0.6);
-  --luminous-fg-hard: rgba(229, 229, 229, 0.87);
-  --luminous-fg-contrast: rgba(199, 184, 234, 1);
+  --luminous-bg: rgb(38, 38, 38);
+  --luminous-fg-soft: rgb(174, 174, 174);
+  --luminous-fg-hard: rgb(229, 229, 229);
+  --luminous-fg-contrast: rgb(204, 183, 254);
 
-  --luminous-accent1: rgba(255, 197, 197, 1);
-  --luminous-accent2: rgba(162, 231, 179, 1);
-  --luminous-accent3: rgba(173, 216, 230, 1);
+  --luminous-accent1: rgb(125, 249, 255);
+  --luminous-accent2: rgb(192, 255, 140);
+  --luminous-accent3: rgb(255, 105, 180);
 
   --kic-width: calc(100vw*0.42857142857);
   --kic-margin: 20rem;
@@ -44,7 +44,7 @@
   --fg-contrast: var(--plush-fg-contrast);
 
   --tone-color: var(--sombre-fg-contrast);
-  --trefoil1: rgba(229, 229, 229, 1);
+  --trefoil1: var(--brilliant-bg);
   --trefoil2: var(--brilliant-fg-contrast);
   --trefoil3: var(--brilliant-accent1);
 }
@@ -57,7 +57,7 @@
   --fg-contrast: var(--sombre-fg-contrast);
 
   --tone-color: var(--plush-fg-contrast);
-  --trefoil1: rgba(38, 38, 38, 1);
+  --trefoil1: var(--luminous-bg);
   --trefoil2: var(--luminous-fg-contrast);
   --trefoil3: var(--luminous-accent1);
 }
@@ -70,8 +70,8 @@
   --fg-contrast: var(--brilliant-fg-contrast);
 
   --tone-color: var(--luminous-fg-contrast);
-  --trefoil1: rgba(185, 172, 174, 1);
-  --trefoil2: rgba(43, 36, 37, 1);
+  --trefoil1: var(--plush-bg);
+  --trefoil2: var(--plush-fg-hard);
   --trefoil3: var(--plush-fg-contrast);
 }
 
@@ -83,7 +83,7 @@
   --fg-contrast: var(--luminous-fg-contrast);
 
   --tone-color: var(--brilliant-fg-contrast);
-  --trefoil1: rgba(43, 36, 37, 1);
-  --trefoil2: rgba(185, 172, 174, 1);
+  --trefoil1: var(--sombre-bg);
+  --trefoil2: var(--sombre-fg-soft);
   --trefoil3: var(--sombre-fg-contrast);
 }
