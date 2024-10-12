@@ -115,7 +115,7 @@
 }
 
 .image-effects {
-  @apply overflow-hidden shadow-black shadow-[0_0.5rem_0.5rem_-0.375rem] hover:shadow-black hover:shadow-[0_0.5rem_0.5rem_-0.125rem] hover:-translate-y-[0.313rem] grayscale-[0.8] hover:grayscale-0 opacity-80 hover:opacity-100 hover:*:scale-105 transition duration-[250ms] *:transition *:duration-[250ms] active:opacity-85;
+  @apply overflow-hidden rounded-sm shadow-black shadow-[0_0.5rem_0.5rem_-0.5rem] hover:shadow-black hover:shadow-[0_0.5rem_0.5rem_-0.375rem] hover:-translate-y-[0.313rem] grayscale-[0.8] hover:grayscale-0 opacity-80 hover:opacity-100 hover:*:scale-105 transition duration-[250ms] *:transition *:duration-[250ms] active:opacity-85;
 }
 
 .marker-arrow {
@@ -130,6 +130,10 @@
 
 .highlight {
   @apply text-fgHard font-medium selection:bg-fgHard;
+}
+
+.text-link {
+  @apply text-fgContrast font-medium selection:bg-fgContrast hover:opacity-75 transition duration-[250ms];
 }
 
 meta[name="theme-color"] {
