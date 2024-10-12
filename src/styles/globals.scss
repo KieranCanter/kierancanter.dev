@@ -91,6 +91,22 @@
   }
 }
 
+h2, h3 {
+  @apply font-spectral-sc;
+}
+
+h1 {
+  @apply font-ibm-plex-serif;
+}
+
+p, h4, h5, h6 {
+  @apply font-ibm-plex-sans;
+}
+
+h6 {
+  @apply font-ibm-plex-mono;
+}
+
 // Tailwind  Utilities
 @layer utilities {
   .text-balance {
