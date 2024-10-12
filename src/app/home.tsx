@@ -6,6 +6,7 @@ import Header from '@/app/components/sections/header';
 import BusinessCard from "@/app/components/businessCard";
 import About from "@/app/components/sections/about";
 import Experience from "@/app/components/sections/experience";
+import Works from "@/app/components/sections/works";
 
 const Home: React.FC = () => {
 
@@ -23,6 +24,10 @@ const Home: React.FC = () => {
 
       <div className="relative flex items-center justify-center mb-kic-margin">
         <Experience />
+      </div>
+
+      <div className="relative flex items-center justify-center mb-kic-margin">
+        <Works />
       </div>
 
     </div>

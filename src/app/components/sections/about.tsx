@@ -13,7 +13,7 @@ const About: React.FC = () => {
         
         <div className="headshot-effects relative flex flex-[1] aspect-square min-w-[15rem] w-[17rem] max-w-[19rem] h-auto m-auto md:mt-[0.1rem] md:ml-[0.1rem] justify-center items-center select-none object-cover">
           <Image 
-            src="/assets/images/headshot.jpg" 
+            src="/images/headshot.jpg" 
             alt="Headshot" 
             width= {0}
             height= {0}
