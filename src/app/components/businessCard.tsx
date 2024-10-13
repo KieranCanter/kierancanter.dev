@@ -46,8 +46,8 @@ export default function BusinessCard() {
       const deltaGamma = event.gamma - initialGamma;
 
       // Cap the range at -89/89 degrees
-      const tiltX = Math.min(Math.max(deltaBeta, -89), 89);
-      const tiltY = Math.min(Math.max(deltaGamma, -89), 89);
+      const tiltX = Math.min(Math.max(deltaBeta, -45), 45);
+      const tiltY = Math.min(Math.max(deltaGamma, -45), 45);
 
       // Check the orientation and apply the appropriate rotation
       if (window.matchMedia('(orientation: portrait)').matches) {
