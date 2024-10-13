@@ -26,12 +26,12 @@ const About: React.FC = () => {
 
         <div id="text-container" className="relative flex flex-col flex-[2] mt-8 md:mt-0 md:ml-8">
           <p dangerouslySetInnerHTML={{ __html: aboutContent.bio }}></p>
-          <ul className="[&_*]:pl-1 relative columns-2 pl-2 font-ibm-plex-mono text-xs md:text-sm text-fgSoft list-outside marker-arrow mt-2">
+          <ul className="relative columns-2 pl-2 font-ibm-plex-mono text-xs md:text-sm text-fgSoft list-outside marker-arrow mt-2">
             {aboutContent.skills.map((skill: string, index: number) => (
               <li key={index}>{skill}</li>
             ))}
           </ul>
-        </div>             
+        </div>
       </div>
     </div>
   );
