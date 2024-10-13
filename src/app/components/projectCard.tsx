@@ -26,7 +26,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 
   return (
     <div 
-      className={`relative w-full min-w-64 h-full lg:aspect-video lg:max-w-[40rem] lg:h-auto m-auto group overflow-hidden shadow-black transition duration-[250ms] ${isHovered ? 'shadow-[0_0.5rem_0.5rem_-0.375rem] -translate-y-1' : 'shadow-[0_0.5rem_0.5rem_-0.5rem]'}`}
+      className={`relative w-full min-w-64 h-full lg:aspect-video lg:max-w-[40rem] lg:h-auto m-auto rounded-sm group overflow-hidden shadow-black transition duration-[250ms] ${isHovered ? 'shadow-[0_0.5rem_0.5rem_-0.375rem] -translate-y-1' : 'shadow-[0_0.5rem_0.5rem_-0.5rem]'}`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -45,7 +45,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 
       {/* Title */}
       <div className={`absolute inset-0 flex items-center justify-center transition-opacity duration-[250ms] ${isHovered ? 'opacity-0' : 'opacity-100'}`}>
-        <h1 className="text-2xl font-bold text-fgContrast px-4 py-2 text-center drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)]">
+        <h1 className="text-2xl font-bold text-fgContrast px-4 py-2 text-center drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)">
           {title}
         </h1>
       </div>
@@ -53,18 +53,18 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
       {/* Hover content */}
       <div className={`relative flex flex-col w-full h-full z-10 bg-black/75 p-3 md:p-5 transition-opacity duration-[250ms] ${isHovered ? 
       'opacity-100' : 'opacity-0'}`}>
-        <h1 className="text-2xl font-bold text-fgContrast mb-4">{title}</h1>
-        <p className="text-fgHard text-sm mb-4 overflow-y-auto flex-grow" dangerouslySetInnerHTML={{ __html: description }} />
+        <h1 className="text-2xl font-bold text-fgContrast mb-4 selection:bg-fgContrast">{title}</h1>
+        <p className="text-fgHard text-sm mb-4 overflow-y-auto flex-grow selection:bg-fgHard" dangerouslySetInnerHTML={{ __html: description }} />
 
         <div className="flex flex-row justify-between mt-auto">
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-2 ">
             {technologies.map((tech, index) => (
-              <h6 key={index} className="text-xs bg-fgContrast text-bg px-2 py-1 rounded">
+              <h6 key={index} className="text-xs font-semibold bg-fgContrast text-bg px-2 py-1 rounded selection:bg-bg selection:text-fgContrast">
                 {tech}
               </h6>
             ))}
           </div>
-          <div className="flex items-end gap-2">
+          <div className="flex items-end gap-4">
             {githubUrl && (
               <Link 
                 href={githubUrl} 
