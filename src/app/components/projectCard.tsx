@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGithub } from '@fortawesome/free-brands-svg-icons';
+import { faUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
 
 interface ProjectCardProps {
   title: string;
@@ -18,38 +21,72 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   imageUrl,
   githubUrl,
   projectUrl
-  }) => {
+}) => {
+  const [isHovered, setIsHovered] = useState(false);
+
   return (
-    <div className="relative aspect-video w-full max-w-[30rem] h-auto mx-auto overflow-hidden rounded-sm shadow-lg group">
-      <Image
-        src={imageUrl}
-        alt={title}
-        width={1920}
-        height={1080}
-        className="w-full h-full object-cover transition-all duration-[250ms]] group-hover:blur-sm group-hover:scale-110"
-      />
-      <div className="absolute inset-0 bg-opacity-50 bg-black opacity-0 group-hover:opacity-100 transition-opacity duration-[250ms]] flex flex-col text-white p-2">
-        <h4 className="text-2xl font-bold">{title}</h4>
-        <p className="text-sm">{description}</p>
-        
-        <div className="flex flex-row w-full h-fit mt-auto items-center justify-between">
-          <div className="flex flex-row justify-between gap-2">
+    <div 
+      className={`relative w-full min-w-64 h-full lg:aspect-video lg:max-w-[40rem] lg:h-auto m-auto group overflow-hidden shadow-black transition duration-[250ms] ${isHovered ? 'shadow-[0_0.5rem_0.5rem_-0.375rem] -translate-y-1' : 'shadow-[0_0.5rem_0.5rem_-0.5rem]'}`}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      {/* Background Image */}
+      <div className="absolute inset-0">
+        <Image
+          src={imageUrl}
+          alt={title}
+          fill
+          className={`object-cover transition-all duration-[250ms] ${isHovered ? 'scale-110 blur-sm' : ''}`}
+        />
+      </div>
+
+      {/* Gradient Overlay */}
+      <div className={`absolute inset-0 bg-gradient-to-t from-black/70 to-transparent transition-opacity duration-[250ms] ${isHovered ? 'opacity-0' : 'opacity-100'}`} />
+
+      {/* Title */}
+      <div className={`absolute inset-0 flex items-center justify-center transition-opacity duration-[250ms] ${isHovered ? 'opacity-0' : 'opacity-100'}`}>
+        <h1 className="text-2xl font-bold text-fgContrast px-4 py-2 text-center drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)]">
+          {title}
+        </h1>
+      </div>
+
+      {/* Hover content */}
+      <div className={`relative flex flex-col w-full h-full z-10 bg-black/75 p-3 md:p-5 transition-opacity duration-[250ms] ${isHovered ? 
+      'opacity-100' : 'opacity-0'}`}>
+        <h1 className="text-2xl font-bold text-fgContrast mb-4">{title}</h1>
+        <p className="text-fgHard text-sm mb-4 overflow-y-auto flex-grow" dangerouslySetInnerHTML={{ __html: description }} />
+
+        <div className="flex flex-row justify-between mt-auto">
+          <div className="flex flex-wrap gap-2">
             {technologies.map((tech, index) => (
-              <p key={index} className="font-ibm-plex-mono font-semibold text-fgContrast rounded-sm text-xs">
+              <h6 key={index} className="text-xs bg-fgContrast text-bg px-2 py-1 rounded">
                 {tech}
-              </p>
+              </h6>
             ))}
           </div>
-          
-          <div className="flex flex-row gap-2">
+          <div className="flex items-end gap-2">
             {githubUrl && (
-              <Link href={githubUrl} target="_blank" rel="noopener noreferrer" className="text-sm text-blue-400 hover:text-blue-300">
-                GH
+              <Link 
+                href={githubUrl} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="text-fgHard hover:text-fgContrast transition-colors duration-[250ms]"
+                onClick={(e) => !isHovered && e.preventDefault()}
+                aria-label="GitHub Repository"
+              >
+                <FontAwesomeIcon icon={faGithub} className="text-xl" />
               </Link>
             )}
             {projectUrl && (
-              <Link href={projectUrl} target="_blank" rel="noopener noreferrer" className="text-sm text-green-400 hover:text-green-300">
-                PL
+              <Link 
+                href={projectUrl} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="text-fgHard hover:text-fgContrast transition-colors duration-[250ms]"
+                onClick={(e) => !isHovered && e.preventDefault()}
+                aria-label="Project Link"
+              >
+                <FontAwesomeIcon icon={faUpRightFromSquare} className="text-xl" />
               </Link>
             )}
           </div>
@@ -60,4 +97,3 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 };
 
 export default ProjectCard;
-
