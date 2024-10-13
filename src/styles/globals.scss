@@ -138,9 +138,9 @@ h6 {
   li {
     &::marker {
       content: '♦';
-      color: var(--fg-contrast);
+      @apply text-fgContrast text-xs md:text-sm;
     }
-    padding-inline-start: 0.75rem;
+    @apply pl-1;
   }
 }
 
