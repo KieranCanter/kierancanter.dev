@@ -127,7 +127,7 @@ h6 {
 }
 
 .header-link {
-  @apply text-fgSoft text-[1rem] font-ibm-plex-sans font-semibold hover:text-fgContrast hover:selection:bg-fgContrast transition-all duration-[250ms];
+  @apply text-[1rem] font-ibm-plex-sans font-semibold hover:text-fgContrast hover:selection:bg-fgContrast transition-all duration-[250ms];
 }
 
 
@@ -137,7 +137,7 @@ h6 {
       content: '♦';
       @apply text-fgContrast text-xs md:text-sm;
     }
-    @apply pl-1;
+    @apply pl-2;
   }
 }
 

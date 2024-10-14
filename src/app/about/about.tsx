@@ -1,22 +1,18 @@
 import React from 'react';
 import '@/styles/globals.scss';
-import SectionTitle from '@/components/sectionTitle';
 import { aboutContent } from '@/data/aboutContent';
 
 const About: React.FC = () => {
 
   return (
-    <div className="flex flex-col w-[calc(100%-4rem)] xl:w-kic-width justify-center items-center">
-      <SectionTitle title="About" />
-      <div className="relative flex flex-col md:flex-row mt-8 w-full h-fit justify-center items-center">
-        <div id="text-container" className="relative flex flex-col flex-[2] max-w-full mt-8 md:mt-0 md:ml-8">
-          <p dangerouslySetInnerHTML={{ __html: aboutContent.bio }}></p>
-          <ul className="relative columns-2 mt-2 pl-3 font-ibm-plex-mono text-xs md:text-sm text-fgSoft list-outside marker-arrow">
-            {aboutContent.skills.map((skill: string, index: number) => (
-              <li key={index} className="mb-1 break-words">{skill}</li>
-            ))}
-          </ul>
-        </div>
+    <div className="flex flex-col w-[calc(100%-2rem)] md:max-lg:w-[calc(50dvw+2rem)] lg:w-kic-width justify-center items-center bg-black/10 rounded-sm">
+      <div id="text-container" className="w-full relative flex flex-col h-[calc(100dvh-13rem)] md:max-lg:h-[calc(100dvh-9rem)] lg:h-fit p-4 text-fgSoft overflow-y-auto scrollbox">
+        <p dangerouslySetInnerHTML={{ __html: aboutContent.bio }}></p>
+        <ul className="relative columns-2 mt-2 pl-3 font-ibm-plex-mono text-xs md:text-sm list-outside marker-arrow">
+          {aboutContent.skills.map((skill: string, index: number) => (
+            <li key={index} className="mb-1 break-words text-fgHard">{skill}</li>
+          ))}
+        </ul>
       </div>
     </div>
   );

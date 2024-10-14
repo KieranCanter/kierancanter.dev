@@ -28,7 +28,11 @@ const Home: React.FC<HomeProps> = ({ initialSection = 'businessCard' }) => {
   const renderSection = () => {
     switch (currentSection) {
       case 'about':
-        return <About />;
+        return (
+          <div className="relative flex my-8 md:absolute md:w-fit md:left-1/2 md:-translate-x-1/2 md:max-lg:mt-8 md:max-lg:mb-0 justify-center items-center">
+            <About />
+          </div>
+        );
       case 'experience':
         return <Experience />;
       case 'works':
