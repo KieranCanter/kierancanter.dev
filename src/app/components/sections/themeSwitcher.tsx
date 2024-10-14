@@ -96,23 +96,27 @@ const ThemeSwitcher: React.FC = () => {
   };
 
   return (
-    <div id="theme-switcher" className="flex flex-row justify-center gap-4 w-fit" aria-label="Theme Switcher">
-      <button id="tone-button" className="group theme-button-classes" 
-        onClick={toggleDarkMode} aria-label="Toggle Dark Mode">
-          <FontAwesomeIcon
-            id="tone-icon"
-            icon={toneIcon}
-            className="fa-sharp fa-regular text-toneColor text-lg md:text-2xl opacity-60 group-hover:opacity-100 transition-all duration-[250ms]"
-            aria-hidden="true"
-          />
-      </button>
-      <button id="color-button" className="group theme-button-classes"
-        onClick={toggleColorful} aria-label="Toggle Colorful Mode">
-        <div id="trefoil1" className="trefoil-classes bg-trefoil1 left-[50%] top-[40%] opacity-80 z-30"></div>
-        <div id="trefoil2" className="trefoil-classes bg-trefoil2 left-[40%] top-[60%] opacity-80 z-20"></div>
-        <div id="trefoil3" className="trefoil-classes bg-trefoil3 left-[60%] top-[60%] opacity-80 z-10"></div>
-      </button>
-    </div>  );
+    <div className="flex flex-row md:flex-col absolute bottom-0 left-0 md:max-lg:top-0 md:max-lg:right-0 lg:left-[50dvw] lg:-translate-x-full m-4 items-end lg:items-center gap-4">
+      <div id="theme-switcher" className="flex flex-row items-start justify-center gap-4 w-fit" aria-label="Theme Switcher">
+        <button id="tone-button" className="group theme-button-classes" 
+          onClick={toggleDarkMode} aria-label="Toggle Dark Mode">
+            <FontAwesomeIcon
+              id="tone-icon"
+              icon={toneIcon}
+              className="fa-sharp fa-regular text-toneColor text-lg md:text-2xl opacity-60 group-hover:opacity-100 transition-all duration-[250ms]"
+              aria-hidden="true"
+            />
+        </button>
+        <button id="color-button" className="group theme-button-classes"
+          onClick={toggleColorful} aria-label="Toggle Colorful Mode">
+          <div id="trefoil1" className="trefoil-classes bg-trefoil1 left-[50%] top-[40%] opacity-80 z-30"></div>
+          <div id="trefoil2" className="trefoil-classes bg-trefoil2 left-[40%] top-[60%] opacity-80 z-20"></div>
+          <div id="trefoil3" className="trefoil-classes bg-trefoil3 left-[60%] top-[60%] opacity-80 z-10"></div>
+        </button>
+      </div>
+      <h6 id="theme-text" className="text-sm md:text-base text-fgContrast selection:bg-fgContrast">{theme}</h6>
+    </div>
+  );
 };
 
 export default ThemeSwitcher;

@@ -17,7 +17,17 @@ interface Particle {
   originalY: number;
 }
 
-const ParticleField: React.FC = () => {
+interface ParticleFieldProps {
+  color: string;
+}
+
+// Parse RGB color string to an array of numbers
+const parseRGBColor = (rgbString: string): number[] => {
+  const match = rgbString.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
+  return match ? [parseInt(match[1]), parseInt(match[2]), parseInt(match[3])] : [0, 0, 0];
+};
+
+const ParticleField: React.FC<ParticleFieldProps> = ({ color }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -133,13 +143,15 @@ const ParticleField: React.FC = () => {
       imageData = ctx.createImageData(canvas.width, canvas.height);
       pixelArray = imageData.data;
 
+      const [r, g, b] = parseRGBColor(color);
+
       for (index = 0; index < PARTICLE_COUNT; index++) {
         currentParticle = particleList[index];
         const pixelIndex = (~~currentParticle.currentX + (~~currentParticle.currentY * canvas.width)) * 4;
         
-        pixelArray[pixelIndex]     = 150;  // Red channel
-        pixelArray[pixelIndex + 1] = 132;  // Green channel
-        pixelArray[pixelIndex + 2] = 135;  // Blue channel
+        pixelArray[pixelIndex]     = r;  // Red channel
+        pixelArray[pixelIndex + 1] = g;  // Green channel
+        pixelArray[pixelIndex + 2] = b;  // Blue channel
         pixelArray[pixelIndex + 3] = 100;  // Alpha channel
       }
 
@@ -160,10 +172,10 @@ const ParticleField: React.FC = () => {
       container.removeEventListener('mouseleave', handleMouseLeave);
       window.removeEventListener('resize', resizeCanvas);
     };
-  }, []);
+  }, [color]);
 
   return (
-    <div ref={containerRef} className="fixed inset-4 md:inset-8 z-0">
+    <div ref={containerRef} className="fixed inset-4 md:inset-8">
       <canvas 
         ref={canvasRef} 
         className="w-full h-full" 
