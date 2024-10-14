@@ -2,14 +2,14 @@
 
 import '@/styles/globals.scss';
 import React, { useState } from 'react';
-import ParticleField from '@/app/components/particleField';
-import Header from '@/app/components/sections/header';
-import ThemeSwitcher from '@/app/components/sections/themeSwitcher';
-import BusinessCard from "@/app/components/businessCard";
-import About from '@/app/components/sections/aboutSection/about';
-import Experience from '@/app/components/sections/experienceSection/experience';
-import Works from '@/app/components/sections/worksSection/works';
-import LogoLoader from '@/app/components/sections/loader';
+import ParticleField from '@/components/particleField';
+import Header from '@/components/sections/header';
+import ThemeSwitcher from '@/components/sections/themeSwitcher';
+import BusinessCard from "@/components/businessCard";
+import About from '@/app/about/about';
+import Experience from '@/app/experience/experience';
+import Works from '@/app/works/works';
+import LogoLoader from '@/components/sections/loader';
 
 interface HomeProps {
   initialSection?: string;

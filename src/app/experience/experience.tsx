@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import '@/styles/globals.scss';
-import SectionTitle from '@/app/components/sectionTitle';
+import SectionTitle from '@/components/sectionTitle';
 import { experienceContent } from '@/data/experienceContent';
 
 const Experience: React.FC = () => {

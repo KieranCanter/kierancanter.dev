@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub, faLinkedin, faBehance, faCodepen } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import Link from 'next/link';
-import LogoSVG from '@/app/components/logoSVG';
+import LogoSVG from '@/components/logoSVG';
 
 // Define social media links
 const socialLinks = [

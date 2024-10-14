@@ -1,7 +1,6 @@
 import React from 'react';
 import '@/styles/globals.scss';
-import SectionTitle from '@/app/components/sectionTitle';
-import Image from 'next/image';
+import SectionTitle from '@/components/sectionTitle';
 import { aboutContent } from '@/data/aboutContent';
 
 const About: React.FC = () => {

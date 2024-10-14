@@ -1,5 +1,5 @@
 import Home from '@/app/home';
 
 export default function WorksPage() {
-    return <Home initialSection="worksSection" />;
+    return <Home initialSection="works" />;
   }
