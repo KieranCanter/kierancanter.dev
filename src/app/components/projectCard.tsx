@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
+'use client';
+
+import React, { useState, useContext } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { faUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
+import { ThemeContext } from '@/context/themeContext';
 
 interface ProjectCardProps {
   title: string;
@@ -23,6 +26,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   projectUrl
 }) => {
   const [isHovered, setIsHovered] = useState(false);
+  const { theme } = useContext(ThemeContext);
 
   return (
     <div 
@@ -41,18 +45,17 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
       </div>
 
       {/* Gradient Overlay */}
-      <div className={`absolute inset-0 bg-gradient-to-t from-black/70 to-transparent transition-opacity duration-[250ms] ${isHovered ? 'opacity-0' : 'opacity-100'}`} />
+      <div className={`absolute inset-0 bg-gradient-to-t from-bg to-transparent transition-opacity duration-[250ms] ${isHovered ? 'opacity-0' : 'opacity-100'}`} />
 
       {/* Title */}
       <div className={`absolute inset-0 flex items-center justify-center transition-opacity duration-[250ms] ${isHovered ? 'opacity-0' : 'opacity-100'}`}>
-        <h1 className="text-2xl font-bold text-fgContrast px-4 py-2 text-center drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)">
+        <h1 className="text-2xl font-bold text-fgContrast px-4 py-2 text-center drop-shadow-[0_0.15rem_0.08rem_rgba(0,0,0,0.5)]">
           {title}
         </h1>
       </div>
 
       {/* Hover content */}
-      <div className={`relative flex flex-col w-full h-full z-10 bg-black/75 p-3 md:p-5 transition-opacity duration-[250ms] ${isHovered ? 
-      'opacity-100' : 'opacity-0'}`}>
+      <div className={`relative flex flex-col w-full h-full z-10  p-3 md:p-5 transition-opacity duration-[250ms] ${isHovered ? 'opacity-100' : 'opacity-0'} ${theme === 'plush' || theme === 'brilliant' ? 'bg-gray-200/10' : 'bg-black/70'}`}>
         <h1 className="text-2xl font-bold text-fgContrast mb-4 selection:bg-fgContrast">{title}</h1>
         <p className="text-fgHard text-sm mb-4 overflow-y-auto flex-grow selection:bg-fgHard" dangerouslySetInnerHTML={{ __html: description }} />
 
