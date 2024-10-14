@@ -1,6 +1,6 @@
-import '@/styles/globals.scss';
-import LogoLoaderWrapper from '@/app/components/loaderWrapper';
+import Home from '@/app/home';
 
 export default function Page() {
-  return <LogoLoaderWrapper />;
+  return <Home initialSection="businessCard" />;
 }
+

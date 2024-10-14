@@ -77,7 +77,7 @@ export default function RootLayout({
         <link rel="shortcut icon" href="/favicon.ico" />
 
       </head>
-      <body className="antialiased">
+      <body className="antialiased bg-bg text-fgSoft">
         <ThemeProvider>
           <a href="#main-content" className="sr-only focus:not-sr-only">Skip to main content</a>
           {children}
