@@ -175,7 +175,7 @@ const ParticleField: React.FC<ParticleFieldProps> = ({ color }) => {
   }, [color]);
 
   return (
-    <div ref={containerRef} className="fixed inset-4 md:inset-8">
+    <div ref={containerRef} className="fixed inset-4 lg:inset-8">
       <canvas 
         ref={canvasRef} 
         className="w-full h-full" 

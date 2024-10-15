@@ -15,7 +15,7 @@ const Header: React.FC<HeaderProps> = ({ setCurrentSection }) => {
   };
 
   return (
-    <nav id="header-links" className="relative flex flex-row justify-between items-center w-fit h-fit mx-auto mt-4 gap-8">
+    <nav id="header-links" className="pointer-events-none [&_*]:pointer-events-auto relative flex flex-row justify-between items-center w-fit h-fit mx-auto my-4 md:max-lg:ml-4 gap-8">
       <button
         onClick={() => handleSectionClick('businessCard')}
         className={`header-link ${selectedSection === 'businessCard' ? 'text-fgContrast' : 'text-fgSoft'}`}

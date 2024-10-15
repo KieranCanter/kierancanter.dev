@@ -116,7 +116,7 @@ export default function BusinessCard() {
     <div 
       ref={businessCardRef as React.RefObject<HTMLDivElement>}
       id="business-card" 
-      className="flex flex-col justify-between aspect-[7/4] w-[calc(100dvw-4rem)] md:w-[30rem] md:min-w-[28rem] h-auto p-2 lg:p-3 text-[#1e1e1e] bg-[#f8f5ec] rounded-sm [box-shadow:0rem_0.1rem_0.4rem_0rem_rgba(0,_0,_0,_0.3)] selection:bg-[#1e1e1e] selection:text-[#f8f5ec]" 
+      className="flex flex-col justify-between aspect-[7/4] w-[calc(100vw-4rem)] md:w-[30rem] md:min-w-[24rem] h-auto m-auto p-2 lg:p-3 text-[#1e1e1e] bg-[#f8f5ec] rounded-sm [box-shadow:0rem_0.1rem_0.4rem_0rem_rgba(0,_0,_0,_0.3)] selection:bg-[#1e1e1e] selection:text-[#f8f5ec]"
       aria-label="Kieran Canter's Business Card"
     >
       
