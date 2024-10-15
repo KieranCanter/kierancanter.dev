@@ -5,7 +5,7 @@ import { experienceContent } from '@/data/experienceContent';
 const Experience: React.FC = () => {
 
   return (
-    <div id="text-container" className="relative flex flex-col gap-4 w-full lg:w-kic-width h-auto m-4 lg:m-auto overflow-y-auto scrollbox">
+    <div id="text-container" className="relative flex flex-col gap-4 w-full lg:w-kic-width h-auto m-4 lg:m-auto overflow-y-auto scrollbox pointer-events-none [&_*]:pointer-events-auto">
       <div className="relative flex flex-col justify-between gap-2 w-full h-fit p-4 bg-black/10 rounded-sm">
         <h4 className="font-ibm-plex-sans text-base text-fgContrast font-semibold" dangerouslySetInnerHTML={{ __html: experienceContent[0].position}}></h4>
         <div className="flex flex-row justify-between items-end">

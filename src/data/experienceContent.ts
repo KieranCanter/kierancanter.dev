@@ -15,7 +15,7 @@ export const experienceContent = [
     id: 'tab2',
     position: 'Petroleum Supply Specialist (92F)',
     company: 'U.S. Army Reserve',
-    period: 'Mar. 2019 — Mar. 2025',
+    period: 'Mar. 2019 — Present',
     bullets: [
       'As Platoon Guide, <span class="highlight">led a 50-man unit through high-pressure challenges</span> including ruck marches, emergency field care & aid, and patrol base establishment',
       '<span class="highlight">Led small teams (≤7 personnel)</span> in conducting fuel operations, coordinating the issue and receipt of over 20,000 gallons of diesel fuel with precision',

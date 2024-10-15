@@ -5,7 +5,7 @@ import ProjectCard from '@/components/projectCard';
 
 const Experience: React.FC = () => {
   return (
-    <div className="flex flex-col w-[calc(100%-4rem)] xl:w-kic-width justify-center items-center">
+    <div className="flex flex-col w-[calc(100%-4rem)] lg:w-kic-width justify-center items-center">
       <SectionTitle title="Works" />
       <div className="w-full h-full flex flex-col mt-8">
         <ProjectCard 
