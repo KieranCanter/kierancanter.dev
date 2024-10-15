@@ -29,12 +29,16 @@ const Home: React.FC<HomeProps> = ({ initialSection = 'businessCard' }) => {
     switch (currentSection) {
       case 'about':
         return (
-          <div className="relative flex overflow-hidden">
+          <div className="relative flex overflow-hidden pointer-events-none [&_*]:pointer-events-auto">
             <About />
           </div>
         );
       case 'experience':
-        return <Experience />;
+        return (
+          <div className="relative flex flex-[2] overflow-hidden pointer-events-none [&_*]:pointer-events-auto">
+            <Experience />
+          </div>
+        );
       case 'works':
         return <Works />;
       case 'businessCard':
@@ -49,7 +53,7 @@ const Home: React.FC<HomeProps> = ({ initialSection = 'businessCard' }) => {
 
   return (
     <div className="relative h-screen bg-bg text-fgSoft selection:bg-fgSoft selection:text-bg p-4 lg:p-8">
-      <div className="relative flex flex-col h-full justify-between border border-fgHard min-h-[calc(100vh-2rem)] md:min-h-[calc(100vh-4rem)]">
+      <div className="relative flex flex-col h-full justify-between md:max-lg:justify-start border border-fgHard min-h-[calc(100vh-2rem)] md:min-h-[calc(100vh-4rem)]">
         <ParticleField color="rgb(110, 110, 110)" />
         {isLoading ? (
           <LogoLoader onAnimationComplete={handleAnimationComplete} />
