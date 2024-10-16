@@ -10,7 +10,7 @@ export const worksContent = [
     project: 'FlipReady: Bakkesmod Plugin for Rocket League',
     githubURL: 'https://github.com/kierancanter/flipready',
     projectURL: 'https://bakkesplugins.com/plugins/view/401',
-    description: "Plugin for the popular Rocket League mod, Bakkesmod. Highly customizable text indicator with decaying gauge bar to visualize the status of your air roll/double jump (for training purposes only). Written using the Bakkesmod SDK. Currently amassed 10,116 views and 4,405 downloads.",
+    description: "Plugin for the popular Rocket League mod, BakkesMod. Highly customizable text indicator with decaying gauge bar to visualize the status of your air roll/double jump (for training purposes only). Written using the Bakkesmod SDK. Currently amassed 10,116 views and 4,405 downloads.",
     technologies: ['C++'],
   },
   {
