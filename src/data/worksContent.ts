@@ -22,7 +22,7 @@ export const worksContent = [
   {
     project: 'Simple Blackjack',
     githubURL: 'https://github.com/KieranCanter/SimpleBlackjack',
-    description: "Simple collaborative blackjack mobile application written for Android using Android Studio. Utilizes a Model-View-Controller architectural pattern. Automated builds and dependency management using Gradle.",
+    description: "Simple, collaborative blackjack mobile application written for Android using Android Studio. Utilizes a Model-View-Controller architectural pattern. Automated builds and dependency management using Gradle.",
     technologies: ['Kotlin'],
   },
 

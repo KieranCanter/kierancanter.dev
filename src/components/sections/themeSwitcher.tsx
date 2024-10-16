@@ -1,122 +1,49 @@
 'use client';
 
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { ThemeContext } from '@/context/themeContext';
 import '@/styles/variables.scss';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
 
 const ThemeSwitcher: React.FC = () => {
-  type Theme = 'plush' | 'sombre' | 'brilliant' | 'luminous';
   const { theme, setTheme } = useContext(ThemeContext);
-  const [toneIcon, setToneIcon] = useState(theme === 'plush' || theme === 'brilliant' ? faMoon : faSun);
-  const toneDuration = 250;
-  const colorDuration = 500;
+  
+  const isDarkMode = theme === 'sombre' || theme === 'luminous';
+  const isColorfulMode = theme === 'brilliant' || theme === 'luminous';
 
-  const toggleTheme = (newTheme: Theme) => {
-    setTheme(newTheme);
-  };
-
-  const animateToneIcon = () => {
-    const toneIconRef = document.getElementById('tone-icon');
-    if (toneIconRef) {
-      toneIconRef.animate([
-        { transform: 'rotate(0deg) scale(1)', offset: 0 },
-        { transform: 'rotate(360deg) scale(0)', offset: 0.5 },
-        { transform: 'rotate(720deg) scale(1)', offset: 1 }
-      ], {
-        duration: toneDuration,
-        easing: 'ease-in-out',
-        fill: 'forwards'
-      });
-
-      // Change the icon after 125ms
-      setTimeout(() => {
-        setToneIcon(theme === 'plush' || theme === 'brilliant' ? faSun : faMoon);
-      }, toneDuration / 2);
+  const toggleDarkMode = () => {
+    if (isColorfulMode) {
+      setTheme(isDarkMode ? 'brilliant' : 'luminous');
+    } else {
+      setTheme(isDarkMode ? 'plush' : 'sombre');
     }
   };
 
-  const trefoilStartLeft = ['50%', '40%', '60%'];
-  const trefoilStartTop = ['40%', '60%', '60%'];
-  const animateTrefoils = () => {
-    const trefoils = [1, 2, 3];
-
-    trefoils.forEach((idx: number) => {
-      const trefoil = document.getElementById('trefoil' + `${idx}`);
-      if (trefoil) {
-
-        trefoil.animate(
-          [
-            { left: trefoilStartLeft[idx - 1], top: trefoilStartTop[idx - 1], scale: 1, offset: 0 },
-            { top: '50%', left: '50%', scale: 1, offset: 0.25 },
-            { top: '50%', left: '50%', scale: 1, offset: 0.75 },
-            { scale: 1.1, offset: 0.8 },
-            { scale: 1.1, offset: 0.9 },
-            { left: trefoilStartLeft[idx - 1], top: trefoilStartTop[idx - 1], scale: 1, offset: 1 },
-          ],
-          {
-            duration: colorDuration,
-            easing: 'ease-in-out',
-            fill: 'forwards',
-          }
-        );
-      }
-    });
+  const toggleColorfulMode = () => {
+    if (isDarkMode) {
+      setTheme(isColorfulMode ? 'sombre' : 'luminous');
+    } else {
+      setTheme(isColorfulMode ? 'plush' : 'brilliant');
+    }
   };
 
-  const toggleDarkMode = () => {
-    animateToneIcon();
-    setTimeout(() => {
-      if (theme === 'plush') {
-        toggleTheme('sombre');
-      } else if (theme === 'sombre') {
-        toggleTheme('plush');
-      } else if (theme === 'brilliant') {
-        toggleTheme('luminous');
-      } else {
-        toggleTheme('brilliant');
-      }
-    }, toneDuration / 2);
-  };
-
-  const toggleColorful = () => {
-    animateTrefoils();
-    setTimeout(() => {
-      if (theme === 'plush') {
-        toggleTheme('brilliant');
-      } else if (theme === 'brilliant') {
-        toggleTheme('plush');
-      } else if (theme === 'sombre') {
-        toggleTheme('luminous');
-      } else {
-        toggleTheme('sombre');
-      }
-    }, colorDuration / 2);
-  };
+  const ThemeToggle = ({ label, isActive, onToggle }: { label: string; isActive: boolean; onToggle: () => void }) => (
+    <div className="flex items-center gap-2">
+      <h4 className="max-lg:hidden font-ibm-plex-sans text-base font-light text-fgSoft">{label}</h4>
+      <div className="relative w-20 lg:w-4 h-10 lg:h-4 cursor-pointer transition duration-[250ms]" onClick={onToggle}>
+        <div className="absolute flex items-center justify-center inset-0 border border-fgHard">
+          <h4 className="lg:hidden font-ibm-plex-sans text-base font-light text-fgSoft">{label}</h4>
+        </div>
+        <div className={`absolute inset-0 ${isActive ? 'bg-fgHard opacity-40 lg:opacity-60' : ''}`}></div>
+      </div>
+    </div>
+  );
 
   return (
-    <div className="flex flex-row relative justify-end items-end md:items-start gap-4 pointer-events-none [&_*]:pointer-events-auto">
-      <h6 id="theme-text" className="text-sm md:text-base text-fgContrast selection:bg-fgContrast">     
-        {theme}
-      </h6>
-      <div id="theme-switcher" className="flex flex-row items-start justify-center gap-4 w-fit" aria-label="Theme Switcher">
-        <button id="tone-button" className="group theme-button-classes" 
-          onClick={toggleDarkMode} aria-label="Toggle Dark Mode">
-            <FontAwesomeIcon
-              id="tone-icon"
-              icon={toneIcon}
-              className="fa-sharp fa-regular text-toneColor text-lg lg:text-2xl opacity-60 group-hover:opacity-100 transition-all duration-[250ms]"
-              aria-hidden="true"
-            />
-        </button>
-        <button id="color-button" className="group theme-button-classes"
-          onClick={toggleColorful} aria-label="Toggle Colorful Mode">
-          <div id="trefoil1" className="trefoil-classes bg-trefoil1 left-[50%] top-[40%] opacity-80 z-30"></div>
-          <div id="trefoil2" className="trefoil-classes bg-trefoil2 left-[40%] top-[60%] opacity-80 z-20"></div>
-          <div id="trefoil3" className="trefoil-classes bg-trefoil3 left-[60%] top-[60%] opacity-80 z-10"></div>
-        </button>
-      </div>
+    <div className="flex flex-row lg:flex-col gap-4 items-end md:max-lg:items-start">
+      <h6 className="lg:hidden text-sm text-fgContrast">{theme}</h6>
+      <ThemeToggle label="Dark" isActive={isDarkMode} onToggle={toggleDarkMode} />
+      <ThemeToggle label="Colorful" isActive={isColorfulMode} onToggle={toggleColorfulMode} />
+      <h6 className="max-lg:hidden text-sm text-fgContrast">{theme}</h6>
     </div>
   );
 };
