@@ -162,7 +162,7 @@ export default function BusinessCard() {
             <Link 
               key={link.title}
               href={link.href} 
-              title={`Kieran's ${link.title}`} 
+              title={`${link.title}`} 
               className="hover:text-gray-500 active:opacity-85 transition-all duration-[250ms]"
               aria-label={`${link.title}: ${link.href}`}
               target="_blank"
