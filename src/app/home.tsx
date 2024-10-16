@@ -29,26 +29,26 @@ const Home: React.FC<HomeProps> = ({ initialSection = 'businessCard' }) => {
     switch (currentSection) {
       case 'about':
         return (
-          <div className="relative flex flex-[2] m-4 lg:m-0 lg:absolute lg:top-1/2 lg:left-1/2 lg:-translate-x-1/2 lg:-translate-y-1/2 overflow-y-auto pointer-events-none [&_*]:pointer-events-auto">
+          <div className="relative flex flex-[2] m-4 lg:mx-auto lg:mt-0 lg:mb-8 overflow-y-auto pointer-events-none [&_*]:pointer-events-auto">
             <About />
           </div>
         );
       case 'experience':
         return (
-          <div className="relative flex flex-[2] m-4 lg:m-0 lg:absolute lg:top-1/2 lg:left-1/2 lg:-translate-x-1/2 lg:-translate-y-1/2 lg:max-h-[calc(100vh-16rem)] overflow-y-auto pointer-events-none">
+          <div className="relative flex flex-[2] m-4 lg:mx-auto lg:mt-0 lg:mb-8 file:overflow-y-auto pointer-events-none">
             <Experience />
           </div>
         );
       case 'works':
         return (
-          <div className="relative flex flex-[2] m-4 lg:m-0 lg:absolute lg:top-1/2 lg:left-1/2 lg:-translate-x-1/2 lg:-translate-y-1/2 lg:max-h-[calc(100vh-16rem)] overflow-y-auto">
+          <div className="relative flex flex-[2] m-4 lg:mx-auto lg:mt-0 lg:mb-8 overflow-y-auto">
             <Works />
           </div>
         );
       case 'businessCard':
       default:
         return (
-          <div className="relative flex m-auto md:max-lg:mt-0 pointer-events-none lg:absolute lg:top-1/2 lg:left-1/2 lg:-translate-x-1/2 lg:-translate-y-1/2 lg:max-h-[calc(100vh-16rem)] [&_*]:pointer-events-auto">
+          <div className="relative flex m-auto lg:absolute lg:top-1/2 lg:left-1/2 lg:-translate-x-1/2 lg:-translate-y-1/2 pointer-events-none [&_*]:pointer-events-auto">
             <BusinessCard />
           </div>
         );
@@ -56,7 +56,7 @@ const Home: React.FC<HomeProps> = ({ initialSection = 'businessCard' }) => {
   };
 
   return (
-    <div className="relative h-screen bg-bg text-fgSoft selection:bg-fgSoft selection:text-bg p-4 lg:p-8">
+    <div className="relative h-screen bg-bg text-fgSoft p-4 lg:p-8">
       <div className="relative flex flex-col h-full justify-between border border-fgHard min-h-[calc(100vh-2rem)] md:min-h-[calc(100vh-4rem)]">
         <ParticleField color="rgb(110, 110, 110)" />
         {isLoading ? (
@@ -73,7 +73,6 @@ const Home: React.FC<HomeProps> = ({ initialSection = 'businessCard' }) => {
                   <ThemeSwitcher />
                 </div>
               </header>
-
               {renderSection()}
               <div className="md:hidden relative flex justify-end m-4 pointer-events-none">
                 <ThemeSwitcher />
