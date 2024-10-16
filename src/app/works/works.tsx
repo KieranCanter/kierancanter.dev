@@ -1,24 +1,49 @@
 import React from 'react';
 import '@/styles/globals.scss';
-import SectionTitle from '@/components/sectionTitle';
-import ProjectCard from '@/components/projectCard';
+import { worksContent } from '@/data/worksContent';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
+import { faGithub } from '@fortawesome/free-brands-svg-icons';
+import Link from 'next/link';
 
-const Experience: React.FC = () => {
+const Works: React.FC = () => {
   return (
-    <div className="flex flex-col w-[calc(100%-4rem)] lg:w-kic-width justify-center items-center">
-      <SectionTitle title="Works" />
-      <div className="w-full h-full flex flex-col mt-8">
-        <ProjectCard 
-          title="kierancanter.dev" 
-          description="Hardware: The parts of a computer system that can be kicked. (Jeff Pesis) I think Microsoft named .Net so it wouldn’t show up in a Unix directory listing.(Oktal)<br><br>Optimism is an occupational hazard of programming; feedback is the treatment. (Kent Beck)<br><br>There are only two industries that refer to their customers as ‘users’. (Edward Tufte)<br><br>There are only two industries that refer to their customers as ‘users’. (Edward Tufte)"
-          technologies={["React.js", "Next.js", "TypeScript", "Tailwind CSS", "Node.js"]} 
-          imageUrl="/images/projectcard-kcdev2.png"
-          githubUrl="https://github.com/KieranCanter/kierancanter.dev" 
-          projectUrl="https://kierancanter.dev"
-        />
-      </div>
+    <div id="text-container" className="relative flex flex-col gap-4 w-full lg:w-kic-width h-fit pointer-events-none [&_*]:pointer-events-auto">
+      {worksContent.map((work, index) => (
+        <div key={index} className="relative flex flex-col justify-between gap-2 w-full p-4 bg-black/10 rounded-sm transition-colors duration-[250ms] lg:hover:bg-black/20">
+          <div className="w-full h-fit flex flex-row justify-between items-start md:items-center">
+            
+            <Link href={work.githubURL} passHref target="_blank" rel="noopener noreferrer">
+              <h4 className="relative w-fit font-ibm-plex-sans text-base lg:text-lg text-fgHard font-semibold selection:bg-fgHard hover:text-fgContrast hover:selection:bg-fgContrast transition-colors duration-[250ms]" dangerouslySetInnerHTML={{ __html: work.project }}></h4>
+            </Link>
+            
+            <div className="relative flex flex-row gap-4">
+              {work.projectURL && (
+                <Link href={work.projectURL} passHref target="_blank" rel="noopener noreferrer">
+                  <FontAwesomeIcon icon={faUpRightFromSquare} className="text-fgHard text-lg hover:text-fgContrast transition-colors duration-[250ms]" />
+                </Link>
+              )}
+              <Link href={work.githubURL} passHref target="_blank" rel="noopener noreferrer">
+                <FontAwesomeIcon icon={faGithub} className="text-fgHard text-lg hover:text-fgContrast transition-colors duration-[250ms]" />
+              </Link>
+            </div>
+            
+          </div>
+          
+          <p className="text-fgSoft text-sm lg:text-base font-ibm-plex-sans font-light" dangerouslySetInnerHTML={{ __html: work.description }} />
+
+          <div className="flex flex-wrap gap-2 mt-2">
+            {work.technologies.map((tech, techIndex) => (
+              <h6 key={techIndex} className="text-xs font-bold bg-fgContrast text-bg px-2 py-1 rounded-sm selection:bg-bg selection:text-fgContrast">
+                {tech}
+              </h6>
+            ))}
+          </div>
+
+        </div>
+      ))}
     </div>
   );
 };
 
-export default Experience;
+export default Works;
