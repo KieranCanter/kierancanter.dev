@@ -35,7 +35,7 @@ const Home: React.FC<HomeProps> = ({ initialSection = 'businessCard' }) => {
         );
       case 'experience':
         return (
-          <div className="relative flex flex-[2] m-4 lg:mx-auto lg:mt-0 lg:mb-8 file:overflow-y-auto pointer-events-none">
+          <div className="relative flex flex-[2] m-4 lg:mx-auto lg:mt-0 lg:mb-8 overflow-y-auto pointer-events-none">
             <Experience />
           </div>
         );
