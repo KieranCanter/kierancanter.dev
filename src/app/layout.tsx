@@ -55,29 +55,29 @@ export default function RootLayout({
         <meta name="theme-color" content="#FFFFFF" />
 
         {/* SVG favicon for modern browsers */}
-        <link rel="icon" type="image/svg+xml" sizes="any" href="/assets/images/favicons/SVG/favicon.svg" />
+        <link rel="icon" type="image/svg+xml" sizes="any" href="/images/favicons/SVG/favicon.svg" />
 
         {/* Standard Favicons */}
-        <link rel="icon-light" type="image/png" sizes="16x16" href="/assets/images/favicons/PNG/favicon-light_16.png" />
-        <link rel="icon-light" type="image/png" sizes="32x32" href="/assets/images/favicons/PNG/favicon-light_32.png" />
-        <link rel="icon-light" type="image/png" sizes="512x512" href="/assets/images/favicons/PNG/favicon-light_512.png" />
-        <link rel="icon-dark" type="image/png" sizes="16x16" href="/assets/images/favicons/PNG/favicon-dark_16.png" />
-        <link rel="icon-dark" type="image/png" sizes="32x32" href="/assets/images/favicons/PNG/favicon-dark_32.png" />
-        <link rel="icon-dark" type="image/png" sizes="512x512" href="/assets/images/favicons/PNG/favicon-dark_512.png" />
+        <link rel="icon-light" type="image/png" sizes="16x16" href="/images/favicons/PNG/favicon-light_16.png" />
+        <link rel="icon-light" type="image/png" sizes="32x32" href="/images/favicons/PNG/favicon-light_32.png" />
+        <link rel="icon-light" type="image/png" sizes="512x512" href="/images/favicons/PNG/favicon-light_512.png" />
+        <link rel="icon-dark" type="image/png" sizes="16x16" href="/images/favicons/PNG/favicon-dark_16.png" />
+        <link rel="icon-dark" type="image/png" sizes="32x32" href="/images/favicons/PNG/favicon-dark_32.png" />
+        <link rel="icon-dark" type="image/png" sizes="512x512" href="/images/favicons/PNG/favicon-dark_512.png" />
         
         {/* Android Icon */}
-        <link rel="icon-light" sizes="192x192" href="/assets/images/favicons/PNG/favicon-light_android.png" />
-        <link rel="icon-dark" sizes="192x192" href="/assets/images/favicons/PNG/favicon-dark_android.png" />
+        <link rel="icon-light" sizes="192x192" href="/images/favicons/PNG/favicon-light_android.png" />
+        <link rel="icon-dark" sizes="192x192" href="/images/favicons/PNG/favicon-dark_android.png" />
 
         {/* Apple Touch Icon */}
-        <link rel="apple-touch-icon-light" sizes="180x180" href="/assets/images/favicons/PNG/favicon-light_apple.png" />
-        <link rel="apple-touch-icon-dark" sizes="180x180" href="/assets/images/favicons/PNG/favicon-dark_apple.png" />
+        <link rel="apple-touch-icon-light" sizes="180x180" href="/images/favicons/PNG/favicon-light_apple.png" />
+        <link rel="apple-touch-icon-dark" sizes="180x180" href="/images/favicons/PNG/favicon-dark_apple.png" />
 
         {/* For Legacy Systems */}
         <link rel="shortcut icon" href="/favicon.ico" />
 
       </head>
-      <body className="antialiased">
+      <body className="antialiased bg-bg text-fgSoft selection:text-bg selection:bg-fgSoft">
         <ThemeProvider>
           <a href="#main-content" className="sr-only focus:not-sr-only">Skip to main content</a>
           {children}

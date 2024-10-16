@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub, faLinkedin, faBehance, faCodepen } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import Link from 'next/link';
-import LogoSVG from '@/app/components/logoSVG';
+import LogoSVG from '@/components/logoSVG';
 
 // Define social media links
 const socialLinks = [
@@ -46,8 +46,8 @@ export default function BusinessCard() {
       const deltaGamma = event.gamma - initialGamma;
 
       // Cap the range at -89/89 degrees
-      const tiltX = Math.min(Math.max(deltaBeta, -89), 89);
-      const tiltY = Math.min(Math.max(deltaGamma, -89), 89);
+      const tiltX = Math.min(Math.max(deltaBeta, -45), 45);
+      const tiltY = Math.min(Math.max(deltaGamma, -45), 45);
 
       // Check the orientation and apply the appropriate rotation
       if (window.matchMedia('(orientation: portrait)').matches) {
@@ -116,7 +116,7 @@ export default function BusinessCard() {
     <div 
       ref={businessCardRef as React.RefObject<HTMLDivElement>}
       id="business-card" 
-      className="flex flex-col justify-between relative aspect-[7/4] w-[28rem] md:w-[32rem] min-w-[28rem] h-auto mx-4 p-2 lg:p-3 text-[#1e1e1e] bg-[#f8f5ec] rounded-[0.1rem] [box-shadow:0rem_0.1rem_0.4rem_0rem_rgba(0,_0,_0,_0.3)] selection:bg-[#1e1e1e] selection:text-[#f8f5ec]" 
+      className="flex flex-col justify-between aspect-[7/4] w-[calc(100vw-4rem)] md:h-auto md:max-w-[28rem] lg:max-w-[30rem] h-auto p-2 lg:p-3 text-[#1e1e1e] bg-[#f8f5ec] rounded-sm [box-shadow:0rem_0.1rem_0.4rem_0rem_rgba(0,_0,_0,_0.3)] selection:bg-[#1e1e1e] selection:text-[#f8f5ec]"
       aria-label="Kieran Canter's Business Card"
     >
       
@@ -148,9 +148,9 @@ export default function BusinessCard() {
 
       <div id="centerpiece" className = "flex flex-col flex-[60%] w-fit mx-auto justify-between h-fit">
 
-        <div id="me" className="flex flex-col mx-auto w-fit h-fit items-center font-spectral-sc justify-center" aria-labelledby="name title">
-          <h1 id="name" className="text-base lg:text-lg font-bold">Kieran CANTER</h1>
-          <h2 id="title" className="text-xs lg:text-sm font-semibold">Computer Scientist</h2>
+        <div id="me" className="flex flex-col mx-auto w-fit h-fit items-center justify-center" aria-labelledby="name title">
+          <h2 id="name" className="text-base lg:text-lg font-bold">Kieran CANTER</h2>
+          <h3 id="title" className="text-xs lg:text-sm font-semibold">Software Engineer</h3>
         </div>
 
         <nav 

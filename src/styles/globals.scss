@@ -10,7 +10,7 @@
 @mixin font-face($family, $file, $weight, $style) {
   @font-face {
     font-family: $family;
-    src: url('/assets/fonts/#{$file}.ttf') format('truetype');
+    src: url('/fonts/#{$file}.ttf') format('truetype');
     font-weight: $weight;
     font-style: $style;
     font-display: swap;
@@ -91,6 +91,22 @@
   }
 }
 
+h2, h3 {
+  @apply font-spectral-sc;
+}
+
+h1 {
+  @apply font-ibm-plex-serif;
+}
+
+p, h4, h5 {
+  @apply font-ibm-plex-sans;
+}
+
+h6 {
+  @apply font-ibm-plex-mono;
+}
+
 // Tailwind  Utilities
 @layer utilities {
   .text-balance {
@@ -98,20 +114,26 @@
   }
 }
 
-.selection-default > * {
-  @apply selection:bg-fgSoft selection:text-bg;
-}
-
-.trefoil-classes {
-  @apply absolute aspect-square w-3 md:w-4 h-auto rounded-full transition-all duration-[250ms] transform -translate-x-1/2 -translate-y-1/2 group-hover:opacity-100;
-}
-
-.theme-button-classes {
-  @apply relative flex items-center justify-center aspect-square w-10 md:w-12 h-auto cursor-pointer bg-fgSoft border-[0.2rem] border-fgSoft rounded-sm transition-all duration-[250ms] hover:shadow-black hover:shadow-[0_0.5rem_0.5rem_-0.375rem] hover:-translate-y-1 hover:opacity-100 active:opacity-85
-}
-
 .header-link {
-  @apply text-fgHard text-[1rem] font-ibm-plex-sans font-semibold hover:text-fgContrast hover:selection:bg-fgContrast transition-all duration-[250ms];
+  @apply text-[1rem] font-ibm-plex-sans font-semibold hover:text-fgContrast hover:selection:bg-fgContrast transition-all duration-[250ms] !important;
+}
+
+.marker-arrow {
+  li {
+    &::marker {
+      content: '♦';
+      @apply text-fgContrast text-xs md:text-sm;
+    }
+    @apply pl-2;
+  }
+}
+
+.highlight {
+  @apply text-fgHard font-medium selection:bg-fgHard !important;
+}
+
+.text-link {
+  @apply text-fgContrast font-medium selection:bg-fgContrast hover:opacity-75 transition duration-[250ms] !important;
 }
 
 meta[name="theme-color"] {
@@ -122,48 +144,36 @@ met[name="apple-mobile-web-app-status-bar-style"] {
   content: var(--bg);
 }
 
-/* Scrollbar styles for Firefox */
-* {
-  scrollbar-width: thin;
-  scrollbar-color: var(--fg-soft) var(--bg);
+/* For browsers that support `scrollbar-*` properties */
+@supports (scrollbar-color: auto) {
+  .scrollbox {
+    scrollbar-color: var(--fg-soft) var(--bg);
+  }
 }
 
-/* Scrollbar styles for Webkit browsers (Chrome, Safari, newer versions of Edge) */
-::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
-}
+/* Otherwise, use `::-webkit-scrollbar-*` pseudo-elements */
+@supports selector(::-webkit-scrollbar) {
+  ::-webkit-scrollbar {
+    width: 0.5rem;
+    height: 0.5rem;
+    transition: all 0.25s ease;
+  }
 
-::-webkit-scrollbar-track {
-  background: var(--bg);
-  border-radius: 5px;
-}
+  ::-webkit-scrollbar-track {
+    background: var(--bg);
+  }
 
-::-webkit-scrollbar-thumb {
-  background-color: var(--fg-soft);
-  border-radius: 5px;
-  border: 2px solid var(--bg);
-}
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--fg-soft);
+    border-radius: 0.125rem;
+    border: 0rem solid var(--fg-soft);
+  }
 
-::-webkit-scrollbar-thumb:hover {
-  background-color: var(--fg-soft);
-  border: 1px solid var(--bg);
-}
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: var(--fg-soft);
+  }
 
-::-webkit-scrollbar-thumb:active {
-  background-color: var(--fg-hard);
-}
-
-/* For Internet Explorer and Edge (older versions) */
-body {
-  -ms-overflow-style: scrollbar;
-  scrollbar-base-color: var(--fg-soft);
-  scrollbar-face-color: var(--fg-soft);
-  scrollbar-3dlight-color: var(--fg-soft);
-  scrollbar-highlight-color: var(--fg-soft);
-  scrollbar-track-color: var(--bg);
-  scrollbar-shadow-color: var(--fg-soft);
-
-  background-color: var(--bg);
-  transition: background-color 0.25s ease;
+  ::-webkit-scrollbar-thumb:active {
+    background-color: var(--fg-hard);
+  }
 }

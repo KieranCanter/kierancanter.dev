@@ -10,82 +10,82 @@
   "orientation": "any",
   "icons": [
     {
-      "src": "/assets/images/PWA/pwa.svg",
+      "src": "/images/PWA/pwa.svg",
       "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "any maskable "
     },
     {
-      "src": "/assets/images/favicons/SVG/favicon.svg",
+      "src": "/images/favicons/SVG/favicon.svg",
       "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "any monochrome"
     },
     {
-      "src": "/assets/images/favicons/PNG/favicon-light_16.png",
+      "src": "/images/favicons/PNG/favicon-light_16.png",
       "sizes": "16x16",
       "type": "image/png",
       "purpose": "any",
       "theme": "light"
     },
     {
-      "src": "/assets/images/favicons/PNG/favicon-light_32.png",
+      "src": "/images/favicons/PNG/favicon-light_32.png",
       "sizes": "32x32",
       "type": "image/png",
       "purpose": "any",
       "theme": "light"
     },
     {
-      "src": "/assets/images/favicons/PNG/favicon-light_512.png",
+      "src": "/images/favicons/PNG/favicon-light_512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable",
       "theme": "light"
     },
     {
-      "src": "/assets/images/favicons/PNG/favicon-dark_16.png",
+      "src": "/images/favicons/PNG/favicon-dark_16.png",
       "sizes": "16x16",
       "type": "image/png",
       "purpose": "any",
       "theme": "dark"
     },
     {
-      "src": "/assets/images/favicons/PNG/favicon-dark_32.png",
+      "src": "/images/favicons/PNG/favicon-dark_32.png",
       "sizes": "32x32",
       "type": "image/png",
       "purpose": "any",
       "theme": "dark"
     },
     {
-      "src": "/assets/images/favicons/PNG/favicon-dark_512.png",
+      "src": "/images/favicons/PNG/favicon-dark_512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable",
       "theme": "dark"
     },
     {
-      "src": "/assets/images/favicons/PNG/favicon-light_android.png",
+      "src": "/images/favicons/PNG/favicon-light_android.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable",
       "theme": "light"
     },
     {
-      "src": "/assets/images/favicons/PNG/favicon-dark_android.png",
+      "src": "/images/favicons/PNG/favicon-dark_android.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable",
       "theme": "dark"
     },
     {
-      "src": "/assets/images/favicons/PNG/favicon-light_apple.png",
+      "src": "/images/favicons/PNG/favicon-light_apple.png",
       "sizes": "180x180",
       "type": "image/png",
       "purpose": "any",
       "theme": "light"
     },
     {
-      "src": "/assets/images/favicons/PNG/favicon-dark_apple.png",
+      "src": "/images/favicons/PNG/favicon-dark_apple.png",
       "sizes": "180x180",
       "type": "image/png",
       "purpose": "any",

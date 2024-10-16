@@ -1,6 +1,6 @@
 import React from 'react';
 
-const logoSVG: React.FC = () => {
+const LogoSVG: React.FC = () => {
     return (
         <svg 
         xmlns="http://www.w3.org/2000/svg" 
@@ -16,4 +16,4 @@ const logoSVG: React.FC = () => {
     )
 }
 
-export default logoSVG;
+export default LogoSVG;

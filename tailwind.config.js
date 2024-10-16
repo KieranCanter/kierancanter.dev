@@ -3,9 +3,6 @@ module.exports = {
   content: [
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
-  future: {
-    hoverOnlyWhenSupported: true,
-  },
   theme: {
     extend: {
       colors: {
@@ -63,6 +60,12 @@ module.exports = {
           accent2: "var(--luminous-accent2)",
           accent3: "var(--luminous-accent3)",
         }
+      },
+      width: {
+        'kic-width': "var(--kic-width)"
+      },
+      margin: {
+        'kic-margin': "var(--kic-margin)"
       },
       fontFamily: {
         'spectral-sc': ['Spectral SC', 'Georgia', 'Times New Roman', 'serif'],
