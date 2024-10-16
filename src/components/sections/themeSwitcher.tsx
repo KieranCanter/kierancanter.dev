@@ -96,7 +96,7 @@ const ThemeSwitcher: React.FC = () => {
   };
 
   return (
-    <div className="section active flex flex-row lg:flex-col relative justify-end md:max-lg:absolute md:max-lg:top-0 md:max-lg:right-0 m-4 items-end md:items-center gap-4 pointer-events-none [&_*]:pointer-events-auto">
+    <div className="flex flex-row relative justify-end items-end md:items-start gap-4 pointer-events-none [&_*]:pointer-events-auto">
       <h6 id="theme-text" className="text-sm md:text-base text-fgContrast selection:bg-fgContrast">     
         {theme}
       </h6>
