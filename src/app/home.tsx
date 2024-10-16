@@ -56,7 +56,7 @@ const Home: React.FC<HomeProps> = ({ initialSection = 'businessCard' }) => {
   };
 
   return (
-    <div className="relative h-screen bg-bg text-fgSoft p-4 lg:p-8">
+    <div className="relative h-screen bg-bg text-fgSoft p-4 lg:p-8 transition-colors duration-[250ms]">
       <div className="relative flex flex-col h-full justify-between border border-fgHard min-h-[calc(100vh-2rem)] md:min-h-[calc(100vh-4rem)]">
         <ParticleField color="rgb(110, 110, 110)" />
         {isLoading ? (
