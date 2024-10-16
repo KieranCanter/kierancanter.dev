@@ -29,13 +29,13 @@ const Home: React.FC<HomeProps> = ({ initialSection = 'businessCard' }) => {
     switch (currentSection) {
       case 'about':
         return (
-          <div className="relative flex flex-[2] lg:absolute lg:top-1/2 lg:left-1/2 lg:-translate-x-1/2 lg:-translate-y-1/2 overflow-hidden pointer-events-none [&_*]:pointer-events-auto">
+          <div className="relative flex flex-[2] m-4 lg:m-0 lg:absolute lg:top-1/2 lg:left-1/2 lg:-translate-x-1/2 lg:-translate-y-1/2 overflow-hidden pointer-events-none [&_*]:pointer-events-auto">
             <About />
           </div>
         );
       case 'experience':
         return (
-          <div className="relative flex flex-[2] lg:absolute lg:top-1/2 lg:left-1/2 lg:-translate-x-1/2 lg:-translate-y-1/2 overflow-hidden pointer-events-none">
+          <div className="relative flex flex-[2] m-4 lg:m-0 lg:absolute lg:top-1/2 lg:left-1/2 lg:-translate-x-1/2 lg:-translate-y-1/2 overflow-hidden pointer-events-none">
             <Experience />
           </div>
         );
