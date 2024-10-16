@@ -4,7 +4,7 @@ export const worksContent = [
     githubURL: 'https://github.com/kierancanter/kierancanter.dev',
     projectURL: 'https://kierancanter.dev',
     description: "The website you're viewing. Heavily focused on responsive design, accessibility, and pixel-perfect attention to detail. Roughly designed in Figma. Component prototypes tested in CodePen. Coded and developed in Cursor. Hosted on AWS and deployed with Vercel.",
-    technologies: ['TypeScript', 'React', 'Next.js', 'Tailwind CSS'],
+    technologies: ['TypeScript', 'HTML5/CSS3', 'React', 'Next.js', 'Tailwind CSS'],
   },
   {
     project: 'FlipReady: Bakkesmod Plugin for Rocket League',
