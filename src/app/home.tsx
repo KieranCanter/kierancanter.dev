@@ -3,13 +3,13 @@
 import '@/styles/globals.scss';
 import React, { useState } from 'react';
 import ParticleField from '@/components/particleField';
-import Header from '@/components/sections/header';
-import ThemeSwitcher from '@/components/sections/themeSwitcher';
-import BusinessCard from '@/components/sections/businessCard';
+import Header from '@/components/header';
+import ThemeSwitcher from '@/components/themeSwitcher';
+import BusinessCard from '@/components/businessCard';
 import About from '@/app/about/about';
 import Experience from '@/app/experience/experience';
 import Works from '@/app/works/works';
-import LogoLoader from '@/components/sections/loader';
+import LogoLoader from '@/components/loader';
 
 interface HomeProps {
   initialSection?: string;
