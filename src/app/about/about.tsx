@@ -11,7 +11,7 @@ const About: React.FC = () => {
       <p dangerouslySetInnerHTML={{ __html: aboutContent.bio }}></p>
       <ul className="relative columns-2 mt-2 pl-3 font-ibm-plex-mono text-xs md:text-sm list-outside marker-arrow">
         {aboutContent.skills.map((skill: string, index: number) => (
-          <li key={index} className="mb-1 break-words text-fgHard">{skill}</li>
+          <li key={index} className="mb-1 break-words text-fgHard selection:bg-fgHard">{skill}</li>
         ))}
       </ul>
     </div>

@@ -64,12 +64,11 @@ const Home: React.FC<HomeProps> = ({ initialSection = 'businessCard' }) => {
         ) : (
           showContent && (
             <>
-              <header className="flex relative w-full md:w-[calc(100%-2rem)] lg:w-[calc(100%-4rem)] h-fit my-4 lg:my-8 mx-auto justify-between pointer-events-none">
-                <div className="max-lg:hidden relative flex flex-1" />
+              <header className="flex relative w-full md:w-[calc(100%-2rem)] lg:w-[calc(100%-4rem)] h-fit my-4 lg:mt-8 lg:mb-16 mx-auto justify-between pointer-events-none">
                 <div className="relative flex mx-auto md:max-lg:ml-0 lg:justify-center md:flex-1">
                   <Header setCurrentSection={setCurrentSection} />
                 </div>
-                <div className="max-md:hidden relative flex justify-end lg:m-0 md:flex-1 pointer-events-auto">
+                <div className="max-md:hidden relative flex justify-end lg:absolute lg:top-0 lg:right-0 lg:m-0 md:flex-1 pointer-events-auto">
                   <ThemeSwitcher />
                 </div>
               </header>
