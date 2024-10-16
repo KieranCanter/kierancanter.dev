@@ -34,17 +34,17 @@ const Logo: React.FC<LogoProps> = ({
       renderer.setClearColor(0xBBBBBB, 0);
       renderer.setPixelRatio(window.devicePixelRatio);
 
-      const canvasSize = 50;
+      const canvasSize = 200;
       renderer.setSize(canvasSize, canvasSize);
       logo.appendChild(renderer.domElement);
 
       camera = new THREE.PerspectiveCamera(60, 1, 0.1, 1000);
-      camera.position.z = 3.5;
+      camera.position.z = 10;
     };
 
     const createDiamond = () => {
       const geometry = new THREE.OctahedronGeometry(1, 0);
-      geometry.scale(1, 1.4, 1);
+      geometry.scale(1, 1.192, 1);
       
       const material = new THREE.MeshPhongMaterial({ color: color });
       diamond = new THREE.Mesh(geometry, material);
