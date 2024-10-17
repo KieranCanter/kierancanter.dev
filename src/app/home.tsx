@@ -10,6 +10,7 @@ import About from '@/app/about/about';
 import Experience from '@/app/experience/experience';
 import Works from '@/app/works/works';
 import LogoLoader from '@/components/loader';
+import Footer from '@/components/footer';
 
 interface HomeProps {
   initialSection?: string;
@@ -56,7 +57,7 @@ const Home: React.FC<HomeProps> = ({ initialSection = 'businessCard' }) => {
   };
 
   return (
-    <div className="relative h-screen bg-bg text-fgSoft p-4 lg:p-8 transition-colors duration-[250ms]">
+    <div className="relative h-screen bg-bg text-fgSoft p-4 lg:p-8 transition-colors duration-[250ms] overflow-clip">
       <div className="relative flex flex-col h-full justify-between border border-fgHard min-h-[calc(100vh-2rem)] md:min-h-[calc(100vh-4rem)]">
         <ParticleField color="rgb(110, 110, 110)" />
         {isLoading ? (
@@ -80,6 +81,10 @@ const Home: React.FC<HomeProps> = ({ initialSection = 'businessCard' }) => {
           )
         )}
       </div>
+      
+      <footer className="relative w-fit h-fit m-auto ml-0 flex">
+        <Footer />
+      </footer>
     </div>
   );
 };
