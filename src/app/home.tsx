@@ -58,7 +58,7 @@ const Home: React.FC<HomeProps> = ({ initialSection = 'businessCard' }) => {
 
   return (
     <div className="relative h-screen bg-bg text-fgSoft p-4 lg:p-8 transition-colors duration-[250ms] overflow-clip">
-      <div className="relative flex flex-col h-full justify-between border border-fgHard min-h-[calc(100vh-2rem)] md:min-h-[calc(100vh-4rem)]">
+      <div className="relative flex flex-col h-full justify-between border border-fgHard min-h-[calc(100vh-2rem)] md:min-h-[calc(100vh-4rem)] transition-colors duration-[250ms]">
         <ParticleField color="rgb(110, 110, 110)" />
         {isLoading ? (
           <LogoLoader onAnimationComplete={handleAnimationComplete} />
@@ -69,7 +69,7 @@ const Home: React.FC<HomeProps> = ({ initialSection = 'businessCard' }) => {
                 <div className="relative flex mx-auto md:max-lg:ml-0 lg:justify-center">
                   <Header setCurrentSection={setCurrentSection} />
                 </div>
-                <div className="max-md:hidden relative flex justify-end lg:absolute lg:top-0 lg:right-0 lg:m-0 pointer-events-auto">
+                <div className="max-md:hidden relative flex justify-end lg:absolute lg:top-0 lg:right-0 lg:m-0 pointer-events-auto  ">
                   <ThemeSwitcher />
                 </div>
               </header>

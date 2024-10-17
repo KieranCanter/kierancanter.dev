@@ -11,7 +11,7 @@ const Works: React.FC = () => {
     <div id="text-container" className="relative flex flex-col gap-4 w-full lg:w-kic-width h-fit pointer-events-none [&_*]:pointer-events-auto">
       {worksContent.map((work, index) => (
         <div key={index} className="relative flex flex-col justify-between gap-2 w-full p-4 bg-black/10 rounded-sm transition-colors duration-[250ms] lg:hover:bg-black/20">
-          <div className="w-full h-fit flex flex-row justify-between items-start md:items-center">
+          <div className="w-full h-fit flex flex-row gap-4 justify-between items-start md:items-center">
             
             <Link href={work.githubURL} passHref target="_blank" rel="noopener noreferrer">
               <h4 className="relative w-fit font-ibm-plex-sans text-base lg:text-lg text-fgHard font-semibold selection:bg-fgHard hover:text-fgContrast hover:selection:bg-fgContrast transition-colors duration-[250ms]" dangerouslySetInnerHTML={{ __html: work.project }}></h4>
@@ -34,7 +34,7 @@ const Works: React.FC = () => {
 
           <div className="flex flex-wrap gap-2 mt-2">
             {work.technologies.map((tech, techIndex) => (
-              <h6 key={techIndex} className="text-xs font-bold bg-fgContrast text-bg px-2 py-1 rounded-sm selection:bg-bg selection:text-fgContrast">
+              <h6 key={techIndex} className="text-[0.65rem] font-bold bg-fgContrast text-bg px-2 py-1 rounded-sm selection:bg-bg selection:text-fgContrast">
                 {tech}
               </h6>
             ))}

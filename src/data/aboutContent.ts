@@ -4,8 +4,8 @@ export const aboutContent = {
     'Python',
     'C/C++',
     'Java',
+    'TypeScript',
     'HTML5 + CSS3',
-    'JavaScript/TypeScript',
     'React.js',
     'Next.js',
     'Tailwind CSS'
