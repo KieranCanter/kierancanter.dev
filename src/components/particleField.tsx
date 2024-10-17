@@ -40,23 +40,28 @@ const ParticleField: React.FC<ParticleFieldProps> = ({ color }) => {
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
+    let animationFrameId: number;
     let particleList: Particle[] = [];
     let PARTICLE_COUNT: number;
     let COLS: number;
     let ROWS: number;
 
-    let mouseX: number;
-    let mouseY: number;
+    let mouseX: number = -1000;
+    let mouseY: number = -1000;
 
     let isMouseOverField = false;
 
     // Spatial partitioning grid
     let grid: Particle[][][] = [];
 
+    let lastUpdateTime = 0;
+    const UPDATE_INTERVAL = 1000 / 60; // Target 60 updates per second
+
     const init = () => {
       resizeCanvas();
       createParticles();
       createGrid();
+      animationFrameId = requestAnimationFrame(gameLoop);
     };
 
     const updateMousePosition = (e: MouseEvent) => {
@@ -124,10 +129,17 @@ const ParticleField: React.FC<ParticleFieldProps> = ({ color }) => {
       }
     };
 
-    const step = () => {
-      updateParticlePositions();
+    const gameLoop = (timestamp: number) => {
+      animationFrameId = requestAnimationFrame(gameLoop);
+
+      // Update
+      if (timestamp - lastUpdateTime >= UPDATE_INTERVAL) {
+        updateParticlePositions();
+        lastUpdateTime = timestamp;
+      }
+
+      // Render
       renderParticles();
-      requestAnimationFrame(step);
     };
 
     const updateParticlePositions = () => {
@@ -149,10 +161,10 @@ const ParticleField: React.FC<ParticleFieldProps> = ({ color }) => {
 
       // Apply velocity and return force to all particles
       for (const particle of particleList) {
-        particle.currentX += (particle.velocityX *= VELOCITY_DECAY) + 
-                             (particle.originalX - particle.currentX) * RETURN_FORCE;
-        particle.currentY += (particle.velocityY *= VELOCITY_DECAY) + 
-                             (particle.originalY - particle.currentY) * RETURN_FORCE;
+        particle.currentX += particle.velocityX + (particle.originalX - particle.currentX) * RETURN_FORCE;
+        particle.currentY += particle.velocityY + (particle.originalY - particle.currentY) * RETURN_FORCE;
+        particle.velocityX *= VELOCITY_DECAY;
+        particle.velocityY *= VELOCITY_DECAY;
       }
     };
 
@@ -172,13 +184,15 @@ const ParticleField: React.FC<ParticleFieldProps> = ({ color }) => {
     const renderParticles = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      const imageData = ctx.createImageData(canvas.width, canvas.height);
+      const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
       const pixelArray = imageData.data;
 
       const [r, g, b] = parseRGBColor(color);
 
       for (const particle of particleList) {
-        const pixelIndex = (~~particle.currentX + (~~particle.currentY * canvas.width)) * 4;
+        const x = ~~particle.currentX;
+        const y = ~~particle.currentY;
+        const pixelIndex = (x + y * canvas.width) * 4;
         
         pixelArray[pixelIndex]     = r;
         pixelArray[pixelIndex + 1] = g;
@@ -190,7 +204,6 @@ const ParticleField: React.FC<ParticleFieldProps> = ({ color }) => {
     };
 
     init();
-    step();
 
     container.addEventListener('mousemove', updateMousePosition);
     container.addEventListener('mouseenter', handleMouseEnter);
@@ -198,6 +211,7 @@ const ParticleField: React.FC<ParticleFieldProps> = ({ color }) => {
     window.addEventListener('resize', resizeCanvas);
 
     return () => {
+      cancelAnimationFrame(animationFrameId);
       container.removeEventListener('mousemove', updateMousePosition);
       container.removeEventListener('mouseenter', handleMouseEnter);
       container.removeEventListener('mouseleave', handleMouseLeave);
