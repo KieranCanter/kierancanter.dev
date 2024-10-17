@@ -3,13 +3,14 @@
 import '@/styles/globals.scss';
 import React, { useState } from 'react';
 import ParticleField from '@/components/particleField';
-import Header from '@/components/sections/header';
-import ThemeSwitcher from '@/components/sections/themeSwitcher';
-import BusinessCard from '@/components/sections/businessCard';
+import Header from '@/components/header';
+import ThemeSwitcher from '@/components/themeSwitcher';
+import BusinessCard from '@/components/businessCard';
 import About from '@/app/about/about';
 import Experience from '@/app/experience/experience';
 import Works from '@/app/works/works';
-import LogoLoader from '@/components/sections/loader';
+import LogoLoader from '@/components/loader';
+import Footer from '@/components/footer';
 
 interface HomeProps {
   initialSection?: string;
@@ -56,7 +57,7 @@ const Home: React.FC<HomeProps> = ({ initialSection = 'businessCard' }) => {
   };
 
   return (
-    <div className="relative h-screen bg-bg text-fgSoft p-4 lg:p-8 transition-colors duration-[250ms]">
+    <div className="relative h-screen bg-bg text-fgSoft p-4 lg:p-8 transition-colors duration-[250ms] overflow-clip">
       <div className="relative flex flex-col h-full justify-between border border-fgHard min-h-[calc(100vh-2rem)] md:min-h-[calc(100vh-4rem)]">
         <ParticleField color="rgb(110, 110, 110)" />
         {isLoading ? (
@@ -65,10 +66,10 @@ const Home: React.FC<HomeProps> = ({ initialSection = 'businessCard' }) => {
           showContent && (
             <>
               <header className="flex relative w-full md:w-[calc(100%-2rem)] lg:w-[calc(100%-4rem)] h-fit my-4 lg:mt-8 lg:mb-16 mx-auto justify-between pointer-events-none">
-                <div className="relative flex mx-auto md:max-lg:ml-0 lg:justify-center md:flex-1">
+                <div className="relative flex mx-auto md:max-lg:ml-0 lg:justify-center">
                   <Header setCurrentSection={setCurrentSection} />
                 </div>
-                <div className="max-md:hidden relative flex justify-end lg:absolute lg:top-0 lg:right-0 lg:m-0 md:flex-1 pointer-events-auto">
+                <div className="max-md:hidden relative flex justify-end lg:absolute lg:top-0 lg:right-0 lg:m-0 pointer-events-auto">
                   <ThemeSwitcher />
                 </div>
               </header>
@@ -80,6 +81,10 @@ const Home: React.FC<HomeProps> = ({ initialSection = 'businessCard' }) => {
           )
         )}
       </div>
+      
+      <footer className="relative w-fit h-fit m-auto ml-0 flex">
+        <Footer />
+      </footer>
     </div>
   );
 };
