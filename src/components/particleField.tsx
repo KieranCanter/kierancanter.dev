@@ -220,7 +220,7 @@ const ParticleField: React.FC<ParticleFieldProps> = ({ color }) => {
   }, [color]);
 
   return (
-    <div ref={containerRef} className="absolute inset-4 lg:inset-8">
+    <div ref={containerRef} className="absolute inset-0">
       <canvas 
         ref={canvasRef} 
         className="w-full h-full" 
