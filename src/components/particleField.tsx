@@ -7,6 +7,7 @@ const PARTICLE_SPACING = 3;
 const REPULSION_STRENGTH = Math.pow(80, 2);
 const VELOCITY_DECAY = 0.95;
 const RETURN_FORCE = 0.25;
+const CELL_SIZE = 70; // Size of each grid cell for spatial partitioning
 
 interface Particle {
   velocityX: number;
@@ -40,7 +41,6 @@ const ParticleField: React.FC<ParticleFieldProps> = ({ color }) => {
     if (!ctx) return;
 
     let particleList: Particle[] = [];
-    let currentParticle: Particle;
     let PARTICLE_COUNT: number;
     let COLS: number;
     let ROWS: number;
@@ -48,20 +48,15 @@ const ParticleField: React.FC<ParticleFieldProps> = ({ color }) => {
     let mouseX: number;
     let mouseY: number;
 
-    let isUpdatingPositions: boolean;
-    let deltaX: number, deltaY: number;
-    let distance: number, angle: number, force: number;
-    let imageData: ImageData, pixelArray: Uint8ClampedArray;
-    let index: number;
-
     let isMouseOverField = false;
 
-    const init = () => {
-      isUpdatingPositions = true;
-      particleList = [];
+    // Spatial partitioning grid
+    let grid: Particle[][][] = [];
 
+    const init = () => {
       resizeCanvas();
       createParticles();
+      createGrid();
     };
 
     const updateMousePosition = (e: MouseEvent) => {
@@ -87,12 +82,13 @@ const ParticleField: React.FC<ParticleFieldProps> = ({ color }) => {
       PARTICLE_COUNT = COLS * ROWS;
 
       createParticles();
+      createGrid();
     };
 
     const createParticles = () => {
       particleList = [];
       for (let index = 0; index < PARTICLE_COUNT; index++) {
-        currentParticle = {
+        const particle = {
           velocityX: 0,
           velocityY: 0,
           currentX: PARTICLE_SPACING * (index % COLS),
@@ -100,59 +96,94 @@ const ParticleField: React.FC<ParticleFieldProps> = ({ color }) => {
           originalX: PARTICLE_SPACING * (index % COLS),
           originalY: PARTICLE_SPACING * Math.floor(index / COLS)
         };
-        particleList[index] = currentParticle;
+        particleList.push(particle);
+      }
+    };
+
+    const createGrid = () => {
+      const gridCols = Math.ceil(canvas.width / CELL_SIZE);
+      const gridRows = Math.ceil(canvas.height / CELL_SIZE);
+      grid = Array(gridRows).fill(null).map(() => Array(gridCols).fill(null).map(() => []));
+    };
+
+    const updateGrid = () => {
+      // Clear the grid
+      for (let i = 0; i < grid.length; i++) {
+        for (let j = 0; j < grid[i].length; j++) {
+          grid[i][j] = [];
+        }
+      }
+
+      // Assign particles to grid cells
+      for (const particle of particleList) {
+        const gridX = Math.floor(particle.currentX / CELL_SIZE);
+        const gridY = Math.floor(particle.currentY / CELL_SIZE);
+        if (grid[gridY] && grid[gridY][gridX]) {
+          grid[gridY][gridX].push(particle);
+        }
       }
     };
 
     const step = () => {
-      if (isUpdatingPositions = !isUpdatingPositions) {
-        updateParticlePositions();
-      } else {
-        renderParticles();
-      }
-
+      updateParticlePositions();
+      renderParticles();
       requestAnimationFrame(step);
     };
 
     const updateParticlePositions = () => {
-      for (index = 0; index < PARTICLE_COUNT; index++) {
-        currentParticle = particleList[index];
-        
-        if (isMouseOverField) {
-          distance = (deltaX = mouseX - currentParticle.currentX) * deltaX + 
-                     (deltaY = mouseY - currentParticle.currentY) * deltaY;
-          force = -REPULSION_STRENGTH / distance;
+      updateGrid();
 
-          if (distance < REPULSION_STRENGTH) {
-            angle = Math.atan2(deltaY, deltaX);
-            currentParticle.velocityX += force * Math.cos(angle);
-            currentParticle.velocityY += force * Math.sin(angle);
+      if (isMouseOverField) {
+        const gridX = Math.floor(mouseX / CELL_SIZE);
+        const gridY = Math.floor(mouseY / CELL_SIZE);
+
+        // Check only neighboring cells
+        for (let i = Math.max(0, gridY - 1); i <= Math.min(grid.length - 1, gridY + 1); i++) {
+          for (let j = Math.max(0, gridX - 1); j <= Math.min(grid[0].length - 1, gridX + 1); j++) {
+            for (const particle of grid[i][j]) {
+              updateParticle(particle);
+            }
           }
         }
+      }
 
-        currentParticle.currentX += (currentParticle.velocityX *= VELOCITY_DECAY) + 
-                                    (currentParticle.originalX - currentParticle.currentX) * RETURN_FORCE;
-        currentParticle.currentY += (currentParticle.velocityY *= VELOCITY_DECAY) + 
-                                    (currentParticle.originalY - currentParticle.currentY) * RETURN_FORCE;
+      // Apply velocity and return force to all particles
+      for (const particle of particleList) {
+        particle.currentX += (particle.velocityX *= VELOCITY_DECAY) + 
+                             (particle.originalX - particle.currentX) * RETURN_FORCE;
+        particle.currentY += (particle.velocityY *= VELOCITY_DECAY) + 
+                             (particle.originalY - particle.currentY) * RETURN_FORCE;
+      }
+    };
+
+    const updateParticle = (particle: Particle) => {
+      const deltaX = mouseX - particle.currentX;
+      const deltaY = mouseY - particle.currentY;
+      const distance = deltaX * deltaX + deltaY * deltaY;
+      const force = -REPULSION_STRENGTH / distance;
+
+      if (distance < REPULSION_STRENGTH) {
+        const angle = Math.atan2(deltaY, deltaX);
+        particle.velocityX += force * Math.cos(angle);
+        particle.velocityY += force * Math.sin(angle);
       }
     };
 
     const renderParticles = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      imageData = ctx.createImageData(canvas.width, canvas.height);
-      pixelArray = imageData.data;
+      const imageData = ctx.createImageData(canvas.width, canvas.height);
+      const pixelArray = imageData.data;
 
       const [r, g, b] = parseRGBColor(color);
 
-      for (index = 0; index < PARTICLE_COUNT; index++) {
-        currentParticle = particleList[index];
-        const pixelIndex = (~~currentParticle.currentX + (~~currentParticle.currentY * canvas.width)) * 4;
+      for (const particle of particleList) {
+        const pixelIndex = (~~particle.currentX + (~~particle.currentY * canvas.width)) * 4;
         
-        pixelArray[pixelIndex]     = r;  // Red channel
-        pixelArray[pixelIndex + 1] = g;  // Green channel
-        pixelArray[pixelIndex + 2] = b;  // Blue channel
-        pixelArray[pixelIndex + 3] = 100;  // Alpha channel
+        pixelArray[pixelIndex]     = r;
+        pixelArray[pixelIndex + 1] = g;
+        pixelArray[pixelIndex + 2] = b;
+        pixelArray[pixelIndex + 3] = 100;
       }
 
       ctx.putImageData(imageData, 0, 0);
@@ -175,7 +206,7 @@ const ParticleField: React.FC<ParticleFieldProps> = ({ color }) => {
   }, [color]);
 
   return (
-    <div ref={containerRef} className="absolute inset-0">
+    <div ref={containerRef} className="fixed inset-4 lg:inset-8">
       <canvas 
         ref={canvasRef} 
         className="w-full h-full" 
