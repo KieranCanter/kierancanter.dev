@@ -37,7 +37,7 @@ const ParticleField: React.FC<ParticleFieldProps> = ({ color }) => {
     const container = containerRef.current;
     if (!canvas || !container) return;
 
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext('2d', { willReadFrequently: true });
     if (!ctx) return;
 
     let animationFrameId: number;
