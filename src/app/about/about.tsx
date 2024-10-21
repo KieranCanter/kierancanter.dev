@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import '@/styles/globals.scss';
 import { ThemeContext } from '@/context/themeContext';
 import { generateAccentColor } from '@/util/colorfulSetter';
@@ -14,17 +14,17 @@ const About: React.FC = () => {
       <p dangerouslySetInnerHTML={{ __html: aboutContent.bio }}></p>
       <ul className="relative columns-2 mt-2 font-ibm-plex-mono text-xs md:text-sm list-outside">
         {aboutContent.skills.map((skill: string, index: number) => {
-          let markerColor: string;
+          let accentColor: string;
           if (theme === 'brilliant' || theme === 'luminous') {
-            markerColor = generateAccentColor(theme);
+            accentColor = generateAccentColor(theme);
           } else {
-            markerColor = 'var(--fg-contrast)';
+            accentColor = 'var(--fg-contrast)';
           }
 
           return (
             <li key={index} className="mb-1 break-words text-fgHard selection:bg-fgHard">
               <span
-                style={{ color: markerColor }}
+                style={{ color: accentColor }}
                 className="mr-1"
               >
                 ♦ 
