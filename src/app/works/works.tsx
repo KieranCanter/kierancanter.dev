@@ -40,7 +40,12 @@ const Works: React.FC = () => {
 
           <div className="flex flex-wrap gap-2 mt-2">
             {work.technologies.map((tech, techIndex) => {
-              const techColor = generateAccentColor(theme);
+              let techColor: string;
+              if (theme === 'brilliant' || theme === 'luminous') {
+                techColor = generateAccentColor(theme);
+              } else {
+                techColor = 'var(--fg-contrast)';
+              }
 
               return (
                 <h6 key={techIndex} className={`text-[0.65rem] font-bold text-bg px-2 py-1 rounded-sm selection:bg-bg selection:text-fgContrast`}
