@@ -25,7 +25,7 @@ const About: React.FC = () => {
             <li key={index} className="mb-1 break-words text-fgHard selection:bg-fgHard">
               <span
                 style={{ color: accentColor }}
-                className="mr-1"
+                className="mr-1 text-inherit"
               >
                 ♦ 
               </span>
