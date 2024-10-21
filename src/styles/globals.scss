@@ -134,36 +134,41 @@ met[name="apple-mobile-web-app-status-bar-style"] {
   content: var(--bg);
 }
 
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--fg-soft) var(--bg);
+}
+
 /* For browsers that support `scrollbar-*` properties */
 @supports (scrollbar-color: auto) {
-  .scrollbox {
+  *.scrollbox {
     scrollbar-color: var(--fg-soft) var(--bg);
   }
 }
 
 /* Otherwise, use `::-webkit-scrollbar-*` pseudo-elements */
 @supports selector(::-webkit-scrollbar) {
-  ::-webkit-scrollbar {
+  *::-webkit-scrollbar {
     width: 0.5rem;
     height: 0.5rem;
     transition: all 0.25s ease;
   }
 
-  ::-webkit-scrollbar-track {
+  *::-webkit-scrollbar-track {
     background: var(--bg);
   }
 
-  ::-webkit-scrollbar-thumb {
+  *::-webkit-scrollbar-thumb {
     background-color: var(--fg-soft);
     border-radius: 0.125rem;
     border: 0rem solid var(--fg-soft);
   }
 
-  ::-webkit-scrollbar-thumb:hover {
+  *::-webkit-scrollbar-thumb:hover {
     background-color: var(--fg-soft);
   }
 
-  ::-webkit-scrollbar-thumb:active {
+  *::-webkit-scrollbar-thumb:active {
     background-color: var(--fg-hard);
   }
 }
