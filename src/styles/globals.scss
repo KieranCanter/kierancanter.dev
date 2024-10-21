@@ -118,16 +118,6 @@ h6 {
   @apply text-[1rem] font-ibm-plex-sans font-semibold hover:text-fgContrast hover:selection:bg-fgContrast transition-all duration-[250ms] !important;
 }
 
-.marker-arrow {
-  li {
-    &::marker {
-      content: '♦';
-      @apply text-fgContrast text-xs md:text-sm;
-    }
-    @apply pl-2;
-  }
-}
-
 .highlight {
   @apply text-fgHard font-medium selection:bg-fgHard !important;
 }
