@@ -1,12 +1,18 @@
-import React from 'react';
+'use client';
+
+import React, { useContext } from 'react';
 import '@/styles/globals.scss';
+import { ThemeContext } from '@/context/themeContext';
 import { worksContent } from '@/data/worksContent';
+import { generateAccentColor } from '@/util/colorfulSetter'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import Link from 'next/link';
 
 const Works: React.FC = () => {
+  const { theme } = useContext(ThemeContext);
+
   return (
     <div id="text-container" className="relative flex flex-col gap-4 w-full lg:w-kic-width h-fit pointer-events-none [&_*]:pointer-events-auto">
       {worksContent.map((work, index) => (
@@ -14,7 +20,7 @@ const Works: React.FC = () => {
           <div className="w-full h-fit flex flex-row gap-4 justify-between items-start md:items-center">
             
             <Link href={work.githubURL} passHref target="_blank" rel="noopener noreferrer">
-              <h4 className="relative w-fit font-ibm-plex-sans text-base lg:text-lg text-fgHard font-semibold selection:bg-fgHard hover:text-fgContrast hover:selection:bg-fgContrast transition-colors duration-[250ms]" dangerouslySetInnerHTML={{ __html: work.project }}></h4>
+              <h4 className="relative w-fit font-ibm-plex-sans text-base lg:text-lg text-fgHard font-semibold selection:bg-fgHard hover:text-fgContrast hover:selection:bg-fgContrast transition-colors duration-[250ms]">{work.project}</h4>
             </Link>
             
             <div className="relative flex flex-row gap-4">
@@ -33,11 +39,16 @@ const Works: React.FC = () => {
           <p className="text-fgSoft text-sm lg:text-base font-ibm-plex-sans font-light" dangerouslySetInnerHTML={{ __html: work.description }} />
 
           <div className="flex flex-wrap gap-2 mt-2">
-            {work.technologies.map((tech, techIndex) => (
-              <h6 key={techIndex} className="text-[0.65rem] font-bold bg-fgContrast text-bg px-2 py-1 rounded-sm selection:bg-bg selection:text-fgContrast">
+            {work.technologies.map((tech, techIndex) => {
+              const techColor = generateAccentColor(theme);
+
+              return (
+                <h6 key={techIndex} className={`text-[0.65rem] font-bold text-bg px-2 py-1 rounded-sm selection:bg-bg selection:text-fgContrast`}
+                style={{ backgroundColor: techColor }}>
                 {tech}
-              </h6>
-            ))}
+                </h6>
+              );
+            })}
           </div>
 
         </div>
