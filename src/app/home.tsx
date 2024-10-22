@@ -30,13 +30,13 @@ const Home: React.FC<HomeProps> = ({ initialSection = 'businessCard' }) => {
     switch (currentSection) {
       case 'about':
         return (
-          <div className="relative flex flex-[2] m-4 lg:mx-auto lg:mt-0 lg:mb-8 overflow-y-auto pointer-events-none [&_*]:pointer-events-auto">
+          <div className="relative flex flex-[2] m-4 lg:mx-auto lg:mt-0 lg:mb-8 overflow-y-auto">
             <About />
           </div>
         );
       case 'experience':
         return (
-          <div className="relative flex flex-[2] m-4 lg:mx-auto lg:mt-0 lg:mb-8 overflow-y-auto pointer-events-none">
+          <div className="relative flex flex-[2] m-4 lg:mx-auto lg:mt-0 lg:mb-8 overflow-y-auto">
             <Experience />
           </div>
         );
@@ -57,8 +57,8 @@ const Home: React.FC<HomeProps> = ({ initialSection = 'businessCard' }) => {
   };
 
   return (
-    <div className="relative h-screen bg-bg text-fgSoft p-4 lg:p-8 transition-colors duration-[250ms] overflow-clip">
-      <div className="relative flex flex-col h-full justify-between border border-fgHard min-h-[calc(100vh-2rem)] md:min-h-[calc(100vh-4rem)] transition-colors duration-[250ms]">
+    <div className="relative h-[100dvh] bg-bg text-fgSoft p-4 lg:p-8 transition-colors duration-[250ms] overflow-clip">
+      <div className="relative flex flex-col h-full justify-between border border-fgHard min-h-[calc(100dvh-2rem)] md:min-h-[calc(100dvh-4rem)] transition-colors duration-[250ms]">
         <ParticleField color="rgb(110, 110, 110)" />
         {isLoading ? (
           <LogoLoader onAnimationComplete={handleAnimationComplete} />

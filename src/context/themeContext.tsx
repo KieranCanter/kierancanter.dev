@@ -1,6 +1,7 @@
 'use client';
 
 import React, { createContext, useState, useEffect, ReactNode } from 'react';
+import { colorfulVars, getContrastColor } from '@/util/colorfulSetter';
 
 type Theme = 'plush' | 'sombre' | 'brilliant' | 'luminous';
 
@@ -37,14 +38,28 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
     if (mounted) {
       localStorage.setItem('theme', theme);
       document.documentElement.setAttribute('data-theme', theme);
+
+      // Change the contrast and accent colors only when switching to/from brilliant/luminous
+      if (theme === 'brilliant' || theme === 'luminous') {
+        const contrastColor = document.documentElement.style.getPropertyValue(`--${theme}-fg-contrast`);
+        
+        
+        const newContrastColor = theme === 'brilliant' 
+          ? getContrastColor(colorfulVars.brilliant, [contrastColor])
+          : getContrastColor(colorfulVars.luminous, [contrastColor]);
+
+        document.documentElement.style.setProperty(`--${theme}-fg-contrast`, newContrastColor);
+      }
     }
   }, [theme, mounted]);
 
   const setThemeAndSave = (newTheme: Theme) => {
-    setTheme(newTheme);
-    if (typeof window !== 'undefined') {
-      localStorage.setItem('theme', newTheme);
-    }
+    requestAnimationFrame(() => {
+      setTheme(newTheme);
+        if (typeof window !== 'undefined') {
+          localStorage.setItem('theme', newTheme);
+        }
+    });
   };
 
   // Avoid rendering children until after client-side hydration
