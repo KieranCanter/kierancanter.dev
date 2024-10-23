@@ -1,36 +1,28 @@
 /* All Themes */
 :root {
   // Plush
-  --plush-bg: rgb(185, 172, 174);
-  --plush-fg-soft: rgb(86, 73, 75);
-  --plush-fg-hard: rgb(43, 36, 37);
-  --plush-fg-contrast: rgb(90, 0, 0);
+  --plush-bg: rgb(185,172,174);
+  --plush-fg-soft: rgb(86,73,75);
+  --plush-fg-hard: rgb(43,36,37);
+  --plush-fg-contrast: rgb(90,0,0);
 
   // Sombre
-  --sombre-bg: rgb(43, 36, 37);
-  --sombre-fg-soft: rgb(150, 132, 135);
-  --sombre-fg-hard: rgb(185, 172, 174);
-  --sombre-fg-contrast: rgb(255, 227, 181);
+  --sombre-bg: rgb(43,36,37);
+  --sombre-fg-soft: rgb(150,132,135);
+  --sombre-fg-hard: rgb(185,172,174);
+  --sombre-fg-contrast: rgb(255,227,181);
 
   // Brilliant
-  --brilliant-bg: rgb(229, 229, 229);
-  --brilliant-fg-soft: rgb(81, 81, 81);
-  --brilliant-fg-hard: rgb(18, 18, 18);
-  --brilliant-fg-contrast: rgb(255, 140, 174); 
-
-  --brilliant-accent1: rgb(255, 175, 25);
-  --brilliant-accent2: rgb(80, 200, 120);
-  --brilliant-accent3: rgb(245, 96, 96);
+  --brilliant-bg: rgb(229,229,229);
+  --brilliant-fg-soft: rgb(81,81,81);
+  --brilliant-fg-hard: rgb(18,18,18);
+  --brilliant-fg-contrast: rgb(255,140,174);
 
   // Luminous
-  --luminous-bg: rgb(38, 38, 38);
-  --luminous-fg-soft: rgb(174, 174, 174);
-  --luminous-fg-hard: rgb(229, 229, 229);
-  --luminous-fg-contrast: rgb(204, 183, 254);
-
-  --luminous-accent1: rgb(125, 249, 255);
-  --luminous-accent2: rgb(192, 255, 140);
-  --luminous-accent3: rgb(255, 105, 180);
+  --luminous-bg: rgb(38,38,38);
+  --luminous-fg-soft: rgb(174,174,174);
+  --luminous-fg-hard: rgb(229,229,229);
+  --luminous-fg-contrast: rgb(204,183,254);
 
   --kic-width: calc(100vw*0.428571429);
 }
@@ -41,11 +33,6 @@
   --fg-soft: var(--plush-fg-soft);
   --fg-hard: var(--plush-fg-hard);
   --fg-contrast: var(--plush-fg-contrast);
-
-  --tone-color: var(--sombre-fg-contrast);
-  --trefoil1: var(--brilliant-bg);
-  --trefoil2: var(--brilliant-fg-contrast);
-  --trefoil3: var(--brilliant-accent1);
 }
 
 /* Dark Accented Mode */
@@ -54,11 +41,6 @@
   --fg-soft: var(--sombre-fg-soft);
   --fg-hard: var(--sombre-fg-hard);
   --fg-contrast: var(--sombre-fg-contrast);
-
-  --tone-color: var(--plush-fg-contrast);
-  --trefoil1: var(--luminous-bg);
-  --trefoil2: var(--luminous-fg-contrast);
-  --trefoil3: var(--luminous-accent1);
 }
 
 /* Light Colorful Mode */
@@ -67,11 +49,6 @@
   --fg-soft: var(--brilliant-fg-soft);
   --fg-hard: var(--brilliant-fg-hard);
   --fg-contrast: var(--brilliant-fg-contrast);
-
-  --tone-color: var(--luminous-fg-contrast);
-  --trefoil1: var(--plush-bg);
-  --trefoil2: var(--plush-fg-hard);
-  --trefoil3: var(--plush-fg-contrast);
 }
 
 /* Dark Colorful Mode */
@@ -80,9 +57,4 @@
   --fg-soft: var(--luminous-fg-soft);
   --fg-hard: var(--luminous-fg-hard);
   --fg-contrast: var(--luminous-fg-contrast);
-
-  --tone-color: var(--brilliant-fg-contrast);
-  --trefoil1: var(--sombre-bg);
-  --trefoil2: var(--sombre-fg-soft);
-  --trefoil3: var(--sombre-fg-contrast);
 }

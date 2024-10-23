@@ -37,7 +37,7 @@ const ParticleField: React.FC<ParticleFieldProps> = ({ color }) => {
     const container = containerRef.current;
     if (!canvas || !container) return;
 
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext('2d', { willReadFrequently: true });
     if (!ctx) return;
 
     let animationFrameId: number;
@@ -220,7 +220,7 @@ const ParticleField: React.FC<ParticleFieldProps> = ({ color }) => {
   }, [color]);
 
   return (
-    <div ref={containerRef} className="fixed inset-4 lg:inset-8">
+    <div ref={containerRef} className="absolute inset-0">
       <canvas 
         ref={canvasRef} 
         className="w-full h-full" 
