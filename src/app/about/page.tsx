@@ -1,5 +1,9 @@
-import Home from '@/app/home';
+import About from '@/app/about/about';
 
 export default function AboutPage() {
-    return <Home initialSection="about" />;
+  return (
+    <div className="relative flex flex-[2] m-4 lg:mx-auto lg:mt-0 lg:mb-8 overflow-y-auto">
+      <About />
+    </div>
+  );
   }
