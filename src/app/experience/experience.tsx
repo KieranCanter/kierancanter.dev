@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useContext } from 'react';
 import '@/styles/globals.scss';
 import { ThemeContext } from '@/context/themeContext';

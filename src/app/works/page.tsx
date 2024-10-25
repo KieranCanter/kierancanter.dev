@@ -1,5 +1,9 @@
-import Home from '@/app/home';
+import Works from '@/app/works/works';
 
 export default function WorksPage() {
-    return <Home initialSection="works" />;
+    return (
+      <div className="relative flex flex-[2] m-4 lg:mx-auto lg:mt-0 lg:mb-8 overflow-y-auto">
+        <Works />
+      </div>
+    );
   }
