@@ -24,7 +24,7 @@ const Works: React.FC = () => {
   }, []);
 
   return (
-    <div id="text-container" className="relative flex flex-col gap-4 w-full lg:w-kic-width h-fit pointer-events-none [&_*]:pointer-events-auto">
+    <div id="text-container" className="relative flex flex-col gap-4 w-full lg:w-kic-width h-full pointer-events-none [&_*]:pointer-events-auto">
       {worksContent.map((work, index) => (
         <div 
         key={index} 
@@ -65,7 +65,7 @@ const Works: React.FC = () => {
               }
 
               return (
-                <h6 key={techIndex} className={`text-[0.65rem] font-bold text-bg px-2 py-1 rounded-sm selection:bg-bg selection:text-fgContrast`}
+                <h6 key={techIndex} className={`text-[0.65rem] font-bold text-bg px-2 py-1 rounded-sm cursor-default hover:opacity-85 selection:bg-bg selection:text-fgContrast`}
                 style={{ backgroundColor: accentColor }}>
                 {tech}
                 </h6>
