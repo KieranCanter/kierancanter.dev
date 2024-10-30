@@ -1,6 +1,7 @@
 'use client';
 
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useRef } from 'react';
+import revealAnimation from '@/util/reveal';
 import '@/styles/globals.scss';
 import { ThemeContext } from '@/context/themeContext';
 import { worksContent } from '@/data/worksContent';
@@ -12,11 +13,27 @@ import Link from 'next/link';
 
 const Works: React.FC = () => {
   const { theme } = useContext(ThemeContext);
+  const worksRefs = useRef<HTMLDivElement[]>([]);
+
+  useEffect(() => {
+    let delay: number = 0;
+    worksRefs.current.forEach((element) => {
+      revealAnimation(element, delay);
+      delay += 0.1;
+    })
+  }, []);
 
   return (
     <div id="text-container" className="relative flex flex-col gap-4 w-full lg:w-kic-width h-fit pointer-events-none [&_*]:pointer-events-auto">
       {worksContent.map((work, index) => (
-        <div key={index} className="relative flex flex-col justify-between gap-2 w-full p-4 bg-black/10 rounded-sm transition-colors duration-[250ms] lg:hover:bg-black/20">
+        <div 
+        key={index} 
+        ref={(element) => {
+          if (element) {
+            worksRefs.current[index] = element;
+          }
+        }} 
+        className="relative flex flex-col justify-between gap-2 w-full p-4 bg-black/10 rounded-sm transition-colors duration-[250ms] lg:hover:bg-black/20 opacity-0">
           <div className="w-full h-fit flex flex-row gap-4 justify-between items-start md:items-center">
             
             <Link href={work.githubURL} passHref target="_blank" rel="noopener noreferrer">
