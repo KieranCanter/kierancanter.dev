@@ -84,7 +84,8 @@ export default function RootLayout({
       <body className="antialiased bg-bg text-fgSoft selection:text-bg selection:bg-fgSoft">
         <ThemeProvider>
           <a href="#main-content" className="sr-only focus:not-sr-only">Skip to main content</a>
-          <div className="relative h-[100dvh] bg-bg text-fgSoft p-4 lg:p-8 transition-colors duration-[250ms] overflow-clip">
+          
+          <div className="relative h-[100dvh] md:h-[100vh] bg-bg text-fgSoft p-4 lg:p-8 transition-colors duration-[250ms] overflow-clip">
             <div className="relative flex flex-col h-full justify-between border border-fgHard min-h-[calc(100dvh-2rem)] md:min-h-[calc(100dvh-4rem)] transition-colors duration-[250ms]">
               <ParticleField color="rgb(110, 110, 110)" />
               <header className="flex relative w-full md:w-[calc(100%-2rem)] lg:w-[calc(100%-4rem)] h-fit my-4 lg:mt-8 lg:mb-16 mx-auto justify-between pointer-events-none">
