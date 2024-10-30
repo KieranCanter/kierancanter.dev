@@ -12,7 +12,7 @@ export default function Page() {
   }, []);
 
   return (
-    <div ref={revealElement} className="relative flex m-auto lg:absolute lg:top-1/2 lg:left-1/2 lg:-translate-x-1/2 lg:-translate-y-1/2 pointer-events-none [&_*]:pointer-events-auto">
+    <div ref={revealElement} className="relative flex m-auto lg:mb-[calc(50vh-10rem)] pointer-events-none [&_*]:pointer-events-auto">
       <BusinessCard />
     </div>
   );
