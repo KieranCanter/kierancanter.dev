@@ -1,5 +1,6 @@
 'use client';
 
+import React from 'react';
 import BusinessCard from '@/components/businessCard';
 import { useReveal } from '@/util/reveal';
 

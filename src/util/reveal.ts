@@ -1,17 +1,20 @@
 import { useEffect } from 'react';
-import ScrollReveal from 'scrollreveal';
 
 export const useReveal = (selector: string) => {
   useEffect(() => {
-    const sr = ScrollReveal({
-      origin: 'bottom',
-      distance: '20px',
-      duration: 1000,
-      delay: 200,
-    });
+    const loadScrollReveal = async () => {
+      const ScrollReveal = (await import('scrollreveal')).default;
 
-    sr.reveal(selector);
+      const sr = ScrollReveal({
+        origin: 'bottom',
+        distance: '20px',
+        duration: 1000,
+        delay: 200,
+      });
 
-    return () => sr.destroy();
+      sr.reveal(selector);
+    };
+
+    loadScrollReveal();
   }, [selector]);
 };

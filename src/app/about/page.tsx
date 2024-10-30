@@ -1,5 +1,6 @@
 'use client';
 
+import React from 'react';
 import About from '@/app/about/about';
 import { useReveal } from '@/util/reveal';
 

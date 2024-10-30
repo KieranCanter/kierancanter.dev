@@ -1,5 +1,6 @@
 'use client';
 
+import React from 'react';
 import Experience from '@/app/experience/experience';
 import { useReveal } from '@/util/reveal';
 
