@@ -1,15 +1,20 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import About from '@/app/about/about';
-import { useReveal } from '@/util/reveal';
+import revealAnimation from '@/util/reveal';
+
 
 export default function AboutPage() {
-  useReveal('.reveal');
+  const revealElement = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    revealAnimation(revealElement.current!);
+  }, []);
 
   return (
-    <div className="reveal relative flex flex-[2] m-4 lg:mx-auto lg:mt-0 lg:mb-8 overflow-y-auto">
+    <div ref={revealElement} className="relative flex flex-[2] m-4 lg:mx-auto lg:mt-0 lg:mb-8 overflow-y-auto">
       <About />
     </div>
   );
-  }
+}

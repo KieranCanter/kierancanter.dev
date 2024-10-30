@@ -1,20 +1,12 @@
-import { useEffect } from 'react';
+import { gsap } from 'gsap';
 
-export const useReveal = (selector: string) => {
-  useEffect(() => {
-    const loadScrollReveal = async () => {
-      const ScrollReveal = (await import('scrollreveal')).default;
-
-      const sr = ScrollReveal({
-        origin: 'bottom',
-        distance: '20px',
-        duration: 1000,
-        delay: 200,
-      });
-
-      sr.reveal(selector);
-    };
-
-    loadScrollReveal();
-  }, [selector]);
+const revealAnimation = (element: HTMLElement | null) => {
+  if (!element) return; // Ensure the element exists
+  gsap.from(element, {
+    duration: 0.5,
+    opacity: 10,
+    y: "+=20",
+  });
 };
+
+export default revealAnimation;

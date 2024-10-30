@@ -1,15 +1,19 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import Experience from '@/app/experience/experience';
-import { useReveal } from '@/util/reveal';
+import revealAnimation from '@/util/reveal';
 
 export default function ExperiencePage() {
-  useReveal('.reveal');
+  const revealElement = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    revealAnimation(revealElement.current!);
+  }, []);
 
   return (
-    <div className="reveal relative flex flex-[2] m-4 lg:mx-auto lg:mt-0 lg:mb-8 overflow-y-auto">
+    <div ref={revealElement} className="relative flex flex-[2] m-4 lg:mx-auto lg:mt-0 lg:mb-8 overflow-y-auto">
       <Experience />
     </div>
   );
-  }
+}
