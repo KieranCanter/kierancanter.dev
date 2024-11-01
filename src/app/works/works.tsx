@@ -33,7 +33,11 @@ const Works: React.FC = () => {
             worksRefs.current[index] = element;
           }
         }} 
-        className="relative flex flex-col justify-between gap-2 w-full p-4 bg-black/10 rounded-sm transition-colors duration-[250ms] lg:hover:bg-black/20 opacity-0">
+        className="relative flex flex-col justify-between gap-2 w-full p-4 bg-black/10 rounded-sm transition-colors duration-[250ms] hover:bg-black/20 opacity-0">
+          <div className={`${work.wip ? '' : 'hidden'} absolute flex inset-0 w-full h-full box-border z-50 bg-black/50 items-center justify-center overflow-y-clip`}>
+            <h4 className="absolute w-[110%] h-fit py-1 text-center text-lg font-bold text-bg bg-fgContrast -rotate-6">WORK IN PROGRESS</h4>
+          </div>
+          
           <div className="w-full h-fit flex flex-row gap-4 justify-between items-start md:items-center">
             
             <Link href={work.githubURL} passHref target="_blank" rel="noopener noreferrer">
@@ -58,14 +62,17 @@ const Works: React.FC = () => {
           <div className="flex flex-wrap gap-2 mt-2">
             {work.technologies.map((tech, techIndex) => {
               let accentColor: string;
-              if (theme === 'brilliant' || theme === 'luminous') {
+              if (work.wip) {
+                accentColor = 'var(--fg-soft)';
+              }
+              else if (theme === 'brilliant' || theme === 'luminous') {
                 accentColor = generateAccentColor(theme);
               } else {
                 accentColor = 'var(--fg-contrast)';
               }
 
               return (
-                <h6 key={techIndex} className={`text-[0.65rem] font-bold text-bg px-2 py-1 rounded-sm cursor-default hover:opacity-85 selection:bg-bg selection:text-fgContrast`}
+                <h6 key={techIndex} className="text-[0.65rem] font-bold text-bg px-2 py-1 rounded-sm cursor-default hover:opacity-85 selection:bg-bg selection:text-fgContrast"
                 style={{ backgroundColor: accentColor }}>
                 {tech}
                 </h6>
