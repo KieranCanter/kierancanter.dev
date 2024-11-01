@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef } from 'react';
+import revealAnimation from '@/util/reveal';
 import VanillaTilt from 'vanilla-tilt';
 import { isMobile } from 'react-device-detect';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -22,6 +23,12 @@ const socialLinks = [
 type BusinessCardElement = HTMLElement & { vanillaTilt?: { destroy: () => void } };
 
 export default function BusinessCard() {
+  const businessCardRef = useRef<BusinessCardElement>(null);
+
+  useEffect(() => {
+    revealAnimation('#business-card');
+  }, []);
+
   const setupGyroscope = () => {
     let initialBeta: number | null = null;
     let initialGamma: number | null = null;
@@ -66,8 +73,6 @@ export default function BusinessCard() {
       window.addEventListener('orientationchange', resetOrientation);
     }
   }
-
-  const businessCardRef = useRef<BusinessCardElement>(null);
   
   useEffect(() => {
     interface DeviceOrientationEventiOS extends DeviceOrientationEvent {
@@ -116,7 +121,7 @@ export default function BusinessCard() {
     <div 
       ref={businessCardRef as React.RefObject<HTMLDivElement>}
       id="business-card" 
-      className="flex flex-col justify-between aspect-[7/4] w-[calc(100vw-4rem)] md:h-auto md:max-w-[28rem] lg:max-w-[30rem] h-auto p-2 lg:p-3 text-[#1e1e1e] bg-[#f8f5ec] rounded-sm [box-shadow:0rem_0.1rem_0.4rem_0rem_rgba(0,_0,_0,_0.3)] [&_*]:selection:bg-[#1e1e1e] [&_*]:selection:text-[#f8f5ec]"
+      className="flex flex-col justify-between aspect-[7/4] w-[calc(100vw-4rem)] md:h-auto md:max-w-[24rem] lg:max-w-[30rem] h-auto p-2 lg:p-3 text-[#1e1e1e] bg-[#f8f5ec] rounded-sm [box-shadow:0rem_0.1rem_0.4rem_0rem_rgba(0,_0,_0,_0.3)] [&_*]:selection:bg-[#1e1e1e] [&_*]:selection:text-[#f8f5ec] opacity-0 pointer-events-auto "
       aria-label="Kieran Canter's Business Card"
     >
       
