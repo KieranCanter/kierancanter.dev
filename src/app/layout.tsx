@@ -84,9 +84,8 @@ export default function RootLayout({
       </head>
       <body className="antialiased bg-bg text-fgSoft selection:text-bg selection:bg-fgSoft">
         <ThemeProvider>
-
           <Navigation>
-            
+
             <a href="#main-content" className="sr-only focus:not-sr-only">Skip to main content</a>
             
             <div className="relative h-[100dvh] md:h-[100vh] bg-bg text-fgSoft p-4 lg:p-8 transition-colors duration-[250ms] overflow-clip">
