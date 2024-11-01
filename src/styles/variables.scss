@@ -24,7 +24,7 @@
   --luminous-fg-hard: rgb(229,229,229);
   --luminous-fg-contrast: rgb(204,183,254);
 
-  --kic-width: calc(100vw*0.428571429);
+  --kic-width: max(calc(100vw*0.428571429), 40rem);
 }
 
 /* Light Accented Mode */
