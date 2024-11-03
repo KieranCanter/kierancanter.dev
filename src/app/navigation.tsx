@@ -33,7 +33,7 @@ const Navigation: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     delta: 50,
   });
 
-  return <div {...handlers} className="relative flex flex-[2] m-4 lg:mx-auto lg:mt-0 lg:mb-8 overflow-x-clip overflow-y-auto no-scrollbar z-50">{children}</div>;
+  return <div {...handlers} className="relative flex flex-[2] p-4 lg:mx-auto lg:mt-0 lg:mb-8 overflow-y-auto no-scrollbar z-30">{children}</div>;
 };
 
 export default Navigation;
