@@ -22,15 +22,18 @@ const Navigation: React.FC<{ children: React.ReactNode }> = ({ children }) => {
       if (nextIndex < 0) nextIndex = routes.length - 1;
     }
 
-    router.push(routes[nextIndex]);
+    router.replace(routes[nextIndex]);
   };
 
   const handlers = useSwipeable({
     onSwipedLeft: () => handleNavigation('left'),
     onSwipedRight: () => handleNavigation('right'),
+    preventScrollOnSwipe: true,
+    trackMouse: false,
+    delta: 50,
   });
 
-  return <div {...handlers} className="fixed inset-0 w-full h-full z-50">{children}</div>;
+  return <div {...handlers} className="relative flex flex-[2] m-4 lg:mx-auto lg:mt-0 lg:mb-8 overflow-x-clip overflow-y-auto no-scrollbar z-50">{children}</div>;
 };
 
 export default Navigation;
