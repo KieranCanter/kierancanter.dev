@@ -20,7 +20,7 @@ const About: React.FC = () => {
     <div 
       id="text-container" 
       ref={aboutRef}
-      className="relative flex flex-col w-full lg:w-kic-width h-fit p-4 text-fgSoft bg-black/10 rounded-sm transition-colors duration-[250ms] overflow-y-auto lg:hover:bg-black/20 opacity-0 pointer-events-none [&_*]:pointer-events-auto">
+      className="relative flex flex-col w-full lg:w-kic-width h-fit p-4 text-fgSoft bg-black/10 rounded-sm transition-colors duration-[250ms] lg:hover:bg-black/20 opacity-0 pointer-events-none [&_*]:pointer-events-auto">
       <p dangerouslySetInnerHTML={{ __html: aboutContent.bio }}></p>
       <ul className="relative columns-2 mt-2 font-ibm-plex-mono text-xs md:text-sm list-none">
         {aboutContent.skills.map((skill: string, index: number) => {
