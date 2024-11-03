@@ -121,11 +121,10 @@ export default function BusinessCard() {
     <div 
       ref={businessCardRef as React.RefObject<HTMLDivElement>}
       id="business-card" 
-      className="flex flex-col justify-between aspect-[7/4] w-[calc(100vw-4rem)] md:h-auto md:max-w-[24rem] lg:max-w-[30rem] h-auto p-2 lg:p-3 text-[#1e1e1e] bg-[#f8f5ec] rounded-sm [box-shadow:0rem_0.1rem_0.4rem_0rem_rgba(0,_0,_0,_0.3)] [&_*]:selection:bg-[#1e1e1e] [&_*]:selection:text-[#f8f5ec] opacity-0 pointer-events-auto "
+      className="relative flex flex-col w-[calc(100vw-4rem)] max-w-[24rem] lg:max-w-[28rem] h-fit aspect-[7/4] m-auto p-2 lg:p-3 text-[#1e1e1e] bg-[#f8f5ec] rounded-sm [box-shadow:0rem_0.1rem_0.4rem_0rem_rgba(0,_0,_0,_0.3)] [&_*]:selection:bg-[#1e1e1e] [&_*]:selection:text-[#f8f5ec] opacity-0 pointer-events-auto"
       aria-label="Kieran Canter's Business Card"
     >
-      
-      <div id="phone-and-logo" className="relative flex flex-row flex-[40%] justify-between w-full h-fit">
+      <div id="phone-and-logo" className="relative flex flex-row justify-between w-full h-fit">
         <Link 
           id="phone" 
           className="relative w-fit h-fit text-xs font-ibm-plex-serif font-bold hover:text-gray-500 hover:selection:bg-gray-500 active:opacity-85 transition-all duration-[250ms]" 
@@ -151,16 +150,16 @@ export default function BusinessCard() {
         </Link>
       </div>
 
-      <div id="centerpiece" className = "flex flex-col flex-[60%] w-fit mx-auto justify-between h-fit">
+      <div id="centerpiece" className = "flex flex-col w-fit h-full mx-auto justify-end">
 
-        <div id="me" className="flex flex-col mx-auto w-fit h-fit items-center justify-center" aria-labelledby="name title">
+        <div id="me" className="flex flex-col m-auto w-fit h-fit items-center" aria-labelledby="name title">
           <h2 id="name" className="text-base lg:text-lg font-bold">Kieran CANTER</h2>
           <h3 id="title" className="text-xs lg:text-sm font-semibold">Software Engineer</h3>
         </div>
 
-        <nav 
+        <div 
           id="socials" 
-          className="relative text-sm lg:text-base flex w-full mx-auto justify-between"
+          className="relative text-sm lg:text-base flex w-full h-fit mx-auto justify-between"
           aria-label="Social media links"
         >
           {socialLinks.map((link) => (
@@ -181,9 +180,9 @@ export default function BusinessCard() {
               <span className="sr-only">{link.title}</span>
             </Link>
           ))}
-        </nav>
+        </div>
       </div>
-      
+
     </div>
   );
 }
