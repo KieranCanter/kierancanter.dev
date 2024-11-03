@@ -84,9 +84,6 @@ export default function RootLayout({
       </head>
       <body className="antialiased bg-bg text-fgSoft selection:text-bg selection:bg-fgSoft">
         <ThemeProvider>
-          <Navigation>
-
-            <a href="#main-content" className="sr-only focus:not-sr-only">Skip to main content</a>
             
             <div className="relative h-[100dvh] md:h-[100vh] bg-bg text-fgSoft p-4 lg:p-8 transition-colors duration-[250ms] overflow-clip">
               <div className="relative flex flex-col h-full justify-between border border-fgHard min-h-[calc(100dvh-2rem)] md:min-h-[calc(100dvh-4rem)] transition-colors duration-[250ms]">
@@ -101,7 +98,10 @@ export default function RootLayout({
                   </div>
                 </header>
                 
-                {children}
+                <Navigation>
+                  <a href="#main-content" className="sr-only focus:not-sr-only">Skip to main content</a>
+                  {children}
+                </Navigation>
 
                 <div className="md:hidden relative flex justify-end m-4 pointer-events-auto">
                   <ThemeSwitcher />
@@ -113,7 +113,6 @@ export default function RootLayout({
               </footer>
             </div>
 
-          </Navigation>
         </ThemeProvider>
       </body>
     </html>
