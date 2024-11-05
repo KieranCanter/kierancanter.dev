@@ -4,7 +4,7 @@ import React, { useContext, useEffect, useRef } from 'react';
 import revealAnimation from '@/util/reveal';
 import '@/styles/globals.scss';
 import { ThemeContext } from '@/context/themeContext';
-import { worksContent } from '@/data/worksContent';
+import { worksContent, updateFlipReadyStats } from '@/data/worksContent';
 import { generateAccentColor } from '@/util/colorfulSetter'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
@@ -21,6 +21,14 @@ const Works: React.FC = () => {
       revealAnimation(element, delay);
       delay += 0.1;
     })
+  }, []);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      await updateFlipReadyStats();
+    };
+
+    fetchData();
   }, []);
 
   return (

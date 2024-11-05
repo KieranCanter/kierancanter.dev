@@ -1,4 +1,17 @@
-export const worksContent = [
+import axios from 'axios';
+
+interface WorksContentItem {
+  project: string;
+  githubURL: string;
+  projectURL?: string | null;
+  description: string;
+  views?: string | null;
+  downloads?: string | null;
+  technologies: string[];
+  wip: boolean;
+}
+
+export const worksContent: WorksContentItem[] = [
   {
     project: 'kierancanter.dev',
     githubURL: 'https://github.com/kierancanter/kierancanter.dev',
@@ -11,7 +24,7 @@ export const worksContent = [
     project: 'FlipReady',
     githubURL: 'https://github.com/kierancanter/flipready',
     projectURL: 'https://bakkesplugins.com/plugins/view/401',
-    description: "Actively maintained plugin for the popular Rocket League mod, BakkesMod. Highly customizable text indicator with decaying gauge bar to visualize the status of your air roll/double jump (for training purposes only). Written using the Bakkesmod SDK. Currently amassed 10,116 views and 4,405 downloads.",
+    description: "Actively maintained plugin for the popular Rocket League mod, BakkesMod. Highly customizable text indicator with decaying gauge bar to visualize the status of your air roll/double jump (for training purposes only). Written using the Bakkesmod SDK. Currently amassed {views} views and {downloads} downloads.",
     technologies: ['C++'],
     wip: false,
   },
@@ -37,3 +50,21 @@ export const worksContent = [
     wip: true,
   },
 ];
+
+export async function updateFlipReadyStats() {
+  try {
+    const response = await axios.get('/api/flipready');
+    const { views, downloads } = response.data;
+
+    const flipReadyIndex = worksContent.findIndex(item => item.project === 'FlipReady');
+    if (flipReadyIndex !== -1) {
+      worksContent[flipReadyIndex].description = worksContent[flipReadyIndex].description
+        .replace('{views}', views || 'N/A')
+        .replace('{downloads}', downloads || 'N/A');
+      worksContent[flipReadyIndex].views = views;
+      worksContent[flipReadyIndex].downloads = downloads;
+    }
+  } catch (error) {
+    console.error('Error fetching FlipReady stats:', error);
+  }
+}
