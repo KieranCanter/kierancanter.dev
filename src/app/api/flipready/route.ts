@@ -1,9 +1,9 @@
 // app/api/scrape/route.ts
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 import axios from 'axios';
 import * as cheerio from 'cheerio';
 
-export async function GET(req: NextRequest) {
+export async function GET() {
   try {
     // Define the URL to scrape
     const url = 'https://github.com/bakkesmodorg';
