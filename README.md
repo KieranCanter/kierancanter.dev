@@ -1,5 +1,5 @@
 <div align="center">
-  <img alt="KC Logo" src="https://raw.githubusercontent.com/KieranCanter/kierancanter.dev/3574dd9070477802932f896e80c25df50f688aa7/public/images/logo.svg" width="100" />
+  CHANGE TO COLORED LOGO<img alt="KC Logo" src="https://raw.githubusercontent.com/KieranCanter/kierancanter.dev/3574dd9070477802932f896e80c25df50f688aa7/public/images/logo.svg" width="100" />
 </div>
 <h1 align="center">
   kierancanter.dev
@@ -16,7 +16,6 @@
 ## Contents
 * [Impress](#impress)
 * [Design](#design)
-* [Prototyping](#prototyping)
 * [Development](#development)
 * [Optimizations](#optimizations)
 * [Technical Challenges & Solutions](#technical-challenges--solutions)
@@ -50,7 +49,19 @@ The first step of development was visual design. I took to [Figma](https://figma
 
 Colors play an extremely important part in how the audience visually perceives your content. Black and white can emit elegance while vibrant colors are more playful. Earth tones come across as more subdued but give off a natural, organic feel. Colors are also important for accessibility purposes. Designs need to ensure that contrast between opposing colors is high enough such that those with color blindness can still detect differences in overlapping colors. Believe it or not, my original color scheme was inspired by [Hyper Shadow](https://sonic.fandom.com/wiki/Super_Shadow) from Sonic. I remember being obsessed with the pale gold + burgundy combo while playing the final stage of Sonic Adventure 2: Battle as a kid, and I have loved the pairing ever since.
 
-## Prototyping
+While exuberant as part of a videogame character's design, I recognized that this combination would not appear as pleasing if it was plastered on a web page. From the start, I knew I wanted to implement a dark mode, so I decided to split the duo of colors up and use them as the accent/highlight colors for each mode. I'm a sucker for browns and tans, so I played around until I obtained a darker brown/purple that could be used as the background for the dark mode. Using this as a baseline hue, I adjusted the saturation and lightness to obtain a pale purple that I thought would bode well as the light mode background. From here, I assigned the opposite theme's background color as the hard foreground color and chose a slightly more subdued color as the soft foreground color. The hard foreground color is meant to stand out a little more and emphasize certain elements like words I'd like highlighted while the soft foreground color is the standard color used for the majority of foreground elements.
+
+I originally was just going to stick to the light/dark mode themes, but coming across [Mads Hougesen's website](https://mhouge.dk) sparked another idea in my mind. I loved the slight injection of popping colors exhibited in the technology labels and hover effects, as well as the functional change in color on every hover of the word "Hi." I thought "how bout I keep these two primary modes and add two more 'colorful' modes, one for light and one for dark." I eventually settled on the idea to use traditional white/dark grey background's for these new modes. The soft and hard foreground colors would follow the same formula as the "subdued themes," but the accent colors would change on every load and be randomly selected from an assortment of colors that I define. I had to carefully select colors such that they appeared bright and vibrant, but they wouldn't clash too much with the background no matter what color was selected.
+
+This presented design and logic challenges that are explained more in [Technical Challenges & Solutions](#technical-challenges--solutions), but I was determined to make it work. As an avid enjoyer of personalization within apps and games, I very much wanted to give the user the option to switch between these four different color themes. Ultimately, I chose names for these themes based on the atmosphere I felt they radiated: Plush, Sombre, Brilliant, and Luminous.
+
+### Typography
+
+### Branding
+
+### Usability + UI/UX
+
+### Prototyping
 
 To mock-up more technical aspects of the site, I shifted to [CodePen](https://codepen.io). This is where I toyed around with conceptual prototypes of possible components and could really draft the HTML/CSS/JS in a more abstracted environment. View some of my [early creations](https://codepen.io/kierancanter).
 
