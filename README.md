@@ -55,9 +55,24 @@ I originally was just going to stick to the light/dark mode themes, but coming a
 
 This presented design and logic challenges that are explained more in [Technical Challenges & Solutions](#technical-challenges--solutions), but I was determined to make it work. As an avid enjoyer of personalization within apps and games, I very much wanted to give the user the option to switch between these four different color themes. Ultimately, I chose names for these themes based on the atmosphere I felt they radiated: Plush, Sombre, Brilliant, and Luminous.
 
+*_INCLUDE GRAPHIC OF COLOR BLOCK WITH HEX CODES_*
+
 ### Typography
 
-### Branding
+I carefully chose my typefaces to emit a clean, modern, and professional feel while also providing a robust selection of weights and styles. For Serif, Sans-serif, and Monospaced usage, I elected to use the [IBM Plex](https://www.ibm.com/plex/) family of fonts. For the minimal presence of small-caps, I opted for the Spectral SC font.
+
+| Google Fonts                                                       | Adobe Fonts                                                    |
+|--------------------------------------------------------------------|----------------------------------------------------------------|
+| [IBM Plex Sans](https://fonts.google.com/specimen/IBM+Plex+Sans)   | [IBM Plex Sans](https://fonts.adobe.com/fonts/ibm-plex-sans)   |
+| [IBM Plex Serif](https://fonts.google.com/specimen/IBM+Plex+Serif) | [IBM Plex Serif](https://fonts.adobe.com/fonts/ibm-plex-serif) |
+| [IBM Plex Mono](https://fonts.google.com/specimen/IBM+Plex+Mono)   | [IBM Plex Mono](https://fonts.adobe.com/fonts/ibm-plex-mono)   |
+| [Spectral SC](https://fonts.google.com/specimen/Spectral+SC)       | [Spectral SC](https://fonts.adobe.com/fonts/spectral-sc)       |
+
+### Logo
+
+To fully solidify myself as a branded entity, a logo was a necessity. I drafted numerous different ideas on paper and gathered opinions from friends & family to decide which one to move forth with. Having selected a base design, I crafted and refined it in Adobe Illustrator.
+
+To act as the favicon, the logo was exported as an SVG for desktop and Progressive Web App (PWA) purposes. To further enhance responsiveness, the logo was also exported as a PNG in two different color schemes (for light/dark modes) and numerous different sizes (16x16px, 32x32px, 512x512px, Android - 180x180px, and Apple - 192x192px) to serve as fallbacks should the SVG files run into any issues. More variants of the logo were exported for uses like this README and the business card element.
 
 ### Usability + UI/UX
 
