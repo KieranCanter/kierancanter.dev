@@ -31,7 +31,7 @@ Driven by a desire to capture a modern, clean aesthetic that still delivers a un
 
 ### Inspiration
 
-I derived many innovation ideas, elements, and concepts from various websites that I admire. Below are the authors of beautiful sites that I gained inspiration from and revere as exceptionally crafted in one facet or another:
+I derived many innovation ideas, elements, and concepts from various websites that I admire. Below are the authors/links of beautiful sites that I gained inspiration from and revere as exceptionally crafted in one facet or another:
 * [Keita Yamada](https://p5aholic.me)
 * [Ansub Khan](https://ansubkhan.com)
 * [Anthony Fu](https://antfu.me)
