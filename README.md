@@ -88,6 +88,45 @@ To mock-up more technical aspects of the site, I shifted to [CodePen](https://co
 
 ## Development
 
+### Text Editor
+
+The entire project was written within [Cursor](https://www.cursor.com/). If you're unfamiliar, Cursor is a fork of VSCode that brilliantly and natively integrates AI-powered operations like tab autocompletion, LLM chats, a natural-language code composer, and more. Since it is a VSCode fork, it will be visually familiar to previous VSCode users and has all the base features from it as well. You can even import all of your VSCode extensions, settings, profile, etc. Just as VSCode was the catalyst for migrating tons of users from Vim or Nano, I believe Cursor will have the same effect with migrating users from VSCode.
+
+### Tech Stack
+
+The core technology stack I employed consisted of [TypeScript](https://www.typescriptlang.org/), [React](https://react.dev/), [Next.js](https://nextjs.org/), and [Tailwind CSS](https://tailwindcss.com/). While not inspired or based on the [T3 stack](https://create.t3.gg/), I do believe it to be the most modern, modular, and effective stack for creating full-stack applications.
+
+#### [TypeScript](https://www.typescriptlang.org/):
+
+As we know, JavaScript is the number one language used in web development, and for good reason. It's ubiquitous across the web, extremely versatile, has a massive ecosystem and community support, and has exceptional cross-platform compatability. Despite all these positives, it does have one large flaw: **dynamic typing**. While dynamic typing can be useful for quick prototyping, projects with limited scopes, or handling unknown data structures, there are a slew of run-time and logic errors that developers will deal with when writing in a dynamically typed language. TypeScript catches these errors early at compile-time.
+
+TypeScript completely solves this flaw. Acting as a statically-typed superset of JavaScript, it facilitates typesafe programming and extends it's functionality. Since it's not an entirely different, standalone language, it ends up compiling down to normal JavaScript and is compatible with any libraries, infrastructures, or packages previously supported by JS.
+
+TypeScript is such an improvement over JavaScript that there really aren't any realistic reasons to not opt for it other than rapid prototyping.
+
+#### [React](https://react.dev/):
+
+The same component-based UI library that was famously part of the MERN stack is still one of the best choices for developing SPAs and mobile applications. Virtual DOM, JSX, hooks, not much else needs to be said.
+
+#### [Next.js](https://nextjs.org/):
+
+Developed by [Vercel](https://vercel.com/), Next.js is one of the most popular, industry-standard frameworks for creating React applications. With server-side rendering (SSR), and static site generation (SSG), it can greatly improve performance and search engine optimization (SEO). The ability to create backend API routes can eliminate the need for a separate backend while other features like automatic code splitting, fast refresh, and image-optimization contribute to improvements in reload times and overall performance.
+
+#### [Tailwind CSS](https://tailwindcss.com/):
+
+Commonly confused with being an alternative to Bootstrap, Tailwind CSS is a CSS framework (not a library) that provides reusable utility classes to help developers build custom designs without the need for custom CSS. Used inline within HTML (or JSX), the utility-first approach enabled rapid development and improves efficiency by mitigating the need to leave the markup and coordinate with separate CSS files. It's extendable, highly customizable, and promotes responsive design by the inclusion of breakpoint classes. Although it's designed to prevent the need for large-scale CSS, custom CSS classes can still be assembled with native CSS and/or Tailwind utility classes.
+
+#### Other Libraries:
+
+In addition to the core pieces of the stack, I took advantage of various other packages to implement certain features:
+* [Vanilla-tilt](https://micku7zu.github.io/vanilla-tilt.js/) - 3D tilt library used for the business card element on desktop devices
+* [ThreeJS](https://threejs.org/) - 3D animation library used for the business card element on mobile/touch devices
+* [Fontawesome](https://fontawesome.com/) - wildly popular icon library used for most of the iconography
+* [GSAP](https://gsap.com/) - animation library used for the pop-in animations on load
+
+### Component Design
+
+
 ## Optimizations
 
 ## Technical Challenges & Solutions
