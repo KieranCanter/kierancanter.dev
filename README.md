@@ -84,7 +84,7 @@ To act as the favicon, the logo was exported as an SVG for desktop and Progressi
 
 ### Prototyping
 
-To mock-up more technical aspects of the site, I shifted to [CodePen](https://codepen.io). This is where I toyed around with conceptual prototypes of possible components and could really draft the HTML/CSS/JS in a more abstracted environment. View some of my [early creations](https://codepen.io/kierancanter).
+To mock-up more technical aspects of the site, I shifted to [CodePen](https://codepen.io). This is where I toyed around with conceptual prototypes of possible components and drafted the HTML/CSS/JS in a more abstracted environment. View some of my [early creations](https://codepen.io/kierancanter).
 
 ## Development
 
