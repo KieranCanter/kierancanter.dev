@@ -47,7 +47,7 @@ The first step of development was visual design. I took to [Figma](https://figma
 
 ### Usability + UI/UX
 
-While visual design is fun and can improve the atmosphere of an application, it's worthless if the usability is garbage. Above all else, I knew I wanted the site to be as operationally simple and obvious as possible. A relatively large chunk of time was spent brainstorming and testing different layouts for what would be the best for user experience.
+While visual design is fun and can improve the atmosphere of an application, it's worthless if the usability is garbage. Above all else, I knew I wanted the site to be as operationally simple and obvious. A relatively large chunk of time was spent brainstorming and testing different layouts for what would be the best for user experience.
 
 Tony Alicea has a great book entitled [Normal UI](https://tonyalicea.dev/normalui/) that revolves around the concept of _normalization_. Derived from "data normalization," Tony frames this principle as relating to the number of screens/pages a user visits from the start to the end of their goal or task. If the task takes many screens in which each screen has few actions to carry out, he refers to it as more normalized. Conversely, a UI that typically contains many actions across a fewer number of screens is denormalized. There is no global better or worse option; the designer has to choose the better approach based on the tasks that users will complete in the software. Normalized workflows reduce the amount of information that the user is met with at each stage of their objective while denormalized workflows may be more efficient for experienced users to quickly complete tasks.
 
