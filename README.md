@@ -119,13 +119,39 @@ Commonly confused with being an alternative to Bootstrap, Tailwind CSS is a CSS 
 #### Other Libraries:
 
 In addition to the core pieces of the stack, I took advantage of various other packages to implement certain features:
-* [Vanilla-tilt](https://micku7zu.github.io/vanilla-tilt.js/) - 3D tilt library used for the business card element on desktop devices
-* [ThreeJS](https://threejs.org/) - 3D animation library used for the business card element on mobile/touch devices
-* [Fontawesome](https://fontawesome.com/) - wildly popular icon library used for most of the iconography
-* [GSAP](https://gsap.com/) - animation library used for the pop-in animations on load
+* [Vanilla-tilt](https://micku7zu.github.io/vanilla-tilt.js/)          - 3D tilt library used for the business card element on desktop devices
+* [ThreeJS](https://threejs.org/)                                      - 3D animation library used for the business card element on mobile/touch devices
+* [Fontawesome](https://fontawesome.com/)                              - wildly popular icon library used for most of the iconography
+* [GSAP](https://gsap.com/)                                            - animation library used for the pop-in animations on load
+* [react-swipeable](https://github.com/FormidableLabs/react-swipeable) - swipe gesture library for page-swiping feature
 
 ### Component Design
 
+#### Encapsulation + Abstraction
+
+Encapsulation is the object-oriented programming (OOP) principle that promotes self-containment of and compartmentalization of objects/components. This is quite valuable for reusability, Don't Repeat Yourself (DRY) coding, and exhibiting a separation of concerns, especially for a component-based library like React. By isolating UI elements, utility components, text data, and page routes, debugging is made easier by making components responsible for smaller portions of functionality and fosters modularity by allowing components to be reused across the project.
+
+Abstraction is another OOP principle that hides the details of implementation and focuses on broader ideas. By removing the specifics and focusing on the features, efficiency improves and complexity decreases.
+
+For example, the text data present in the About, Experience, and Works sections is not hard-coded into the components themselves, but abstracted out into their own files. The component retrieves this text data and inserts it into its proper location. This makes revising, editing, and adding more of the same component easier as well as simplifying the code by hiding the irrelevant information. This is all very benefitial with respect to scaling.
+
+Encapsulation can be seen with the segregation of the utility files. To make repeating the same action over and over again (like applying the reveal animation to an element), it's contained within a separate file and function such that it can be imported and used elsewhere in the project without limiting it to a single component or repeating the same functional code multiple times.
+
+#### Theme Context
+
+The theme context component (the non-visual model) is used throughout the project to control the color theme. It's responsible for initalizing the theme on load with the last used theme (or a theme according to the system preferences of the user if no last theme was saved) and setting the theme when it's changed. In conjunction with the theme switcher component (the interactable controller), the theme is able to switch between four different options with a randomized color feature implemented in only the "colorful" themes. This is another example of encapsulation.
+
+#### File Organization
+
+When working with a project that becomes rich in files and directories, organization is paramount in avoiding the "needle in a haystack" dilemma. If your file structure is a jumbled mess with no structure, components and functions are much harder to find. I adhered to a strict hierarchical organization to maintain a separation of concerns and group related files where assets like fonts and images are stored in `public` and all source code is stored in `src`.
+
+`src/`
+* `app/`        - top-level files or pages relating to the deployment and rendering of the site
+* `components/` - visual elements that are incorporated into the pages and will be seen by the user
+* `context/`    - components relying on and controlling variables relating to the system context (i.e. theme context with system preferences)
+* `data/`       - specific info such as text data that's abstracted out from respective components for modularity and scalability
+* `styles/`     - CSS styling
+* `util/`       - utility components with no visual qualities that serve a repeated purpose across multiple components
 
 ## Optimizations
 
