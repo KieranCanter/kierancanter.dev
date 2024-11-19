@@ -237,7 +237,7 @@ Abiding by a user's system preferences is a spectacular way to make your applica
 
 ## Infrastructure
 
-To the average programmer with no previous website hosting experience, the process can be arguous, confusing, and difficult. You are not alone if you relate to that struggle, and there was much trial & error and failures in my attempts to get my site up and running. Below are the various platforms I used for the DevOps side of things.
+To the average programmer with no previous website hosting experience, the process of getting a site up and running can be arguous, confusing, and difficult. You are not alone if you relate to that struggle, and there was much trial & error and failures in my attempts to do so. Below are the various platforms I used for the DevOps side of things.
 
 * _.com_ domain is registered with AWS Route 53 and _.dev_ domain is registered with PorkBun (.com -> .dev redirection through Vercel)
 * SSL certificate issued by Let's Encrypt through PorkBun
