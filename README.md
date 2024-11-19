@@ -17,7 +17,7 @@
 * [Impress](#impress)
 * [Design](#design)
 * [Development](#development)
-* [Optimizations](#optimizations)
+* [Responsiveness & Accessibility](#responsiveness--accessibility)
 * [Technical Challenges & Solutions](#technical-challenges--solutions)
 * [Deployment](#deployment)
 
@@ -153,8 +153,95 @@ When working with a project that becomes rich in files and directories, organiza
 * `styles/`     - CSS styling
 * `util/`       - utility components with no visual qualities that serve a repeated purpose across multiple components
 
-## Optimizations
+## Responsiveness & Accessibility
+
+### Responsive Design
+
+As stated previously, a key focus throughout this project was adhering to responsive design. Fine polish and attention to detail are apparent in a site's ability to function and display properly across all devices and platforms.
+
+#### Metadata
+
+Metadata can sometimes be overlooked by developers, but can contribute greatly to responsiveness and even search engine optimization (SEO).
+
+For one, the site's favicon is what the user constantly sees and associates with the site itself. It's the icon that's used for the site in different representational contexts, such as the browser bar, bookmarks, mobile home screen, etc. By defining several different sizes/colors and using different file types, the favicon is sure to appear clear for all users. I made sure to create SVGs, PNGs, sizes from 16x16px to 512x512px, and separate files for light and dark mode.
+
+Another example is the existence of a web manifest file. This is a JSON file that defines metadata associated with the progressive web app (PWA) version of the website, that is, the feature on most mobile devices that allows the user to add a website as a simple application on their home screen. While not gamebreaking if absent, supporting the PWA feature illustrates a complete design and may improve the experience of users that take advantage of the feature. I ensured all relevant information was defined here such as the PWA icon, theme/background color, categories, etc.
+
+Finally, the viewport can contribute greatly to the look and feel of a site. By restricting the user's ability to scale the viewport and setting the height/width equal to that of the screen, user-caused errors that may have negative effects on the display of the site are mitigated.
+
+#### Flexboxes
+
+The flexbox is my personal favorite display type for the vast majority of elements. Flexboxes promote flexible and simple layouts by allowing dynamic sizing, reordering, and providing alignment options. The need for float-based layouts is greatly reduced. Flexboxes are not ideal for 2D layouts of components (opt for a grid display in that case), but there are very few instances where a flexbox could not simplify and replace the use of a block or inline-block element.
+
+#### Mobile-first Design
+
+A common methodology and best practice for modern application development is mobile-first design. As the name suggests, due to the prevalence of mobile devices in the modern day, this is the notion that the developer should construct their application with preference towards mobile devices, layouts, and functionality, and adapt the design to larger devices in succeeding revisions.
+
+Dynamic length units are crucial for facilitating mobile-first design by scaling sizes according to the system. Dynamic screen lengths (dvh/dvw) and dynamic sizing units (em/rem) should be preferred over fixed units like pixels (px) as much as possible. On mobile web browsers like Chrome or Safari, the dynamic screen height would refer to the space inbetween the address bar at the top and the navigation bar (navbar) at the bottom. This height is dynamic because it grows or shrinks as the bars disappear or reappear as a result of swipe gestures. By making font sizes dynamic with em (resizes according to parent) or rem (resizes according to root) units, text can change sizes depending on the user's system setting.
+
+Breakpoints are a massive help for adhering to mobile-first design by defining screen widths that allow the developer to adjust their app's layout depending on the device size. They're extremely useful for adjusting margins/padding, height/width, text size, and even the order of elements. In my own implementation, I took advantage of Tailwind's built-in breakpoints, but these can be altered in the `tailwind.config.js` file. Breakpoints can be set in vanilla CSS by specifying properties under a screen size [media query](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_media_queries/Using_media_queries).
+
+The default breakpoint sizes used in this project are:
+| Device Type | Minimum Width |
+|-------------|---------------|
+| Small       | 640px         |
+| Medium      | 768px         |
+| Large       | 1024px        |
+| Extra Large | 1280px        |
+
+While these sizes are most commonly associated with phones, tablets, laptops, and desktops, respectively, it's important to keep in mind that some devices may fall into another category, especially a mobile device flipped to landscape.
+
+### Device-specific Functionality
+
+As mentioned before, the business card element was heavily inspired by the [business card scene from American Psycho](https://www.youtube.com/watch?v=YHgwxVCiMyI). I knew I could implement visual and interactive flavor to give the element a little more character. After playing around in CodePen and deciding to use a tilt effect, I realized I would have to also decide how the user interacts with it on different devices.
+
+On desktop (mouse-controlled devices), I liked the concept of the card tilting when the user hovered over it. I streamlined this functionality with [Vanilla-tilt](https://micku7zu.github.io/vanilla-tilt.js/). However, mobile users don't have mice. I had to think of another interactive function that they could take advantage of. After some brainstorming, I settled on the idea to use the device's gyroscope data to tilt the card as if it were a 3D object they were holding in space.
+
+This consideration is one of many that was crucial in guranteeing a consistent and polished user experience.
+
+### Accessible Design
+
+In tandem with responsive design, accessible design makes certain that those with deficiencies and disabilities can enjoy your website as anybody else would. Aside from ethical responsibilities, accessible design can also improve user experience, SEO, and help reach a broader audience.
+
+#### ARIA
+
+Accessible Rich Internet Applications (ARIA) is a set of attributes defined by the Web Accessibility Initiative (WAI) specification to enhance the accessibility of web content. By implementing ARIA labels, roles, and live regions, assistive technologies can effectively parse and translate information and visuals from an application. ARIA labels provide descriptive details for a component that might otherwise lack clear context. ARIA roles define the purpose or type of an element, useful for custom or non-semantic element tags. ARIA live regions notify assistive technologies about live updates that may not be perfectly apparent.
+
+I incorporated ARIA labels and roles into as many applicable elements as possible. There are no dynamic updates conducted throughout the course of a user's visit to my site, so live regions are not quite applicable, but they're important to keep in mind in the case of notifications or error prompts.
+
+#### Semantic HTML
+
+Semantic tags are a bit underrated and sometimes neglected. Inherent meaning and detail is associated with semantic tags that can greatly help assistive technologies. Tags like `<header>`, `<main>`, `<footer>`, `<nav>`, and `<section>` define page structure, `<button>` can be used for clickable components, and `<label>`/`<input>` is useful for forms. It's best to avoid `<div>` and `<span>` for interactable elements. While I used many `<div>` tags for miscellaneous containers, I focused on using semantic tags where applicable.
+
+#### Color Contrast
+
+To expand on what I said earlier regarding color theory, the contrast and visibility of colors is pertinent for those that can't make out colors easily. For this reason, I carefully chose colors for my themes that contrasted well enough, but also varied in saturation and light depending on whether content needed to be emphasized or to blend in. This was especially true for the Brilliant and Luminous color themes, where I created sets of colors to randomly select from and apply to accented elements. I ensured that all colors contrasted well with their light/dark backgrounds so accessibility would not be an issue.
+
+#### System Preferences
+
+Abiding by a user's system preferences is a spectacular way to make your application feel a little more personal. By utilizing a user's own light/dark mode or reduced motion preferences, the application is intertwined with the rest of their system or device more. I made sure the color theme defaulted to the user's system preference if a cached value did not already exist, and removed animations/effects from elements in the case of a reduced motion preference.
 
 ## Technical Challenges & Solutions
 
-## Deployment
+### Spatially Partitioned Particle Field
+
+### Other Challenges
+
+#### Theme Switcher
+
+#### Mobile vs. Desktop Tilt Effect
+
+#### Layout Design
+
+#### Colorful Bullet Points
+
+## Infrastructure
+
+To the average programmer with no previous website hosting experience, the process can be arguous, confusing, and difficult. You are not alone if you relate to that struggle, and there was much trial & error and failures in my attempts to get my site up and running. Below are the various platforms I used for the DevOps side of things.
+
+* _.com_ domain is registered with AWS Route 53 and _.dev_ domain is registered with PorkBun (.com -> .dev redirection through Vercel)
+* SSL certificate issued by Let's Encrypt through PorkBun
+* Hosted on AWS Route 53
+* Mail domain/service through PurelyMail
+* Business phone number through Google Voice
+* GitHub Actions + Vercel for CI/CD
