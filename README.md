@@ -19,7 +19,7 @@
 * [Development](#development)
 * [Responsiveness & Accessibility](#responsiveness--accessibility)
 * [Technical Challenges & Solutions](#technical-challenges--solutions)
-* [Deployment](#deployment)
+* [Infrastructure](#infrastructure)
 
 ## Impress
 
