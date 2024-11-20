@@ -225,6 +225,19 @@ Abiding by a user's system preferences is a spectacular way to make your applica
 
 ### Spatially Partitioned Particle Field
 
+After concluding that I'd go forth with an interactive particle field background, I implemented a solution that created a grid of particles (small dot-like objects) who's positions were compared against the cursor's on every frame while the mouse is over the field. As I continued development, I noticed the movement of the particles start buffering and skipping a little. The performance wasn't hindering or an eyesore, but it wasn't quite smooth. Instead of the "forcefield" following the mouse like a snake, it looked more like bubbles that were popping up under the mouse several times a second.
+
+Unsurprisingly, comparing thousands of objects to the mouse position every run is performance-intensive. I knew I could improve this. After researching ideas, I came upon the technique of "spatial partitioning." This is is the practice of dividing a space into smaller subspaces to reduce the complexity of spatial queries. To incorporate this into my particle field, I divided the total area into a grid of cells that I could control by a simple variable. This way I could try different sized cells
+and see what works the best. The idea is instead of matching the cursor position against all the particles at once, we can match it against particles contained only within the cell it's currently in, significantly improving performance by minimizing the amount of irrelevant comparisons being made.
+
+The smaller the cell size, the better the performance, and vice versa; however, there was a flaw with this optimization. When the cursor is moved slowly across the particle field, the user may notice particles line up against the side of a cell like an asymptote. The visibility of the imperfection gets more apparent as the cell size gets smaller, and vice versa. Because of this, I experimented with numerous different cell sizes to end up with a value that seemed to strike a favorable balance between performance and this visual blemish, which ended up not being very noticeable unless the user is intentionally looking for it.
+
+I created a test to run a "synthetic mouse" around in a circle for ten seconds to facilitate a completely even and fair environment for both solutions. Gathering multiple data points surrounding particle update time (the time it takes for a particle to react to the mouse entering its vicinity), I discovered that my optimization resulted in an improvement on the average particle update time by 27.8%.
+
+Visuals of the test and related metrics can be seen below:
+
+_**INSERT TEST CLIPS AND DATA**_
+
 ### Other Challenges
 
 #### Theme Switcher
