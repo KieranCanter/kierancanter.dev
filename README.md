@@ -41,9 +41,13 @@ I derived many innovation ideas, elements, and concepts from various websites th
 * [Takuya Matsuyama](https://craftz.dog)
 * [Mads Hougesen](https://mhouge.dk)
 
+_I would also like to mention [Stefan Fisk's site](https://stefanfisk.com/) for originally inspiring the connection to the American Psycho business card scene._
+
 ### Figma Mock-up
 
-The first step of development was visual design. I took to [Figma](https://figma.com) to establish potential color schemes, layouts, spacing, content, etc. [As you can see](https://www.figma.com/design/tP5ITD5rjftAeg27rMoVXG/kierancanter.dev?node-id=0-1&t=z3MOAOBTCVDuCq4r-1), the original design looks almost nothing like the final product, but it laid out the ground work that displayed flaws and eventually allowed me to perform iterations upon iterations of refinements.
+The first step of development was visual design. I took to [Figma](https://figma.com) to establish potential color schemes, layouts, spacing, content, etc. [As you can see](https://www.figma.com/design/tP5ITD5rjftAeg27rMoVXG/kierancanter.dev?node-id=0-1&t=z3MOAOBTCVDuCq4r-1), the original design looks almost nothing like the final product, but it laid out the ground work that displayed flaws and eventually allowed me to perform iterations upon iterations of refinements. 
+
+More on this in [Layout Design](#layout-design).
 
 ### Usability + UI/UX
 
@@ -195,9 +199,11 @@ While these sizes are most commonly associated with phones, tablets, laptops, an
 
 As mentioned before, the business card element was heavily inspired by the [business card scene from American Psycho](https://www.youtube.com/watch?v=YHgwxVCiMyI). I knew I could implement visual and interactive flavor to give the element a little more character. After playing around in CodePen and deciding to use a tilt effect, I realized I would have to also decide how the user interacts with it on different devices.
 
-On desktop (mouse-controlled devices), I liked the concept of the card tilting when the user hovered over it. I streamlined this functionality with [Vanilla-tilt](https://micku7zu.github.io/vanilla-tilt.js/). However, mobile users don't have mice. I had to think of another interactive function that they could take advantage of. After some brainstorming, I settled on the idea to use the device's gyroscope data to tilt the card as if it were a 3D object they were holding in space.
+On desktop (mouse-controlled devices), I liked the concept of the card tilting when the user hovered over it. I streamlined this functionality with [Vanilla-tilt](https://micku7zu.github.io/vanilla-tilt.js/); however, mobile users don't have mice. I had to think of another interactive function that they could take advantage of. After some brainstorming, I settled on the idea to use the device's gyroscope data to tilt the card as if it were a 3D object they were holding in space. More on this problem in [Mobile vs. Desktop Tilt Effect](https://github.com/KieranCanter/kierancanter.dev/edit/WriteREADME/README.md#mobile-vs-desktop-business-card).
 
-This consideration is one of many that was crucial in guranteeing a consistent and polished user experience.
+Another notable accommodation I had to bear in mind was the size and location of the theme switcher and header component. On desktop, it makes sense for the user to click a checkbox to toggle a button, but with touch devices, the buttons should be much larger due to the reduced precision of tapping a screen versus using a mouse. The locations also had to be altered such that every device size displayed a different layout. On small devices, the header is centered at the top with the theme switcher in the bottom right. On tablets, the header is aligned to the top left with the theme switcher aligned to the top right. Finally, with larger screens, the header is centerd at the top with the theme switcher aligned to the top right.
+
+These considerations are crucial in guranteeing a consistent and polished user experience.
 
 ### Accessible Design
 
@@ -253,15 +259,35 @@ Ultimately, I selected the dual button option. Using toggle buttons to change th
 
 Further into development, more challenges presented themselves when I chose to randomize the accent colors associated with the colorful modes. I had to figure out a way to not only dynamically set the CSS properties associated with the accent color, but part of my design also included a separation between the normal accent color (used for headings, links, theme name, etc.) and the randomized set of colors used for other elements (bullet points, technology badges, etc.). I solved these by writing [`colorfulSetter.ts`](https://github.com/KieranCanter/kierancanter.dev/blob/main/src/util/colorfulSetter.ts).
 
-Within this file, I defined the two sets of colors to be used for either Brilliant or Luminous. These colors had to be carefully selected to guarantee visibility and contrast between them and the background colors. In addition, two functions were conceived to do all of the legwork. The first (`getContrastColor()`) is responsible for dynamically selecting a random color from the set when the theme changes to a colorful mode. To prevent a color from consecutively being repeated, it's excluded from the set of colors to choose from. This function is ran in `themeContext.tsx` whenever the theme is set to Brilliant or Luminous. Because the colors are supposed to change for each element, the second function (`generateAccentColor()`) is meant to be called when setting the accent color on each one. If the theme is Plush or Sombre, nothing is done. If the theme is Brilliant or Luminous, `getContrastColor()` is called to select a new random color that excludes the accent color selected in the theme context. 
+Within this file, I defined the two sets of colors to be used for either Brilliant or Luminous. These colors had to be carefully selected to guarantee visibility and contrast between them and the background colors. In addition, two functions were conceived to do all of the legwork. The first `getContrastColor()` is responsible for dynamically selecting a random color from the set when the theme changes to a colorful mode. To prevent a color from consecutively being repeated, it's excluded from the set of colors to choose from. This function is ran in `themeContext.tsx` whenever the theme is set to Brilliant or Luminous. Because the colors are supposed to change for each element, the second function `generateAccentColor()` is meant to be called when setting the accent color on each one. If the theme is Plush or Sombre, nothing is done. If the theme is Brilliant or Luminous, `getContrastColor()` is called to select a new random color that excludes the accent color selected in the theme context. 
 
 This solution effectively sets a random color for the main accent and selects from the rest of the set to repeat as secondary accent colors.
 
-### Mobile vs. Desktop Tilt Effect
+### Mobile vs. Desktop Business Card
+
+As I previously touched on in [Device-specific Functionality](https://github.com/KieranCanter/kierancanter.dev/edit/WriteREADME/README.md#device-specific-functionality), an importance was placed on making sure the trademark business card element functioned well on all devices. I actually ran into this problem for the first time while testing my website on mobile after incorporating the tilt effect. I noticed that the tilt didn't quite follow my touch gestures and instead only responded to taps, which it did very snappily. I amended this misfunctionality by dividing the mobile and desktop device into two different executions. Instead of trying to mimic the desktop feature on mobile, I wanted to appeal to users of both devices independently and facilitate the best experience possible (not dissimilar to the concept of writing separate Kotlin and Swift codebases for mobile applications on Android and iOS, respectively).
+
+After much documentation sifting, researching, and testing, I had assembled a tilt feature using the mobile device's gyroscope and orientation data to tilt the card along the same axis as the device. I handled the case of orientation changing by resetting the card's tilt origin to the tilt of the phone at the moment of orientation change. I also set a larger ceiling for maximum rotation compared to the desktop version to further perpetuate the feeling of holding a physical card with your phone or tablet.
+
+Tending to this issue taught me a lot about adapting to the nuances of device-specific functionality to optimize user experience.
 
 ### Layout Design
 
+As seen from my original [Figma design](https://www.figma.com/design/tP5ITD5rjftAeg27rMoVXG/kierancanter.dev?node-id=0-1&t=z3MOAOBTCVDuCq4r-1), my ultimate release looks far different than my original draft. I was quite convinced and confident in my scrollable, heading separated design, but after being exposed to more sites and ideas, I lost that assurance. It wasn't until I saw [Keita Yamada's website](https://p5aholic.me) that I realized there are truly no rules to this design thing. There are some best practices and definitely some dos and dont's, but there are an infinite number of ways to design something to accomplish a task, and luckily my task was pretty simple. 
+
+I thought about the user experience more and realized "maybe I don't even want the user to have to scroll to find my sections and have other content clogging the viewport." Choosing to segregate sections by heading, content needed to remain scrollable in the event that it extends past the screen, but only the content of that section needed to be scrollable, not the entire page. This way, users didn't even get the chance to be distracted by content unrelated to what they wanted to see. Finding the desired section is quick, efficient, and effortless.
+
+By the time I decided to completely revamp my website, I had almost already finished the core implementation (as seen in this [commit](https://github.com/KieranCanter/kierancanter.dev/commit/6c8fc4d81e86e1f25054fe7d7fe69ef179ccbf5a)), but in the end it was completely worth it to produce a more refined result.
+
 ### Colorful Bullet Points
+
+Such a minor detail became such an arduous task, but my unwavering and meticulous attention to detail would not let it rest until it was fixed. Due to some CSS language-specific complexities, my `generateAccentColor()` function experienced an inconsistent logic error. On some platforms, namely desktop (Chrome/Firefox/Edge) and iOS devices (Safari), the function performed beautifully and assigned random vibrant colors to the bullet points in my About section. When tested on my physical Android device, as well as numerous other virtual and physical Android devices (Chrome), the bullet points appeared in a bright red, as if it was a default fallback color of some sort.
+
+This discrepency perplexed me, and no matter what bullet applying technique I tried, nothing worked. I changed raw CSS, Tailwind properties, `::before` pseudo-elements, the `list-style-image` property, and the `content` property. After many failed attempts, I decided the best plan of action to take was to implement an entire bullet point component.
+
+With the feeling of completely exhausting all of my options, I create a component specifically to hold an SVG of a diamond that I wanted to use as the bullet and gave it `String` prop to define the fill color. This was the only critical variable needed for the svg because while I didn't need to adjust the size of the SVG at all when inserted into my text, I could scale with `transform` if I needed to in the future.
+
+Using this method, I was able to insert this component into my list element seamlessly and treat it like a bullet point, generating the proper accent colors at all times. This solution didn't match my ideal desire, but it was the only one I could test and ensure consistent performance on all devices.
 
 ## Infrastructure
 
