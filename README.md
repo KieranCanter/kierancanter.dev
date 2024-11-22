@@ -25,6 +25,8 @@
 
 I built my portfolio website to serve as a central hub for presenting myself as a distinct, branded computer scientist. I wanted a place where I could showcase my skills, projects, and professional identity in a minimalist yet polished manner. This site reflects my desire to develop applications to not just function, but to **impress**.
 
+Below you will find an **exboritant** amount of info regarding my thought processes, decisions, challenges, and overall design/development workflow involved in constucting my site. I recognize most will skip this, but my hopes are that my diligence in documenting the entire procedure will end up helping anyone that has questions about a choice I made or confusion about building their own site.
+
 ## Design
 
 Driven by a desire to capture a modern, clean aesthetic that still delivers a unique visual, I focused on creating a minimalist yet engaging layout, balancing simplicity with functional elegance. My goal was to prioritize user experience, ensuring intuitive navigation and seamless accessibility across devices. Typography and color schemes were carefully selected to craft a professional and inviting atmosphere that hopefully not only highlights my work but also reflects upon my creativity as a computer scientist. View the entire project from the design perspective on **CHANGE TO PROJECT LINK ONCE FINISHED [Behance](https://behance.net/kierancanter)**
