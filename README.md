@@ -135,7 +135,7 @@ In addition to the core pieces of the stack, I took advantage of various other p
 
 #### Encapsulation + Abstraction
 
-Encapsulation is the object-oriented programming (OOP) principle that promotes self-containment of and compartmentalization of objects/components. This is quite valuable for reusability, Don't Repeat Yourself (DRY) coding, and exhibiting a separation of concerns, especially for a component-based library like React. By isolating UI elements, utility components, text data, and page routes, debugging is made easier by making components responsible for smaller portions of functionality and fosters modularity by allowing components to be reused across the project.
+Encapsulation is the object-oriented programming (OOP) principle that promotes self-containment of and compartmentalization of objects/components. This is quite valuable for reusability, Don't Repeat Yourself (DRY) coding, and exhibiting a separation of concerns, especially for a component-based library like React. By isolating UI elements, utility components, and text data, debugging is made easier by making components responsible for smaller portions of functionality and fosters modularity by allowing components to be reused across the project.
 
 Abstraction is another OOP principle that hides the details of implementation and focuses on broader ideas. By removing the specifics and focusing on the features, efficiency improves and complexity decreases.
 
@@ -152,8 +152,8 @@ The theme context component (the non-visual model) is used throughout the projec
 When working with a project that becomes rich in files and directories, organization is paramount in avoiding the "needle in a haystack" dilemma. If your file structure is a jumbled mess with no structure, components and functions are much harder to find. I adhered to a strict hierarchical organization to maintain a separation of concerns and group related files where assets like fonts and images are stored in `public` and all source code is stored in `src`.
 
 `src/`
-* `app/`        - top-level files or pages relating to the deployment and rendering of the site
-* `components/` - visual elements that are incorporated into the pages and will be seen by the user
+* `app/`        - top-level files relating to the deployment and rendering of the site
+* `components/` - visual elements that are incorporated into the page and will be seen by the user
 * `context/`    - components relying on and controlling variables relating to the system context (i.e. theme context with system preferences)
 * `data/`       - specific info such as text data that's abstracted out from respective components for modularity and scalability
 * `styles/`     - CSS styling
