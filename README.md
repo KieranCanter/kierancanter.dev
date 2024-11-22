@@ -71,7 +71,7 @@ This presented design and logic challenges that are explained more in [Technical
 
 ### Typography
 
-I carefully chose my typefaces to emit a clean, modern, and professional feel while also providing a robust selection of weights and styles. For Serif, Sans-serif, and Monospaced usage, I elected to use the [IBM Plex](https://www.ibm.com/plex/) family of fonts. For the minimal presence of [**American Psycho**](https://www.youtube.com/watch?v=YHgwxVCiMyI)-inspired small-caps, I opted for the Spectral SC font.
+I carefully chose my typefaces to emit a clean, modern, and professional feel while also providing a robust selection of weights and styles. For Serif, Sans-serif, and Monospaced usage, I elected to use the [IBM Plex](https://www.ibm.com/plex/) family of fonts. For the minimal presence of [_American Psycho_](https://www.youtube.com/watch?v=YHgwxVCiMyI)-inspired small-caps, I opted for the Spectral SC font.
 
 | Google Fonts                                                       | Adobe Fonts                                                    |
 |--------------------------------------------------------------------|----------------------------------------------------------------|
