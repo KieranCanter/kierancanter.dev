@@ -82,7 +82,7 @@ I carefully chose my typefaces to emit a clean, modern, and professional feel wh
 
 ### Logo
 
-To fully solidify myself as a branded entity, a logo was a necessity. I drafted numerous different ideas on paper and gathered opinions from friends & family to decide which one to move forth with. Having selected a base design, I crafted and refined it in Adobe Illustrator.
+To fully solidify myself as a branded entity, a logo was a necessity. I drafted numerous different ideas on paper and gathered opinions from friends & family to decide which one to move forth with. Having selected a base design, I crafted and refined it in Adobe Illustrator over several attempts and variations.
 
 To act as the favicon, the logo was exported as an SVG for desktop and Progressive Web App (PWA) purposes. To further enhance responsiveness, the logo was also exported as a PNG in two different color schemes (for light/dark modes) and numerous different sizes (16x16px, 32x32px, 512x512px, Android - 180x180px, and Apple - 192x192px) to serve as fallbacks should the SVG files run into any issues. More variants of the logo were exported for uses like this README and the business card element.
 
