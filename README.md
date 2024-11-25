@@ -1,4 +1,3 @@
-
 <h1 align="center">
   <img alt="KC Logo" src="public/images/logo-canonical.png" width="100" />
   </br>
