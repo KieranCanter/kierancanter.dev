@@ -1,10 +1,10 @@
 // Variables
-@import '@/styles/variables.scss';
+@use '@/styles/variables.scss';
 
 // Tailwind
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
+@use 'tailwindcss/base';
+@use 'tailwindcss/components';
+@use 'tailwindcss/utilities';
 
 // Fonts
 @mixin font-face($family, $file, $weight, $style) {
