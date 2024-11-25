@@ -67,7 +67,7 @@ This presented design and logic challenges that are explained more in [Technical
 
 ### Typography
 
-I carefully chose my typefaces to emit a clean, modern, and professional feel while also providing a robust selection of weights and styles. For Serif, Sans-serif, and Monospaced usage, I elected to use the [IBM Plex](https://www.ibm.com/plex/) family of fonts. For the minimal presence of [_American Psycho_](https://www.youtube.com/watch?v=YHgwxVCiMyI)-inspired small-caps, I opted for the Spectral SC font.
+I carefully chose my typefaces to emit a clean, modern, and professional feel while also providing a robust selection of weights and styles. For Serif, Sans-serif, and Monospaced usage, I elected to use the [IBM Plex](https://www.ibm.com/plex/) family of fonts. For the minimal presence of [_American Psycho_-inspired](https://www.youtube.com/watch?v=YHgwxVCiMyI) small-caps, I opted for the Spectral SC font.
 
 | Google Fonts                                                       | Adobe Fonts                                                    |
 |--------------------------------------------------------------------|----------------------------------------------------------------|
@@ -81,6 +81,8 @@ I carefully chose my typefaces to emit a clean, modern, and professional feel wh
 To fully solidify myself as a branded entity, a logo was a necessity. I drafted numerous ideas on paper and gathered opinions from friends & family to decide which one to move forth with. Having selected a base design, I crafted and refined it in Adobe Illustrator over several attempts and variations.
 
 To act as the favicon, the logo was exported as an SVG for desktop and Progressive Web App (PWA) purposes. To further enhance responsiveness, the logo was also exported as a PNG in two different color schemes (for light/dark modes) and many sizes (16x16px, 32x32px, 512x512px, Android - 180x180px, and Apple - 192x192px) to serve as fall-backs should the SVG files run into any issues. More variants of the logo were exported for uses like this README and the business card element.
+
+Furthermore, I exported a canonical version of the logo using the Sombre colors for official uses like this README. Finally, a thumbnail of the business card was added for preview purposes.
 
 ### Prototyping
 
