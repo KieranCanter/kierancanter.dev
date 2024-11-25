@@ -96,7 +96,7 @@ The entire project was written within [Cursor](https://www.cursor.com/). If you'
 
 ### Tech Stack
 
-The core technology stack I employed consisted of [TypeScript](https://www.typescriptlang.org/), [React](https://react.dev/), [Next.js](https://nextjs.org/), and [Tailwind CSS](https://tailwindcss.com/). While not inspired or based on the [T3 stack](https://create.t3.gg/) by [Theo Browne](https://www.youtube.com/@t3dotgg), I do believe it to be the most modern, modular, and effective stack for creating full-stack applications.
+The core technology stack I employed consisted of [TypeScript](https://www.typescriptlang.org/), [React](https://react.dev/), [Next.js](https://nextjs.org/), and [Tailwind CSS](https://tailwindcss.com/). Coincidentally, these are all a part of the [T3 stack](https://create.t3.gg/) by [Theo Browne](https://www.youtube.com/@t3dotgg). I discovered this tool after the project was already in development, and while it's not inspired or based on the stack, I do believe it to be the most modern, modular, and effective starting point for creating full-stack applications for the majority of use-cases.
 
 #### [TypeScript](https://www.typescriptlang.org/)
 
@@ -242,7 +242,25 @@ I created a test to run a "synthetic mouse" around in a circle for ten seconds t
 
 Visuals of the test and related metrics can be seen below:
 
-_**INSERT TEST CLIPS AND DATA**_
+<div style="display: grid; grid-template-columns: 1fr 1fr; justify-content: center; align-items: center; gap: 10px; max-width: 1000px; margin: 0 auto;">
+  <div>
+    <h3 style="text-align: center;">Unoptimized</h3>
+    <img alt="Particle Field Unoptimized" src="public/particle-field/particlefield-unoptimized.gif" width="350" height="350" style="width: 100%; height: auto; object-fit: contain;" />
+  </div>
+  <div>
+    <h3 style="text-align: center;">Optimized</h3>
+    <img alt="Particle Field Optimized" src="public/particle-field/particlefield-optimized.gif" width="350" height="350" style="width: 100%; height: auto; object-fit: contain;" />
+  </div>
+</div>
+
+| Metric              | Unoptimized | Optimized | Improvement  |
+|---------------------|-------------|-----------|--------------|
+| Average Update Time | 12.89ms     |  9.31ms   |  27.8%       |
+| Maximum Update Time | 43.30ms     | 18.80ms   |  56.7%       |
+| Minimum Update Time |  6.10ms     |  6.80ms   | -11.5%       |
+| Variance            | 37.20ms     | 12.00ms   |  67.8%       |
+
+As you can see, the overall performance was vastly improved. With a reduction in average update time of 27.8%, the particle field now runs much smoother and more efficiently. While the minimum update time seemed to decrease, this may be explained by uncontrollable hardware factors like memory access patterns and CPU scheduling. The maximum update time drastically improved by 56.7%, and the variance by 67.8%. This means that the particle field is now more consistent and predictable.
 
 ### Theme Switcher
 
