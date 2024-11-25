@@ -1,3 +1,4 @@
+import React from "react";
 import type { Metadata, Viewport } from "next";
 import "@/styles/globals.scss";
 import "@/styles/variables.scss";
@@ -35,6 +36,26 @@ export const metadata: Metadata = {
     siteName: "kierancanter.dev",
     locale: "en_US",
     type: "website",
+    images: [{
+      url: '/images/og-image.png', // Path relative to the public directory
+      width: 1200,
+      height: 630,
+      alt: 'kierancanter.dev - Portfolio Site',
+      type: 'image/png',
+    }],
+  },
+  icons: {
+    icon: [
+      { url: '/images/favicons/SVG/favicon.svg', type: 'image/svg+xml' },
+      { url: '/images/favicons/PNG/favicon-light_16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/images/favicons/PNG/favicon-light_32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/images/favicons/PNG/favicon-light_512.png', sizes: '512x512', type: 'image/png' },
+      { url: '/images/favicons/PNG/favicon-light_android.png', sizes: '192x192', type: 'image/png' },
+    ],
+    shortcut: [{ url: '/favicon.ico' }],
+    apple: [
+      { url: '/images/favicons/PNG/favicon-light_apple.png', sizes: '180x180', type: 'image/png' },
+    ],
   },
 };
 
@@ -43,7 +64,7 @@ export const viewport: Viewport = {
   initialScale: 1,
   maximumScale: 1,
   userScalable: false,
-  themeColor: "#000000",
+  themeColor: '#FFFFFF',
 };
 
 export default function RootLayout({
@@ -55,31 +76,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-
-        {/* Theme Color */}
-        <meta name="theme-color" content="#FFFFFF" />
-
-        {/* SVG favicon for modern browsers */}
-        <link rel="icon" type="image/svg+xml" sizes="any" href="/images/favicons/SVG/favicon.svg" />
-
-        {/* Standard Favicons */}
-        <link rel="icon-light" type="image/png" sizes="16x16" href="/images/favicons/PNG/favicon-light_16.png" />
-        <link rel="icon-light" type="image/png" sizes="32x32" href="/images/favicons/PNG/favicon-light_32.png" />
-        <link rel="icon-light" type="image/png" sizes="512x512" href="/images/favicons/PNG/favicon-light_512.png" />
-        <link rel="icon-dark" type="image/png" sizes="16x16" href="/images/favicons/PNG/favicon-dark_16.png" />
-        <link rel="icon-dark" type="image/png" sizes="32x32" href="/images/favicons/PNG/favicon-dark_32.png" />
-        <link rel="icon-dark" type="image/png" sizes="512x512" href="/images/favicons/PNG/favicon-dark_512.png" />
-        
-        {/* Android Icon */}
-        <link rel="icon-light" sizes="192x192" href="/images/favicons/PNG/favicon-light_android.png" />
-        <link rel="icon-dark" sizes="192x192" href="/images/favicons/PNG/favicon-dark_android.png" />
-
-        {/* Apple Touch Icon */}
-        <link rel="apple-touch-icon-light" sizes="180x180" href="/images/favicons/PNG/favicon-light_apple.png" />
-        <link rel="apple-touch-icon-dark" sizes="180x180" href="/images/favicons/PNG/favicon-dark_apple.png" />
-
-        {/* For Legacy Systems */}
-        <link rel="shortcut icon" href="/favicon.ico" />
 
       </head>
       <body className="antialiased bg-bg text-fgSoft selection:text-bg selection:bg-fgSoft">
