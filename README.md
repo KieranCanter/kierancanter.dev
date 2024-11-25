@@ -1,6 +1,6 @@
 
 <h1 align="center">
-  <img alt="KC Logo" src="https://github.com/KieranCanter/kierancanter.dev/blob/main/public/images/favicons/PNG/favicon-dark_512.png?raw=true" width="100" />
+  <img alt="KC Logo" src="public/images/logo-canonical.png" width="100" />
   </br>
   kierancanter.dev
 </h1>
@@ -22,7 +22,7 @@ Below you will find an **exorbitant** amount of info regarding my thought proces
 
 ## Design
 
-Driven by a desire to capture a modern, clean aesthetic that still delivers a unique visual, I focused on creating a minimalist yet engaging layout, balancing simplicity with functional elegance. My goal was to prioritize user experience, ensuring intuitive navigation and seamless accessibility across devices. Typography and color schemes were carefully selected to craft a professional and inviting atmosphere that hopefully not only highlights my work but also reflects upon my creativity as a computer scientist. View the entire project from the design perspective on **CHANGE TO PROJECT LINK ONCE FINISHED [Behance](https://behance.net/kierancanter)**
+Driven by a desire to capture a modern, clean aesthetic that still delivers a unique visual, I focused on creating a minimalist yet engaging layout, balancing simplicity with functional elegance. My goal was to prioritize user experience, ensuring intuitive navigation and seamless accessibility across devices. Typography and color schemes were carefully selected to craft a professional and inviting atmosphere that hopefully not only highlights my work but also reflects upon my creativity as a computer scientist.
 
 ### Inspiration
 

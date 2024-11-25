@@ -5,7 +5,7 @@ import revealAnimation from '@/util/reveal';
 import VanillaTilt from 'vanilla-tilt';
 import { isMobile } from 'react-device-detect';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGithub, faLinkedin, faBehance, faCodepen } from '@fortawesome/free-brands-svg-icons';
+import { faGithub, faLinkedin, faCodepen } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import Link from 'next/link';
 import LogoSVG from '@/components/logoSVG';
@@ -16,7 +16,6 @@ const socialLinks = [
   { title: 'GitHub', href: 'https://github.com/kierancanter', icon: faGithub },
   { title: 'LinkedIn', href: 'https://www.linkedin.com/in/kierancanter/', icon: faLinkedin },
   { title: 'CodePen', href: 'https://codepen.io/kierancanter', icon: faCodepen },
-  { title: 'Behance', href: 'https://www.behance.net/kierancanter', icon: faBehance },
 ];
 
 // Add this type definition at the top of your file

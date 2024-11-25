@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     locale: "en_US",
     type: "website",
     images: [{
-      url: '/images/og-image.png', // Path relative to the public directory
+      url: '/images/og-image.png',
       width: 1200,
       height: 630,
       alt: 'kierancanter.dev - Portfolio Site',
