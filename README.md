@@ -1,17 +1,9 @@
-<div align="center">
-  CHANGE TO COLORED LOGO<img alt="KC Logo" src="https://raw.githubusercontent.com/KieranCanter/kierancanter.dev/3574dd9070477802932f896e80c25df50f688aa7/public/images/logo.svg" width="100" />
-</div>
+
 <h1 align="center">
+  <img alt="KC Logo" src="https://github.com/KieranCanter/kierancanter.dev/blob/main/public/images/favicons/PNG/favicon-dark_512.png?raw=true" width="100" />
+  </br>
   kierancanter.dev
 </h1>
-<div align="right">
-  <a href="https://github.com/kierancanter/kierancanter.dev/releases" target="_blank">
-    <img 
-      alt="Deployment Status" 
-      src="https://img.shields.io/github/deployments/kierancanter/kierancanter.dev/production?style=flat-square&logo=vercel&logoColor=white&label=vercel"
-    />
-  </a>
-</div>
 
 ## Contents
 
@@ -26,7 +18,7 @@
 
 I built my portfolio website to serve as a central hub for presenting myself as a distinct, branded computer scientist. I wanted a place where I could showcase my skills, projects, and professional identity in a minimalist yet polished manner. This site reflects my desire to develop applications to not just function, but to **impress**.
 
-Below you will find an **exorbitant** amount of info regarding my thought processes, decisions, challenges, and overall design/development workflow involved in constructing my site. I recognize most will skip this, but my hopes are that my diligence in documenting the entire procedure will end up helping anyone that has questions about a choice I made or confusion about building their own site.
+Below you will find an **exorbitant** amount of info regarding my thought processes, decisions, challenges, and overall design/development workflow involved in constructing my site. I recognize most will skip this, but my hopes are that my diligence in documenting the entire procedure will end up helping anyone that has questions about choices I made or confusion about building their own site.
 
 ## Design
 
