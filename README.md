@@ -317,11 +317,11 @@ Visuals of the test and related metrics can be seen below:
 <div style="display: flex; justify-content: flex-end; align-items: center; gap: 10px; max-width: 1000px; margin: 0;">
   <div>
     <h3 style="text-align: center;">Unoptimized</h3>
-    <img alt="Particle Field Unoptimized" src="public/particle-field/particlefield-unoptimized.gif" width="350" height="auto" style="width: 100%; height: auto; object-fit: contain;" />
+    <img alt="Particle Field Unoptimized" src="public/particle-field/particlefield-unoptimized.gif" width="500" height="auto" style="width: 100%; height: auto; object-fit: contain;" />
   </div>
   <div>
     <h3 style="text-align: center;">Optimized</h3>
-    <img alt="Particle Field Optimized" src="public/particle-field/particlefield-optimized.gif" width="350" height="auto" style="width: 100%; height: auto; object-fit: contain;" />
+    <img alt="Particle Field Optimized" src="public/particle-field/particlefield-optimized.gif" width="500" height="auto" style="width: 100%; height: auto; object-fit: contain;" />
   </div>
 </div>
 
