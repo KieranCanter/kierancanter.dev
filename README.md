@@ -75,30 +75,30 @@ This presented design and logic challenges that are explained more in [Technical
   </tr>
   <tr>
     <td>Plush</td>
-    <td style="width: 50px; height: 50px;"><img src="public/colors/plush-bg.png" alt="Plush Background" /></td>
-    <td style="width: 50px; height: 50px;"><img src="public/colors/plush-fg-soft.png" alt="Plush Foreground (Soft)" /></td>
-    <td style="width: 50px; height: 50px;"><img src="public/colors/plush-fg-hard.png" alt="Plush Foreground (Hard)" /></td>
-    <td style="width: 50px; height: 50px;"><img src="public/colors/plush-contrast.png" alt="Plush Contrast" /></td>
+    <td style="width: 100px; height: 100px;"><img src="public/colors/plush-bg.png" alt="Plush Background" /></td>
+    <td style="width: 100px; height: 100px;"><img src="public/colors/plush-fg-soft.png" alt="Plush Foreground (Soft)" /></td>
+    <td style="width: 100px; height: 100px;"><img src="public/colors/plush-fg-hard.png" alt="Plush Foreground (Hard)" /></td>
+    <td style="width: 100px; height: 100px;"><img src="public/colors/plush-contrast.png" alt="Plush Contrast" /></td>
   </tr>
   <tr>
     <td>Sombre</td>
-    <td style="width: 50px; height: 50px;"><img src="public/colors/sombre-bg.png" alt="Sombre Background" /></td>
-    <td style="width: 50px; height: 50px;"><img src="public/colors/sombre-fg-soft.png" alt="Sombre Foreground (Soft)" /></td>
-    <td style="width: 50px; height: 50px;"><img src="public/colors/sombre-fg-hard.png" alt="Sombre Foreground (Hard)" /></td>
-    <td style="width: 50px; height: 50px;"><img src="public/colors/sombre-contrast.png" alt="Sombre Contrast" /></td>
+    <td style="width: 100px; height: 100px;"><img src="public/colors/sombre-bg.png" alt="Sombre Background" /></td>
+    <td style="width: 100px; height: 100px;"><img src="public/colors/sombre-fg-soft.png" alt="Sombre Foreground (Soft)" /></td>
+    <td style="width: 100px; height: 100px;"><img src="public/colors/sombre-fg-hard.png" alt="Sombre Foreground (Hard)" /></td>
+    <td style="width: 100px; height: 100px;"><img src="public/colors/sombre-contrast.png" alt="Sombre Contrast" /></td>
   </tr>
   <tr>
     <td>Brilliant</td>
-    <td style="width: 50px; height: 50px;"><img src="public/colors/brilliant-bg.png" alt="Brilliant Background" /></td>
-    <td style="width: 50px; height: 50px;"><img src="public/colors/brilliant-fg-soft.png" alt="Brilliant Foreground (Soft)" /></td>
-    <td style="width: 50px; height: 50px;"><img src="public/colors/brilliant-fg-hard.png" alt="Brilliant Foreground (Hard)" /></td>
+    <td style="width: 100px; height: 100px;"><img src="public/colors/brilliant-bg.png" alt="Brilliant Background" /></td>
+    <td style="width: 100px; height: 100px;"><img src="public/colors/brilliant-fg-soft.png" alt="Brilliant Foreground (Soft)" /></td>
+    <td style="width: 100px; height: 100px;"><img src="public/colors/brilliant-fg-hard.png" alt="Brilliant Foreground (Hard)" /></td>
     <td style="text-align: center;"><a href="#colorful-contrast-sets">See below</a></td>
   </tr>
   <tr>
     <td>Luminous</td>
-    <td style="width: 50px; height: 50px;"><img src="public/colors/luminous-bg.png" alt="Luminous Background" /></td>
-    <td style="width: 50px; height: 50px;"><img src="public/colors/luminous-fg-soft.png" alt="Luminous Foreground (Soft)" /></td>
-    <td style="width: 50px; height: 50px;"><img src="public/colors/luminous-fg-hard.png" alt="Luminous Foreground (Hard)" /></td>
+    <td style="width: 100px; height: 100px;"><img src="public/colors/luminous-bg.png" alt="Luminous Background" /></td>
+    <td style="width: 100px; height: 100px;"><img src="public/colors/luminous-fg-soft.png" alt="Luminous Foreground (Soft)" /></td>
+    <td style="width: 100px; height: 100px;"><img src="public/colors/luminous-fg-hard.png" alt="Luminous Foreground (Hard)" /></td>
     <td style="text-align: center;"><a href="#colorful-contrast-sets">See below</a></td>
   </tr>
 </table>
