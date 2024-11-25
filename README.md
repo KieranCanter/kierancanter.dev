@@ -92,14 +92,14 @@ This presented design and logic challenges that are explained more in [Technical
     <td style="width: 100px; height: 100px;"><img src="public/colors/brilliant-bg.png" alt="Brilliant Background" /></td>
     <td style="width: 100px; height: 100px;"><img src="public/colors/brilliant-fg-soft.png" alt="Brilliant Foreground (Soft)" /></td>
     <td style="width: 100px; height: 100px;"><img src="public/colors/brilliant-fg-hard.png" alt="Brilliant Foreground (Hard)" /></td>
-    <td><a href="#colorful-contrast-sets">See below</a></td>
+    <td style="text-align: center;"><a href="#colorful-contrast-sets">See below</a></td>
   </tr>
   <tr>
     <td>Luminous</td>
     <td style="width: 100px; height: 100px;"><img src="public/colors/luminous-bg.png" alt="Luminous Background" /></td>
     <td style="width: 100px; height: 100px;"><img src="public/colors/luminous-fg-soft.png" alt="Luminous Foreground (Soft)" /></td>
     <td style="width: 100px; height: 100px;"><img src="public/colors/luminous-fg-hard.png" alt="Luminous Foreground (Hard)" /></td>
-    <td><a href="#colorful-contrast-sets">See below</a></td>
+    <td style="text-align: center;"><a href="#colorful-contrast-sets">See below</a></td>
   </tr>
 </table>
 
