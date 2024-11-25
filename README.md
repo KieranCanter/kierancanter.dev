@@ -63,7 +63,80 @@ I originally was just going to stick to the light/dark mode themes, but coming a
 
 This presented design and logic challenges that are explained more in [Technical Challenges & Solutions](#technical-challenges--solutions), but I was determined to make it work. As an avid enjoyer of personalization within apps and games, I very much wanted to give the user the option to switch between these four different color themes. Ultimately, I chose names for these themes based on the atmosphere I felt they radiated: Plush, Sombre, Brilliant, and Luminous.
 
-*_INCLUDE GRAPHIC OF COLOR BLOCK WITH HEX CODES_*
+#### Color Reference
+
+<table>
+  <tr>
+    <th>Theme</th>
+    <th>Background</th>
+    <th>Foreground (Soft)</th>
+    <th>Foreground (Hard)</th>
+    <th>Contrast Color</th>
+  </tr>
+  <tr>
+    <td>Plush</td>
+    <td style="width: 100px; height: 100px;"><img src="public/colors/plush-bg.png" alt="Plush Background" /></td>
+    <td style="width: 100px; height: 100px;"><img src="public/colors/plush-fg-soft.png" alt="Plush Foreground (Soft)" /></td>
+    <td style="width: 100px; height: 100px;"><img src="public/colors/plush-fg-hard.png" alt="Plush Foreground (Hard)" /></td>
+    <td style="width: 100px; height: 100px;"><img src="public/colors/plush-contrast.png" alt="Plush Contrast" /></td>
+  </tr>
+  <tr>
+    <td>Sombre</td>
+    <td style="width: 100px; height: 100px;"><img src="public/colors/sombre-bg.png" alt="Sombre Background" /></td>
+    <td style="width: 100px; height: 100px;"><img src="public/colors/sombre-fg-soft.png" alt="Sombre Foreground (Soft)" /></td>
+    <td style="width: 100px; height: 100px;"><img src="public/colors/sombre-fg-hard.png" alt="Sombre Foreground (Hard)" /></td>
+    <td style="width: 100px; height: 100px;"><img src="public/colors/sombre-contrast.png" alt="Sombre Contrast" /></td>
+  </tr>
+  <tr>
+    <td>Brilliant</td>
+    <td style="width: 100px; height: 100px;"><img src="public/colors/brilliant-bg.png" alt="Brilliant Background" /></td>
+    <td style="width: 100px; height: 100px;"><img src="public/colors/brilliant-fg-soft.png" alt="Brilliant Foreground (Soft)" /></td>
+    <td style="width: 100px; height: 100px;"><img src="public/colors/brilliant-fg-hard.png" alt="Brilliant Foreground (Hard)" /></td>
+    <td><a href="#colorful-contrast-sets">See below</a></td>
+  </tr>
+  <tr>
+    <td>Luminous</td>
+    <td style="width: 100px; height: 100px;"><img src="public/colors/luminous-bg.png" alt="Luminous Background" /></td>
+    <td style="width: 100px; height: 100px;"><img src="public/colors/luminous-fg-soft.png" alt="Luminous Foreground (Soft)" /></td>
+    <td style="width: 100px; height: 100px;"><img src="public/colors/luminous-fg-hard.png" alt="Luminous Foreground (Hard)" /></td>
+    <td><a href="#colorful-contrast-sets">See below</a></td>
+  </tr>
+</table>
+
+#### Colorful Contrast Sets
+
+<table>
+  <tr>
+    <td colspan="4" style="text-align: center;">Brilliant</td>
+  </tr>
+  <tr>
+    <td style="width: 100px; height: 100px;"><img src="public/colors/brilliant-contrast1.png" alt="Brilliant Rose" /></td>
+    <td style="width: 100px; height: 100px;"><img src="public/colors/brilliant-contrast2.png" alt="Brilliant Valentine" /></td>
+    <td style="width: 100px; height: 100px;"><img src="public/colors/brilliant-contrast3.png" alt="Brilliant Forest" /></td>
+    <td style="width: 100px; height: 100px;"><img src="public/colors/brilliant-contrast4.png" alt="Brilliant Toolbox" /></td>
+  </tr>
+  <tr>
+    <td style="width: 100px; height: 100px;"><img src="public/colors/brilliant-contrast5.png" alt="Brilliant Mustard" /></td>
+    <td style="width: 100px; height: 100px;"><img src="public/colors/brilliant-contrast6.png" alt="Brilliant Bluish" /></td>
+    <td style="width: 100px; height: 100px;"><img src="public/colors/brilliant-contrast7.png" alt="Brilliant Rust" /></td>
+    <td style="width: 100px; height: 100px;"><img src="public/colors/brilliant-contrast8.png" alt="Brilliant Viridian" /></td>
+  </tr>
+  <tr>
+    <td colspan="4" style="text-align: center;">Luminous</td>
+  </tr>
+  <tr>
+    <td style="width: 100px; height: 100px;"><img src="public/colors/luminous-contrast1.png" alt="Luminous Azure" /></td>
+    <td style="width: 100px; height: 100px;"><img src="public/colors/luminous-contrast2.png" alt="Luminous Banana" /></td>
+    <td style="width: 100px; height: 100px;"><img src="public/colors/luminous-contrast3.png" alt="Luminous Lavender" /></td>
+    <td style="width: 100px; height: 100px;"><img src="public/colors/luminous-contrast4.png" alt="Luminous Lime" /></td>
+  </tr>
+  <tr>
+    <td style="width: 100px; height: 100px;"><img src="public/colors/luminous-contrast5.png" alt="Luminous Mandarin" /></td>
+    <td style="width: 100px; height: 100px;"><img src="public/colors/luminous-contrast6.png" alt="Luminous Mint" /></td>
+    <td style="width: 100px; height: 100px;"><img src="public/colors/luminous-contrast7.png" alt="Luminous Peach" /></td>
+    <td style="width: 100px; height: 100px;"><img src="public/colors/luminous-contrast8.png" alt="Luminous Watermelon" /></td>
+  </tr>
+</table>
 
 ### Typography
 
@@ -222,7 +295,7 @@ Semantic tags are a bit underrated and sometimes neglected. Inherent meaning and
 
 #### Color Contrast
 
-To expand on what I said earlier regarding color theory, the contrast and visibility of colors is pertinent for those that can't make out colors easily. For this reason, I carefully chose colors for my themes that contrasted well enough, but also varied in saturation and light depending on whether content needed to be emphasized or to blend in. This was especially true for the Brilliant and Luminous color themes, where I created sets of colors to randomly select from and apply to accented elements. I ensured that all colors contrasted well with their light/dark backgrounds such that accessibility would not be an issue.
+To expand on what I said earlier regarding color theory, the contrast and visibility of colors is pertinent for those that can't make out colors easily. For this reason, I carefully chose colors for my themes that contrasted well enough, but also varied in saturation and light depending on whether content needed to be emphasized or to blend in. This was especially true for the Brilliant and Luminous color themes, where I created sets of colors to randomly select from and apply to accented elements. I ensured that all colors contrasted with their light/dark backgrounds with a minimum ratio of 3 using [Contrast Finder](https://app.contrast-finder.org/).
 
 #### System Preferences
 
