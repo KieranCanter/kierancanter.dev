@@ -16,7 +16,7 @@
 
 ## Impress
 
-I built my portfolio website to serve as a central hub for presenting myself as a distinct, branded computer scientist. I wanted a place where I could showcase my skills, projects, and professional identity in a minimalist yet polished manner. This site reflects my desire to develop applications to not just function, but to **impress**.
+I built my portfolio website to serve as a central hub for presenting myself as a distinct, branded computer scientist. I wanted a place where I could showcase my skills, projects, and professional identity in a minimalist yet polished manner. This site reflects my desire to develop software to not just function, but to **impress**.
 
 Below you will find an **exorbitant** amount of info regarding my thought processes, decisions, challenges, and overall design/development workflow involved in constructing my site. I recognize most will skip this, but my hopes are that my diligence in documenting the entire procedure will end up helping anyone that has questions about choices I made or confusion about building their own site.
 
