@@ -75,66 +75,65 @@ This presented design and logic challenges that are explained more in [Technical
   </tr>
   <tr>
     <td>Plush</td>
-    <td style="width: 100px; height: 100px;"><img src="public/colors/plush-bg.png" alt="Plush Background" /></td>
-    <td style="width: 100px; height: 100px;"><img src="public/colors/plush-fg-soft.png" alt="Plush Foreground (Soft)" /></td>
-    <td style="width: 100px; height: 100px;"><img src="public/colors/plush-fg-hard.png" alt="Plush Foreground (Hard)" /></td>
-    <td style="width: 100px; height: 100px;"><img src="public/colors/plush-contrast.png" alt="Plush Contrast" /></td>
+    <td style="width: 100px; height: 100px; max-width: 100px; max-height: 100px;"><img src="public/colors/plush-bg.png" alt="Plush Background" /></td>
+    <td style="width: 100px; height: 100px; max-width: 100px; max-height: 100px;"><img src="public/colors/plush-fg-soft.png" alt="Plush Foreground (Soft)" /></td>
+    <td style="width: 100px; height: 100px; max-width: 100px; max-height: 100px;"><img src="public/colors/plush-fg-hard.png" alt="Plush Foreground (Hard)" /></td>
+    <td style="width: 100px; height: 100px; max-width: 100px; max-height: 100px;"><img src="public/colors/plush-contrast.png" alt="Plush Contrast" /></td>
   </tr>
   <tr>
     <td>Sombre</td>
-    <td style="width: 100px; height: 100px;"><img src="public/colors/sombre-bg.png" alt="Sombre Background" /></td>
-    <td style="width: 100px; height: 100px;"><img src="public/colors/sombre-fg-soft.png" alt="Sombre Foreground (Soft)" /></td>
-    <td style="width: 100px; height: 100px;"><img src="public/colors/sombre-fg-hard.png" alt="Sombre Foreground (Hard)" /></td>
-    <td style="width: 100px; height: 100px;"><img src="public/colors/sombre-contrast.png" alt="Sombre Contrast" /></td>
+    <td style="width: 100px; height: 100px; max-width: 100px; max-height: 100px;"><img src="public/colors/sombre-bg.png" alt="Sombre Background" /></td>
+    <td style="width: 100px; height: 100px; max-width: 100px; max-height: 100px;"><img src="public/colors/sombre-fg-soft.png" alt="Sombre Foreground (Soft)" /></td>
+    <td style="width: 100px; height: 100px; max-width: 100px; max-height: 100px;"><img src="public/colors/sombre-fg-hard.png" alt="Sombre Foreground (Hard)" /></td>
+    <td style="width: 100px; height: 100px; max-width: 100px; max-height: 100px;"><img src="public/colors/sombre-contrast.png" alt="Sombre Contrast" /></td>
   </tr>
   <tr>
     <td>Brilliant</td>
-    <td style="width: 100px; height: 100px;"><img src="public/colors/brilliant-bg.png" alt="Brilliant Background" /></td>
-    <td style="width: 100px; height: 100px;"><img src="public/colors/brilliant-fg-soft.png" alt="Brilliant Foreground (Soft)" /></td>
-    <td style="width: 100px; height: 100px;"><img src="public/colors/brilliant-fg-hard.png" alt="Brilliant Foreground (Hard)" /></td>
-    <td style="text-align: center;"><a href="#colorful-contrast-sets">See below</a></td>
+    <td style="width: 100px; height: 100px; max-width: 100px; max-height: 100px;"><img src="public/colors/brilliant-bg.png" alt="Brilliant Background" /></td>
+    <td style="width: 100px; height: 100px; max-width: 100px; max-height: 100px;"><img src="public/colors/brilliant-fg-soft.png" alt="Brilliant Foreground (Soft)" /></td>
+    <td style="width: 100px; height: 100px; max-width: 100px; max-height: 100px;"><img src="public/colors/brilliant-fg-hard.png" alt="Brilliant Foreground (Hard)" /></td>
+    <td style="text-align: center; max-width: 100px; max-height: 100px;"><a href="#colorful-contrast-sets">See below</a></td>
   </tr>
   <tr>
     <td>Luminous</td>
-    <td style="width: 100px; height: 100px;"><img src="public/colors/luminous-bg.png" alt="Luminous Background" /></td>
-    <td style="width: 100px; height: 100px;"><img src="public/colors/luminous-fg-soft.png" alt="Luminous Foreground (Soft)" /></td>
-    <td style="width: 100px; height: 100px;"><img src="public/colors/luminous-fg-hard.png" alt="Luminous Foreground (Hard)" /></td>
-    <td style="text-align: center;"><a href="#colorful-contrast-sets">See below</a></td>
+    <td style="width: 100px; height: 100px; max-width: 100px; max-height: 100px;"><img src="public/colors/luminous-bg.png" alt="Luminous Background" /></td>
+    <td style="width: 100px; height: 100px; max-width: 100px; max-height: 100px;"><img src="public/colors/luminous-fg-soft.png" alt="Luminous Foreground (Soft)" /></td>
+    <td style="width: 100px; height: 100px; max-width: 100px; max-height: 100px;"><img src="public/colors/luminous-fg-hard.png" alt="Luminous Foreground (Hard)" /></td>
+    <td style="text-align: center; max-width: 100px; max-height: 100px;"><a href="#colorful-contrast-sets">See below</a></td>
   </tr>
 </table>
 
 #### Colorful Contrast Sets
 
+<h4>Brilliant</h4>
 <table>
   <tr>
-    <td colspan="4" style="text-align: center;">Brilliant</td>
+    <td style="width: 100px; height: 100px; max-width: 100px; max-height: 100px;"><img src="public/colors/brilliant-contrast1.png" alt="Brilliant Rose" /></td>
+    <td style="width: 100px; height: 100px; max-width: 100px; max-height: 100px;"><img src="public/colors/brilliant-contrast2.png" alt="Brilliant Valentine" /></td>
+    <td style="width: 100px; height: 100px; max-width: 100px; max-height: 100px;"><img src="public/colors/brilliant-contrast3.png" alt="Brilliant Forest" /></td>
+    <td style="width: 100px; height: 100px; max-width: 100px; max-height: 100px;"><img src="public/colors/brilliant-contrast4.png" alt="Brilliant Toolbox" /></td>
   </tr>
   <tr>
-    <td style="width: 100px; height: 100px;"><img src="public/colors/brilliant-contrast1.png" alt="Brilliant Rose" /></td>
-    <td style="width: 100px; height: 100px;"><img src="public/colors/brilliant-contrast2.png" alt="Brilliant Valentine" /></td>
-    <td style="width: 100px; height: 100px;"><img src="public/colors/brilliant-contrast3.png" alt="Brilliant Forest" /></td>
-    <td style="width: 100px; height: 100px;"><img src="public/colors/brilliant-contrast4.png" alt="Brilliant Toolbox" /></td>
+    <td style="width: 100px; height: 100px; max-width: 100px; max-height: 100px;"><img src="public/colors/brilliant-contrast5.png" alt="Brilliant Mustard" /></td>
+    <td style="width: 100px; height: 100px; max-width: 100px; max-height: 100px;"><img src="public/colors/brilliant-contrast6.png" alt="Brilliant Bluish" /></td>
+    <td style="width: 100px; height: 100px; max-width: 100px; max-height: 100px;"><img src="public/colors/brilliant-contrast7.png" alt="Brilliant Rust" /></td>
+    <td style="width: 100px; height: 100px; max-width: 100px; max-height: 100px;"><img src="public/colors/brilliant-contrast8.png" alt="Brilliant Viridian" /></td>
+  </tr>
+</table>
+
+<h4>Luminous</h4>
+<table>
+  <tr>
+    <td style="width: 100px; height: 100px; max-width: 100px; max-height: 100px;"><img src="public/colors/luminous-contrast1.png" alt="Luminous Azure" /></td>
+    <td style="width: 100px; height: 100px; max-width: 100px; max-height: 100px;"><img src="public/colors/luminous-contrast2.png" alt="Luminous Banana" /></td>
+    <td style="width: 100px; height: 100px; max-width: 100px; max-height: 100px;"><img src="public/colors/luminous-contrast3.png" alt="Luminous Lavender" /></td>
+    <td style="width: 100px; height: 100px; max-width: 100px; max-height: 100px;"><img src="public/colors/luminous-contrast4.png" alt="Luminous Lime" /></td>
   </tr>
   <tr>
-    <td style="width: 100px; height: 100px;"><img src="public/colors/brilliant-contrast5.png" alt="Brilliant Mustard" /></td>
-    <td style="width: 100px; height: 100px;"><img src="public/colors/brilliant-contrast6.png" alt="Brilliant Bluish" /></td>
-    <td style="width: 100px; height: 100px;"><img src="public/colors/brilliant-contrast7.png" alt="Brilliant Rust" /></td>
-    <td style="width: 100px; height: 100px;"><img src="public/colors/brilliant-contrast8.png" alt="Brilliant Viridian" /></td>
-  </tr>
-  <tr>
-    <td colspan="4" style="text-align: center;">Luminous</td>
-  </tr>
-  <tr>
-    <td style="width: 100px; height: 100px;"><img src="public/colors/luminous-contrast1.png" alt="Luminous Azure" /></td>
-    <td style="width: 100px; height: 100px;"><img src="public/colors/luminous-contrast2.png" alt="Luminous Banana" /></td>
-    <td style="width: 100px; height: 100px;"><img src="public/colors/luminous-contrast3.png" alt="Luminous Lavender" /></td>
-    <td style="width: 100px; height: 100px;"><img src="public/colors/luminous-contrast4.png" alt="Luminous Lime" /></td>
-  </tr>
-  <tr>
-    <td style="width: 100px; height: 100px;"><img src="public/colors/luminous-contrast5.png" alt="Luminous Mandarin" /></td>
-    <td style="width: 100px; height: 100px;"><img src="public/colors/luminous-contrast6.png" alt="Luminous Mint" /></td>
-    <td style="width: 100px; height: 100px;"><img src="public/colors/luminous-contrast7.png" alt="Luminous Peach" /></td>
-    <td style="width: 100px; height: 100px;"><img src="public/colors/luminous-contrast8.png" alt="Luminous Watermelon" /></td>
+    <td style="width: 100px; height: 100px; max-width: 100px; max-height: 100px;"><img src="public/colors/luminous-contrast5.png" alt="Luminous Mandarin" /></td>
+    <td style="width: 100px; height: 100px; max-width: 100px; max-height: 100px;"><img src="public/colors/luminous-contrast6.png" alt="Luminous Mint" /></td>
+    <td style="width: 100px; height: 100px; max-width: 100px; max-height: 100px;"><img src="public/colors/luminous-contrast7.png" alt="Luminous Peach" /></td>
+    <td style="width: 100px; height: 100px; max-width: 100px; max-height: 100px;"><img src="public/colors/luminous-contrast8.png" alt="Luminous Watermelon" /></td>
   </tr>
 </table>
 
@@ -315,7 +314,7 @@ I created a test to run a "synthetic mouse" around in a circle for ten seconds t
 
 Visuals of the test and related metrics can be seen below:
 
-<div style="display: grid; grid-template-columns: 1fr 1fr; justify-content: center; align-items: center; gap: 10px; max-width: 1000px; margin: 0 auto;">
+<div style="display: flex; justify-content: flex-end; align-items: center; gap: 10px; max-width: 1000px; margin: 0;">
   <div>
     <h3 style="text-align: center;">Unoptimized</h3>
     <img alt="Particle Field Unoptimized" src="public/particle-field/particlefield-unoptimized.gif" width="350" height="350" style="width: 100%; height: auto; object-fit: contain;" />
