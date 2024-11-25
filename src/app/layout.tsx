@@ -37,10 +37,10 @@ export const metadata: Metadata = {
     locale: "en_US",
     type: "website",
     images: [{
-      url: '/images/og-image.png',
+      url: '/images/thumbnail.png',
       width: 1200,
-      height: 630,
-      alt: 'kierancanter.dev - Portfolio Site',
+      height: 761,
+      alt: "Kieran's Site",
       type: 'image/png',
     }],
   },
