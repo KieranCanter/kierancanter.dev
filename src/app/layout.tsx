@@ -44,19 +44,6 @@ export const metadata: Metadata = {
       type: 'image/png',
     }],
   },
-  icons: {
-    icon: [
-      { url: '/images/favicons/SVG/favicon.svg', type: 'image/svg+xml' },
-      { url: '/images/favicons/PNG/favicon-light_16.png', sizes: '16x16', type: 'image/png' },
-      { url: '/images/favicons/PNG/favicon-light_32.png', sizes: '32x32', type: 'image/png' },
-      { url: '/images/favicons/PNG/favicon-light_512.png', sizes: '512x512', type: 'image/png' },
-      { url: '/images/favicons/PNG/favicon-light_android.png', sizes: '192x192', type: 'image/png' },
-    ],
-    shortcut: [{ url: '/favicon.ico' }],
-    apple: [
-      { url: '/images/favicons/PNG/favicon-light_apple.png', sizes: '180x180', type: 'image/png' },
-    ],
-  },
 };
 
 export const viewport: Viewport = {
@@ -76,6 +63,28 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+
+        {/* SVG Favicon for modern browsers */}
+        <link rel="icon" type="image/svg+xml" sizes="any" href="/images/favicons/SVG/favicon.svg" />
+
+        {/* Standard Favicons */}
+        <link rel="icon-light" type="image/png" sizes="16x16" href="/images/favicons/PNG/favicon-light_16.png" />
+        <link rel="icon-light" type="image/png" sizes="32x32" href="/images/favicons/PNG/favicon-light_32.png" />
+        <link rel="icon-light" type="image/png" sizes="512x512" href="/images/favicons/PNG/favicon-light_512.png" />
+        <link rel="icon-dark" type="image/png" sizes="16x16" href="/images/favicons/PNG/favicon-dark_16.png" />
+        <link rel="icon-dark" type="image/png" sizes="32x32" href="/images/favicons/PNG/favicon-dark_32.png" />
+        <link rel="icon-dark" type="image/png" sizes="512x512" href="/images/favicons/PNG/favicon-dark_512.png" />
+
+        {/* Android Icon */}
+        <link rel="icon-light" type="image/png" sizes="192x192" href="/images/favicons/PNG/favicon-light_android.png" />
+        <link rel="icon-dark" type="image/png" sizes="192x192" href="/images/favicons/PNG/favicon-dark_android.png" />
+
+        {/* Apple Touch Icon */}
+        <link rel="apple-touch-icon-light" type="image/png" sizes="180x180" href="/images/favicons/PNG/favicon-light_apple.png" />
+        <link rel="apple-touch-icon-dark" type="image/png" sizes="180x180" href="/images/favicons/PNG/favicon-dark_apple.png" />
+
+        {/* For Legacy Systems */}
+        <link rel="favicon" type="image/x-icon" href="/favicon.ico" />
 
       </head>
       <body className="antialiased bg-bg text-fgSoft selection:text-bg selection:bg-fgSoft">

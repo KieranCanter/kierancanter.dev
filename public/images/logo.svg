@@ -5,6 +5,12 @@
       .cls-1 {
         fill: #1e1e1e;
       }
+
+      @media (prefers-color-scheme: dark) {
+        .cls-1 {
+          fill: #e5e5e5;
+        }
+      }
     </style>
   </defs>
   <path class="cls-1" d="M738.26,0h-285.24L0,540l453.02,540h285.24l-453.02-540L738.26,0ZM648.44,1058.61h-85L128.18,540,563.44,21.39h85L213.18,540l435.27,518.61Z"/>
