@@ -103,10 +103,8 @@ export default function RootLayout({
                   </div>
                 </header>
                 
-                <Navigation>
-                  <a href="#main-content" className="sr-only focus:not-sr-only">Skip to main content</a>
-                  {children}
-                </Navigation>
+                <a href="#main-content" className="sr-only focus:not-sr-only">Skip to main content</a>
+                {children}
 
                 <div className="md:hidden relative flex justify-end m-4 pointer-events-auto">
                   <ThemeSwitcher />
