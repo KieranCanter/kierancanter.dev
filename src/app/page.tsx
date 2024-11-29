@@ -11,6 +11,7 @@ import { useSwipeable } from 'react-swipeable';
 
 export default function Page() {
   const [activeTab, setActiveTab] = useState('home');
+  const [isClickTransition, setIsClickTransition] = useState(true);
   const [dragOffset, setDragOffset] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
   const [lastX, setLastX] = useState<number | null>(null);
@@ -31,6 +32,12 @@ export default function Page() {
   const handleTabChange = (newTab: string) => {
     setIsAnimating(true);
     setDragOffset(0);
+    setActiveTab(newTab);
+    setIsClickTransition(false);
+  };
+
+  const handleHeaderClick = (newTab: string) => {
+    setIsClickTransition(true);
     setActiveTab(newTab);
   };
 
@@ -141,17 +148,17 @@ export default function Page() {
       >
         <div className="flex-shrink-0 w-full h-full overflow-y-auto overscroll-y-contain my-4">
           <div className="relative flex h-full items-center justify-center px-4">
-            <BusinessCard isActive={activeTab === 'home'}/>
+            <BusinessCard isActive={activeTab === 'home' && isClickTransition} />
           </div>
         </div>
         <div className="flex-shrink-0 w-full justify-items-center overflow-y-auto overscroll-y-contain my-4">
-          <About isActive={activeTab === 'about'}/>
+          <About isActive={activeTab === 'about' && isClickTransition} />
         </div>
         <div className="flex-shrink-0 w-full justify-items-center overflow-y-auto overscroll-y-contain my-4">
-          <Experience isActive={activeTab === 'experience'}/>
+          <Experience isActive={activeTab === 'experience' && isClickTransition} />
         </div>
         <div className="flex-shrink-0 w-full justify-items-center overflow-y-auto overscroll-y-contain my-4">
-          <Works isActive={activeTab === 'works'} />
+          <Works isActive={activeTab === 'works' && isClickTransition} />
         </div>
       </div>
     );
@@ -160,7 +167,7 @@ export default function Page() {
   return (
     <div className="flex flex-col w-full h-full touch-pan-y">
       <div className="flex w-full md:w-[calc(100%-2rem)] lg:w-[calc(100%-4rem)] justify-center">
-        <Header activeTab={activeTab} onTabChange={setActiveTab} />
+        <Header activeTab={activeTab} onTabChange={handleHeaderClick} />
       </div>
       
       <main 
