@@ -4,9 +4,7 @@ import "@/styles/globals.scss";
 import "@/styles/variables.scss";
 import { ThemeProvider } from '@/context/themeContext';
 import ParticleField from "@/components/particleField";
-import Header from "@/components/header";
 import ThemeSwitcher from "@/components/themeSwitcher";
-import Navigation from "@/app/navigation";
 import Footer from "@/components/footer";
 
 export const metadata: Metadata = {
