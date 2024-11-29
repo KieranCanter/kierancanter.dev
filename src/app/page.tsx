@@ -134,7 +134,7 @@ export default function Page() {
     return (
       <div 
         className={`flex gap-4 w-full h-full will-change-transform ${
-          isAnimating ? 'transition-transform duration-300 ease-out' : ''
+          isAnimating ? 'transition-transform duration-[250ms]] ease-out' : ''
         }`}
         style={{ transform: `translateX(${translateX}%)` }}
         onTransitionEnd={() => setIsAnimating(false)}
