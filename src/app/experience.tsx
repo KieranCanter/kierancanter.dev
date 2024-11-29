@@ -20,7 +20,7 @@ const Experience: React.FC = () => {
   }, []);
 
   return (
-    <div id="text-container" className="relative flex flex-col gap-4 w-full lg:w-kic-width h-full pointer-events-none [&_*]:pointer-events-auto">
+    <div id="text-container" className="relative flex flex-col gap-4 w-full lg:w-kic-width h-full">
       {experienceContent.map((experience, index) => {
         let accentColor: string;
         if (theme === 'brilliant' || theme === 'luminous') {

@@ -33,7 +33,7 @@ const Works: React.FC = () => {
             worksRefs.current[index] = element;
           }
         }} 
-        className="relative flex flex-col justify-between gap-2 w-full p-2 bg-black/10 rounded-sm transition-colors duration-[250ms] hover:bg-black/20 opacity-0">
+        className="relative flex flex-col justify-between gap-2 w-full p-2 bg-black/10 rounded-sm transition-colors duration-[250ms] hover:bg-black/20">
           <div className={`${work.wip ? '' : 'hidden'} absolute flex inset-0 w-full h-full box-border z-50 bg-black/50 items-center justify-center overflow-clip`}>
             <h4 className="absolute w-[110%] h-fit py-1 text-center text-lg font-bold text-bg bg-fgContrast -rotate-6">WORK IN PROGRESS</h4>
           </div>
