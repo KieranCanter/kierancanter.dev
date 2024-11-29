@@ -21,12 +21,14 @@ const socialLinks = [
 // Add this type definition at the top of your file
 type BusinessCardElement = HTMLElement & { vanillaTilt?: { destroy: () => void } };
 
-export default function BusinessCard() {
+export default function BusinessCard({ isActive }: { isActive: boolean }) {
   const businessCardRef = useRef<BusinessCardElement>(null);
 
   useEffect(() => {
-    revealAnimation('#business-card');
-  }, []);
+    if (isActive) {
+      revealAnimation(businessCardRef.current!);
+    }
+  }, [isActive]);
 
   const setupGyroscope = () => {
     let initialBeta: number | null = null;

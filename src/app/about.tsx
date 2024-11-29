@@ -8,13 +8,15 @@ import { generateAccentColor } from '@/util/colorfulSetter';
 import { aboutContent } from '@/data/aboutContent';
 import DiamondBullet from '@/components/diamondBullet';
 
-const About: React.FC = () => {
+const About: React.FC<{ isActive: boolean }> = ({ isActive }) => {
   const { theme } = useContext(ThemeContext);
   const aboutRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    revealAnimation(aboutRef.current!);
-  }, []);
+    if (isActive) {
+      revealAnimation(aboutRef.current!);
+    }
+  }, [isActive]);
 
   return (
     <div 

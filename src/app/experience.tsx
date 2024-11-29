@@ -7,17 +7,19 @@ import { ThemeContext } from '@/context/themeContext';
 import { generateAccentColor } from '@/util/colorfulSetter';
 import { experienceContent } from '@/data/experienceContent';
 
-const Experience: React.FC = () => {
+const Experience: React.FC<{ isActive: boolean }> = ({ isActive }) => {
   const { theme } = useContext(ThemeContext);
   const experienceRefs = useRef<HTMLDivElement[]>([]);
 
   useEffect(() => {
-    let delay: number = 0;
-    experienceRefs.current.forEach((element) => {
-      revealAnimation(element, delay);
-      delay += 0.1;
-    })
-  }, []);
+    if (isActive) {
+      let delay: number = 0;
+      experienceRefs.current.forEach((element) => {
+        revealAnimation(element, delay);
+        delay += 0.1;
+      });
+    }
+  }, [isActive]);
 
   return (
     <div id="text-container" className="relative flex flex-col gap-4 w-full lg:w-kic-width h-full lg:pointer-events-none">

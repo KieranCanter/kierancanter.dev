@@ -141,17 +141,17 @@ export default function Page() {
       >
         <div className="flex-shrink-0 w-full h-full overflow-y-auto overscroll-y-contain my-4">
           <div className="relative flex h-full items-center justify-center px-4">
-            <BusinessCard />
+            <BusinessCard isActive={activeTab === 'home'}/>
           </div>
         </div>
         <div className="flex-shrink-0 w-full justify-items-center overflow-y-auto overscroll-y-contain my-4">
-          <About />
+          <About isActive={activeTab === 'about'}/>
         </div>
         <div className="flex-shrink-0 w-full justify-items-center overflow-y-auto overscroll-y-contain my-4">
-          <Experience />
+          <Experience isActive={activeTab === 'experience'}/>
         </div>
         <div className="flex-shrink-0 w-full justify-items-center overflow-y-auto overscroll-y-contain my-4">
-          <Works />
+          <Works isActive={activeTab === 'works'} />
         </div>
       </div>
     );

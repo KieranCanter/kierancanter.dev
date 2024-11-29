@@ -11,17 +11,19 @@ import { faUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import Link from 'next/link';
 
-const Works: React.FC = () => {
+const Works: React.FC<{ isActive: boolean }> = ({ isActive }) => {
   const { theme } = useContext(ThemeContext);
   const worksRefs = useRef<HTMLDivElement[]>([]);
 
   useEffect(() => {
-    let delay: number = 0;
-    worksRefs.current.forEach((element) => {
-      revealAnimation(element, delay);
-      delay += 0.1;
-    })
-  }, []);
+    if (isActive) {
+      let delay: number = 0;
+      worksRefs.current.forEach((element) => {
+        revealAnimation(element, delay);
+        delay += 0.1;
+      });
+    }
+  }, [isActive]);
 
   return (
     <div id="text-container" className="relative flex flex-col gap-4 w-full lg:w-kic-width h-fit lg:pointer-events-none">
