@@ -59,11 +59,9 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-
   return (
     <html lang="en">
       <head>
-
         {/* SVG Favicon for modern browsers */}
         <link rel="icon" type="image/svg+xml" sizes="any" href="/images/favicons/SVG/favicon.svg" />
 
@@ -85,37 +83,19 @@ export default function RootLayout({
 
         {/* For Legacy Systems */}
         <link rel="favicon" type="image/x-icon" href="/favicon.ico" />
-
       </head>
-      <body className="antialiased bg-bg text-fgSoft selection:text-bg selection:bg-fgSoft">
+      
+      <body className="antialiased bg-bg text-fgSoft selection:text-bg selection:bg-fgSoft [&_*]:no-scrollbar">
         <ThemeProvider>
-            
-            <div className="relative h-[100dvh] md:h-[100vh] bg-bg text-fgSoft p-4 lg:p-8 transition-colors duration-[250ms] overflow-y-clip">
-              <div className="relative flex flex-col w-full h-full justify-between border border-fgHard min-h-[calc(100dvh-2rem)] md:min-h-[calc(100dvh-4rem)] transition-colors duration-[250ms] overflow-x-clip">
-                
-                <ParticleField color="rgb(110, 110, 110)" />
-                <header className="flex relative w-full md:w-[calc(100%-2rem)] lg:w-[calc(100%-4rem)] h-fit my-4 lg:mt-8 lg:mb-16 mx-auto justify-between pointer-events-none">
-                  <div className="relative flex mx-auto md:max-lg:ml-0 lg:justify-center">
-                    <Header />
-                  </div>
-                  <div className="max-md:hidden relative flex justify-end lg:absolute lg:top-0 lg:right-0 lg:m-0 pointer-events-auto  ">
-                    <ThemeSwitcher />
-                  </div>
-                </header>
-                
-                <a href="#main-content" className="sr-only focus:not-sr-only">Skip to main content</a>
-                {children}
-
-                <div className="md:hidden relative flex justify-end m-4 pointer-events-auto">
-                  <ThemeSwitcher />
-                </div>
-              </div>
-              
-              <footer className="relative w-fit h-fit m-auto ml-0 flex">
-                <Footer />
-              </footer>
+          <div className="fixed inset-0 p-4 lg:p-8">
+            <div className="relative h-full border border-fgHard p-2">
+              <ParticleField color="rgb(110, 110, 110)" />
+              {children}
             </div>
-
+            <footer className="relative flex w-fit h-fit">
+              <Footer />
+            </footer>
+          </div>
         </ThemeProvider>
       </body>
     </html>

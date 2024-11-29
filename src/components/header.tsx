@@ -1,35 +1,70 @@
 'use client';
 
-import { usePathname } from 'next/navigation';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserTie } from '@fortawesome/free-solid-svg-icons';
-import Link from 'next/link';
+import { useRef, useEffect, useState } from 'react';
 
-const Header: React.FC = () => {
-  const pathname = usePathname();
+interface HeaderProps {
+  activeTab: string;
+  onTabChange: (tab: string) => void;
+}
+
+const Header: React.FC<HeaderProps> = ({ activeTab, onTabChange }) => {
+  const [underlineStyle, setUnderlineStyle] = useState({ left: 0, width: 0 });
+  const buttonRefs = {
+    home: useRef<HTMLButtonElement>(null),
+    about: useRef<HTMLButtonElement>(null),
+    experience: useRef<HTMLButtonElement>(null),
+    works: useRef<HTMLButtonElement>(null),
+  };
+
+  useEffect(() => {
+    const activeButton = buttonRefs[activeTab as keyof typeof buttonRefs].current;
+    if (activeButton) {
+      setUnderlineStyle({
+        left: activeButton.offsetLeft,
+        width: activeButton.offsetWidth,
+      });
+    }
+  }, [activeTab]);
 
   return (
-    <nav id="header-links" className="relative flex flex-row justify-between items-center w-fit h-fit gap-8 pointer-events-none [&_*]:pointer-events-auto ">
-      <Link href='/' passHref
-        className={`header-link ${pathname === '/' ? 'text-fgContrast' : 'text-fgSoft'}`}
+    <nav className="flex gap-8 relative">
+      <div 
+        className="absolute bottom-[-0.25rem] h-[0.15rem] rounded-sm bg-fgContrast transition-all duration-[250ms] ease-in-out"
+        style={{ 
+          left: `${underlineStyle.left}px`,
+          width: `${underlineStyle.width}px`,
+        }}
+      />
+      <button
+        ref={buttonRefs.home}
+        onClick={() => onTabChange('home')}
+        className={`header-link ${activeTab === 'home' ? 'text-fgContrast' : 'text-fgSoft'}`}
       >
         <FontAwesomeIcon icon={faUserTie} />
-      </Link>
-      <Link href='/about' passHref
-        className={`header-link ${pathname === '/about' ? 'text-fgContrast' : 'text-fgSoft'}`}
+      </button>
+      <button
+        ref={buttonRefs.about}
+        onClick={() => onTabChange('about')}
+        className={`header-link ${activeTab === 'about' ? 'text-fgContrast' : 'text-fgSoft'}`}
       >
         ABOUT
-      </Link>
-      <Link href='/experience' passHref
-        className={`header-link ${pathname === '/experience' ? 'text-fgContrast' : 'text-fgSoft'}`}
+      </button>
+      <button
+        ref={buttonRefs.experience}
+        onClick={() => onTabChange('experience')}
+        className={`header-link ${activeTab === 'experience' ? 'text-fgContrast' : 'text-fgSoft'}`}
       >
         EXPERIENCE
-      </Link>
-      <Link href='/works' passHref
-        className={`header-link ${pathname === '/works' ? 'text-fgContrast' : 'text-fgSoft'}`}
+      </button>
+      <button
+        ref={buttonRefs.works}
+        onClick={() => onTabChange('works')}
+        className={`header-link ${activeTab === 'works' ? 'text-fgContrast' : 'text-fgSoft'}`}
       >
         WORKS
-      </Link>
+      </button>
     </nav>
   );
 };

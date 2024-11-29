@@ -1,47 +1,46 @@
 'use client';
 
 import React, { useState } from 'react';
+import Header from '@/components/header';
 import BusinessCard from '@/app/businessCard';
 import About from '@/app/about';
 import Experience from '@/app/experience';
 import Works from '@/app/works';
 
 export default function Page() {
-  const tabs: String[] = ['Home', 'About', 'Experience', 'Works'];
-  const [activeTab, setActiveTab] = useState<String>('Home');
+  const [activeTab, setActiveTab] = useState('home');
+
+  const renderContent = () => {
+    switch (activeTab) {
+      case 'home':
+        return (
+          <div className="relative flex items-center justify-center h-full px-4 pointer-events-none">
+            <BusinessCard />
+          </div>
+        );
+      case 'about':
+        return <About />;
+      case 'experience':
+        return <Experience />;
+      case 'works':
+        return <Works />;
+      default:
+        return (
+          <div className="relative flex items-center justify-center h-full px-4 pointer-events-none">
+            <BusinessCard />
+          </div>
+        );
+    }
+  };
 
   return (
-    <div className="flex flex-col items-center">
-      {/* Tab Bar */}
-      <nav className="relative flex justify-between w-full">
-        {tabs.map((tab) => (
-          <button
-            className={`relative hover:opacity-80 transition-colors duration-[250ms] font-medium py-2 ${
-              activeTab === tab ? 'text-fgContrast' : 'text-fgSoft'
-            }`}
-            onClick={() => setActiveTab(tab)}
-          >
-            {tab}
-          </button>
-        ))}
-        {/* Animated Bottom Border */}
-        <div
-          className="absolute bottom-0 h-1 bg-fgContrast transition-all duration-[250ms]"
-          style={{
-            width: `${activeTab.length}`,
-            left: `${tabs.indexOf(activeTab) * (100 / tabs.length)}%`,
-          }}
-        />
-      </nav>
-
-      {/* Content */}
-      <div>
-        {activeTab === 'Home' && <BusinessCard />}
-        {activeTab === 'About' && <About />}
-        {activeTab === 'Experience' && <Experience />}
-        {activeTab === 'Works' && <Works />}
+    <div className="flex flex-col w-full h-full">
+      <div className="flex w-full md:w-[calc(100%-2rem)] lg:w-[calc(100%-4rem)] justify-center mb-4">
+        <Header activeTab={activeTab} onTabChange={setActiveTab} />
       </div>
+      <main className="flex-1 h-full justify-items-center overflow-y-auto">
+        {renderContent()}
+      </main>
     </div>
   );
-
 }
