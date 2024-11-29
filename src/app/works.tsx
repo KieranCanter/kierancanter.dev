@@ -24,7 +24,7 @@ const Works: React.FC = () => {
   }, []);
 
   return (
-    <div id="text-container" className="relative flex flex-col gap-4 w-full lg:w-kic-width h-fit pointer-events-none [&_*]:pointer-events-auto">
+    <div id="text-container" className="relative flex flex-col gap-4 w-full lg:w-kic-width h-fit">
       {worksContent.map((work, index) => (
         <div 
         key={index} 
