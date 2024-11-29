@@ -85,7 +85,7 @@ export default function RootLayout({
         <link rel="favicon" type="image/x-icon" href="/favicon.ico" />
       </head>
 
-      <body className="antialiased bg-bg text-fgSoft selection:text-bg selection:bg-fgSoft [&_*]:no-scrollbar">
+      <body className="antialiased bg-bg text-fgSoft selection:text-bg selection:bg-fgSoft [&_*]:no-scrollbar transition-colors duration-[250ms]">
         <ThemeProvider>
           <div className="fixed inset-0 p-4 lg:p-8">
 
