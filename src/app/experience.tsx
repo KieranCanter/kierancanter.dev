@@ -20,7 +20,7 @@ const Experience: React.FC = () => {
   }, []);
 
   return (
-    <div id="text-container" className="relative flex flex-col gap-4 w-full lg:w-kic-width h-full">
+    <div id="text-container" className="relative flex flex-col gap-4 w-full lg:w-kic-width h-full lg:pointer-events-none">
       {experienceContent.map((experience, index) => {
         let accentColor: string;
         if (theme === 'brilliant' || theme === 'luminous') {
@@ -37,7 +37,7 @@ const Experience: React.FC = () => {
               experienceRefs.current[index] = element;
             }
           }} 
-          className="relative flex flex-col justify-between gap-2 w-full p-2 bg-black/10 rounded-sm transition-colors duration-[250ms] hover:bg-black/20">
+          className="relative flex flex-col justify-between gap-2 w-full p-2 bg-black/10 rounded-sm transition-colors duration-[250ms] hover:bg-black/20 lg:pointer-events-auto">
             
             <div className="w-full h-fit flex flex-row justify-between items-center">
               <h4 className="relative w-fit font-ibm-plex-sans text-base lg:text-lg text-fgContrast font-semibold selection:bg-fgContrast" dangerouslySetInnerHTML={{ __html: experience.position }} style={{ color: accentColor }}></h4>
