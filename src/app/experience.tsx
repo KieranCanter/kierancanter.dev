@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useContext, useEffect, useRef } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import revealAnimation from '@/util/reveal';
 import '@/styles/globals.scss';
 import { ThemeContext } from '@/context/themeContext';
@@ -10,6 +10,20 @@ import { experienceContent } from '@/data/experienceContent';
 const Experience: React.FC<{ isActive: boolean }> = ({ isActive }) => {
   const { theme } = useContext(ThemeContext);
   const experienceRefs = useRef<HTMLDivElement[]>([]);
+  const accentColorsRef = useRef<string[]>([]);
+  const [forceUpdate, setForceUpdate] = useState(0);
+
+  useEffect(() => {
+    const isColorful = theme === 'brilliant' || theme === 'luminous';
+    
+    // Reset and regenerate colors
+    accentColorsRef.current = experienceContent.map(() => 
+      isColorful ? generateAccentColor(theme) : 'var(--fg-contrast)'
+    );
+    
+    // Force a re-render
+    setForceUpdate(prev => prev + 1);
+  }, [theme]);
 
   useEffect(() => {
     if (isActive) {
@@ -24,12 +38,7 @@ const Experience: React.FC<{ isActive: boolean }> = ({ isActive }) => {
   return (
     <div id="text-container" className="relative flex flex-col gap-4 w-full lg:w-kic-width h-full lg:pointer-events-none">
       {experienceContent.map((experience, index) => {
-        let accentColor: string;
-        if (theme === 'brilliant' || theme === 'luminous') {
-          accentColor = generateAccentColor(theme);
-        } else {
-          accentColor = 'var(--fg-contrast)';
-        }
+        const accentColor = accentColorsRef.current[index] || 'var(--fg-contrast)';
         
         return (
           <div 

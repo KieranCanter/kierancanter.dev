@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useContext, useEffect, useRef } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import revealAnimation from '@/util/reveal';
 import '@/styles/globals.scss';
 import { ThemeContext } from '@/context/themeContext';
@@ -14,6 +14,20 @@ import Link from 'next/link';
 const Works: React.FC<{ isActive: boolean }> = ({ isActive }) => {
   const { theme } = useContext(ThemeContext);
   const worksRefs = useRef<HTMLDivElement[]>([]);
+  const accentColorsRef = useRef<string[][]>([]);
+  const [forceUpdate, setForceUpdate] = useState(0);
+
+  useEffect(() => {
+    const isColorful = theme === 'brilliant' || theme === 'luminous';
+    
+    accentColorsRef.current = worksContent.map(work => 
+      work.technologies.map(() => 
+        isColorful ? generateAccentColor(theme) : 'var(--fg-contrast)'
+      )
+    );
+    
+    setForceUpdate(prev => prev + 1);
+  }, [theme]);
 
   useEffect(() => {
     if (isActive) {
@@ -63,20 +77,17 @@ const Works: React.FC<{ isActive: boolean }> = ({ isActive }) => {
 
           <div className="flex flex-wrap gap-2 mt-2">
             {work.technologies.map((tech, techIndex) => {
-              let accentColor: string;
-              if (work.wip) {
-                accentColor = 'var(--fg-soft)';
-              }
-              else if (theme === 'brilliant' || theme === 'luminous') {
-                accentColor = generateAccentColor(theme);
-              } else {
-                accentColor = 'var(--fg-contrast)';
-              }
+              const color = work.wip 
+                ? 'var(--fg-soft)' 
+                : (accentColorsRef.current[index]?.[techIndex] || 'var(--fg-contrast)');
 
               return (
-                <h6 key={techIndex} className="text-[0.65rem] font-bold text-bg px-2 py-1 rounded-sm cursor-default hover:opacity-85 selection:bg-bg selection:text-fgContrast"
-                style={{ backgroundColor: accentColor }}>
-                {tech}
+                <h6 
+                  key={techIndex} 
+                  className="text-[0.65rem] font-bold text-bg px-2 py-1 rounded-sm cursor-default hover:opacity-85 selection:bg-bg selection:text-fgContrast"
+                  style={{ backgroundColor: color }}
+                >
+                  {tech}
                 </h6>
               );
             })}

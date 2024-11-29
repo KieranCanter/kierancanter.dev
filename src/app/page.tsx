@@ -171,7 +171,7 @@ export default function Page() {
       </div>
       
       <main 
-        className="flex-1 h-full overflow-x-hidden lg:pointer-events-none"
+        className="flex-1 h-full overflow-x-hidden overflow-y-hidden lg:pointer-events-none"
         {...swipeHandlers}
       >
         {renderContent()}
