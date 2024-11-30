@@ -25,6 +25,7 @@ export default function BusinessCard({ isActive }: { isActive: boolean }) {
   const businessCardRef = useRef<BusinessCardElement>(null);
   const touchStartRef = useRef<{ x: number; y: number } | null>(null);
   const currentRotationRef = useRef({ x: 0, y: 0 });
+  const isTiltEnabled = useRef(false);
 
   useEffect(() => {
     if (isActive) {
@@ -33,36 +34,52 @@ export default function BusinessCard({ isActive }: { isActive: boolean }) {
   }, [isActive]);
 
   const handleTouchStart = (e: TouchEvent) => {
+    const rect = businessCardRef.current?.getBoundingClientRect();
+    if (!rect) return;
+    
     touchStartRef.current = {
-      x: e.touches[0].clientX,
-      y: e.touches[0].clientY
+      x: e.touches[0].clientX - rect.left,
+      y: e.touches[0].clientY - rect.top
     };
   };
 
   const handleTouchMove = (e: TouchEvent) => {
-    if (!touchStartRef.current) return;
+    const rect = businessCardRef.current?.getBoundingClientRect();
+    if (!rect || !touchStartRef.current) return;
 
-    const touchX = e.touches[0].clientX;
-    const touchY = e.touches[0].clientY;
+    const touchX = e.touches[0].clientX - rect.left;
+    const touchY = e.touches[0].clientY - rect.top;
     
-    const deltaX = touchX - touchStartRef.current.x;
-    const deltaY = touchY - touchStartRef.current.y;
-    
-    const rotationX = Math.min(Math.max(-deltaY * 0.1, -15), 15);
-    const rotationY = Math.min(Math.max(deltaX * 0.1, -15), 15);
-    
-    currentRotationRef.current = { x: rotationX, y: rotationY };
+    // Check for upward swipe if tilt is not yet enabled
+    if (!isTiltEnabled.current) {
+      const deltaY = touchStartRef.current.y - touchY;
+      if (deltaY > 20) { // Threshold of 20px for upward swipe
+        isTiltEnabled.current = true;
+      } else {
+        return; // Exit if we haven't detected an upward swipe yet
+      }
+    }
 
-    if (businessCardRef.current) {
-      businessCardRef.current.style.transform = `rotateX(${rotationX}deg) rotateY(${rotationY}deg)`;
+    // Only apply tilt effect if enabled
+    if (isTiltEnabled.current) {
+      const rotationY = Math.max(-15, Math.min(15, ((touchX / rect.width) * 2 - 1) * 15));
+      const rotationX = Math.max(-15, Math.min(15, ((touchY / rect.height) * 2 - 1) * -15));
+      
+      currentRotationRef.current = { x: rotationX, y: rotationY };
+
+      if (businessCardRef.current) {
+        businessCardRef.current.style.transform = `perspective(1000px) rotateX(${rotationX}deg) rotateY(${rotationY}deg)`;
+        businessCardRef.current.style.transition = 'transform 0.1s linear';
+      }
     }
   };
 
   const handleTouchEnd = () => {
     touchStartRef.current = null;
+    isTiltEnabled.current = false; // Reset the tilt enabled state
     if (businessCardRef.current) {
       businessCardRef.current.style.transition = 'transform 0.5s ease-out';
-      businessCardRef.current.style.transform = 'rotateX(0deg) rotateY(0deg)';
+      businessCardRef.current.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
       setTimeout(() => {
         if (businessCardRef.current) {
           businessCardRef.current.style.transition = '';
