@@ -197,7 +197,7 @@ In addition to the core pieces of the stack, I took advantage of various other p
 * [ThreeJS](https://threejs.org/)                                      - 3D animation library used for the business card element on mobile/touch devices
 * [Font Awesome](https://fontawesome.com/)                             - wildly popular icon library used for most of the iconography
 * [GSAP](https://gsap.com/)                                            - animation library used for the pop-in animations on load
-* [React Swipeable](https://github.com/FormidableLabs/react-swipeable) - swipe gesture library for page-swiping feature
+* [Embla Carousel](https://www.embla-carousel.com/)                    - lightweight carousel library for mobile page-swiping feature
 
 ### Component Design
 
@@ -277,7 +277,7 @@ On desktop (mouse-controlled devices), I liked the concept of the card tilting w
 
 Another notable accommodation I had to bear in mind was the size and location of the theme switcher and header component. On desktop, it makes sense for the user to click a checkbox to toggle a button, but with touch devices, the buttons should be much larger due to the reduced precision of tapping a screen versus using a mouse. The locations also had to be altered such that every device size displayed a different layout. On small devices, the header is centered at the top with the theme switcher in the bottom right. On tablets, the header is aligned to the top left with the theme switcher aligned to the top right. Finally, with larger screens, the header is centered at the top with the theme switcher aligned to the top right.
 
-One final difference in mobile vs. desktop functionality is the swipe feature exclusive to mobile devices. To make the app more mobile-friendly and feel like a mobile app, I implemented a page-swiping feature that allows the user to swipe left or right to navigate between sections. This is made possible by the [React Swipeable](https://github.com/FormidableLabs/react-swipeable) library and forfeits the interactivity of the particle field/cursor interaction seen on desktop.
+One final difference in mobile vs. desktop functionality is the swipe feature exclusive to mobile devices. To make the app more mobile-friendly and feel like a mobile app, I implemented a page-swiping feature that allows the user to swipe left or right to navigate between sections across a carousel component. To facilitate this, I encapsulated the desktop navigation and mobile navigation within separate components. This feature was made possible by the [Embla Carousel](https://www.embla-carousel.com/) library and forfeits the interactivity of the particle field seen on desktop.
 
 These considerations are crucial in guaranteeing a consistent and polished user experience.
 
