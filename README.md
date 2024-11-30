@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img alt="KC Logo" src="public/images/logo-canonical.png" width="100" />
+  <img alt="KIC Logo" src="public/images/logo-canonical.png" width="100" />
   </br>
   kierancanter.dev
 </h1>
@@ -242,6 +242,8 @@ For one, the site's favicon is what the user constantly sees and associates with
 
 Another example is the existence of a web manifest file. This is a JSON file that defines metadata associated with the progressive web app (PWA) version of the website, that is, the feature on most mobile devices that allows the user to add a website as a simple application on their home screen. While not game-breaking if absent, supporting the PWA feature illustrates a complete design and may improve the experience of users that take advantage of the feature. I ensured all relevant information was defined here such as the PWA icon, theme/background color, categories, etc.
 
+The thumbnail image is used for the preview of the site across the web such as on social media sites or in search engine results. It's displayed in the same way as the favicon, so it's important to maintain a consistent look and feel. The thumbnail is the standard size of 1200x630px.
+
 Finally, the viewport can contribute greatly to the look and feel of a site. By restricting the user's ability to scale the viewport and setting the height/width equal to that of the screen, user-caused errors that may have negative effects on the display of the site are mitigated.
 
 #### Flexboxes
@@ -274,6 +276,8 @@ As mentioned before, the business card element was heavily inspired by the [busi
 On desktop (mouse-controlled devices), I liked the concept of the card tilting when the user hovered over it. I streamlined this functionality with [Vanilla-tilt](https://micku7zu.github.io/vanilla-tilt.js/); however, mobile users don't have mice. I had to think of another interactive function that they could take advantage of. After some brainstorming, I settled on the idea to use the device's gyroscope data to tilt the card as if it were a 3D object they were holding in space. More on this problem in [Mobile vs. Desktop Business Card](#mobile-vs-desktop-business-card).
 
 Another notable accommodation I had to bear in mind was the size and location of the theme switcher and header component. On desktop, it makes sense for the user to click a checkbox to toggle a button, but with touch devices, the buttons should be much larger due to the reduced precision of tapping a screen versus using a mouse. The locations also had to be altered such that every device size displayed a different layout. On small devices, the header is centered at the top with the theme switcher in the bottom right. On tablets, the header is aligned to the top left with the theme switcher aligned to the top right. Finally, with larger screens, the header is centered at the top with the theme switcher aligned to the top right.
+
+One final difference in mobile vs. desktop functionality is the swipe feature exclusive to mobile devices. To make the app more mobile-friendly and feel like a mobile app, I implemented a page-swiping feature that allows the user to swipe left or right to navigate between sections. This is made possible by the [React Swipeable](https://github.com/FormidableLabs/react-swipeable) library and forfeits the interactivity of the particle field/cursor interaction seen on desktop.
 
 These considerations are crucial in guaranteeing a consistent and polished user experience.
 
