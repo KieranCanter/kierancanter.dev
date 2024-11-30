@@ -23,6 +23,8 @@ type BusinessCardElement = HTMLElement & { vanillaTilt?: { destroy: () => void }
 
 export default function BusinessCard({ isActive }: { isActive: boolean }) {
   const businessCardRef = useRef<BusinessCardElement>(null);
+  const touchStartRef = useRef<{ x: number; y: number } | null>(null);
+  const currentRotationRef = useRef({ x: 0, y: 0 });
 
   useEffect(() => {
     if (isActive) {
@@ -30,93 +32,71 @@ export default function BusinessCard({ isActive }: { isActive: boolean }) {
     }
   }, [isActive]);
 
-  const setupGyroscope = () => {
-    let initialBeta: number | null = null;
-    let initialGamma: number | null = null;
-
-    const resetOrientation = () => {
-      initialBeta = null;
-      initialGamma = null;
-      if (businessCardRef.current) {
-        businessCardRef.current.style.transform = 'none';
-      }
+  const handleTouchStart = (e: TouchEvent) => {
+    touchStartRef.current = {
+      x: e.touches[0].clientX,
+      y: e.touches[0].clientY
     };
+  };
 
-    const handleOrientation = (event: DeviceOrientationEvent) => {
-      if (event.beta === null || event.gamma === null) return;
+  const handleTouchMove = (e: TouchEvent) => {
+    if (!touchStartRef.current) return;
 
-      // Set initial values if not set
-      if (initialBeta === null) initialBeta = event.beta;
-      if (initialGamma === null) initialGamma = event.gamma;
+    const touchX = e.touches[0].clientX;
+    const touchY = e.touches[0].clientY;
+    
+    const deltaX = touchX - touchStartRef.current.x;
+    const deltaY = touchY - touchStartRef.current.y;
+    
+    const rotationX = Math.min(Math.max(-deltaY * 0.1, -15), 15);
+    const rotationY = Math.min(Math.max(deltaX * 0.1, -15), 15);
+    
+    currentRotationRef.current = { x: rotationX, y: rotationY };
 
-      // Calculate the difference from initial position
-      const deltaBeta = event.beta - initialBeta;
-      const deltaGamma = event.gamma - initialGamma;
-
-      // Cap the range at -89/89 degrees
-      const tiltX = Math.min(Math.max(deltaBeta, -45), 45);
-      const tiltY = Math.min(Math.max(deltaGamma, -45), 45);
-
-      // Check the orientation and apply the appropriate rotation
-      if (window.matchMedia('(orientation: portrait)').matches) {
-        if (businessCardRef.current) {
-          businessCardRef.current.style.transform = `rotateX(${-tiltX}deg) rotateY(${tiltY}deg)`;
-        }
-      } else {
-        if (businessCardRef.current) {
-          businessCardRef.current.style.transform = `rotateX(${tiltY}deg) rotateY(${-tiltX}deg)`;
-        }
-      }
-    };
-
-    if (window.DeviceOrientationEvent) {
-      window.addEventListener('deviceorientation', handleOrientation);
-      window.addEventListener('orientationchange', resetOrientation);
+    if (businessCardRef.current) {
+      businessCardRef.current.style.transform = `rotateX(${rotationX}deg) rotateY(${rotationY}deg)`;
     }
-  }
-  
+  };
+
+  const handleTouchEnd = () => {
+    touchStartRef.current = null;
+    if (businessCardRef.current) {
+      businessCardRef.current.style.transition = 'transform 0.5s ease-out';
+      businessCardRef.current.style.transform = 'rotateX(0deg) rotateY(0deg)';
+      setTimeout(() => {
+        if (businessCardRef.current) {
+          businessCardRef.current.style.transition = '';
+        }
+      }, 500);
+    }
+  };
+
   useEffect(() => {
-    interface DeviceOrientationEventiOS extends DeviceOrientationEvent {
-      requestPermission?: () => Promise<'granted' | 'denied'>;
-    }
-    
     const card = businessCardRef.current;
-    const isIOS: boolean = /iPad|iPhone|iPod/.test(navigator.userAgent);
-    
 
     if (businessCardRef.current) {
       if (!isMobile) {
-        VanillaTilt.init(card as HTMLElement, {
+        VanillaTilt.init(businessCardRef.current, {
           reverse: true,
           max: 15,
           speed: 3000,
         });
-      }
-      else {
-        if (isIOS) {
-          const DeviceOrientationEventiOS = DeviceOrientationEvent as unknown as DeviceOrientationEventiOS;
-          DeviceOrientationEventiOS.requestPermission?.()
-            .then(response => {
-              if (response == 'granted') {
-                window.addEventListener('deviceorientation', () => {
-                  setupGyroscope();
-                })
-              }
-            })
-            .catch(() => console.error("iOS orientation permission request denied"));
-        } else {
-          setupGyroscope();
-        }
+      } else {
+        card?.addEventListener('touchstart', handleTouchStart);
+        card?.addEventListener('touchmove', handleTouchMove);
+        card?.addEventListener('touchend', handleTouchEnd);
       }
 
-      // Cleanup function
       return () => {
         if (card?.vanillaTilt) {
           card.vanillaTilt.destroy();
         }
+        card?.removeEventListener('touchstart', handleTouchStart);
+        card?.removeEventListener('touchmove', handleTouchMove);
+        card?.removeEventListener('touchend', handleTouchEnd);
       };
     }
-  }, []); // Empty dependency array ensures this effect runs only once
+  }, []);
 
   return (
     <div 
