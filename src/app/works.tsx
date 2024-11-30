@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useContext, useEffect, useRef } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import revealAnimation from '@/util/reveal';
 import '@/styles/globals.scss';
 import { ThemeContext } from '@/context/themeContext';
@@ -11,20 +11,36 @@ import { faUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import Link from 'next/link';
 
-const Works: React.FC = () => {
+const Works: React.FC<{ isActive: boolean }> = ({ isActive }) => {
   const { theme } = useContext(ThemeContext);
   const worksRefs = useRef<HTMLDivElement[]>([]);
+  const accentColorsRef = useRef<string[][]>([]);
+  const [forceUpdate, setForceUpdate] = useState(0);
 
   useEffect(() => {
-    let delay: number = 0;
-    worksRefs.current.forEach((element) => {
-      revealAnimation(element, delay);
-      delay += 0.1;
-    })
-  }, []);
+    const isColorful = theme === 'brilliant' || theme === 'luminous';
+    
+    accentColorsRef.current = worksContent.map(work => 
+      work.technologies.map(() => 
+        isColorful ? generateAccentColor(theme) : 'var(--fg-contrast)'
+      )
+    );
+    
+    setForceUpdate(prev => prev + 1);
+  }, [theme]);
+
+  useEffect(() => {
+    if (isActive) {
+      let delay: number = 0;
+      worksRefs.current.forEach((element) => {
+        revealAnimation(element, delay);
+        delay += 0.1;
+      });
+    }
+  }, [isActive]);
 
   return (
-    <div id="text-container" className="relative flex flex-col gap-4 w-full lg:w-kic-width h-full pointer-events-none [&_*]:pointer-events-auto">
+    <div id="text-container" className="relative flex flex-col gap-4 w-full lg:w-kic-width h-fit lg:pointer-events-none">
       {worksContent.map((work, index) => (
         <div 
         key={index} 
@@ -33,7 +49,7 @@ const Works: React.FC = () => {
             worksRefs.current[index] = element;
           }
         }} 
-        className="relative flex flex-col justify-between gap-2 w-full p-4 bg-black/10 rounded-sm transition-colors duration-[250ms] hover:bg-black/20 opacity-0">
+        className="relative flex flex-col justify-between gap-2 w-full p-2 bg-black/10 rounded-sm transition-colors duration-[250ms] hover:bg-black/20 lg:pointer-events-auto">
           <div className={`${work.wip ? '' : 'hidden'} absolute flex inset-0 w-full h-full box-border z-50 bg-black/50 items-center justify-center overflow-clip`}>
             <h4 className="absolute w-[110%] h-fit py-1 text-center text-lg font-bold text-bg bg-fgContrast -rotate-6">WORK IN PROGRESS</h4>
           </div>
@@ -61,20 +77,17 @@ const Works: React.FC = () => {
 
           <div className="flex flex-wrap gap-2 mt-2">
             {work.technologies.map((tech, techIndex) => {
-              let accentColor: string;
-              if (work.wip) {
-                accentColor = 'var(--fg-soft)';
-              }
-              else if (theme === 'brilliant' || theme === 'luminous') {
-                accentColor = generateAccentColor(theme);
-              } else {
-                accentColor = 'var(--fg-contrast)';
-              }
+              const color = work.wip 
+                ? 'var(--fg-soft)' 
+                : (accentColorsRef.current[index]?.[techIndex] || 'var(--fg-contrast)');
 
               return (
-                <h6 key={techIndex} className="text-[0.65rem] font-bold text-bg px-2 py-1 rounded-sm cursor-default hover:opacity-85 selection:bg-bg selection:text-fgContrast"
-                style={{ backgroundColor: accentColor }}>
-                {tech}
+                <h6 
+                  key={techIndex} 
+                  className="text-[0.65rem] font-bold text-bg px-2 py-1 rounded-sm cursor-default hover:opacity-85 selection:bg-bg selection:text-fgContrast"
+                  style={{ backgroundColor: color }}
+                >
+                  {tech}
                 </h6>
               );
             })}

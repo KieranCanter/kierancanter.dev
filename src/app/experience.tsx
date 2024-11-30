@@ -1,33 +1,44 @@
 'use client';
 
-import React, { useContext, useEffect, useRef } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import revealAnimation from '@/util/reveal';
 import '@/styles/globals.scss';
 import { ThemeContext } from '@/context/themeContext';
 import { generateAccentColor } from '@/util/colorfulSetter';
 import { experienceContent } from '@/data/experienceContent';
 
-const Experience: React.FC = () => {
+const Experience: React.FC<{ isActive: boolean }> = ({ isActive }) => {
   const { theme } = useContext(ThemeContext);
   const experienceRefs = useRef<HTMLDivElement[]>([]);
+  const accentColorsRef = useRef<string[]>([]);
+  const [forceUpdate, setForceUpdate] = useState(0);
 
   useEffect(() => {
-    let delay: number = 0;
-    experienceRefs.current.forEach((element) => {
-      revealAnimation(element, delay);
-      delay += 0.1;
-    })
-  }, []);
+    const isColorful = theme === 'brilliant' || theme === 'luminous';
+    
+    // Reset and regenerate colors
+    accentColorsRef.current = experienceContent.map(() => 
+      isColorful ? generateAccentColor(theme) : 'var(--fg-contrast)'
+    );
+    
+    // Force a re-render
+    setForceUpdate(prev => prev + 1);
+  }, [theme]);
+
+  useEffect(() => {
+    if (isActive) {
+      let delay: number = 0;
+      experienceRefs.current.forEach((element) => {
+        revealAnimation(element, delay);
+        delay += 0.1;
+      });
+    }
+  }, [isActive]);
 
   return (
-    <div id="text-container" className="relative flex flex-col gap-4 w-full lg:w-kic-width h-full pointer-events-none [&_*]:pointer-events-auto no-scrollbar">
+    <div id="text-container" className="relative flex flex-col gap-4 w-full lg:w-kic-width h-full lg:pointer-events-none">
       {experienceContent.map((experience, index) => {
-        let accentColor: string;
-        if (theme === 'brilliant' || theme === 'luminous') {
-          accentColor = generateAccentColor(theme);
-        } else {
-          accentColor = 'var(--fg-contrast)';
-        }
+        const accentColor = accentColorsRef.current[index] || 'var(--fg-contrast)';
         
         return (
           <div 
@@ -37,7 +48,7 @@ const Experience: React.FC = () => {
               experienceRefs.current[index] = element;
             }
           }} 
-          className="relative flex flex-col justify-between gap-2 w-full p-4 bg-black/10 rounded-sm transition-colors duration-[250ms] lg:hover:bg-black/20">
+          className="relative flex flex-col justify-between gap-2 w-full p-2 bg-black/10 rounded-sm transition-colors duration-[250ms] hover:bg-black/20 lg:pointer-events-auto">
             
             <div className="w-full h-fit flex flex-row justify-between items-center">
               <h4 className="relative w-fit font-ibm-plex-sans text-base lg:text-lg text-fgContrast font-semibold selection:bg-fgContrast" dangerouslySetInnerHTML={{ __html: experience.position }} style={{ color: accentColor }}></h4>

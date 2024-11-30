@@ -33,6 +33,10 @@ const ParticleField: React.FC<ParticleFieldProps> = ({ color }) => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const isMobile = () => {
+      return window.innerWidth <= 768 || 'ontouchstart' in window;
+    };
+
     const canvas = canvasRef.current;
     const container = containerRef.current;
     if (!canvas || !container) return;
@@ -65,16 +69,19 @@ const ParticleField: React.FC<ParticleFieldProps> = ({ color }) => {
     };
 
     const updateMousePosition = (e: MouseEvent) => {
+      if (isMobile()) return;
       const rect = container.getBoundingClientRect();
       mouseX = e.clientX - rect.left;
       mouseY = e.clientY - rect.top;
     };
 
     const handleMouseEnter = () => {
+      if (isMobile()) return;
       isMouseOverField = true;
     };
 
     const handleMouseLeave = () => {
+      if (isMobile()) return;
       isMouseOverField = false;
     };
 
@@ -145,7 +152,7 @@ const ParticleField: React.FC<ParticleFieldProps> = ({ color }) => {
     const updateParticlePositions = () => {
       updateGrid();
 
-      if (isMouseOverField) {
+      if (isMouseOverField && !isMobile()) {
         const gridX = Math.floor(mouseX / CELL_SIZE);
         const gridY = Math.floor(mouseY / CELL_SIZE);
 
