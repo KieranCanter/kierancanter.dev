@@ -87,7 +87,7 @@ export default function RootLayout({
         <ThemeProvider>
           <div className="fixed inset-0 p-4 lg:p-8">
 
-            <div className="relative h-full border border-fgHard p-4">
+            <div className="relative h-full border border-fgHard">
               <ParticleField color="rgb(110, 110, 110)" />
               {children}
             </div>

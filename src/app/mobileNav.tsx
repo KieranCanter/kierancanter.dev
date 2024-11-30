@@ -1,7 +1,7 @@
 'use client';
 
-import { useSwipeable } from 'react-swipeable';
-import { useState } from 'react';
+import { useState, useCallback, useEffect } from 'react';
+import useEmblaCarousel from 'embla-carousel-react';
 import Header from '@/components/header';
 import BusinessCard from './businessCard';
 import About from './about';
@@ -11,66 +11,44 @@ import ThemeSwitcher from '@/components/themeSwitcher';
 
 const MobileNav = () => {
   const [activeTab, setActiveTab] = useState('home');
-
-  const handleHeaderClick = (newTab: string) => {
-    setActiveTab(newTab);
-  };
-
-  const currentIndex = ['home', 'about', 'experience', 'works'].indexOf(activeTab);
-
-  const handlers = useSwipeable({
-    onSwipedLeft: () => {
-      const nextTabs = {
-        'home': 'about',
-        'about': 'experience',
-        'experience': 'works'
-      };
-      if (nextTabs[activeTab as keyof typeof nextTabs]) {
-        setActiveTab(nextTabs[activeTab as keyof typeof nextTabs]);
-      }
-    },
-    onSwipedRight: () => {
-      const prevTabs = {
-        'about': 'home',
-        'experience': 'about',
-        'works': 'experience'
-      };
-      if (prevTabs[activeTab as keyof typeof prevTabs]) {
-        setActiveTab(prevTabs[activeTab as keyof typeof prevTabs]);
-      }
-    },
-    preventScrollOnSwipe: true,
-    trackMouse: true
+  const [emblaRef, emblaApi] = useEmblaCarousel({ 
+    align: 'start',
+    skipSnaps: false,
+    dragFree: false,
+    containScroll: 'keepSnaps',
   });
 
-  const renderContent = () => {
-    return (
-      <div {...handlers} className="flex gap-4 w-full h-full">
-        {activeTab === 'home' && (
-          <div className="flex-shrink-0 w-full h-full overflow-y-auto overscroll-y-contain my-4">
-            <div className="relative flex h-full items-center justify-center px-4">
-              <BusinessCard isActive={true} />
-            </div>
-          </div>
-        )}
-        {activeTab === 'about' && (
-          <div className="flex-shrink-0 w-full justify-items-center overflow-y-auto overscroll-y-contain my-4">
-            <About isActive={true} />
-          </div>
-        )}
-        {activeTab === 'experience' && (
-          <div className="flex-shrink-0 w-full justify-items-center overflow-y-auto overscroll-y-contain my-4">
-            <Experience isActive={true} />
-          </div>
-        )}
-        {activeTab === 'works' && (
-          <div className="flex-shrink-0 w-full justify-items-center overflow-y-auto overscroll-y-contain my-4">
-            <Works isActive={true} />
-          </div>
-        )}
-      </div>
-    );
-  };
+  const tabs = [
+    { id: 'home', component: <BusinessCard isActive={true} /> },
+    { id: 'about', component: <About isActive={true} /> },
+    { id: 'experience', component: <Experience isActive={true} /> },
+    { id: 'works', component: <Works isActive={true} /> }
+  ];
+
+  const handleHeaderClick = useCallback((newTab: string) => {
+    const index = tabs.findIndex(tab => tab.id === newTab);
+    emblaApi?.scrollTo(index);
+    setActiveTab(newTab);
+  }, [emblaApi, tabs]);
+
+  useEffect(() => {
+    if (!emblaApi) return;
+
+    emblaApi.on('settle', () => {
+      const index = emblaApi.selectedScrollSnap();
+      setActiveTab(tabs[index].id);
+    });
+
+    emblaApi.on('select', () => {
+      const index = emblaApi.selectedScrollSnap();
+      setActiveTab(tabs[index].id);
+    });
+
+    return () => {
+      emblaApi.off('settle', () => {});
+      emblaApi.off('select', () => {});
+    };
+  }, [emblaApi, tabs]);
 
   return (
     <div className="lg:hidden flex flex-col w-full h-full">
@@ -78,10 +56,24 @@ const MobileNav = () => {
         <Header activeTab={activeTab} onTabChange={handleHeaderClick} />
       </div>
       
-      <main className="flex-1 h-full overflow-x-hidden overflow-y-hidden">
-        {renderContent()}
+      <main className="flex-1 overflow-hidden h-full">
+        <div ref={emblaRef} className="overflow-hidden h-full">
+          <div className="flex touch-pan-y h-full">
+            {tabs.map((tab) => (
+              <div 
+                key={tab.id} 
+                className={`w-full flex-none px-4 overflow-y-auto ${
+                  tab.id === 'home' ? 'flex items-center justify-center' : ''
+                }`}
+              >
+                {tab.component}
+              </div>
+            ))}
+          </div>
+        </div>
       </main>
-      <div className="lg:hidden relative flex justify-end pointer-events-auto">
+
+      <div className="relative flex justify-end m-4">
         <ThemeSwitcher />
       </div>
     </div>

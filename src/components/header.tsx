@@ -29,7 +29,7 @@ const Header: React.FC<HeaderProps> = ({ activeTab, onTabChange }) => {
   }, [activeTab]);
 
   return (
-    <nav className="flex gap-8 relative">
+    <nav className="flex gap-8 relative m-4">
       <div 
         className="absolute bottom-[-0.25rem] h-[0.15rem] rounded-sm bg-fgContrast transition-all duration-[250ms] ease-in-out"
         style={{ 
