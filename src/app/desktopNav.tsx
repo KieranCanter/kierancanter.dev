@@ -46,7 +46,7 @@ const DesktopNav = () => {
 
   return (
     <div className="hidden lg:flex flex-col w-full h-full">
-      <div className="flex lg:w-[calc(100%-4rem)] justify-center">
+      <div className="flex justify-center">
         <Header activeTab={activeTab} onTabChange={handleHeaderClick} />
       </div>
       
