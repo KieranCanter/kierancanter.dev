@@ -1,8 +1,7 @@
 'use client';
 
-import React, { createContext, useState, useEffect, useRef, ReactNode } from 'react';
+import React, { createContext, useState, useEffect, ReactNode } from 'react';
 import { colorfulVars, getContrastColor } from '@/util/colorfulSetter';
-import { trackEvent } from '@/util/analytics';
 
 type Theme = 'plush' | 'sombre' | 'brilliant' | 'luminous';
 
@@ -23,16 +22,6 @@ interface ThemeProviderProps {
 export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
   const [theme, setTheme] = useState<Theme>('plush');
   const [mounted, setMounted] = useState(false);
-  const themeStartTimeRef = useRef<number>(Date.now());
-
-  // Track time spent on theme
-  const trackThemeTime = (themeName: Theme) => {
-    const timeSpent = Math.floor((Date.now() - themeStartTimeRef.current) / 1000);
-    trackEvent('Theme Duration', { 
-      theme: themeName,
-      seconds: timeSpent
-    });
-  };
 
   useEffect(() => {
     setMounted(true);
@@ -66,23 +55,12 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
 
   const setThemeAndSave = (newTheme: Theme) => {
     requestAnimationFrame(() => {
-      // Track time spent on previous theme
-      trackThemeTime(theme);
-      
-      // Reset timer for new theme
-      themeStartTimeRef.current = Date.now();
-      
       setTheme(newTheme);
-      if (typeof window !== 'undefined') {
-        localStorage.setItem('theme', newTheme);
-      }
+        if (typeof window !== 'undefined') {
+          localStorage.setItem('theme', newTheme);
+        }
     });
   };
-
-  // Track final theme duration when component unmounts
-  useEffect(() => {
-    return () => trackThemeTime(theme);
-  }, [theme]);
 
   // Avoid rendering children until after client-side hydration
   if (!mounted) {

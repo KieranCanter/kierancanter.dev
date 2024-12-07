@@ -1,39 +1,18 @@
 'use client';
 
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState } from 'react';
 import Header from '@/components/header';
 import BusinessCard from '@/app/businessCard';
 import About from '@/app/about';
 import Experience from '@/app/experience';
 import Works from '@/app/works';
-import ThemeSwitcher from '@/components/themeSwitcher';
-import { trackEvent } from '@/util/analytics';
 
 const DesktopNav = () => {
   const [activeTab, setActiveTab] = useState('home');
-  const startTimeRef = useRef<number>(Date.now());
-
-  const trackSectionTime = (section: string) => {
-    const timeSpent = Math.floor((Date.now() - startTimeRef.current) / 1000);
-    trackEvent('Section Duration', { 
-      section: section,
-      seconds: timeSpent
-    });
-  };
 
   const handleHeaderClick = (newTab: string) => {
-    // Track time spent on current section before changing
-    trackSectionTime(activeTab);
-    
-    // Reset timer and change tab
-    startTimeRef.current = Date.now();
     setActiveTab(newTab);
   };
-
-  // Track final section time when leaving page
-  useEffect(() => {
-    return () => trackSectionTime(activeTab);
-  }, [activeTab]);
 
   const renderContent = () => {
     return (
