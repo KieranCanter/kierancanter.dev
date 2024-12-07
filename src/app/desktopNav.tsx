@@ -6,6 +6,7 @@ import BusinessCard from '@/app/businessCard';
 import About from '@/app/about';
 import Experience from '@/app/experience';
 import Works from '@/app/works';
+import ThemeSwitcher from '@/components/themeSwitcher';
 import { trackEvent } from '@/util/analytics';
 
 const DesktopNav = () => {
@@ -22,7 +23,7 @@ const DesktopNav = () => {
 
   const handleHeaderClick = (newTab: string) => {
     // Track time spent on current section before changing
-    //trackSectionTime(activeTab);
+    trackSectionTime(activeTab);
     
     // Reset timer and change tab
     startTimeRef.current = Date.now();
@@ -30,9 +31,9 @@ const DesktopNav = () => {
   };
 
   // Track final section time when leaving page
-  /*useEffect(() => {
+  useEffect(() => {
     return () => trackSectionTime(activeTab);
-  }, [activeTab]);*/
+  }, [activeTab]);
 
   const renderContent = () => {
     return (

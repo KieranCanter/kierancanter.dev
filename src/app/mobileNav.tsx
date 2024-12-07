@@ -37,7 +37,7 @@ const MobileNav = () => {
 
   const handleHeaderClick = useCallback((newTab: string) => {
     // Track time spent on current section before changing
-    //trackSectionTime(activeTab);
+    trackSectionTime(activeTab);
     
     // Reset timer and change tab
     startTimeRef.current = Date.now();
@@ -54,7 +54,7 @@ const MobileNav = () => {
       const newTab = tabs[index].id;
       
       // Track time spent on current section
-      //trackSectionTime(activeTab);
+      trackSectionTime(activeTab);
 
       // Reset timer and update tab
       startTimeRef.current = Date.now();
@@ -62,7 +62,7 @@ const MobileNav = () => {
     });
 
     // Track final section time when leaving page
-    //return () => trackSectionTime(activeTab);
+    return () => trackSectionTime(activeTab);
   }, [emblaApi, activeTab]);
 
   return (

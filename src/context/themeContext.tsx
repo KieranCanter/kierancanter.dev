@@ -25,14 +25,14 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
   const [mounted, setMounted] = useState(false);
   const themeStartTimeRef = useRef<number>(Date.now());
 
-  /*// Track time spent on theme
+  // Track time spent on theme
   const trackThemeTime = (themeName: Theme) => {
     const timeSpent = Math.floor((Date.now() - themeStartTimeRef.current) / 1000);
     trackEvent('Theme Duration', { 
       theme: themeName,
       seconds: timeSpent
     });
-  };*/
+  };
 
   useEffect(() => {
     setMounted(true);
@@ -67,7 +67,7 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
   const setThemeAndSave = (newTheme: Theme) => {
     requestAnimationFrame(() => {
       // Track time spent on previous theme
-      //trackThemeTime(theme);
+      trackThemeTime(theme);
       
       // Reset timer for new theme
       themeStartTimeRef.current = Date.now();
@@ -80,9 +80,9 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
   };
 
   // Track final theme duration when component unmounts
-  /*useEffect(() => {
+  useEffect(() => {
     return () => trackThemeTime(theme);
-  }, [theme]);*/
+  }, [theme]);
 
   // Avoid rendering children until after client-side hydration
   if (!mounted) {
