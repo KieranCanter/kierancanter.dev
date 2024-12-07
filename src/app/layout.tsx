@@ -86,7 +86,7 @@ export default function RootLayout({
         <script
           async
           defer
-          data-website-id="658ef7a3-7ea5-43da-bee8-c72599e04d99"
+          data-website-id="43b30c7d-9299-462b-8ff5-d792d22e8b89"
           src="https://analytics.kierancanter.dev/script.js"
         ></script>
       </head>
