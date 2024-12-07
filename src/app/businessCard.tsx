@@ -125,6 +125,7 @@ export default function BusinessCard({ isActive }: { isActive: boolean }) {
       <div id="phone-and-logo" className="relative flex flex-row justify-between w-full h-fit">
         <Link 
           id="phone" 
+          data-umami-event="Phone Click"
           className="relative w-fit h-fit text-xs font-ibm-plex-serif font-bold hover:text-gray-500 hover:selection:bg-gray-500 active:opacity-85 transition-all duration-[250ms]" 
           href="tel:+12402846363" 
           title="Phone" 
@@ -137,6 +138,7 @@ export default function BusinessCard({ isActive }: { isActive: boolean }) {
 
         <Link 
           id="logo" 
+          data-umami-event="Logo Click"
           className="relative aspect-square w-5 md:w-6 h-fit active:opacity-85 fill-[#1e1e1e] hover:fill-gray-500 transition duration-[250ms]" 
           href="https://www.youtube.com/watch?v=YHgwxVCiMyI" 
           title="Impressive. Very nice. Let's see Paul Allen's card." 
@@ -163,6 +165,8 @@ export default function BusinessCard({ isActive }: { isActive: boolean }) {
           {socialLinks.map((link) => (
             <Link 
               key={link.title}
+              data-umami-event="Social Click"
+              data-umami-event-platform={link.title.toLowerCase()}
               href={link.href} 
               title={`${link.title}`} 
               className="hover:text-gray-500 active:opacity-85 transition-all duration-[250ms]"
