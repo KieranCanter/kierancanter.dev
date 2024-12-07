@@ -20,7 +20,7 @@ const DesktopNav = () => {
       <div className="flex gap-4 w-full h-full">
         {activeTab === 'home' && (
           <div className="flex-shrink-0 w-full h-full overflow-y-auto overscroll-y-contain my-4">
-            <div className="relative flex h-full items-center justify-center px-4">
+            <div className="relative flex h-full items-center justify-center px-4 pointer-events-none">
               <BusinessCard isActive={true} />
             </div>
           </div>
