@@ -6,7 +6,6 @@ import BusinessCard from '@/app/businessCard';
 import About from '@/app/about';
 import Experience from '@/app/experience';
 import Works from '@/app/works';
-import ThemeSwitcher from '@/components/themeSwitcher';
 
 const DesktopNav = () => {
   const [activeTab, setActiveTab] = useState('home');
@@ -20,7 +19,7 @@ const DesktopNav = () => {
       <div className="flex gap-4 w-full h-full">
         {activeTab === 'home' && (
           <div className="flex-shrink-0 w-full h-full overflow-y-auto overscroll-y-contain my-4">
-            <div className="relative flex h-full items-center justify-center px-4">
+            <div className="relative flex h-full items-center justify-center px-4 pointer-events-none">
               <BusinessCard isActive={true} />
             </div>
           </div>
@@ -46,7 +45,7 @@ const DesktopNav = () => {
 
   return (
     <div className="hidden lg:flex flex-col w-full h-full">
-      <div className="flex lg:w-[calc(100%-4rem)] justify-center">
+      <div className="flex justify-center">
         <Header activeTab={activeTab} onTabChange={handleHeaderClick} />
       </div>
       

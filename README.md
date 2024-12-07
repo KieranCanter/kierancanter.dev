@@ -387,9 +387,10 @@ Using this method, I was able to insert this component into my list element seam
 
 To the average programmer with no previous website hosting experience, the process of getting a site up and running can be arduous, confusing, and difficult. You are not alone if you relate to that struggle, and there was much trial & error and failures in my attempts to do so. Below are the various platforms I used for the DevOps side of things.
 
-* _.com_ domain is registered with AWS Route 53 and _.dev_ domain is registered with PorkBun (.com → .dev redirection through Vercel)
-* SSL certificate issued by Let's Encrypt through PorkBun
-* Hosted on AWS Route 53
-* Mail domain/service through PurelyMail
-* Business phone number through Google Voice
-* GitHub Actions + Vercel for CI/CD
+* _.com_ domain is registered with [AWS Route 53](https://aws.amazon.com/route53/) and _.dev_ domain is registered with [PorkBun](https://porkbun.com/) (.com → .dev redirection through [Vercel](https://vercel.com/))
+* SSL certificate issued by [Let's Encrypt](https://letsencrypt.org/) through [PorkBun](https://porkbun.com/)
+* Hosted on [AWS Route 53](https://aws.amazon.com/route53/)
+* Mail domain/service through [PurelyMail](https://purelymail.com/)
+* Business phone number through [Google Voice](https://voice.google.com/)
+* CI/CD with [GitHub Actions](https://github.com/features/actions) + [Vercel](https://vercel.com/)
+* Analytics tracking through [Umami](https://umami.is/) using [Supabase](https://supabase.com/) hosted on [Vercel](https://vercel.com/)
