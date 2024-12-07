@@ -60,7 +60,7 @@ const Works: React.FC<{ isActive: boolean }> = ({ isActive }) => {
               href={work.githubURL}
               data-umami-event="Project Click"
               data-umami-event-name={work.project}
-              data-umami-event-type="github"
+              data-umami-event-type="github-title"
               passHref target="_blank" rel="noopener noreferrer">
               <h4 className="relative w-fit font-ibm-plex-sans text-base lg:text-lg text-fgHard font-semibold selection:bg-fgHard hover:text-fgContrast hover:selection:bg-fgContrast transition-colors duration-[250ms]">{work.project}</h4>
             </Link>
@@ -71,12 +71,17 @@ const Works: React.FC<{ isActive: boolean }> = ({ isActive }) => {
                   href={work.projectURL}
                   data-umami-event="Project Click"
                   data-umami-event-name={work.project}
-                  data-umami-event-type="project page"
+                  data-umami-event-type="external-icon"
                   passHref target="_blank" rel="noopener noreferrer">
                   <FontAwesomeIcon icon={faUpRightFromSquare} className="text-fgHard text-lg hover:text-fgContrast transition-colors duration-[250ms]" />
                 </Link>
               )}
-              <Link href={work.githubURL} passHref target="_blank" rel="noopener noreferrer">
+              <Link 
+              href={work.githubURL}
+              data-umami-event="Project Click"
+              data-umami-event-name={work.project}
+              data-umami-event-type="github-icon"
+              passHref target="_blank" rel="noopener noreferrer">
                 <FontAwesomeIcon icon={faGithub} className="text-fgHard text-lg hover:text-fgContrast transition-colors duration-[250ms]" />
               </Link>
             </div>
