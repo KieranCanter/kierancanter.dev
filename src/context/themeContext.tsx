@@ -53,21 +53,6 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
     }
   }, [theme, mounted]);
 
-  // Add theme duration tracking
-  useEffect(() => {
-    if (!mounted) return;
-    
-    const startTime = Date.now();
-    return () => {
-      const durationSeconds = Math.floor((Date.now() - startTime) / 1000);
-      if (typeof window !== 'undefined' && (window as any).umami) {
-        (window as any).umami.track(theme, {
-          seconds: durationSeconds
-        });
-      }
-    };
-  }, [theme, mounted]);
-
   const setThemeAndSave = (newTheme: Theme) => {
     requestAnimationFrame(() => {
       setTheme(newTheme);
