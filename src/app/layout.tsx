@@ -81,6 +81,15 @@ export default function RootLayout({
 
         {/* For Legacy Systems */}
         <link rel="favicon" type="image/x-icon" href="/favicon.ico" />
+
+        {/* Umami Analytics */}
+        <script
+          async
+          defer
+          data-website-id="658ef7a3-7ea5-43da-bee8-c72599e04d99"
+          src="https://analytics.kierancanter.dev/script.js"
+          data-domains="kierancanter.dev,kierancanter.com"
+        ></script>
       </head>
 
       <body className="antialiased bg-bg text-fgSoft selection:text-bg selection:bg-fgSoft [&_*]:no-scrollbar transition-colors duration-[250ms]">
