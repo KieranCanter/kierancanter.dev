@@ -46,7 +46,7 @@ const LogoLoader: React.FC<LogoLoaderProps> = ({ onAnimationComplete }) => {
 
   return (
     <div 
-      className="absolute inset-0 m-auto w-fit h-fit flex items-center justify-center z-50 transition-opacity duration-[250ms] pointer-events-none"
+      className="absolute inset-0 m-auto w-fit h-fit flex items-center justify-center z-50 transition-opacity duration-250 pointer-events-none"
       style={{
         opacity: opacity,
       }}>

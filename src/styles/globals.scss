@@ -125,7 +125,7 @@ h6 {
 }
 
 .header-link {
-  @apply text-[1rem] font-ibm-plex-sans font-semibold hover:text-fgContrast hover:selection:bg-fgContrast transition-all duration-[250ms] !important;
+  @apply text-[1rem] font-ibm-plex-sans font-semibold hover:text-fgContrast hover:selection:bg-fgContrast transition-all duration-250 !important;
 }
 
 .highlight {
@@ -133,7 +133,7 @@ h6 {
 }
 
 .text-link {
-  @apply text-fgContrast font-medium selection:bg-fgContrast hover:opacity-75 transition duration-[250ms] !important;
+  @apply text-fgContrast font-medium selection:bg-fgContrast hover:opacity-75 transition duration-250 !important;
 }
 
 meta[name="theme-color"] {
