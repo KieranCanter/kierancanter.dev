@@ -4,14 +4,29 @@ import React, { useContext, useCallback } from 'react';
 import { ThemeContext } from '@/context/themeContext';
 import '@/styles/variables.scss';
 
+/**
+ * Valid theme types for the application
+ * Combines dark/light with colorful/accented modes
+ */
 type ThemeType = 'sombre' | 'luminous' | 'brilliant' | 'plush';
 
+/**
+ * ThemeSwitcher Component
+ * Provides UI controls for switching between different theme modes
+ * Features toggles for dark mode and colorful mode
+ */
 const ThemeSwitcher: React.FC = () => {
   const { theme, setTheme } = useContext(ThemeContext);
   
+  // Derive current states from theme
   const isDarkMode = theme === 'sombre' || theme === 'luminous';
   const isColorfulMode = theme === 'brilliant' || theme === 'luminous';
 
+  /**
+   * Handle theme toggle clicks
+   * Uses a matrix to determine the next theme based on current state
+   * @param themeType - The type of toggle clicked ('dark' or 'colorful')
+   */
   const toggleTheme = useCallback((themeType: 'dark' | 'colorful') => {
     const themeMatrix: Record<ThemeType, { dark: ThemeType; colorful: ThemeType }> = {
       sombre: { dark: 'plush', colorful: 'luminous' },
@@ -22,6 +37,10 @@ const ThemeSwitcher: React.FC = () => {
     setTheme(themeMatrix[theme as ThemeType][themeType]);
   }, [theme, setTheme]);
 
+  /**
+   * Theme Toggle Button Component
+   * Renders a single theme toggle with label and active state
+   */
   const ThemeToggle = ({ label, isActive, onToggle }: { label: string; isActive: boolean; onToggle: () => void }) => (
     <div className="flex items-center gap-2">
       <h4 className="max-lg:hidden font-ibm-plex-sans text-base font-medium text-fgSoft select-none">{label.toLowerCase()}</h4>

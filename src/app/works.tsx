@@ -11,15 +11,26 @@ import { faUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import Link from 'next/link';
 
+/**
+ * Works Component
+ * Displays portfolio projects with links, descriptions, and tech stacks
+ * Features staggered animations and dynamic theme-based colors
+ * @param {boolean} isActive - Whether this component is currently visible/active
+ */
 const Works: React.FC<{ isActive: boolean }> = ({ isActive }) => {
   const { theme } = useContext(ThemeContext);
   const worksRefs = useRef<HTMLDivElement[]>([]);
   const accentColorsRef = useRef<string[][]>([]);
   const [forceUpdate, setForceUpdate] = useState(0);
 
+  /**
+   * Update accent colors when theme changes
+   * Generates new colors for each technology in each project
+   */
   useEffect(() => {
     const isColorful = theme === 'brilliant' || theme === 'luminous';
     
+    // Generate colors for each project's tech stack
     accentColorsRef.current = worksContent.map(work => 
       work.technologies.map(() => 
         isColorful ? generateAccentColor(theme) : 'var(--fg-contrast)'
@@ -29,12 +40,15 @@ const Works: React.FC<{ isActive: boolean }> = ({ isActive }) => {
     setForceUpdate(prev => prev + 1);
   }, [theme]);
 
+  /**
+   * Trigger staggered reveal animations when component becomes active
+   */
   useEffect(() => {
     if (isActive) {
       let delay: number = 0;
       worksRefs.current.forEach((element) => {
         revealAnimation(element, delay);
-        delay += 0.1;
+        delay += 0.1; // Stagger each animation by 0.1 seconds
       });
     }
   }, [isActive]);
@@ -58,10 +72,12 @@ const Works: React.FC<{ isActive: boolean }> = ({ isActive }) => {
           role="article"
           aria-labelledby={`project-title-${index}`}
         >
+          {/* WIP Overlay */}
           <div className={`${work.wip ? '' : 'hidden'} absolute flex inset-0 w-full h-full box-border z-50 bg-black/50 items-center justify-center overflow-clip`}>
             <h4 className="absolute w-[110%] h-fit py-1 text-center text-lg font-bold text-bg bg-fgContrast -rotate-6" aria-label="Work in Progress">WORK IN PROGRESS</h4>
           </div>
           
+          {/* Project Title and Links */}
           <div className="w-full h-fit flex flex-row gap-4 justify-between items-start md:items-center">
             <Link 
               href={work.githubURL}
@@ -79,6 +95,7 @@ const Works: React.FC<{ isActive: boolean }> = ({ isActive }) => {
               </h4>
             </Link>
             
+            {/* External Links */}
             <div className="relative flex flex-row gap-4" role="group" aria-label="Project links">
               {work.projectURL && (
                 <Link 
@@ -109,6 +126,7 @@ const Works: React.FC<{ isActive: boolean }> = ({ isActive }) => {
             </div>
           </div>
           
+          {/* Project Description */}
           <p 
             className="text-fgSoft text-sm lg:text-base font-ibm-plex-sans font-light" 
             dangerouslySetInnerHTML={{ __html: work.description }}
@@ -116,6 +134,7 @@ const Works: React.FC<{ isActive: boolean }> = ({ isActive }) => {
             aria-label={`${work.project} description`}
           />
 
+          {/* Technology Stack */}
           <div 
             className="flex flex-wrap gap-2 mt-2"
             role="list"

@@ -4,12 +4,23 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserTie } from '@fortawesome/free-solid-svg-icons';
 import { useRef, useEffect, useState, useMemo } from 'react';
 
+/**
+ * Props for Header component
+ * @property {string} activeTab - Currently selected tab ID
+ * @property {function} onTabChange - Callback when tab selection changes
+ */
 interface HeaderProps {
   activeTab: string;
   onTabChange: (tab: string) => void;
 }
 
+/**
+ * Header Component
+ * Navigation bar with animated underline indicator
+ * Provides tab switching between different sections of the site
+ */
 const Header: React.FC<HeaderProps> = ({ activeTab, onTabChange }) => {
+  // Track underline position and width
   const [underlineStyle, setUnderlineStyle] = useState({ left: 0, width: 0 });
   const homeRef = useRef<HTMLButtonElement>(null);
   const aboutRef = useRef<HTMLButtonElement>(null);
@@ -23,6 +34,10 @@ const Header: React.FC<HeaderProps> = ({ activeTab, onTabChange }) => {
     works: worksRef,
   }), []);
 
+  /**
+   * Update underline position when active tab changes
+   * Animates to match the position and width of the active button
+   */
   useEffect(() => {
     const activeButton = buttonRefs[activeTab as keyof typeof buttonRefs].current;
     if (activeButton) {
@@ -35,6 +50,7 @@ const Header: React.FC<HeaderProps> = ({ activeTab, onTabChange }) => {
 
   return (
     <nav className="flex gap-8 relative m-4" role="navigation" aria-label="Header">
+      {/* Animated underline indicator */}
       <div 
         className="absolute bottom-[-0.25rem] h-[0.15rem] rounded-sm bg-fgContrast transition-all duration-250 ease-in-out"
         style={{ 
@@ -43,6 +59,8 @@ const Header: React.FC<HeaderProps> = ({ activeTab, onTabChange }) => {
         }}
         aria-hidden="true"
       />
+      
+      {/* Home/Logo button */}
       <button
         ref={buttonRefs.home}
         onClick={() => onTabChange('home')}
@@ -52,6 +70,8 @@ const Header: React.FC<HeaderProps> = ({ activeTab, onTabChange }) => {
       >
         <FontAwesomeIcon icon={faUserTie} aria-hidden="true" />
       </button>
+
+      {/* About section button */}
       <button
         ref={buttonRefs.about}
         onClick={() => onTabChange('about')}
@@ -60,6 +80,8 @@ const Header: React.FC<HeaderProps> = ({ activeTab, onTabChange }) => {
       >
         ABOUT
       </button>
+
+      {/* Experience section button */}
       <button
         ref={buttonRefs.experience}
         onClick={() => onTabChange('experience')}
@@ -68,6 +90,8 @@ const Header: React.FC<HeaderProps> = ({ activeTab, onTabChange }) => {
       >
         EXPERIENCE
       </button>
+
+      {/* Works section button */}
       <button
         ref={buttonRefs.works}
         onClick={() => onTabChange('works')}

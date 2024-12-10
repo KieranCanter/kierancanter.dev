@@ -1,6 +1,11 @@
 import React from 'react';
 import Link from 'next/link';
 
+/**
+ * Footer Component
+ * Displays source code link
+ * Features dynamic year update
+ */
 const Footer = () => {
   return (
     <Link 
@@ -18,6 +23,5 @@ const Footer = () => {
     </Link>
   );
 };
-
 
 export default Footer;

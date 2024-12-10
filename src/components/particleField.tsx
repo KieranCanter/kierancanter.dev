@@ -2,13 +2,19 @@
 
 import React, { useRef, useEffect } from 'react';
 
-// Constants
-const PARTICLE_SPACING = 3;
-const REPULSION_STRENGTH = Math.pow(80, 2);
-const VELOCITY_DECAY = 0.95;
-const RETURN_FORCE = 0.25;
-const CELL_SIZE = 70; // Size of each grid cell for spatial partitioning
+/**
+ * System Configuration Constants
+ * Fine-tuned values for particle behavior and performance
+ */
+const PARTICLE_SPACING = 3;        // Space between particles
+const REPULSION_STRENGTH = Math.pow(80, 2);  // Squared for performance
+const VELOCITY_DECAY = 0.85;       // Particle movement dampening
+const RETURN_FORCE = 0.25;         // Force pulling particles back to origin
+const CELL_SIZE = 80;              // Size of spatial partitioning cells
 
+/**
+ * Particle interface defining properties for each point
+ */
 interface Particle {
   velocityX: number;
   velocityY: number;
@@ -22,17 +28,27 @@ interface ParticleFieldProps {
   color: string;
 }
 
-// Parse RGB color string to an array of numbers
+/**
+ * Converts RGB color string to array of RGB values
+ * @param rgbString - Color in format 'rgb(r,g,b)'
+ * @returns Array of [r,g,b] values
+ */
 const parseRGBColor = (rgbString: string): number[] => {
   const match = rgbString.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
   return match ? [parseInt(match[1]), parseInt(match[2]), parseInt(match[3])] : [0, 0, 0];
 };
 
+/**
+ * ParticleField Component
+ * Creates an interactive field of particles that respond to mouse movement
+ * Uses spatial partitioning and pixel manipulation for performance
+ */
 const ParticleField: React.FC<ParticleFieldProps> = ({ color }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    // Device detection for performance optimization
     const isMobile = () => {
       return window.innerWidth <= 768 || 'ontouchstart' in window;
     };
@@ -44,23 +60,23 @@ const ParticleField: React.FC<ParticleFieldProps> = ({ color }) => {
     const ctx = canvas.getContext('2d', { willReadFrequently: true });
     if (!ctx) return;
 
+    // State variables
     let animationFrameId: number;
     let particleList: Particle[] = [];
     let PARTICLE_COUNT: number;
     let COLS: number;
     let ROWS: number;
-
     let mouseX: number = -1000;
     let mouseY: number = -1000;
-
     let isMouseOverField = false;
-
-    // Spatial partitioning grid
     let grid: Particle[][][] = [];
-
     let lastUpdateTime = 0;
     const UPDATE_INTERVAL = 1000 / 60; // Target 60 updates per second
 
+    /**
+     * Initialize the particle system
+     * Sets up canvas, creates particles, and starts animation loop
+     */
     const init = () => {
       resizeCanvas();
       createParticles();
@@ -68,11 +84,18 @@ const ParticleField: React.FC<ParticleFieldProps> = ({ color }) => {
       animationFrameId = requestAnimationFrame(gameLoop);
     };
 
+    /**
+     * Mouse event handlers
+     * Track mouse position for particle interactions
+     */
     const updateMousePosition = (e: MouseEvent) => {
       if (isMobile()) return;
       const rect = container.getBoundingClientRect();
-      mouseX = e.clientX - rect.left;
-      mouseY = e.clientY - rect.top;
+      const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      
+      mouseX = e.pageX - (rect.left + scrollLeft);
+      mouseY = e.pageY - (rect.top + scrollTop);
     };
 
     const handleMouseEnter = () => {
@@ -85,6 +108,10 @@ const ParticleField: React.FC<ParticleFieldProps> = ({ color }) => {
       isMouseOverField = false;
     };
 
+    /**
+     * Canvas resize handler
+     * Updates canvas dimensions and recreates particle system
+     */
     const resizeCanvas = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
@@ -97,6 +124,10 @@ const ParticleField: React.FC<ParticleFieldProps> = ({ color }) => {
       createGrid();
     };
 
+    /**
+     * Create initial particle array
+     * Positions particles in a grid pattern
+     */
     const createParticles = () => {
       particleList = [];
       for (let index = 0; index < PARTICLE_COUNT; index++) {
@@ -112,12 +143,19 @@ const ParticleField: React.FC<ParticleFieldProps> = ({ color }) => {
       }
     };
 
+    /**
+     * Create spatial partitioning grid
+     * Divides space into cells for efficient collision detection
+     */
     const createGrid = () => {
       const gridCols = Math.ceil(canvas.width / CELL_SIZE);
       const gridRows = Math.ceil(canvas.height / CELL_SIZE);
       grid = Array(gridRows).fill(null).map(() => Array(gridCols).fill(null).map(() => []));
     };
 
+    /**
+     * Update spatial grid with current particle positions
+     */
     const updateGrid = () => {
       // Clear the grid
       for (let i = 0; i < grid.length; i++) {
@@ -136,27 +174,34 @@ const ParticleField: React.FC<ParticleFieldProps> = ({ color }) => {
       }
     };
 
+    /**
+     * Main game loop
+     * Handles timing and calls update/render functions
+     */
     const gameLoop = (timestamp: number) => {
       animationFrameId = requestAnimationFrame(gameLoop);
 
-      // Update
+      // Update at fixed time intervals
       if (timestamp - lastUpdateTime >= UPDATE_INTERVAL) {
         updateParticlePositions();
         lastUpdateTime = timestamp;
       }
 
-      // Render
       renderParticles();
     };
 
+    /**
+     * Update particle positions and handle interactions
+     */
     const updateParticlePositions = () => {
       updateGrid();
 
+      // Only process particles near mouse when mouse is over field
       if (isMouseOverField && !isMobile()) {
         const gridX = Math.floor(mouseX / CELL_SIZE);
         const gridY = Math.floor(mouseY / CELL_SIZE);
 
-        // Check only neighboring cells
+        // Check neighboring cells for mouse interaction
         for (let i = Math.max(0, gridY - 1); i <= Math.min(grid.length - 1, gridY + 1); i++) {
           for (let j = Math.max(0, gridX - 1); j <= Math.min(grid[0].length - 1, gridX + 1); j++) {
             for (const particle of grid[i][j]) {
@@ -175,6 +220,9 @@ const ParticleField: React.FC<ParticleFieldProps> = ({ color }) => {
       }
     };
 
+    /**
+     * Update single particle based on mouse position
+     */
     const updateParticle = (particle: Particle) => {
       const deltaX = mouseX - particle.currentX;
       const deltaY = mouseY - particle.currentY;
@@ -188,6 +236,9 @@ const ParticleField: React.FC<ParticleFieldProps> = ({ color }) => {
       }
     };
 
+    /**
+     * Render particles to canvas using optimized pixel manipulation
+     */
     const renderParticles = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -210,6 +261,7 @@ const ParticleField: React.FC<ParticleFieldProps> = ({ color }) => {
       ctx.putImageData(imageData, 0, 0);
     };
 
+    // Initialize system and set up event listeners
     init();
 
     container.addEventListener('mousemove', updateMousePosition);
@@ -217,6 +269,7 @@ const ParticleField: React.FC<ParticleFieldProps> = ({ color }) => {
     container.addEventListener('mouseleave', handleMouseLeave);
     window.addEventListener('resize', resizeCanvas);
 
+    // Cleanup
     return () => {
       cancelAnimationFrame(animationFrameId);
       container.removeEventListener('mousemove', updateMousePosition);

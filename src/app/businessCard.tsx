@@ -10,7 +10,7 @@ import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import Link from 'next/link';
 import LogoSVG from '@/components/logoSVG';
 
-// Define social media links
+// Define social media links with contact info and icons
 const socialLinks = [
   { title: 'Email', href: 'mailto:contact@kierancanter.dev', icon: faEnvelope },
   { title: 'GitHub', href: 'https://github.com/kierancanter', icon: faGithub },
@@ -18,21 +18,24 @@ const socialLinks = [
   { title: 'CodePen', href: 'https://codepen.io/kierancanter', icon: faCodepen },
 ];
 
-// Add this type definition at the top of your file
+// Type definition for element with VanillaTilt instance
 type BusinessCardElement = HTMLElement & { vanillaTilt?: { destroy: () => void } };
 
 export default function BusinessCard({ isActive }: { isActive: boolean }) {
+  // Refs for managing card interactions
   const businessCardRef = useRef<BusinessCardElement>(null);
   const touchStartRef = useRef<{ x: number; y: number } | null>(null);
   const currentRotationRef = useRef({ x: 0, y: 0 });
   const isTiltEnabled = useRef(false);
 
+  // Initialize reveal animation when component becomes active
   useEffect(() => {
     if (isActive) {
       revealAnimation(businessCardRef.current!);
     }
   }, [isActive]);
 
+  // Handle start of touch interaction
   const handleTouchStart = (e: TouchEvent) => {
     const rect = businessCardRef.current?.getBoundingClientRect();
     if (!rect) return;
@@ -43,6 +46,7 @@ export default function BusinessCard({ isActive }: { isActive: boolean }) {
     };
   };
 
+  // Handle touch movement and tilt calculations
   const handleTouchMove = (e: TouchEvent) => {
     const rect = businessCardRef.current?.getBoundingClientRect();
     if (!rect || !touchStartRef.current) return;
@@ -50,7 +54,7 @@ export default function BusinessCard({ isActive }: { isActive: boolean }) {
     const touchX = e.touches[0].clientX - rect.left;
     const touchY = e.touches[0].clientY - rect.top;
     
-    // Check for upward swipe if tilt is not yet enabled
+    // Check for upward swipe to enable tilt
     if (!isTiltEnabled.current) {
       const deltaY = touchStartRef.current.y - touchY;
       if (deltaY > 20) { // Threshold of 20px for upward swipe
@@ -60,7 +64,7 @@ export default function BusinessCard({ isActive }: { isActive: boolean }) {
       }
     }
 
-    // Only apply tilt effect if enabled
+    // Apply tilt effect if enabled
     if (isTiltEnabled.current) {
       const rotationY = Math.max(-15, Math.min(15, ((touchX / rect.width) * 2 - 1) * 15));
       const rotationX = Math.max(-15, Math.min(15, ((touchY / rect.height) * 2 - 1) * -15));
@@ -74,9 +78,10 @@ export default function BusinessCard({ isActive }: { isActive: boolean }) {
     }
   };
 
+  // Reset card position when touch ends
   const handleTouchEnd = () => {
     touchStartRef.current = null;
-    isTiltEnabled.current = false; // Reset the tilt enabled state
+    isTiltEnabled.current = false;
     if (businessCardRef.current) {
       businessCardRef.current.style.transition = 'transform 0.5s ease-out';
       businessCardRef.current.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
@@ -88,17 +93,20 @@ export default function BusinessCard({ isActive }: { isActive: boolean }) {
     }
   };
 
+  // Initialize tilt effect and touch handlers
   useEffect(() => {
     const card = businessCardRef.current;
 
     if (businessCardRef.current) {
       if (!isMobile) {
+        // Desktop: Use VanillaTilt for hover effect
         VanillaTilt.init(businessCardRef.current, {
           reverse: true,
           max: 15,
           speed: 3000,
         });
       } else {
+        // Mobile: Use touch handlers for tilt effect
         card?.addEventListener('touchstart', handleTouchStart);
         card?.addEventListener('touchmove', handleTouchMove);
         card?.addEventListener('touchend', handleTouchEnd);
@@ -122,6 +130,7 @@ export default function BusinessCard({ isActive }: { isActive: boolean }) {
       className="relative flex flex-col w-[calc(100vw-6rem)] max-w-[24rem] lg:max-w-[28rem] h-fit aspect-[7/4] m-auto p-2 lg:p-3 text-[#1e1e1e] bg-[#f8f5ec] rounded-sm [box-shadow:0rem_0.1rem_0.4rem_0rem_rgba(0,_0,_0,_0.3)] [&_*]:selection:bg-[#1e1e1e] [&_*]:selection:text-[#f8f5ec] opacity-0 pointer-events-auto"
       aria-label="Kieran Canter's Business Card"
     >
+      {/* Contact and Logo Section */}
       <div id="phone-and-logo" className="relative flex flex-row justify-between w-full h-fit">
         <Link 
           id="phone" 
@@ -150,13 +159,15 @@ export default function BusinessCard({ isActive }: { isActive: boolean }) {
         </Link>
       </div>
 
-      <div id="centerpiece" className = "flex flex-col w-fit h-full mx-auto justify-end">
-
+      {/* Main Content Section */}
+      <div id="centerpiece" className="flex flex-col w-fit h-full mx-auto justify-end">
+        {/* Name and Title */}
         <div id="me" className="flex flex-col m-auto w-fit h-fit items-center" aria-labelledby="name title">
           <h2 id="name" className="text-base lg:text-lg font-bold">Kieran CANTER</h2>
           <h3 id="title" className="text-xs lg:text-sm font-semibold">Software Engineer</h3>
         </div>
 
+        {/* Social Links */}
         <div 
           id="socials" 
           className="relative text-sm lg:text-base flex w-full h-fit mx-auto justify-between"
@@ -183,7 +194,6 @@ export default function BusinessCard({ isActive }: { isActive: boolean }) {
           ))}
         </div>
       </div>
-
     </div>
   );
 }
