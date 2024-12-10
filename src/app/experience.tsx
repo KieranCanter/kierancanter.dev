@@ -36,34 +36,37 @@ const Experience: React.FC<{ isActive: boolean }> = ({ isActive }) => {
   }, [isActive]);
 
   return (
-    <div id="text-container" className="relative flex flex-col gap-4 w-full lg:w-kic-width h-full lg:pointer-events-none">
+    <section 
+      id="text-container" 
+      className="relative flex flex-col gap-4 w-full lg:w-kic-width h-full lg:pointer-events-none"
+      aria-label="Experience Timeline"
+    >
       {experienceContent.map((experience, index) => {
         const accentColor = accentColorsRef.current[index] || 'var(--fg-contrast)';
         
         return (
-          <div 
-          key={index}
-          ref={(element) => {
-            if (element) {
-              experienceRefs.current[index] = element;
-            }
-          }} 
-          className="relative flex flex-col justify-between gap-2 w-full p-2 bg-black/10 rounded-sm transition-colors duration-[250ms] hover:bg-black/20 lg:pointer-events-auto">
-            
-            <div className="w-full h-fit flex flex-row justify-between items-center">
+          <article 
+            key={index}
+            ref={(element) => {
+              if (element instanceof HTMLDivElement) {
+                experienceRefs.current[index] = element;
+              }
+            }} 
+            className="relative flex flex-col justify-between gap-2 w-full p-2 bg-black/10 rounded-sm transition-colors duration-250 hover:bg-black/20 lg:pointer-events-auto"
+          >
+            <header className="w-full h-fit flex flex-row justify-between items-center">
               <h4 className="relative w-fit font-ibm-plex-sans text-base lg:text-lg text-fgContrast font-semibold selection:bg-fgContrast" dangerouslySetInnerHTML={{ __html: experience.position }} style={{ color: accentColor }}></h4>
-              <div className="relative flex rounded-full w-2.5 h-2.5 lg:w-3 lg:h-3 bg-fgContrast" style={{ backgroundColor: accentColor }}/>
-            </div>
+              <div className="relative flex rounded-full w-2.5 h-2.5 lg:w-3 lg:h-3 bg-fgContrast" style={{ backgroundColor: accentColor }} aria-hidden="true"/>
+            </header>
             
-            <div className="w-full h-fit flex flex-row justify-between items-end">
+            <footer className="w-full h-fit flex flex-row justify-between items-end">
               <h5 className="text-fgSoft text-sm lg:text-base font-ibm-plex-sans font-light" dangerouslySetInnerHTML={{ __html: experience.company }}></h5>
-              <h6 className="text-fgSoft text-xs lg:text-sm font-ibm-plex-mono font-semibold" dangerouslySetInnerHTML={{ __html: experience.period }}></h6>
-            </div>
-  
-          </div>
+              <time className="text-fgSoft text-xs lg:text-sm font-ibm-plex-mono font-semibold" dangerouslySetInnerHTML={{ __html: experience.period }}></time>
+            </footer>
+          </article>
         );
       })}
-    </div>
+    </section>
   );
 };
 

@@ -126,7 +126,7 @@ export default function BusinessCard({ isActive }: { isActive: boolean }) {
         <Link 
           id="phone" 
           data-umami-event="Phone Click"
-          className="relative w-fit h-fit text-xs font-ibm-plex-serif font-bold hover:text-gray-500 hover:selection:bg-gray-500 active:opacity-85 transition-all duration-[250ms]" 
+          className="relative w-fit h-fit text-xs font-ibm-plex-serif font-bold hover:text-gray-500 hover:selection:bg-gray-500 active:opacity-85 transition-all duration-250" 
           href="tel:+12402846363" 
           title="Phone" 
           aria-label="Phone number: +1 240.284.6363"
@@ -139,7 +139,7 @@ export default function BusinessCard({ isActive }: { isActive: boolean }) {
         <Link 
           id="logo" 
           data-umami-event="Logo Click"
-          className="relative aspect-square w-5 md:w-6 h-fit active:opacity-85 fill-[#1e1e1e] hover:fill-gray-500 transition duration-[250ms]" 
+          className="relative aspect-square w-5 md:w-6 h-fit active:opacity-85 fill-[#1e1e1e] hover:fill-gray-500 transition duration-250" 
           href="https://www.youtube.com/watch?v=YHgwxVCiMyI" 
           title="Impressive. Very nice. Let's see Paul Allen's card." 
           target="_blank" 
@@ -167,10 +167,9 @@ export default function BusinessCard({ isActive }: { isActive: boolean }) {
               key={link.title}
               data-umami-event="Social Click"
               data-umami-event-platform={link.title.toLowerCase()}
-              href={link.href} 
-              title={`${link.title}`} 
-              className="hover:text-gray-500 active:opacity-85 transition-all duration-[250ms]"
-              aria-label={`${link.title}: ${link.href}`}
+              href={link.href}
+              className="hover:text-gray-500 active:opacity-85 transition-all duration-250"
+              aria-label={`Visit ${link.title} profile`}
               target="_blank"
               rel="noopener noreferrer"
             >

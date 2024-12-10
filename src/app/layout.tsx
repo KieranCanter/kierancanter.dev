@@ -45,11 +45,14 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  width: "device-width",
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#B9ACAE' },
+    { media: '(prefers-color-scheme: dark)', color: '#2B2425' },
+  ],
+  width: 'device-width',
   initialScale: 1,
   maximumScale: 1,
   userScalable: false,
-  themeColor: '#FFFFFF',
 };
 
 export default function RootLayout({
@@ -91,12 +94,11 @@ export default function RootLayout({
         ></script>
       </head>
 
-      <body className="antialiased bg-bg text-fgSoft selection:text-bg selection:bg-fgSoft [&_*]:no-scrollbar transition-colors duration-[250ms]">
+      <body className="antialiased bg-bg text-fgSoft selection:text-bg selection:bg-fgSoft [&_*]:no-scrollbar transition-colors duration-250">
         <ThemeProvider>
-          <div className="fixed inset-0 p-4 lg:p-8">
-
-            <div className="relative h-full border border-fgHard">
-              <ParticleField color="rgb(110, 110, 110)" />
+          <div className="fixed inset-0 p-4 lg:p-8" role="application">
+            <div className="relative h-full border border-fgHard" role="main" aria-label="Main content area">
+              <ParticleField color="rgb(110, 110, 110)" aria-hidden="true" />
               {children}
             </div>
 
@@ -105,7 +107,7 @@ export default function RootLayout({
                 <Footer />
               </footer>
 
-              <div className="max-lg:hidden relative flex w-fit h-fit">
+              <div className="max-lg:hidden relative flex w-fit h-fit" role="complementary">
                 <ThemeSwitcher />
               </div>
             </div>

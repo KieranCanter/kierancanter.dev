@@ -29,16 +29,30 @@ const ThemeSwitcher: React.FC = () => {
         <div className={`absolute flex items-center justify-center inset-0 border ${ isActive ? 'border-fgHard' : 'border-fgSoft' } `}>
           <h4 className={`lg:hidden font-ibm-plex-sans text-base font-medium z-10 ${ isActive ? 'text-bg' : 'text-fgSoft' } `}>{label.toUpperCase()}</h4>
         </div>
-        <div className={`absolute bg-fgHard inset-0 transition-opacity duration-[250ms] ${ isActive ? 'opacity-60 lg:opacity-60 hover:opacity-80' : 'opacity-0 hover:opacity-20' } `} />
+        <div className={`absolute bg-fgHard inset-0 transition-opacity duration-250 ${ isActive ? 'opacity-60 lg:opacity-60 hover:opacity-80' : 'opacity-0 hover:opacity-20' } `} />
       </div>
     </div>
   );
 
   return (
-    <div className="flex flex-row gap-4 items-end lg:items-center">
-      <h6 className="text-sm text-fgContrast">{theme}</h6>
-      <ThemeToggle label="Dark" isActive={isDarkMode} onToggle={() => toggleTheme('dark')} />
-      <ThemeToggle label="Colorful" isActive={isColorfulMode} onToggle={() => toggleTheme('colorful')} />
+    <div 
+      className="flex flex-row gap-4 items-end lg:items-center"
+      role="group"
+      aria-label="Theme switcher"
+    >
+      <h6 className="text-sm text-fgContrast" aria-label="Current theme">{theme}</h6>
+      <ThemeToggle
+        label="Dark"
+        isActive={isDarkMode}
+        onToggle={() => toggleTheme('dark')}
+        aria-label={`Dark mode ${isDarkMode ? 'enabled' : 'disabled'}`}
+      />
+      <ThemeToggle 
+        label="Colorful"
+        isActive={isColorfulMode}
+        onToggle={() => toggleTheme('colorful')}
+        aria-label={`Colorful mode ${isColorfulMode ? 'enabled' : 'disabled'}`}
+      />
     </div>
   );
 };
