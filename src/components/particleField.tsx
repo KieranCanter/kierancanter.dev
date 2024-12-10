@@ -91,11 +91,8 @@ const ParticleField: React.FC<ParticleFieldProps> = ({ color }) => {
     const updateMousePosition = (e: MouseEvent) => {
       if (isMobile()) return;
       const rect = container.getBoundingClientRect();
-      const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
-      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-      
-      mouseX = e.pageX - (rect.left + scrollLeft);
-      mouseY = e.pageY - (rect.top + scrollTop);
+      mouseX = e.clientX - rect.left;
+      mouseY = e.clientY - rect.top;
     };
 
     const handleMouseEnter = () => {
@@ -113,11 +110,12 @@ const ParticleField: React.FC<ParticleFieldProps> = ({ color }) => {
      * Updates canvas dimensions and recreates particle system
      */
     const resizeCanvas = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+      const rect = container.getBoundingClientRect();
+      canvas.width = rect.width;
+      canvas.height = rect.height;
 
-      COLS = Math.ceil(canvas.width / PARTICLE_SPACING);
-      ROWS = Math.ceil(canvas.height / PARTICLE_SPACING);
+      COLS = Math.ceil(rect.width / PARTICLE_SPACING);
+      ROWS = Math.ceil(rect.height / PARTICLE_SPACING);
       PARTICLE_COUNT = COLS * ROWS;
 
       createParticles();
