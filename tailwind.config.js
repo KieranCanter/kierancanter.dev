@@ -39,6 +39,9 @@ module.exports = {
           fgContrast: "var(--luminous-fg-contrast)",
         }
       },
+      transitionDuration: {
+        '250': '250ms',
+      },
       width: {
         'kic-width': "var(--kic-width)"
       },
