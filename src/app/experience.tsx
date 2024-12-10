@@ -21,7 +21,7 @@ const Experience: React.FC<{ isActive: boolean }> = ({ isActive }) => {
 
   /**
    * Update accent colors when theme changes
-   * Generates new colors for brilliant/luminous themes
+   * Generates new colors for Brilliant/luminous themes
    */
   useEffect(() => {
     const isColorful = theme === 'brilliant' || theme === 'luminous';

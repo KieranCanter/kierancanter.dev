@@ -1,3 +1,13 @@
+/**
+ * Portfolio projects configuration
+ * Defines personal and professional projects
+ * @property {string} project - Project name
+ * @property {string} githubURL - Link to GitHub repository
+ * @property {string} [projectURL] - Optional link to live project
+ * @property {string} description - HTML-formatted project description
+ * @property {string[]} technologies - List of technologies used
+ * @property {boolean} wip - Whether project is work in progress
+ */
 export const worksContent = [
   {
     project: 'kierancanter.dev',
