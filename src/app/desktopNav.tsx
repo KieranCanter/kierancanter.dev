@@ -16,40 +16,32 @@ const DesktopNav = () => {
 
   const renderContent = () => {
     return (
-      <div className="flex gap-4 w-full h-full">
+      <div className="flex h-full justify-center overflow-y-auto overscroll-y-contain">
         {activeTab === 'home' && (
-          <div className="flex-shrink-0 w-full h-full overflow-y-auto overscroll-y-contain my-4">
-            <div className="relative flex h-full items-center justify-center px-4 pointer-events-none">
-              <BusinessCard isActive={true} />
-            </div>
+          <div className="flex relative mb-20 px-4 overflow-y-auto overscroll-y-contain pointer-events-none">
+            <BusinessCard isActive={true} />
           </div>
         )}
         {activeTab === 'about' && (
-          <div className="flex-shrink-0 w-full justify-items-center overflow-y-auto overscroll-y-contain my-4">
-            <About isActive={true} />
-          </div>
+          <About isActive={true} />
         )}
         {activeTab === 'experience' && (
-          <div className="flex-shrink-0 w-full justify-items-center overflow-y-auto overscroll-y-contain my-4">
-            <Experience isActive={true} />
-          </div>
+          <Experience isActive={true} />
         )}
         {activeTab === 'works' && (
-          <div className="flex-shrink-0 w-full justify-items-center overflow-y-auto overscroll-y-contain my-4">
-            <Works isActive={true} />
-          </div>
+          <Works isActive={true} />
         )}
       </div>
     );
   };
 
   return (
-    <div className="hidden lg:flex flex-col w-full h-full">
+    <div className="max-lg:hidden flex flex-col w-full h-full">
       <div className="flex justify-center">
         <Header activeTab={activeTab} onTabChange={handleHeaderClick} />
       </div>
       
-      <main className="flex-1 h-full overflow-x-hidden overflow-y-hidden">
+      <main className="flex w-fit h-full mx-auto my-4 overflow-x-hidden overflow-y-hidden">
         {renderContent()}
       </main>
     </div>
