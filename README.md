@@ -197,6 +197,7 @@ In addition to the core pieces of the stack, I took advantage of various other p
 * [Font Awesome](https://fontawesome.com/)                             - wildly popular icon library used for most of the iconography
 * [GSAP](https://gsap.com/)                                            - animation library used for the pop-in animations on load
 * [Embla Carousel](https://www.embla-carousel.com/)                    - lightweight carousel library for mobile page-swiping feature
+* [Puppeteer](https://pptr.dev/)                                       - headless browser library used for scraping FlipReady stats
 
 ### Component Design
 
@@ -335,6 +336,18 @@ Visuals of the test and related metrics can be seen below:
 | Variance            | 37.20ms     | 12.00ms   |  67.8%       |
 
 As you can see, the overall performance was vastly improved. With a reduction in average update time of 27.8%, the particle field now runs much smoother and more efficiently. While the minimum update time seemed to decrease, this may be explained by uncontrollable hardware factors like memory access patterns and CPU scheduling. The maximum update time drastically improved by 56.7%, and the variance by 67.8%. This means that the particle field is now more consistent and predictable.
+
+### FlipReady Stats Scraping
+
+I very much wanted to include the real-time views and downloads that [my Rocket League plugin](https://bakkesplugins.com/plugins/view/401) has accumulated, but it turned out to be one of the most difficult challenges I faced. I had to devise a method to scrape the stats from the BakkesMod website without triggering bot detection. Additionally, I chose to implement a caching system to improve site loading speed and guarantee that there would always be somewhat recent values to display for the stats.
+
+Because the [BakkesMod](https://bakkesmod.com/) website is protected by Cloudflare bot detection, I had to use a headless browser to retrieve the HTML of the page. [Puppeteer](https://pptr.dev/) is a popular library used for this purpose and has a large community + documentation. After obtaining all the text data, I parsed it to extract the views and downloads. From here, a method in [`worksContent.ts`](https://github.com/KieranCanter/kierancanter.dev/blob/main/src/data/worksContent.ts) was written to be called from [`works.tsx`](https://github.com/KieranCanter/kierancanter.dev/blob/main/src/app/works.tsx) that injects the stat values into the appropriate places in the FlipReady card's description.'
+
+Succeeding this accomplishment, caching these stats was necessary to ensure the site didn't have to wait on the scraping process to complete before displaying. On top of that, caching allows for relatively recent default values to be displayed so first-time users don't just see a hard-coded or meaningless value e.g. "[N/A | 0 | "some"] views."
+
+Since this is such a small amount of data, it would be pointless and wasteful to create an entire backend with a database to facilitate this entire procedure. Instead, I opted to use a simple caching system that stores the stats in the [`flipready-stats.json`](https://github.com/KieranCanter/kierancanter.dev/blob/main/src/data/flipready-stats.json) file. This file is updated every time the site mounts while the last update would be displayed in the FlipReady card's description.
+
+For such a tiny feature, this endeavor proved to present many more hurdles than I anticipated.
 
 ### Theme Switcher
 
