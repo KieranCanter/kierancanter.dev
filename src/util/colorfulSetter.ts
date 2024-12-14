@@ -4,14 +4,14 @@ type ColorRecord = {
 
 export const colorfulVars = {
   brilliant: {
-    bubblegum: 'rgb(255,140,174)',
-    coral: 'rgb(245,96,96)',
-    emerald: 'rgb(80,200,120)',
-    lilac: 'rgb(157,141,241)',
-    marigold: 'rgb(255,165,25)',
-    sky: 'rgb(83,182,248)',
-    tangerine: 'rgb(255,118,27)',
-    turquoise: 'rgb(98,209,202)',
+    rose: 'rgb(180,98,123)',
+    valentine: 'rgb(220,86,86)',
+    forest: 'rgb(50,125,75)',
+    toolbox: 'rgb(123,111,191)',
+    mustard: 'rgb(180,116,18)',
+    bluish: 'rgb(57,125,173)',
+    rust: 'rgb(205,94,21)',
+    viridian: 'rgb(62,134,128)',
   } as ColorRecord,
   luminous: {
     azure: 'rgb(125,249,255)',
