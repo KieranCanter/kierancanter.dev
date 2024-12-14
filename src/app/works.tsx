@@ -39,14 +39,6 @@ const Works: React.FC<{ isActive: boolean }> = ({ isActive }) => {
     }
   }, [isActive]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      await updateFlipReadyStats();
-    };
-
-    fetchData();
-  }, []);
-
   return (
     <div id="text-container" className="relative flex flex-col gap-4 w-full lg:w-kic-width h-fit lg:pointer-events-none">
       {worksContent.map((work, index) => (

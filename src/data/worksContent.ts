@@ -1,5 +1,3 @@
-import axios from 'axios';
-
 interface WorksContentItem {
   project: string;
   githubURL: string;
@@ -50,30 +48,3 @@ export const worksContent: WorksContentItem[] = [
     wip: true,
   },
 ];
-
-export async function updateFlipReadyStats() {
-  try {
-    const response = await axios.get('/api/flipready');
-    const { views, downloads } = response.data;
-
-    const flipReadyIndex = worksContent.findIndex(item => item.project === 'FlipReady');
-    if (flipReadyIndex !== -1) {
-      worksContent[flipReadyIndex].description = worksContent[flipReadyIndex].description
-        .replace('{views}', views)
-        .replace('{downloads}', downloads);
-      worksContent[flipReadyIndex].views = views;
-      worksContent[flipReadyIndex].downloads = downloads;
-    }
-  } catch (error) {
-    console.error('Error fetching FlipReady stats:', error);
-    // On error, use N/A for the values
-    const flipReadyIndex = worksContent.findIndex(item => item.project === 'FlipReady');
-    if (flipReadyIndex !== -1) {
-      worksContent[flipReadyIndex].description = worksContent[flipReadyIndex].description
-        .replace('{views}', 'N/A')
-        .replace('{downloads}', 'N/A');
-      worksContent[flipReadyIndex].views = 'N/A';
-      worksContent[flipReadyIndex].downloads = 'N/A';
-    }
-  }
-}
