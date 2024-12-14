@@ -1,27 +1,64 @@
-// app/api/scrape/route.ts
 import { NextResponse } from 'next/server';
-import axios from 'axios';
-import * as cheerio from 'cheerio';
+import puppeteer from 'puppeteer';
 
 export async function GET() {
   try {
-    // Define the URL to scrape
-    const url = 'https://github.com/bakkesmodorg';
+    console.log('Starting browser...');
+    const browser = await puppeteer.launch({
+      headless: true,
+      args: [
+        '--no-sandbox',
+        '--disable-setuid-sandbox',
+        '--disable-web-security',
+        '--disable-features=IsolateOrigins,site-per-process'
+      ]
+    });
+    
+    const page = await browser.newPage();
 
-    // Fetch the HTML from the URL
-    const { data } = await axios.get(url);
+    // Set a realistic user agent
+    await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36');
+    
+    // Set extra headers
+    await page.setExtraHTTPHeaders({
+      'Accept-Language': 'en-US,en;q=0.9',
+      'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8',
+      'Accept-Encoding': 'gzip, deflate, br',
+      'Connection': 'keep-alive',
+      'Upgrade-Insecure-Requests': '1'
+    });
 
-    // Load the HTML into Cheerio
-    const $ = cheerio.load(data);
+    console.log('Navigating to URL...');
+    await page.goto('https://bakkesplugins.com/plugins/view/401', {
+      waitUntil: 'networkidle0',
+      timeout: 60000
+    });
 
-    // Scrape the views and downloads (update these selectors based on the actual HTML structure)
-    const views = $('h1.h2').text().trim() || null;
-    const downloads = $('span.text-bold').text().trim() || null;
+    // Wait for Cloudflare challenge to complete
+    await page.waitForFunction(() => {
+      return !document.querySelector('#challenge-running');
+    }, { timeout: 30000 });
 
-    // Return the scraped data as JSON
-    return NextResponse.json({ views, downloads });
+    // Now try to get the data
+    const data = await page.evaluate(() => {
+      const viewsMatch = document.body.innerText.match(/Views:\s*(\d+)/);
+      const downloadsMatch = document.body.innerText.match(/Downloads:\s*(\d+)/);
+      
+      return {
+        views: viewsMatch ? viewsMatch[1] : "N/A",
+        downloads: downloadsMatch ? downloadsMatch[1] : "N/A"
+      };
+    });
+
+    await browser.close();
+    console.log('Scraped data:', data);
+    
+    return NextResponse.json(data);
   } catch (error) {
-    console.error('Error scraping data:', error);
-    return NextResponse.json({ views: null, downloads: null }, { status: 500 });
+    console.error('Detailed error:', error);
+    return NextResponse.json({ 
+      error: (error as Error).message,
+      stack: (error as Error).stack 
+    }, { status: 500 });
   }
 }
