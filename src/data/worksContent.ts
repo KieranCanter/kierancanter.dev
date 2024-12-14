@@ -3,13 +3,12 @@ interface WorksContentItem {
   githubURL: string;
   projectURL?: string | null;
   description: string;
-  views?: string | null;
-  downloads?: string | null;
   technologies: string[];
-  wip: boolean;
+  wip?: boolean | false;
 }
 
-export const worksContent: WorksContentItem[] = [
+// eslint-disable-next-line
+export const worksContentData: WorksContentItem[] = [
   {
     project: 'kierancanter.dev',
     githubURL: 'https://github.com/kierancanter/kierancanter.dev',
@@ -48,3 +47,12 @@ export const worksContent: WorksContentItem[] = [
     wip: true,
   },
 ];
+
+export const updateFlipReadyStats = (views: string, downloads: string ) => {
+  const flipReadyProject = worksContentData.find(item => item.project === 'FlipReady');
+  if (flipReadyProject) {
+    flipReadyProject.description = flipReadyProject.description
+      .replace('{views}', views)
+      .replace('{downloads}', downloads);
+  }
+};
