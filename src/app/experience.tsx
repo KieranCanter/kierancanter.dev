@@ -36,7 +36,7 @@ const Experience: React.FC<{ isActive: boolean }> = ({ isActive }) => {
   }, [isActive]);
 
   return (
-    <div id="text-container" className="relative flex flex-col gap-4 w-full lg:w-kic-width h-full lg:pointer-events-none">
+    <div id="experience-container" className="relative flex flex-col gap-4 w-full lg:w-kic-width h-full lg:pointer-events-none">
       {experienceContent.map((experience, index) => {
         const accentColor = accentColorsRef.current[index] || 'var(--fg-contrast)';
         
