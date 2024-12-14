@@ -15,20 +15,21 @@ const Works: React.FC<{ isActive: boolean }> = ({ isActive }) => {
   const { theme } = useContext(ThemeContext);
   const worksRefs = useRef<HTMLDivElement[]>([]);
   const accentColorsRef = useRef<string[][]>([]);
+  const [works, setWorks] = useState(worksContent);
   // eslint-disable-next-line
   const [forceUpdate, setForceUpdate] = useState(0);
 
   useEffect(() => {
     const isColorful = theme === 'brilliant' || theme === 'luminous';
     
-    accentColorsRef.current = worksContent.map(work => 
+    accentColorsRef.current = works.map(work => 
       work.technologies.map(() => 
         isColorful ? generateAccentColor(theme) : 'var(--fg-contrast)'
       )
     );
     
     setForceUpdate(prev => prev + 1);
-  }, [theme]);
+  }, [theme, works]);
 
   useEffect(() => {
     if (isActive) {
@@ -40,9 +41,32 @@ const Works: React.FC<{ isActive: boolean }> = ({ isActive }) => {
     }
   }, [isActive]);
 
+  // Effect for handling FlipReady stats
+  useEffect(() => {
+    const fetchAndUpdateStats = async () => {
+      try {
+        const response = await fetch('/api/flipready');
+        const stats = await response.json();
+        
+        if (stats.views && stats.downloads) {
+          updateFlipReadyStats(stats.views, stats.downloads);
+          setWorks(worksContent);
+          setForceUpdate(prev => prev + 1);
+        }
+      } catch (error) {
+        console.error('Error fetching FlipReady stats:', error);
+      }
+    };
+
+    // Fetch immediately when component becomes active
+    if (isActive) {
+      fetchAndUpdateStats();
+    }
+  }, [isActive]);
+
   return (
     <div id="works-container" className="relative flex flex-col gap-4 w-full lg:w-kic-width h-fit lg:pointer-events-none">
-      {worksContent.map((work, index) => (
+      {works.map((work, index) => (
         <div 
         key={index} 
         ref={(element) => {

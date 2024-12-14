@@ -1,8 +1,46 @@
 import { NextResponse } from 'next/server';
+import fs from 'fs/promises';
+import path from 'path';
 import puppeteer from 'puppeteer';
 
-export async function GET() {
+const STATS_FILE_PATH = path.join(process.cwd(), 'src/data/flipready-stats.json');
+
+interface StatsData {
+  lastUpdated: number;
+  lastUpdatedDate: string;
+  views: string;
+  downloads: string;
+}
+
+async function readStatsFile() {
   try {
+    const data = await fs.readFile(STATS_FILE_PATH, 'utf-8');
+    return JSON.parse(data) as StatsData;
+  } catch {
+    const now = new Date();
+    return { 
+      lastUpdated: 0,
+      lastUpdatedDate: now.toLocaleString(),
+      views: "0",
+      downloads: "0"
+    };
+  }
+}
+
+async function writeStatsFile(stats: StatsData) {
+  await fs.writeFile(STATS_FILE_PATH, JSON.stringify(stats, null, 2));
+}
+
+let isScrapingInProgress = false;
+
+async function scrapeStats() {
+  if (isScrapingInProgress) {
+    console.log('Scraping already in progress, skipping...');
+    return { views: "N/A", downloads: "N/A" };
+  }
+
+  try {
+    isScrapingInProgress = true;
     console.log('Starting browser...');
     const browser = await puppeteer.launch({
       headless: true,
@@ -53,12 +91,59 @@ export async function GET() {
     await browser.close();
     console.log('Scraped data:', data);
     
-    return NextResponse.json(data);
+    return data;
   } catch (error) {
     console.error('Detailed error:', error);
-    return NextResponse.json({ 
-      error: (error as Error).message,
-      stack: (error as Error).stack 
-    }, { status: 500 });
+    return { views: "N/A", downloads: "N/A" };
+  } finally {
+    isScrapingInProgress = false;
+  }
+}
+
+export async function GET() {
+  try {
+    const cachedStats = await readStatsFile();
+    const now = Date.now();
+    const nowDate = new Date();
+
+    // Always return cached stats first if they exist
+    if (cachedStats.views && cachedStats.downloads) {
+      // Update stats in the background
+      scrapeStats().then(freshStats => {
+        writeStatsFile({
+          lastUpdated: Date.now(),
+          lastUpdatedDate: new Date().toLocaleString(),
+          ...freshStats
+        });
+      }).catch(error => {
+        console.error('Background stats update failed:', error);
+      });
+
+      return NextResponse.json({
+        views: cachedStats.views,
+        downloads: cachedStats.downloads,
+        lastUpdatedDate: cachedStats.lastUpdatedDate,
+        cached: true
+      });
+    }
+
+    // If no cache exists, wait for fresh stats
+    const freshStats = await scrapeStats();
+    
+    await writeStatsFile({
+      lastUpdated: now,
+      lastUpdatedDate: nowDate.toLocaleString(),
+      ...freshStats
+    });
+
+    return NextResponse.json({
+      ...freshStats,
+      lastUpdatedDate: nowDate.toLocaleString(),
+      cached: false
+    });
+
+  } catch (error) {
+    console.error('Error handling FlipReady stats:', error);
+    return NextResponse.json({ error: 'Failed to fetch stats' }, { status: 500 });
   }
 }
