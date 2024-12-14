@@ -49,7 +49,7 @@ export const worksContent: WorksContentItem[] = [
 ];
 
 export const updateFlipReadyStats = (views: string, downloads: string ) => {
-  const flipReadyProject = worksContentData.find(item => item.project === 'FlipReady');
+  const flipReadyProject = worksContent.find(item => item.project === 'FlipReady');
   if (flipReadyProject) {
     flipReadyProject.description = flipReadyProject.description
       .replace('{views}', views)
