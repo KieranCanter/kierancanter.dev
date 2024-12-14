@@ -8,7 +8,7 @@ interface WorksContentItem {
 }
 
 // eslint-disable-next-line
-export const worksContentData: WorksContentItem[] = [
+export const worksContent: WorksContentItem[] = [
   {
     project: 'kierancanter.dev',
     githubURL: 'https://github.com/kierancanter/kierancanter.dev',
