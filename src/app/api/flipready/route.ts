@@ -1,9 +1,6 @@
 import { NextResponse } from 'next/server';
-import fs from 'fs/promises';
-import path from 'path';
 import puppeteer from 'puppeteer';
-
-const STATS_FILE_PATH = path.join(process.cwd(), 'src/data/flipready-stats.json');
+import { kv } from '@vercel/kv';
 
 interface StatsData {
   lastUpdated: number;
@@ -12,26 +9,38 @@ interface StatsData {
   downloads: string;
 }
 
-async function readStatsFile() {
+let isScrapingInProgress = false;
+
+async function getStoredStats(): Promise<StatsData | null> {
   try {
-    const data = await fs.readFile(STATS_FILE_PATH, 'utf-8');
-    return JSON.parse(data) as StatsData;
-  } catch {
-    const now = new Date();
-    return { 
+    const stats = await kv.get<StatsData>('flipready-stats');
+    return stats || {
       lastUpdated: 0,
-      lastUpdatedDate: now.toLocaleString(),
+      lastUpdatedDate: new Date().toLocaleString(),
       views: "0",
       downloads: "0"
     };
+  } catch (error) {
+    console.error('Error reading from KV:', error);
+    return null;
   }
 }
 
-async function writeStatsFile(stats: StatsData) {
-  await fs.writeFile(STATS_FILE_PATH, JSON.stringify(stats, null, 2));
+async function updateStats(freshStats: { views: string; downloads: string }) {
+  try {
+    const now = new Date();
+    const stats: StatsData = {
+      lastUpdated: now.getTime(),
+      lastUpdatedDate: now.toLocaleString(),
+      ...freshStats
+    };
+    await kv.set('flipready-stats', stats);
+    return stats;
+  } catch (error) {
+    console.error('Error writing to KV:', error);
+    return null;
+  }
 }
-
-let isScrapingInProgress = false;
 
 async function scrapeStats() {
   if (isScrapingInProgress) {
@@ -53,11 +62,8 @@ async function scrapeStats() {
     });
     
     const page = await browser.newPage();
-
-    // Set a realistic user agent
     await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36');
     
-    // Set extra headers
     await page.setExtraHTTPHeaders({
       'Accept-Language': 'en-US,en;q=0.9',
       'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8',
@@ -72,12 +78,10 @@ async function scrapeStats() {
       timeout: 60000
     });
 
-    // Wait for Cloudflare challenge to complete
     await page.waitForFunction(() => {
       return !document.querySelector('#challenge-running');
     }, { timeout: 30000 });
 
-    // Now try to get the data
     const data = await page.evaluate(() => {
       const viewsMatch = document.body.innerText.match(/Views:\s*(\d+)/);
       const downloadsMatch = document.body.innerText.match(/Downloads:\s*(\d+)/);
@@ -102,43 +106,29 @@ async function scrapeStats() {
 
 export async function GET() {
   try {
-    const cachedStats = await readStatsFile();
-    const now = Date.now();
-    const nowDate = new Date();
+    const cachedStats = await getStoredStats();
 
     // Always return cached stats first if they exist
-    if (cachedStats.views && cachedStats.downloads) {
+    if (cachedStats?.views && cachedStats?.downloads) {
       // Update stats in the background
       scrapeStats().then(freshStats => {
-        writeStatsFile({
-          lastUpdated: Date.now(),
-          lastUpdatedDate: new Date().toLocaleString(),
-          ...freshStats
-        });
+        updateStats(freshStats);
       }).catch(error => {
         console.error('Background stats update failed:', error);
       });
 
       return NextResponse.json({
-        views: cachedStats.views,
-        downloads: cachedStats.downloads,
-        lastUpdatedDate: cachedStats.lastUpdatedDate,
+        ...cachedStats,
         cached: true
       });
     }
 
     // If no cache exists, wait for fresh stats
     const freshStats = await scrapeStats();
+    const updatedStats = await updateStats(freshStats);
     
-    await writeStatsFile({
-      lastUpdated: now,
-      lastUpdatedDate: nowDate.toLocaleString(),
-      ...freshStats
-    });
-
     return NextResponse.json({
-      ...freshStats,
-      lastUpdatedDate: nowDate.toLocaleString(),
+      ...(updatedStats || freshStats),
       cached: false
     });
 
