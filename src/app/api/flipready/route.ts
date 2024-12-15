@@ -27,6 +27,12 @@ async function getStoredStats(): Promise<StatsData | null> {
 }
 
 async function updateStats(freshStats: { views: string; downloads: string }) {
+  // Only update KV if we have valid stats
+  if (freshStats.views === "N/A" || freshStats.downloads === "N/A") {
+    console.log('Skipping KV update due to invalid stats:', freshStats);
+    return null;
+  }
+
   try {
     const now = new Date();
     const stats: StatsData = {
