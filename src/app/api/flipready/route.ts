@@ -31,7 +31,16 @@ async function updateStats(freshStats: { views: string; downloads: string }) {
     const now = new Date();
     const stats: StatsData = {
       lastUpdated: now.getTime(),
-      lastUpdatedDate: now.toLocaleString(),
+      lastUpdatedDate: now.toLocaleString('en-US', { 
+        timeZone: 'America/New_York',
+        hour12: true,
+        hour: 'numeric',
+        minute: '2-digit',
+        second: '2-digit',
+        month: 'numeric',
+        day: 'numeric',
+        year: 'numeric'
+      }),
       ...freshStats
     };
     await kv.set('flipready-stats', stats);
