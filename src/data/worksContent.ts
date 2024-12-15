@@ -7,6 +7,10 @@ interface WorksContentItem {
   wip?: boolean | false;
 }
 
+let statsHasBeenFetched = false;
+
+export const hasStatsBeenFetched = () => statsHasBeenFetched;
+
 // eslint-disable-next-line
 export const worksContent: WorksContentItem[] = [
   {
@@ -54,5 +58,6 @@ export const updateFlipReadyStats = (views: string, downloads: string ) => {
     flipReadyProject.description = flipReadyProject.description
       .replace('{views}', views)
       .replace('{downloads}', downloads);
+    statsHasBeenFetched = true;
   }
 };

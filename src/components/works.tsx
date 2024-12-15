@@ -4,7 +4,7 @@ import React, { useContext, useEffect, useRef, useState } from 'react';
 import revealAnimation from '@/util/reveal';
 import '@/styles/globals.scss';
 import { ThemeContext } from '@/context/themeContext';
-import { worksContent, updateFlipReadyStats } from '@/data/worksContent';
+import { worksContent, updateFlipReadyStats, hasStatsBeenFetched } from '@/data/worksContent';
 import { generateAccentColor } from '@/util/colorfulSetter'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
@@ -40,9 +40,11 @@ const Works: React.FC<{ isActive: boolean }> = ({ isActive }) => {
     }
   }, [isActive]);
 
-  // Effect for handling FlipReady stats
+  // Effect for handling FlipReady stats - modified to only fetch once
   useEffect(() => {
     const fetchAndUpdateStats = async () => {
+      if (hasStatsBeenFetched()) return;
+
       try {
         const response = await fetch('/api/flipready');
         const stats = await response.json();
@@ -57,11 +59,9 @@ const Works: React.FC<{ isActive: boolean }> = ({ isActive }) => {
       }
     };
 
-    // Fetch immediately when component becomes active
-    if (isActive) {
-      fetchAndUpdateStats();
-    }
-  }, [isActive]);
+    // Fetch only once when component mounts
+    fetchAndUpdateStats();
+  }, []); // Remove isActive dependency
 
   return (
     <div key={key} id="works-container" className="relative flex flex-col gap-4 w-full lg:w-kic-width h-fit lg:pointer-events-none">
