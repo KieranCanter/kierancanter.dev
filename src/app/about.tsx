@@ -12,7 +12,7 @@ const About: React.FC<{ isActive: boolean }> = ({ isActive }) => {
   const { theme } = useContext(ThemeContext);
   const aboutRef = useRef<HTMLDivElement>(null);
   const accentColorsRef = useRef<string[]>([]);
-  const [forceUpdate, setForceUpdate] = useState(0);
+  const [key, setKey] = useState(0);
 
   useEffect(() => {
     if (isActive) {
@@ -28,14 +28,15 @@ const About: React.FC<{ isActive: boolean }> = ({ isActive }) => {
       isColorful ? generateAccentColor(theme) : 'var(--fg-contrast)'
     );
     
-    // Force a re-render
-    setForceUpdate(prev => prev + 1);
+    // Change the key to force re-render
+    setKey(prevKey => prevKey + 1);
   }, [theme]);
 
   return (
     <div 
       id="about-container" 
       ref={aboutRef}
+      key={key}
       className="relative flex flex-col w-full lg:w-kic-width h-fit p-2 text-fgSoft bg-black/10 rounded-sm transition-colors duration-[250ms] hover:bg-black/20 lg:pointer-events-auto">
       <p dangerouslySetInnerHTML={{ __html: aboutContent.bio }}></p>
       <ul className="relative columns-2 mt-2 font-ibm-plex-mono text-xs md:text-sm list-none">
