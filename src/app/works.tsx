@@ -17,7 +17,7 @@ const Works: React.FC<{ isActive: boolean }> = ({ isActive }) => {
   const worksRefs = useRef<HTMLDivElement[]>([]);
   const accentColorsRef = useRef<string[][]>([]);
   // eslint-disable-next-line
-  const [forceUpdate, setForceUpdate] = useState(0);
+  const [updateKey, setUpdateKey] = useState(0);
 
   useEffect(() => {
     const isColorful = theme === 'brilliant' || theme === 'luminous';
@@ -28,7 +28,7 @@ const Works: React.FC<{ isActive: boolean }> = ({ isActive }) => {
       )
     );
     
-    setForceUpdate(prev => prev + 1);
+    setUpdateKey(prev => prev + 1);
   }, [theme]);
 
   useEffect(() => {
@@ -50,7 +50,7 @@ const Works: React.FC<{ isActive: boolean }> = ({ isActive }) => {
   }, [isActive]);
 
   return (
-    <div id="works-container" className="relative flex flex-col gap-4 w-full lg:w-kic-width h-fit lg:pointer-events-none">
+    <div key={updateKey} id="works-container" className="relative flex flex-col gap-4 w-full lg:w-kic-width h-fit lg:pointer-events-none">
       {worksContent.map((work, index) => (
         <div 
         key={index} 

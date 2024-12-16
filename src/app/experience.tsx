@@ -11,7 +11,7 @@ const Experience: React.FC<{ isActive: boolean }> = ({ isActive }) => {
   const { theme } = useContext(ThemeContext);
   const experienceRefs = useRef<HTMLDivElement[]>([]);
   const accentColorsRef = useRef<string[]>([]);
-  const [forceUpdate, setForceUpdate] = useState(0);
+  const [updateKey, setUpdateKey] = useState(0);
 
   useEffect(() => {
     const isColorful = theme === 'brilliant' || theme === 'luminous';
@@ -22,7 +22,7 @@ const Experience: React.FC<{ isActive: boolean }> = ({ isActive }) => {
     );
     
     // Force a re-render
-    setForceUpdate(prev => prev + 1);
+    setUpdateKey(prev => prev + 1);
   }, [theme]);
 
   useEffect(() => {
@@ -36,7 +36,7 @@ const Experience: React.FC<{ isActive: boolean }> = ({ isActive }) => {
   }, [isActive]);
 
   return (
-    <div id="experience-container" className="relative flex flex-col gap-4 w-full lg:w-kic-width h-full lg:pointer-events-none">
+    <div key={updateKey} id="experience-container" className="relative flex flex-col gap-4 w-full lg:w-kic-width h-full lg:pointer-events-none">
       {experienceContent.map((experience, index) => {
         const accentColor = accentColorsRef.current[index] || 'var(--fg-contrast)';
         
