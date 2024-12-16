@@ -54,7 +54,7 @@ const Works: React.FC<{ isActive: boolean }> = ({ isActive }) => {
   }, [isActive]);
 
   return (
-    <div
+    <section
       key={updateKey}
       id="works-container"
       className="relative flex flex-col gap-4 w-full lg:w-kic-width h-fit lg:pointer-events-none"
@@ -160,7 +160,7 @@ const Works: React.FC<{ isActive: boolean }> = ({ isActive }) => {
           </div>
         </div>
       ))}
-    </div>
+    </section>
   );
 };
 
