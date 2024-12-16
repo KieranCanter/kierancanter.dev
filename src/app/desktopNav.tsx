@@ -30,44 +30,35 @@ const DesktopNav = () => {
    */
   const renderContent = () => {
     return (
-      <div className="flex gap-4 w-full h-full">
-        {/* Home/BusinessCard Section */}
+      <div className="flex h-full justify-center overflow-y-auto overscroll-y-contain">
         {activeTab === 'home' && (
-          <section aria-label="Home" className="flex-shrink-0 w-full h-full overflow-y-auto overscroll-y-contain my-4">
-            <div className="relative flex h-full items-center justify-center px-4 pointer-events-none">
-              <BusinessCard isActive={true} />
-            </div>
-          </section>
+          <div className="flex relative mb-20 px-4 overflow-y-auto overscroll-y-contain pointer-events-none">
+            <BusinessCard isActive={true} />
+          </div>
         )}
         {/* About Section */}
         {activeTab === 'about' && (
-          <section aria-label="About" className="flex-shrink-0 w-full justify-items-center overflow-y-auto overscroll-y-contain my-4">
-            <About isActive={true} />
-          </section>
+          <About isActive={true} />
         )}
         {/* Experience Section */}
         {activeTab === 'experience' && (
-          <section aria-label="Experience" className="flex-shrink-0 w-full justify-items-center overflow-y-auto overscroll-y-contain my-4">
-            <Experience isActive={true} />
-          </section>
+          <Experience isActive={true} />
         )}
         {/* Works Section */}
         {activeTab === 'works' && (
-          <section aria-label="Works" className="flex-shrink-0 w-full justify-items-center overflow-y-auto overscroll-y-contain my-4">
-            <Works isActive={true} />
-          </section>
+          <Works isActive={true} />
         )}
       </div>
     );
   };
 
   return (
-    <div className="hidden lg:flex flex-col w-full h-full">
+    <div className="max-lg:hidden flex flex-col w-full h-full">
       <div className="flex justify-center">
         <Header activeTab={activeTab} onTabChange={handleHeaderClick} />
       </div>
       
-      <main className="flex-1 h-full overflow-x-hidden overflow-y-hidden">
+      <main className="flex w-fit h-full mx-auto my-4 overflow-x-hidden overflow-y-hidden">
         {renderContent()}
       </main>
     </div>
