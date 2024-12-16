@@ -42,7 +42,7 @@ const Works: React.FC<{ isActive: boolean }> = ({ isActive }) => {
 
   // Effect for handling FlipReady stats - modified to only fetch once
   useEffect(() => {
-    const fetchAndUpdateStats = async () => {
+    const fetchStats = async () => {
       if (hasStatsBeenFetched()) return;
 
       try {
@@ -51,17 +51,22 @@ const Works: React.FC<{ isActive: boolean }> = ({ isActive }) => {
         
         if (stats.views && stats.downloads) {
           updateFlipReadyStats(stats.views, stats.downloads);
-          setWorks(worksContent);
-          setKey(prevKey => prevKey + 1);
+          setWorks([...worksContent]);
+        } else {
+          // Fallback to placeholder values if stats fetch fails
+          updateFlipReadyStats('many', 'thousands of');
+          setWorks([...worksContent]);
         }
       } catch (error) {
         console.error('Error fetching FlipReady stats:', error);
+        // Same fallback on error
+        updateFlipReadyStats('many', 'thousands of');
+        setWorks([...worksContent]);
       }
     };
 
-    // Fetch only once when component mounts
-    fetchAndUpdateStats();
-  }, []); // Remove isActive dependency
+    fetchStats();
+  }, []); // Only run once when component mounts
 
   return (
     <div key={key} id="works-container" className="relative flex flex-col gap-4 w-full lg:w-kic-width h-fit lg:pointer-events-none">

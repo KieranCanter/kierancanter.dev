@@ -49,10 +49,33 @@ async function updateStats(freshStats: { views: string; downloads: string }) {
       }),
       ...freshStats
     };
+    
+    console.log('Attempting to update KV with stats:', stats);
+    
+    // Check if KV is properly configured
+    if (!process.env.KV_REST_API_URL || !process.env.KV_REST_API_TOKEN) {
+      console.error('KV environment variables are not properly configured');
+      return null;
+    }
+
     await kv.set('flipready-stats', stats);
+    console.log('Successfully updated KV');
+    
+    // Verify the update
+    const verifyStats = await kv.get('flipready-stats');
+    console.log('Verified KV stats after update:', verifyStats);
+    
     return stats;
-  } catch (error) {
+  } catch (error: unknown) {
     console.error('Error writing to KV:', error);
+    console.error('Error details:', {
+      message: error instanceof Error ? error.message : 'Unknown error',
+      stack: error instanceof Error ? error.stack : undefined,
+      env: {
+        hasRedisUrl: !!process.env.UPSTASH_REDIS_REST_URL,
+        hasRedisToken: !!process.env.UPSTASH_REDIS_REST_TOKEN
+      }
+    });
     return null;
   }
 }
@@ -122,23 +145,17 @@ async function scrapeStats() {
 export async function GET() {
   try {
     const cachedStats = await getStoredStats();
-
-    // Always return cached stats first if they exist
-    if (cachedStats?.views && cachedStats?.downloads) {
-      // Update stats in the background
-      scrapeStats().then(freshStats => {
-        updateStats(freshStats);
-      }).catch(error => {
-        console.error('Background stats update failed:', error);
-      });
-
+    const now = Date.now();
+    
+    // If we have cached stats and they're less than 30 minutes old
+    if (cachedStats?.lastUpdated && (now - cachedStats.lastUpdated < 30 * 60 * 1000)) {
       return NextResponse.json({
         ...cachedStats,
         cached: true
       });
     }
 
-    // If no cache exists, wait for fresh stats
+    // If stats are older than 30 minutes or don't exist, get fresh stats
     const freshStats = await scrapeStats();
     const updatedStats = await updateStats(freshStats);
     
