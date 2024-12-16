@@ -149,7 +149,7 @@ const Works: React.FC<{ isActive: boolean }> = ({ isActive }) => {
               return (
                 <h6 
                   key={techIndex} 
-                  className="text-[0.65rem] font-bold text-bg px-2 py-1 rounded-sm cursor-default hover:opacity-85 selection:bg-bg selection:text-fgContrast"
+                  className="text-[0.65rem] font-bold text-bg px-2 py-1 rounded-sm cursor-default transition duration-250 hover:opacity-85 selection:bg-bg selection:text-fgContrast"
                   style={{ backgroundColor: color }}
                   role="listitem"
                 >
