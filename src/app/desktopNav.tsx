@@ -15,16 +15,6 @@ import Works from '@/app/works';
 const DesktopNav = () => {
   // Track currently active section/tab
   const [activeTab, setActiveTab] = useState('home');
-  const [previousTab, setPreviousTab] = useState<string | null>(null);
-
-  /**
-   * Handle tab changes from header navigation
-   * @param newTab - The ID of the newly selected tab
-   */
-  const handleHeaderClick = (newTab: string) => {
-    setPreviousTab(activeTab);
-    setActiveTab(newTab);
-  };
 
   /**
    * Render the content for the currently active tab
@@ -56,7 +46,7 @@ const DesktopNav = () => {
   return (
     <div className="max-lg:hidden flex flex-col w-full h-full">
       <div className="flex justify-center">
-        <Header activeTab={activeTab} onTabChange={handleHeaderClick} />
+        <Header activeTab={activeTab} onTabChange={setActiveTab} />
       </div>
       
       <main className="flex w-fit h-full mx-auto my-4 overflow-x-hidden overflow-y-hidden">
