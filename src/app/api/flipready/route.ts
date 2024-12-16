@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import chromium from 'chrome-aws-lambda';
+import chromium from '@sparticuz/chromium';
 import puppeteer from 'puppeteer-core';
 import { kv } from '@vercel/kv';
 
@@ -86,10 +86,7 @@ async function updateStats(freshStats: { views: string; downloads: string }) {
 }
 
 async function scrapeStats() {
-  if (isScrapingInProgress) {
-    console.log('Scraping already in progress, skipping...');
-    return { views: "N/A", downloads: "N/A" };
-  }
+  if (isScrapingInProgress) return { views: "N/A", downloads: "N/A" };
 
   try {
     isScrapingInProgress = true;
@@ -98,9 +95,8 @@ async function scrapeStats() {
     const browser = await puppeteer.launch({
       args: chromium.args,
       defaultViewport: chromium.defaultViewport,
-      executablePath: await chromium.executablePath,
+      executablePath: await chromium.executablePath(),
       headless: chromium.headless,
-      ignoreHTTPSErrors: true,
     });
     
     const page = await browser.newPage();
