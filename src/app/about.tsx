@@ -46,7 +46,7 @@ const About: React.FC<{ isActive: boolean }> = ({ isActive }) => {
 
   return (
     <section 
-      id="text-container" 
+      id="about-container"
       ref={aboutRef}
       className="relative flex flex-col w-full lg:w-kic-width h-fit p-2 text-fgSoft bg-black/10 rounded-sm transition-colors duration-250 hover:bg-black/20 lg:pointer-events-auto"
       aria-label="About Me"

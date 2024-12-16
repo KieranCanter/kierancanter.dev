@@ -51,7 +51,7 @@ const Experience: React.FC<{ isActive: boolean }> = ({ isActive }) => {
 
   return (
     <section 
-      id="text-container" 
+      id="experience-container"
       className="relative flex flex-col gap-4 w-full lg:w-kic-width h-full lg:pointer-events-none"
       aria-label="Experience Timeline"
     >
