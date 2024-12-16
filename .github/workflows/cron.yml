@@ -1,0 +1,14 @@
+name: Hourly FlipReady Stats Update
+
+on:
+  schedule:
+    - cron: '0 * * * *'  # Runs every hour
+  workflow_dispatch:      # Allows manual trigger
+
+jobs:
+  update-stats:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fetch FlipReady Stats
+        run: |
+          curl -X GET https://kierancanter.dev/api/flipready

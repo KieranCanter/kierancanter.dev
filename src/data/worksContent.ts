@@ -7,7 +7,6 @@ interface WorksContentItem {
   wip?: boolean | false;
 }
 
-// eslint-disable-next-line
 export const worksContent: WorksContentItem[] = [
   {
     project: 'kierancanter.dev',

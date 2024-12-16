@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import puppeteer from 'puppeteer';
+import { updateFlipReadyStats } from '@/lib/kv'
 
 export async function GET() {
   try {
@@ -52,6 +53,9 @@ export async function GET() {
 
     await browser.close();
     console.log('Scraped data:', data);
+    
+    // Store the stats in KV
+    await updateFlipReadyStats(data.views, data.downloads);
     
     return NextResponse.json(data);
   } catch (error) {
