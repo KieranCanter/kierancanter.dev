@@ -58,6 +58,10 @@ async function updateStats(freshStats: { views: string; downloads: string }) {
       return null;
     }
 
+    // Get current stats before update
+    const oldStats = await kv.get('flipready-stats');
+    console.log('Current stats in KV:', oldStats);
+
     await kv.set('flipready-stats', stats);
     console.log('Successfully updated KV');
     
@@ -72,8 +76,8 @@ async function updateStats(freshStats: { views: string; downloads: string }) {
       message: error instanceof Error ? error.message : 'Unknown error',
       stack: error instanceof Error ? error.stack : undefined,
       env: {
-        hasRedisUrl: !!process.env.UPSTASH_REDIS_REST_URL,
-        hasRedisToken: !!process.env.UPSTASH_REDIS_REST_TOKEN
+        hasKVUrl: !!process.env.KV_REST_API_URL,
+        hasKVToken: !!process.env.KV_REST_API_TOKEN
       }
     });
     return null;
