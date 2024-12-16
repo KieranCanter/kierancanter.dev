@@ -93,37 +93,40 @@ async function scrapeStats() {
   try {
     isScrapingInProgress = true;
     console.log('Starting browser...');
+    
+    // Modified Puppeteer configuration for Vercel
     const browser = await puppeteer.launch({
       headless: true,
       args: [
         '--no-sandbox',
         '--disable-setuid-sandbox',
-        '--disable-web-security',
-        '--disable-features=IsolateOrigins,site-per-process'
+        '--disable-gpu',
+        '--disable-dev-shm-usage', // Important for serverless
+        '--single-process', // Important for serverless
+        '--no-zygote' // Important for serverless
       ]
     });
     
     const page = await browser.newPage();
+    
+    // Set a shorter timeout
+    page.setDefaultNavigationTimeout(30000);
+    page.setDefaultTimeout(30000);
+    
     await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36');
     
-    await page.setExtraHTTPHeaders({
-      'Accept-Language': 'en-US,en;q=0.9',
-      'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8',
-      'Accept-Encoding': 'gzip, deflate, br',
-      'Connection': 'keep-alive',
-      'Upgrade-Insecure-Requests': '1'
-    });
-
     console.log('Navigating to URL...');
     await page.goto('https://bakkesplugins.com/plugins/view/401', {
       waitUntil: 'networkidle0',
-      timeout: 60000
+      timeout: 30000
     });
 
+    console.log('Waiting for Cloudflare...');
     await page.waitForFunction(() => {
       return !document.querySelector('#challenge-running');
-    }, { timeout: 30000 });
+    }, { timeout: 25000 });
 
+    console.log('Extracting data...');
     const data = await page.evaluate(() => {
       const viewsMatch = document.body.innerText.match(/Views:\s*(\d+)/);
       const downloadsMatch = document.body.innerText.match(/Downloads:\s*(\d+)/);
@@ -140,6 +143,7 @@ async function scrapeStats() {
     return data;
   } catch (error) {
     console.error('Detailed error:', error);
+    console.error('Error stack:', error instanceof Error ? error.stack : 'No stack trace');
     return { views: "N/A", downloads: "N/A" };
   } finally {
     isScrapingInProgress = false;
@@ -154,7 +158,10 @@ export async function GET() {
     console.log('Cached stats:', cachedStats);
     console.log('Cache age:', now - (cachedStats?.lastUpdated || 0), 'ms');
     
-    if (cachedStats?.lastUpdated && (now - cachedStats.lastUpdated < 30 * 60 * 1000)) {
+    if (cachedStats?.lastUpdated && 
+        (now - cachedStats.lastUpdated < 30 * 60 * 1000) && 
+        cachedStats.views !== "N/A" && 
+        cachedStats.downloads !== "N/A") {
       console.log('Returning cached stats');
       return NextResponse.json({
         ...cachedStats,
@@ -164,8 +171,18 @@ export async function GET() {
 
     console.log('Cache expired or missing, fetching fresh stats...');
     const freshStats = await scrapeStats();
-    const updatedStats = await updateStats(freshStats);
     
+    // Don't update if scraping failed
+    if (freshStats.views === "N/A" || freshStats.downloads === "N/A") {
+      console.log('Scraping failed, returning cached stats if available');
+      return NextResponse.json({
+        ...(cachedStats || freshStats),
+        cached: !!cachedStats,
+        scrapeError: true
+      });
+    }
+    
+    const updatedStats = await updateStats(freshStats);
     console.log('Fresh stats:', freshStats);
     console.log('Updated stats:', updatedStats);
     
