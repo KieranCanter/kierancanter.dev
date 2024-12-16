@@ -8,7 +8,6 @@ const kv = createClient({
 export const getFlipReadyStats = async () => {
   try {
     const stats = await kv.hgetall('flipready_stats') as { views?: string; downloads?: string };
-    console.log('Raw KV stats:', stats);
     return {
       views: stats?.views ?? 'N/A',
       downloads: stats?.downloads ?? 'N/A'

@@ -4,7 +4,7 @@ import React, { useContext, useEffect, useRef, useState } from 'react';
 import revealAnimation from '@/util/reveal';
 import '@/styles/globals.scss';
 import { ThemeContext } from '@/context/themeContext';
-import { worksContent } from '@/data/worksContent';
+import { worksContent, updateFlipReadyStats } from '@/data/worksContent';
 import { generateAccentColor } from '@/util/colorfulSetter'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
@@ -18,7 +18,6 @@ const Works: React.FC<{ isActive: boolean }> = ({ isActive }) => {
   const accentColorsRef = useRef<string[][]>([]);
   // eslint-disable-next-line
   const [forceUpdate, setForceUpdate] = useState(0);
-  const [flipReadyStats, setFlipReadyStats] = useState({ views: 'N/A', downloads: 'N/A' });
 
   useEffect(() => {
     const isColorful = theme === 'brilliant' || theme === 'luminous';
@@ -35,26 +34,10 @@ const Works: React.FC<{ isActive: boolean }> = ({ isActive }) => {
   useEffect(() => {
     const fetchStats = async () => {
       const stats = await getFlipReadyStats();
-      console.log('Fetched stats:', stats);
-      setFlipReadyStats(stats);
+      updateFlipReadyStats(stats.views, stats.downloads);
     };
     fetchStats();
   }, []);
-
-  const processedWorksContent = worksContent.map(work => {
-    if (work.project === 'FlipReady') {
-      console.log('Processing FlipReady:', work.description);
-      const processed = {
-        ...work,
-        description: work.description
-          .replace('{views}', flipReadyStats.views)
-          .replace('{downloads}', flipReadyStats.downloads)
-      };
-      console.log('Processed description:', processed.description);
-      return processed;
-    }
-    return work;
-  });
 
   useEffect(() => {
     if (isActive) {
@@ -68,7 +51,7 @@ const Works: React.FC<{ isActive: boolean }> = ({ isActive }) => {
 
   return (
     <div id="works-container" className="relative flex flex-col gap-4 w-full lg:w-kic-width h-fit lg:pointer-events-none">
-      {processedWorksContent.map((work, index) => (
+      {worksContent.map((work, index) => (
         <div 
         key={index} 
         ref={(element) => {
