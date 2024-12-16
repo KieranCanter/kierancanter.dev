@@ -59,7 +59,7 @@ const About: React.FC<{ isActive: boolean }> = ({ isActive }) => {
         {/* Skills List */}
         <aside>
           <h4 className="sr-only">Skills</h4>
-          <ul className="relative columns-2 mt-2 font-ibm-plex-mono text-xs md:text-sm list-none">
+          <ul className="relative columns-2 mt-2 font-ibm-plex-mono text-xs md:text-sm">
             {aboutContent.skills.map((skill: string, index: number) => (
               <li key={index} className="mb-1 break-words text-fgHard selection:bg-fgHard flex items-center">
                 <DiamondBullet color={accentColorsRef.current[index] || 'var(--fg-contrast)'} />
