@@ -3,10 +3,10 @@
 import { useState, useCallback, useEffect, useMemo } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import Header from '@/components/header';
-import BusinessCard from './businessCard';
-import About from './about';
-import Experience from './experience';
-import Works from './works';
+import BusinessCard from '@/components/businessCard';
+import About from '@/components/about';
+import Experience from '@/components/experience';
+import Works from '@/components/works';
 import ThemeSwitcher from '@/components/themeSwitcher';
 
 /**
