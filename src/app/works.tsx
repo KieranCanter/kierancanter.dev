@@ -21,7 +21,7 @@ const Works: React.FC<{ isActive: boolean }> = ({ isActive }) => {
   const { theme } = useContext(ThemeContext);
   const worksRefs = useRef<HTMLDivElement[]>([]);
   const accentColorsRef = useRef<string[][]>([]);
-  const [forceUpdate, setForceUpdate] = useState(0);
+  const [updateKey, setUpdateKey] = useState(0);
 
   /**
    * Update accent colors when theme changes
@@ -37,7 +37,7 @@ const Works: React.FC<{ isActive: boolean }> = ({ isActive }) => {
       )
     );
     
-    setForceUpdate(prev => prev + 1);
+    setUpdateKey(prev => prev + 1);
   }, [theme]);
 
   /**
@@ -54,7 +54,8 @@ const Works: React.FC<{ isActive: boolean }> = ({ isActive }) => {
   }, [isActive]);
 
   return (
-    <div 
+    <div
+      key={updateKey}
       id="works-container"
       className="relative flex flex-col gap-4 w-full lg:w-kic-width h-fit lg:pointer-events-none"
       role="region" 

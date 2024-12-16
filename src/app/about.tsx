@@ -17,7 +17,7 @@ const About: React.FC<{ isActive: boolean }> = ({ isActive }) => {
   const { theme } = useContext(ThemeContext);
   const aboutRef = useRef<HTMLDivElement>(null);
   const accentColorsRef = useRef<string[]>([]);
-  const [forceUpdate, setForceUpdate] = useState(0);
+  const [updateKey, setUpdateKey] = useState(0);
 
   /**
    * Trigger reveal animation when component becomes active
@@ -41,11 +41,12 @@ const About: React.FC<{ isActive: boolean }> = ({ isActive }) => {
     );
     
     // Force a re-render to apply new colors
-    setForceUpdate(prev => prev + 1);
+    setUpdateKey(prev => prev + 1);
   }, [theme]);
 
   return (
-    <section 
+    <section
+      key={updateKey}
       id="about-container"
       ref={aboutRef}
       className="relative flex flex-col w-full lg:w-kic-width h-fit p-2 text-fgSoft bg-black/10 rounded-sm transition-colors duration-250 hover:bg-black/20 lg:pointer-events-auto"

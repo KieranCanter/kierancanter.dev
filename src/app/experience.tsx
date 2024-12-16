@@ -17,7 +17,7 @@ const Experience: React.FC<{ isActive: boolean }> = ({ isActive }) => {
   const { theme } = useContext(ThemeContext);
   const experienceRefs = useRef<HTMLElement[]>([]);
   const accentColorsRef = useRef<string[]>([]);
-  const [forceUpdate, setForceUpdate] = useState(0);
+  const [updateKey, setUpdateKey] = useState(0);
 
   /**
    * Update accent colors when theme changes
@@ -32,7 +32,7 @@ const Experience: React.FC<{ isActive: boolean }> = ({ isActive }) => {
     );
     
     // Force a re-render to apply new colors
-    setForceUpdate(prev => prev + 1);
+    setUpdateKey(prev => prev + 1);
   }, [theme]);
 
   /**
@@ -50,7 +50,8 @@ const Experience: React.FC<{ isActive: boolean }> = ({ isActive }) => {
   }, [isActive]);
 
   return (
-    <section 
+    <section
+      key={updateKey}
       id="experience-container"
       className="relative flex flex-col gap-4 w-full lg:w-kic-width h-full lg:pointer-events-none"
       aria-label="Experience Timeline"
