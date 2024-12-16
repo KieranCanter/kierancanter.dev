@@ -282,7 +282,7 @@ These considerations are crucial in guaranteeing a consistent and polished user 
 
 ### Accessible Design
 
-In tandem with responsive design, accessible design makes certain that those with deficiencies and disabilities can enjoy your website as anybody else would. Aside from ethical responsibilities, accessible design can also improve user experience, SEO, and help reach a broader audience.
+In tandem with responsive design, accessible design makes certain that those with deficiencies and disabilities can enjoy your website as anybody else would. Aside from ethical responsibilities, accessible design can also improve user experience, SEO, and help reach a broader audience. To confirm the quality of accessibility, I used three different site quality auditing tools: [Google Lighthouse](https://developer.chrome.com/docs/lighthouse/overview), [deque axe Auditor](https://www.deque.com/axe/auditor/), and [WAVE](https://wave.webaim.org/). These tools are not meant to guilt you into achieving that 100% rating or score, but rather to help you identify areas of improvement. It's your job as the developer to decide what are reasonable accessibility, performance, best practice, and SEO additions. Not all the suggestions will be necessary, and the returns diminish the more your score improves.
 
 #### ARIA
 

@@ -6,7 +6,14 @@
 @use 'tailwindcss/components';
 @use 'tailwindcss/utilities';
 
-// Fonts
+/**
+ * Font Face Mixin
+ * Generates @font-face rules with consistent formatting
+ * @param {string} $family - Font family name
+ * @param {string} $file - Font file name without extension
+ * @param {number} $weight - Font weight value
+ * @param {string} $style - Font style (normal/italic)
+ */
 @mixin font-face($family, $file, $weight, $style) {
   @font-face {
     font-family: $family;
@@ -17,8 +24,13 @@
   }
 }
 
+/**
+ * Font Families
+ * Defines all available font weights and styles
+ * Uses system fonts as fallbacks
+ */
 .fonts {
-  // IBM Plex Mono
+  // IBM Plex Mono - Monospace font for code and technical text
   &-ibm-plex-mono {
     @include font-face('IBM Plex Mono', 'IBM_Plex_Mono/IBMPlexMono-Thin', 100, normal);
     @include font-face('IBM Plex Mono', 'IBM_Plex_Mono/IBMPlexMono-ThinItalic', 100, italic);
@@ -36,7 +48,7 @@
     @include font-face('IBM Plex Mono', 'IBM_Plex_Mono/IBMPlexMono-BoldItalic', 700, italic);
   }
 
-  // IBM Plex Sans
+  // IBM Plex Sans - Primary sans-serif font
   &-ibm-plex-sans {
     @include font-face('IBM Plex Sans', 'IBM_Plex_Sans/IBMPlexSans-Thin', 100, normal);
     @include font-face('IBM Plex Sans', 'IBM_Plex_Sans/IBMPlexSans-ThinItalic', 100, italic);
@@ -54,7 +66,7 @@
     @include font-face('IBM Plex Sans', 'IBM_Plex_Sans/IBMPlexSans-BoldItalic', 700, italic);
   }
 
-  // IBM Plex Serif
+  // IBM Plex Serif - Serif font for specific elements
   &-ibm-plex-serif {
     @include font-face('IBM Plex Serif', 'IBM_Plex_Serif/IBMPlexSerif-Thin', 100, normal);
     @include font-face('IBM Plex Serif', 'IBM_Plex_Serif/IBMPlexSerif-ThinItalic', 100, italic);
@@ -72,7 +84,7 @@
     @include font-face('IBM Plex Serif', 'IBM_Plex_Serif/IBMPlexSerif-BoldItalic', 700, italic);
   }
 
-  // Spectral SC
+  // Spectral SC - Small caps font for headings
   &-spectral-sc {
     @include font-face('Spectral SC', 'Spectral_SC/SpectralSC-ExtraLight', 200, normal);
     @include font-face('Spectral SC', 'Spectral_SC/SpectralSC-ExtraLightItalic', 200, italic);
@@ -91,6 +103,10 @@
   }
 }
 
+/**
+ * Typography Defaults
+ * Sets default font families for different elements
+ */
 h2, h3 {
   @apply font-spectral-sc;
 }
@@ -107,25 +123,32 @@ h6 {
   @apply font-ibm-plex-mono;
 }
 
-// Tailwind  Utilities
+/**
+ * Custom Utilities
+ * Additional utility classes beyond Tailwind defaults
+ */
 @layer utilities {
+  // Text balance for better typography
   .text-balance {
     text-wrap: balance;
   }
 
-  /* Hide scrollbar for Chrome, Safari and Opera */
+  // Hide scrollbars while maintaining functionality
   .no-scrollbar::-webkit-scrollbar {
-      display: none;
+    display: none;
   }
-  /* Hide scrollbar for IE, Edge and Firefox */
   .no-scrollbar {
-      -ms-overflow-style: none;  /* IE and Edge */
-      scrollbar-width: none;  /* Firefox */
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
   }
 }
 
+/**
+ * Component-specific styles
+ * Custom styles for specific components
+ */
 .header-link {
-  @apply text-[1rem] font-ibm-plex-sans font-semibold hover:text-fgContrast hover:selection:bg-fgContrast transition-all duration-[250ms] !important;
+  @apply text-[1rem] font-ibm-plex-sans font-semibold hover:text-fgContrast hover:selection:bg-fgContrast transition-all duration-250 !important;
 }
 
 .highlight {
@@ -133,9 +156,13 @@ h6 {
 }
 
 .text-link {
-  @apply text-fgContrast font-medium selection:bg-fgContrast hover:opacity-75 transition duration-[250ms] !important;
+  @apply text-fgContrast font-medium selection:bg-fgContrast hover:opacity-75 transition duration-250 !important;
 }
 
+/**
+ * Theme Color Integration
+ * Ensures theme colors are properly applied to meta tags
+ */
 meta[name="theme-color"] {
   content: var(--bg);
 }
@@ -144,19 +171,21 @@ met[name="apple-mobile-web-app-status-bar-style"] {
   content: var(--bg);
 }
 
+/**
+ * Scrollbar Styling
+ * Cross-browser scrollbar customization
+ */
 * {
   scrollbar-width: thin;
   scrollbar-color: var(--fg-soft) var(--bg);
 }
 
-/* For browsers that support `scrollbar-*` properties */
 @supports (scrollbar-color: auto) {
   *.scrollbox {
     scrollbar-color: var(--fg-soft) var(--bg);
   }
 }
 
-/* Otherwise, use `::-webkit-scrollbar-*` pseudo-elements */
 @supports selector(::-webkit-scrollbar) {
   *::-webkit-scrollbar {
     width: 0.5rem;

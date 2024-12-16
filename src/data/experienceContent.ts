@@ -1,3 +1,10 @@
+/**
+ * Professional experience data
+ * Array of work experiences in chronological order
+ * @property {string} position - Job title/role
+ * @property {string} company - Company/organization name
+ * @property {string} period - Time period of employment
+ */
 export const experienceContent = [
   {
     position: 'Cyber Software Engineer',
@@ -9,5 +16,4 @@ export const experienceContent = [
     company: 'U.S. Army Reserve',
     period: 'Mar. 2019 — Present',
   },
-  
 ];
