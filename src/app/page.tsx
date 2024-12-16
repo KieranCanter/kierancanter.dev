@@ -1,8 +1,8 @@
 'use client';
 
 import React from 'react';
-import DesktopNav from './desktopNav';
-import MobileNav from './mobileNav';
+import DesktopNav from '../app/desktopNav';
+import MobileNav from '../app/mobileNav';
 
 /**
  * Root Page Component

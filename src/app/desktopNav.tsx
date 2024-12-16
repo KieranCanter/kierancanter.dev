@@ -2,10 +2,10 @@
 
 import React, { useState } from 'react';
 import Header from '@/components/header';
-import BusinessCard from '@/app/businessCard';
-import About from '@/app/about';
-import Experience from '@/app/experience';
-import Works from '@/app/works';
+import BusinessCard from '@/components/businessCard';
+import About from '@/components/about';
+import Experience from '@/components/experience';
+import Works from '@/components/works';
 
 /**
  * Desktop Navigation Component
