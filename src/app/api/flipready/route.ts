@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
-import puppeteer from 'puppeteer';
+import chromium from 'chrome-aws-lambda';
+import puppeteer from 'puppeteer-core';
 import { kv } from '@vercel/kv';
 
 interface StatsData {
@@ -94,17 +95,11 @@ async function scrapeStats() {
     isScrapingInProgress = true;
     console.log('Starting browser...');
     
-    // Modified Puppeteer configuration for Vercel
     const browser = await puppeteer.launch({
+      args: chromium.args,
+      defaultViewport: chromium.defaultViewport,
+      executablePath: await chromium.executablePath,
       headless: true,
-      args: [
-        '--no-sandbox',
-        '--disable-setuid-sandbox',
-        '--disable-gpu',
-        '--disable-dev-shm-usage', // Important for serverless
-        '--single-process', // Important for serverless
-        '--no-zygote' // Important for serverless
-      ]
     });
     
     const page = await browser.newPage();
