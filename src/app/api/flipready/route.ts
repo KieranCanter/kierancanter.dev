@@ -147,17 +147,23 @@ export async function GET() {
     const cachedStats = await getStoredStats();
     const now = Date.now();
     
-    // If we have cached stats and they're less than 30 minutes old
+    console.log('Cached stats:', cachedStats);
+    console.log('Cache age:', now - (cachedStats?.lastUpdated || 0), 'ms');
+    
     if (cachedStats?.lastUpdated && (now - cachedStats.lastUpdated < 30 * 60 * 1000)) {
+      console.log('Returning cached stats');
       return NextResponse.json({
         ...cachedStats,
         cached: true
       });
     }
 
-    // If stats are older than 30 minutes or don't exist, get fresh stats
+    console.log('Cache expired or missing, fetching fresh stats...');
     const freshStats = await scrapeStats();
     const updatedStats = await updateStats(freshStats);
+    
+    console.log('Fresh stats:', freshStats);
+    console.log('Updated stats:', updatedStats);
     
     return NextResponse.json({
       ...(updatedStats || freshStats),

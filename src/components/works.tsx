@@ -43,23 +43,30 @@ const Works: React.FC<{ isActive: boolean }> = ({ isActive }) => {
   // Effect for handling FlipReady stats - modified to only fetch once
   useEffect(() => {
     const fetchStats = async () => {
-      if (hasStatsBeenFetched()) return;
+      if (hasStatsBeenFetched()) {
+        console.log('Stats already fetched, skipping');
+        return;
+      }
 
+      console.log('Fetching stats...');
       try {
         const response = await fetch('/api/flipready');
         const stats = await response.json();
         
+        console.log('Received stats:', stats);
+        
         if (stats.views && stats.downloads) {
+          console.log('Updating with real stats');
           updateFlipReadyStats(stats.views, stats.downloads);
           setWorks([...worksContent]);
         } else {
-          // Fallback to placeholder values if stats fetch fails
+          console.log('Using fallback stats');
           updateFlipReadyStats('many', 'thousands of');
           setWorks([...worksContent]);
         }
       } catch (error) {
         console.error('Error fetching FlipReady stats:', error);
-        // Same fallback on error
+        console.log('Using fallback stats due to error');
         updateFlipReadyStats('many', 'thousands of');
         setWorks([...worksContent]);
       }
