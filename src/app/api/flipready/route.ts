@@ -97,8 +97,7 @@ async function scrapeStats() {
         ...chromium.args,
         '--no-sandbox',
         '--disable-setuid-sandbox',
-        '--disable-dev-shm-usage',
-        '--single-process'
+        '--user-data-dir=/tmp/chrome-user-data'
       ],
       defaultViewport: chromium.defaultViewport,
       executablePath: await chromium.executablePath(),
