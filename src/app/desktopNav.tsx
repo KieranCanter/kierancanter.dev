@@ -15,12 +15,14 @@ import Works from '@/app/works';
 const DesktopNav = () => {
   // Track currently active section/tab
   const [activeTab, setActiveTab] = useState('home');
+  const [previousTab, setPreviousTab] = useState<string | null>(null);
 
   /**
    * Handle tab changes from header navigation
    * @param newTab - The ID of the newly selected tab
    */
   const handleHeaderClick = (newTab: string) => {
+    setPreviousTab(activeTab);
     setActiveTab(newTab);
   };
 
@@ -31,23 +33,22 @@ const DesktopNav = () => {
   const renderContent = () => {
     return (
       <div className="flex h-full justify-center overflow-y-auto overscroll-y-contain">
-        {activeTab === 'home' && (
-          <div className="flex relative mb-20 px-4 overflow-y-auto overscroll-y-contain pointer-events-none">
-            <BusinessCard isActive={true} />
-          </div>
-        )}
-        {/* About Section */}
-        {activeTab === 'about' && (
-          <About isActive={true} />
-        )}
-        {/* Experience Section */}
-        {activeTab === 'experience' && (
-          <Experience isActive={true} />
-        )}
-        {/* Works Section */}
-        {activeTab === 'works' && (
-          <Works isActive={true} />
-        )}
+        {/* Keep all components mounted but only show active one */}
+        <div className={`${activeTab === 'home' ? 'flex relative mb-20 px-4 overflow-y-auto overscroll-y-contain pointer-events-none' : 'hidden'}`}>
+          <BusinessCard isActive={activeTab === 'home'} />
+        </div>
+        
+        <div className={`${activeTab === 'about' ? '' : 'hidden'}`}>
+          <About isActive={activeTab === 'about'} />
+        </div>
+        
+        <div className={`${activeTab === 'experience' ? '' : 'hidden'}`}>
+          <Experience isActive={activeTab === 'experience'} />
+        </div>
+        
+        <div className={`${activeTab === 'works' ? '' : 'hidden'}`}>
+          <Works isActive={activeTab === 'works'} />
+        </div>
       </div>
     );
   };
