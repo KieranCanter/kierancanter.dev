@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback, useEffect, useMemo } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import Header from '@/components/header';
 import BusinessCard from './businessCard';
@@ -18,12 +18,12 @@ const MobileNav = () => {
     containScroll: 'keepSnaps',
   });
 
-  const tabs = [
+  const tabs = useMemo(() => [
     { id: 'home', component: <BusinessCard isActive={true} /> },
     { id: 'about', component: <About isActive={true} /> },
     { id: 'experience', component: <Experience isActive={true} /> },
     { id: 'works', component: <Works isActive={true} /> }
-  ];
+  ], []);
 
   const handleHeaderClick = useCallback((newTab: string) => {
     const index = tabs.findIndex(tab => tab.id === newTab);
