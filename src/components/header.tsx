@@ -2,7 +2,7 @@
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserTie } from '@fortawesome/free-solid-svg-icons';
-import { useRef, useEffect, useState } from 'react';
+import { useRef, useEffect, useState, createRef } from 'react';
 
 interface HeaderProps {
   activeTab: string;
@@ -11,15 +11,15 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ activeTab, onTabChange }) => {
   const [underlineStyle, setUnderlineStyle] = useState({ left: 0, width: 0 });
-  const buttonRefs = {
-    home: useRef<HTMLButtonElement>(null),
-    about: useRef<HTMLButtonElement>(null),
-    experience: useRef<HTMLButtonElement>(null),
-    works: useRef<HTMLButtonElement>(null),
-  };
+  const buttonRefs = useRef({
+    home: createRef<HTMLButtonElement>(),
+    about: createRef<HTMLButtonElement>(),
+    experience: createRef<HTMLButtonElement>(),
+    works: createRef<HTMLButtonElement>(),
+  });
 
   useEffect(() => {
-    const activeButton = buttonRefs[activeTab as keyof typeof buttonRefs].current;
+    const activeButton = buttonRefs.current[activeTab as keyof typeof buttonRefs.current].current;
     if (activeButton) {
       setUnderlineStyle({
         left: activeButton.offsetLeft,
@@ -38,28 +38,28 @@ const Header: React.FC<HeaderProps> = ({ activeTab, onTabChange }) => {
         }}
       />
       <button
-        ref={buttonRefs.home}
+        ref={buttonRefs.current.home}
         onClick={() => onTabChange('home')}
         className={`header-link ${activeTab === 'home' ? 'text-fgContrast' : 'text-fgSoft'}`}
       >
         <FontAwesomeIcon icon={faUserTie} />
       </button>
       <button
-        ref={buttonRefs.about}
+        ref={buttonRefs.current.about}
         onClick={() => onTabChange('about')}
         className={`header-link ${activeTab === 'about' ? 'text-fgContrast' : 'text-fgSoft'}`}
       >
         ABOUT
       </button>
       <button
-        ref={buttonRefs.experience}
+        ref={buttonRefs.current.experience}
         onClick={() => onTabChange('experience')}
         className={`header-link ${activeTab === 'experience' ? 'text-fgContrast' : 'text-fgSoft'}`}
       >
         EXPERIENCE
       </button>
       <button
-        ref={buttonRefs.works}
+        ref={buttonRefs.current.works}
         onClick={() => onTabChange('works')}
         className={`header-link ${activeTab === 'works' ? 'text-fgContrast' : 'text-fgSoft'}`}
       >
