@@ -69,7 +69,7 @@ const Works: React.FC<{ isActive: boolean }> = ({ isActive }) => {
               worksRefs.current[index] = element;
             }
           }} 
-          className="relative flex flex-col justify-between gap-2 w-full p-2 bg-black/10 rounded-sm transition-colors duration-250 hover:bg-black/20 lg:pointer-events-auto"
+          className="relative flex flex-col justify-between gap-2 w-full p-2 bg-itemCardBg rounded-sm transition-colors duration-250 hover:bg-itemCardBgHover lg:pointer-events-auto"
           role="article"
           aria-labelledby={`project-title-${index}`}
         >
@@ -151,7 +151,6 @@ const Works: React.FC<{ isActive: boolean }> = ({ isActive }) => {
                   key={techIndex} 
                   className="text-[0.65rem] font-bold text-bg px-2 py-1 rounded-sm cursor-default transition duration-250 hover:opacity-85 selection:bg-bg selection:text-fgContrast"
                   style={{ backgroundColor: color }}
-                  role="listitem"
                 >
                   {tech}
                 </h6>
