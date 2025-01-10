@@ -336,6 +336,8 @@ Visuals of the test and related metrics can be seen below:
 
 As you can see, the overall performance was vastly improved. With a reduction in average update time of 27.8%, the particle field now runs much smoother and more efficiently. While the minimum update time seemed to decrease, this may be explained by uncontrollable hardware factors like memory access patterns and CPU scheduling. The maximum update time drastically improved by 56.7%, and the variance by 67.8%. This means that the particle field is now more consistent and predictable.
 
+**01/09/2025:** To increase accessibility and promote better minimalism, I've reduced the interactivity of the particle field to activating only while the primary mouse button is pressed. As such, the feature still exists as a unique interaction, but it's not as intrusive or distracting to those with motion sensitivities.
+
 ### Theme Switcher
 
 The theme switcher component was one that I battled with while choosing the best design. I considered several solutions to swap between four themes:
