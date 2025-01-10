@@ -150,7 +150,7 @@ export default function BusinessCard({ isActive }: { isActive: boolean }) {
           data-umami-event="Logo Click"
           className="relative aspect-square w-5 md:w-6 h-fit active:opacity-85 fill-[#1e1e1e] hover:fill-gray-500 transition duration-250" 
           href="https://www.youtube.com/watch?v=YHgwxVCiMyI" 
-          title="Impressive. Very nice. Let's see Paul Allen's card." 
+          title="Impressive. Very nice. Let's see Paul Allen's card."
           target="_blank" 
           rel="noopener noreferrer" 
           aria-label="Logo: Link to an American Psycho video reference"
@@ -169,8 +169,8 @@ export default function BusinessCard({ isActive }: { isActive: boolean }) {
 
         {/* Social Links */}
         <div 
-          id="socials" 
-          className="relative text-sm lg:text-base flex w-full h-fit mx-auto justify-between"
+          id="socials"
+          className="relative text-base flex w-full h-fit mx-auto justify-between"
           aria-label="Social media links"
         >
           {socialLinks.map((link) => (
