@@ -29,6 +29,11 @@
 
   // Layout Constants
   --kic-width: max(calc(100vw*0.428571429), 40rem);
+
+  // Item Card Background
+  --item-card-bg: rgba(0, 0, 0, 0.2);
+  --item-card-bg-hover: rgba(0, 0, 0, 0.4);
+
 }
 
 /**
