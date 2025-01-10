@@ -179,6 +179,7 @@ export default function BusinessCard({ isActive }: { isActive: boolean }) {
               data-umami-event="Social Click"
               data-umami-event-platform={link.title.toLowerCase()}
               href={link.href}
+              title={link.title}
               className="hover:text-gray-500 active:opacity-85 transition-all duration-250"
               aria-label={`Visit ${link.title} profile`}
               target="_blank"
