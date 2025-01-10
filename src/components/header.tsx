@@ -64,7 +64,7 @@ const Header: React.FC<HeaderProps> = ({ activeTab, onTabChange }) => {
       <button
         ref={buttonRefs.home}
         onClick={() => onTabChange('home')}
-        className={`header-link ${activeTab === 'home' ? 'text-fgContrast' : 'text-fgSoft'}`}
+        className={`header-link ${activeTab === 'home' ? 'text-fgContrast' : 'text-fgHard'}`}
         aria-label="Home"
         aria-current={activeTab === 'home' ? 'page' : undefined}
       >
@@ -75,7 +75,7 @@ const Header: React.FC<HeaderProps> = ({ activeTab, onTabChange }) => {
       <button
         ref={buttonRefs.about}
         onClick={() => onTabChange('about')}
-        className={`header-link ${activeTab === 'about' ? 'text-fgContrast' : 'text-fgSoft'}`}
+        className={`header-link ${activeTab === 'about' ? 'text-fgContrast' : 'text-fgHard'}`}
         aria-current={activeTab === 'about' ? 'page' : undefined}
       >
         ABOUT
@@ -85,7 +85,7 @@ const Header: React.FC<HeaderProps> = ({ activeTab, onTabChange }) => {
       <button
         ref={buttonRefs.experience}
         onClick={() => onTabChange('experience')}
-        className={`header-link ${activeTab === 'experience' ? 'text-fgContrast' : 'text-fgSoft'}`}
+        className={`header-link ${activeTab === 'experience' ? 'text-fgContrast' : 'text-fgHard'}`}
         aria-current={activeTab === 'experience' ? 'page' : undefined}
       >
         EXPERIENCE
@@ -95,7 +95,7 @@ const Header: React.FC<HeaderProps> = ({ activeTab, onTabChange }) => {
       <button
         ref={buttonRefs.works}
         onClick={() => onTabChange('works')}
-        className={`header-link ${activeTab === 'works' ? 'text-fgContrast' : 'text-fgSoft'}`}
+        className={`header-link ${activeTab === 'works' ? 'text-fgContrast' : 'text-fgHard'}`}
         aria-current={activeTab === 'works' ? 'page' : undefined}
       >
         WORKS
