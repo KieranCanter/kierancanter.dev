@@ -10,11 +10,25 @@
  */
 export const worksContent = [
   {
+    project: 'RocketOdds',
+    githubURL: 'https://github.com/KieranCanter/',
+    description: "Plugin for the popular Rocket League mod, BakkesMod. Real-time moneyline win odds. Dynamically calculates win probabilities by analyzing in-game metrics like goals, shots, and possession. Uses historical datasets to predictively model accurate probabilities. Written in C++ using the Bakkesmod SDK.",
+    technologies: ['C++', 'Python', 'PyTorch', 'Pandas', 'NumPy', 'Matplotlib', 'scikit-learn'],
+    wip: true,
+  },
+  {
     project: 'kierancanter.dev',
     githubURL: 'https://github.com/kierancanter/kierancanter.dev',
     projectURL: 'https://kierancanter.dev',
     description: "The website you're viewing. Heavily focused on responsive design, accessibility, and pixel-perfect attention to detail. Roughly designed in Figma. Component prototypes tested in CodePen. Coded and developed in Cursor. Hosted on AWS and deployed with Vercel. Analytics tracked with Umami and stored through a PostgreSQL database on Supabase.",
     technologies: ['TypeScript', 'HTML5/CSS3', 'React', 'Next.js', 'Tailwind CSS', 'PostgreSQL'],
+    wip: false,
+  },
+  {
+    project: 'UFC Win Factors Model',
+    githubURL: 'https://github.com/kierancanter/ufcwinfactors',
+    description: "A statistical analysis performed on UFC fighter and event stats to determine the qualities and attributes most related to winning fights. The data science pipeline is displayed through a Jupyter Notebook as a tutorial-style modeling. Written in Python, leveraging many popular data science libraries.",
+    technologies: ['Python', 'Pandas', 'scikit-learn', 'XGBoost', 'Matplotlib', 'Seaborn'],
     wip: false,
   },
   {
@@ -26,24 +40,10 @@ export const worksContent = [
     wip: false,
   },
   {
-    project: 'UFC Win Factors Model',
-    githubURL: 'https://github.com/kierancanter/ufcwinfactors',
-    description: "A statistical analysis performed on UFC fighter and event stats to determine the qualities and attributes most related to winning fights. The data science pipeline is displayed through a Jupyter Notebook as a tutorial-style modeling. Written in Python, leveraging many popular data science libraries.",
-    technologies: ['Python', 'Pandas', 'Numpy', 'Matplotlib', 'scikit-learn', 'XGBoost', 'Seaborn'],
-    wip: false,
-  },
-  {
     project: 'Simple Blackjack',
     githubURL: 'https://github.com/KieranCanter/SimpleBlackjack',
     description: "Simple, collaborative blackjack mobile application written for Android using Android Studio. Utilizes a Model-View-Controller architectural pattern. Automated builds and dependency management using Gradle.",
     technologies: ['Kotlin'],
     wip: false,
-  },
-  {
-    project: 'RocketOdds',
-    githubURL: 'https://github.com/KieranCanter/',
-    description: "Plugin for the popular Rocket League mod, BakkesMod. Real-time moneyline win odds. Dynamically calculates win probabilities by analyzing in-game metrics like goals, shots, and possession. Uses historical datasets to predictively model accurate probabilities. Written in C++ using the Bakkesmod SDK.",
-    technologies: ['C++', 'Python', 'PyTorch', 'Pandas', 'NumPy', 'Matplotlib', 'scikit-learn'],
-    wip: true,
   },
 ];

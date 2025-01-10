@@ -37,16 +37,16 @@ module.exports = {
           fgSoft: "var(--luminous-fg-soft)",
           fgHard: "var(--luminous-fg-hard)",
           fgContrast: "var(--luminous-fg-contrast)",
-        }
+        },
+
+        itemCardBg: "var(--item-card-bg)",
+        itemCardBgHover: "var(--item-card-bg-hover)",
       },
       transitionDuration: {
         '250': '250ms',
       },
       width: {
-        'kic-width': "var(--kic-width)"
-      },
-      margin: {
-        'kic-margin': "var(--kic-margin)"
+        'kic-width': "var(--kic-width)",
       },
       fontFamily: {
         'spectral-sc': ['Spectral SC', 'Georgia', 'Times New Roman', 'serif'],

@@ -67,7 +67,7 @@ const Experience: React.FC<{ isActive: boolean }> = ({ isActive }) => {
                 experienceRefs.current[index] = element;
               }
             }} 
-            className="relative flex flex-col justify-between gap-2 w-full p-2 bg-black/10 rounded-sm transition-colors duration-250 hover:bg-black/20 lg:pointer-events-auto"
+            className="relative flex flex-col justify-between gap-2 w-full p-2 bg-itemCardBg rounded-sm transition-colors duration-250 hover:bg-black/50 lg:pointer-events-auto"
           >
             {/* Header: Position and Timeline Dot */}
             <header className="w-full h-fit flex flex-row justify-between items-center">

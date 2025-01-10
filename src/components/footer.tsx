@@ -15,10 +15,10 @@ const Footer = () => {
       rel="noopener noreferrer"
       aria-label="View source code on GitHub, made with passion by Kieran Canter"
     >
-      <p className="group text-center font-ibm-plex-serif text-fgSoft text-[10px] font-medium hover:text-fgContrast hover:selection:bg-fgContrast transition-colors duration-250">
+      <p className="group text-center font-ibm-plex-serif text-fgHard text-[10px] font-medium hover:text-fgContrast hover:selection:bg-fgContrast transition-colors duration-250">
         with passion by <span className="font-spectral-sc font-semibold group-hover:selection:bg-fgContrast" aria-label="Kieran Canter">
           Kieran CANTER
-        </span> — <span aria-label="Current year">{new Date().getFullYear()}</span>
+        </span>
       </p>
     </Link>
   );
