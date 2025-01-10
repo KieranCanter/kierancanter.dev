@@ -72,6 +72,7 @@ const ParticleField: React.FC<ParticleFieldProps> = ({ color }) => {
     let grid: Particle[][][] = [];
     let lastUpdateTime = 0;
     const UPDATE_INTERVAL = 1000 / 60; // Target 60 updates per second
+    let isMousePressed = false;
 
     /**
      * Initialize the particle system
@@ -103,6 +104,16 @@ const ParticleField: React.FC<ParticleFieldProps> = ({ color }) => {
     const handleMouseLeave = () => {
       if (isMobile()) return;
       isMouseOverField = false;
+    };
+
+    const handleMouseDown = (e: MouseEvent) => {
+      if (isMobile() || e.button !== 0) return; // Only respond to left mouse button
+      isMousePressed = true;
+    };
+
+    const handleMouseUp = (e: MouseEvent) => {
+      if (isMobile() || e.button !== 0) return;
+      isMousePressed = false;
     };
 
     /**
@@ -194,8 +205,8 @@ const ParticleField: React.FC<ParticleFieldProps> = ({ color }) => {
     const updateParticlePositions = () => {
       updateGrid();
 
-      // Only process particles near mouse when mouse is over field
-      if (isMouseOverField && !isMobile()) {
+      // Only process particles when mouse is pressed and over field
+      if (isMouseOverField && isMousePressed && !isMobile()) {
         const gridX = Math.floor(mouseX / CELL_SIZE);
         const gridY = Math.floor(mouseY / CELL_SIZE);
 
@@ -265,6 +276,8 @@ const ParticleField: React.FC<ParticleFieldProps> = ({ color }) => {
     container.addEventListener('mousemove', updateMousePosition);
     container.addEventListener('mouseenter', handleMouseEnter);
     container.addEventListener('mouseleave', handleMouseLeave);
+    container.addEventListener('mousedown', handleMouseDown);
+    container.addEventListener('mouseup', handleMouseUp);
     window.addEventListener('resize', resizeCanvas);
 
     // Cleanup
@@ -273,6 +286,8 @@ const ParticleField: React.FC<ParticleFieldProps> = ({ color }) => {
       container.removeEventListener('mousemove', updateMousePosition);
       container.removeEventListener('mouseenter', handleMouseEnter);
       container.removeEventListener('mouseleave', handleMouseLeave);
+      container.removeEventListener('mousedown', handleMouseDown);
+      container.removeEventListener('mouseup', handleMouseUp);
       window.removeEventListener('resize', resizeCanvas);
     };
   }, [color]);
