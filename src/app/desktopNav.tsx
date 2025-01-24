@@ -22,7 +22,7 @@ const DesktopNav = () => {
    */
   const renderContent = () => {
     return (
-      <div className="flex h-full justify-center overflow-y-auto overscroll-y-contain">
+      <div className="flex w-full h-full justify-center overflow-y-auto overscroll-y-contain">
         {/* Keep all components mounted but only show active one */}
         <div className={`${activeTab === 'home' ? 'flex relative mb-20 px-4 overflow-y-auto overscroll-y-contain pointer-events-none' : 'hidden'}`}>
           <BusinessCard isActive={activeTab === 'home'} />
@@ -49,7 +49,7 @@ const DesktopNav = () => {
         <Header activeTab={activeTab} onTabChange={setActiveTab} />
       </div>
       
-      <main className="flex w-fit h-full mx-auto my-4 overflow-x-hidden overflow-y-hidden">
+      <main className="flex w-full h-full mx-auto mt-2 overflow-x-hidden overflow-y-hidden">
         {renderContent()}
       </main>
     </div>
