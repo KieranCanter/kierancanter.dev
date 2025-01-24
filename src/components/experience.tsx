@@ -86,7 +86,7 @@ const Experience: React.FC<{ isActive: boolean }> = ({ isActive }) => {
             {/* Footer: Company and Time Period */}
             <footer className="w-full h-fit flex flex-row justify-between items-end">
               <h5 
-                className="text-fgSoft text-sm lg:text-base font-ibm-plex-sans font-light" 
+                className="text-fgSoft text-sm lg:text-base font-ibm-plex-sans font-medium" 
                 dangerouslySetInnerHTML={{ __html: experience.company }}
               />
               <time 
