@@ -69,7 +69,7 @@ const Works: React.FC<{ isActive: boolean }> = ({ isActive }) => {
               worksRefs.current[index] = element;
             }
           }} 
-          className="relative flex flex-col justify-between gap-2 w-full p-2 bg-itemCardBg rounded-sm transition-colors duration-250 hover:bg-itemCardBgHover lg:pointer-events-auto"
+          className={`relative flex flex-col justify-between gap-2 w-full p-2 rounded-sm transition-colors duration-250 lg:pointer-events-auto ${theme === 'sombre' || theme === 'luminous' ? 'bg-itemCardBgDark hover:bg-itemCardBgHoverDark' : 'bg-itemCardBgLight hover:bg-itemCardBgHoverLight'}`}
           role="article"
           aria-labelledby={`project-title-${index}`}
         >

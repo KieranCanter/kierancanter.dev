@@ -39,8 +39,10 @@ module.exports = {
           fgContrast: "var(--luminous-fg-contrast)",
         },
 
-        itemCardBg: "var(--item-card-bg)",
-        itemCardBgHover: "var(--item-card-bg-hover)",
+        itemCardBgDark: "var(--item-card-bg-dark)",
+        itemCardBgHoverDark: "var(--item-card-bg-hover-dark)",
+        itemCardBgLight: "var(--item-card-bg-light)",
+        itemCardBgHoverLight: "var(--item-card-bg-hover-light)",
       },
       transitionDuration: {
         '250': '250ms',

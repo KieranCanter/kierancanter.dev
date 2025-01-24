@@ -49,7 +49,7 @@ const About: React.FC<{ isActive: boolean }> = ({ isActive }) => {
       key={updateKey}
       id="about-container"
       ref={aboutRef}
-      className="relative flex flex-col w-full lg:w-kic-width h-fit p-2 text-fgSoft bg-itemCardBg rounded-sm transition-colors duration-250 hover:bg-itemCardBgHover lg:pointer-events-auto"
+      className={`relative flex flex-col w-full lg:w-kic-width h-fit p-2 text-fgSoft rounded-sm transition duration-250 lg:pointer-events-auto ${theme === 'sombre' || theme === 'luminous' ? 'bg-itemCardBgDark hover:bg-itemCardBgHoverDark' : 'bg-itemCardBgLight hover:bg-itemCardBgHoverLight'}`}
       aria-label="About Me"
     >
       <article>
