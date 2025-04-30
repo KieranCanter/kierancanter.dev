@@ -13,7 +13,7 @@ export const worksContent = [
     project: 'RocketOdds',
     githubURL: 'https://github.com/KieranCanter/',
     description: "Plugin for the popular Rocket League mod, BakkesMod. Real-time moneyline win odds. Dynamically calculates win probabilities by analyzing in-game metrics like goals, shots, and possession. Uses historical datasets to predictively model accurate probabilities. Written in C++ using the Bakkesmod SDK.",
-    technologies: ['Python', 'Go', 'C++', 'PostgreSQL', 'PyTorch', 'Polars', 'Plotly', 'AWS RDS', 'AWS S3', 'Docker'],
+    technologies: ['Python', 'Go', 'C++', 'PyTorch', 'Polars', 'Plotly', 'AWS S3', 'Docker'],
     wip: true,
   },
   {
