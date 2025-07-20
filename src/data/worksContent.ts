@@ -10,8 +10,15 @@
  */
 export const worksContent = [
   {
+    project: 'candela.nvim',
+    githubURL: 'https://github.com/kierancanter/candela.nvim',
+    description: "Neovim plugin for efficient log analysis. Allows users to manage regex patterns, highlight matched lines, filter out non-matches, and rapidly navigate through matches. Customizable user configuration and support for multiple regex search engines. Written in Lua.",
+    technologies: ['Lua'],
+    wip: true,
+  },
+  {
     project: 'RocketOdds',
-    githubURL: 'https://github.com/KieranCanter/',
+    githubURL: 'https://github.com/kierancanter/rocketodds',
     description: "Plugin for the popular Rocket League mod, BakkesMod. Real-time moneyline win odds. Dynamically calculates win probabilities by analyzing in-game metrics like goals, shots, and possession. Uses historical datasets to predictively model accurate probabilities. Written in C++ using the Bakkesmod SDK.",
     technologies: ['Python', 'Go', 'C++', 'PyTorch', 'Polars', 'Plotly', 'AWS S3', 'Docker'],
     wip: true,

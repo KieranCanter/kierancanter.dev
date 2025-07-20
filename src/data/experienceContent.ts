@@ -7,7 +7,7 @@
  */
 export const experienceContent = [
   {
-    position: 'Software DevelopmentEngineer',
+    position: 'Software Development Engineer',
     company: 'Amazon Lab126',
     period: 'Mar. 2025 — Present',
   },

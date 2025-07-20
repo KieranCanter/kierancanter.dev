@@ -75,7 +75,6 @@ const Experience: React.FC<{ isActive: boolean }> = ({ isActive }) => {
                 className="relative w-fit font-ibm-plex-sans text-base lg:text-lg text-fgContrast font-semibold selection:bg-fgContrast" 
                 dangerouslySetInnerHTML={{ __html: experience.position }} 
                 style={{ color: accentColor }}
-            
               />
               <div 
                 className="relative flex rounded-full w-2.5 h-2.5 lg:w-3 lg:h-3 bg-fgContrast" 
@@ -89,10 +88,12 @@ const Experience: React.FC<{ isActive: boolean }> = ({ isActive }) => {
               <h5 
                 className="text-fgSoft text-sm lg:text-base font-ibm-plex-sans font-medium" 
                 dangerouslySetInnerHTML={{ __html: experience.company }}
+                style={{ color: experience.period.includes('Present') ? accentColor : 'var(--fg-soft)' }}
               />
               <time 
                 className="text-fgSoft text-xs lg:text-sm font-ibm-plex-mono font-semibold" 
                 dangerouslySetInnerHTML={{ __html: experience.period }}
+                style={{ color: experience.period.includes('Present') ? accentColor : 'var(--fg-soft)' }}
               />
             </footer>
           </article>
