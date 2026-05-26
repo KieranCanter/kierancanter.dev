@@ -4,8 +4,9 @@
         <!-- Get user's last-used theme or fallback to system-default -->
         <script>
             const saved = localStorage.getItem("theme");
-            const system = window.matchMedia("(prefers-color-scheme: dark)").matches ? "ganache" : "parchment";
-            document.documentElement.dataset.theme = saved || system;
+            const system = window.matchMedia("(prefers-color-scheme: dark)").matches ? "ganache" : "manila";
+            const themes = ["manila", "ganache"];
+            document.documentElement.dataset.theme = themes.includes(saved) ? saved : system;
         </script>
 
         <meta charset="UTF-8" />
@@ -374,7 +375,7 @@
                     id="theme-button"
                     onclick="
                         event.preventDefault();
-                        const theme = document.documentElement.dataset.theme === 'parchment' ? 'ganache' : 'parchment';
+                        const theme = document.documentElement.dataset.theme === 'manila' ? 'ganache' : 'manila';
                         document.documentElement.dataset.theme = theme;
                         localStorage.setItem('theme', theme);
                         this.textContent = theme;

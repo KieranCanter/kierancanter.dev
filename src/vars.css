@@ -2,12 +2,12 @@
  * Theme Color Variables
  */
 :root {
-    /* Parchment (light): light tan theme */
-    --parchment-bg: #d6c4b0;
-    --parchment-fg: #f2ebe0;
-    --parchment-text-soft: #6f6960;
-    --parchment-text-hard: #1e1e1e;
-    --parchment-text-contrast: rgb(90, 0, 0);
+    /* Manila (light): light tan theme */
+    --manila-bg: #d6c4b0;
+    --manila-fg: #f2ebe0;
+    --manila-text-soft: #6f6960;
+    --manila-text-hard: #1e1e1e;
+    --manila-text-contrast: rgb(90, 0, 0);
 
     /* Ganache (dark): deep chocolate brown theme */
     --ganache-bg: #352925;
@@ -21,12 +21,12 @@
  * Maps theme variables to CSS custom properties
  */
 /* Light Theme */
-:root[data-theme="parchment"] {
-    --bg: var(--parchment-bg);
-    --fg: var(--parchment-fg);
-    --text-soft: var(--parchment-text-soft);
-    --text-hard: var(--parchment-text-hard);
-    --text-contrast: var(--parchment-text-contrast);
+:root[data-theme="manila"] {
+    --bg: var(--manila-bg);
+    --fg: var(--manila-fg);
+    --text-soft: var(--manila-text-soft);
+    --text-hard: var(--manila-text-hard);
+    --text-contrast: var(--manila-text-contrast);
 }
 
 /* Dark Theme */
