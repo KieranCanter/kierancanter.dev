@@ -16,7 +16,6 @@
   <source media="(prefers-color-scheme: light)" srcset="https://github.com/user-attachments/assets/de9971c8-bb89-416e-863f-99327bd2f18c">
   <img width="1080" height="auto" alt="preview-v2" src="https://github.com/user-attachments/assets/fba191c6-4a66-43e9-b97a-a02b8c52cf7d" />
 </picture>
-<img width="1250" height="1234" alt="preview-v2-light" src="" />
 
 ## v1
 <picture>
