@@ -13,9 +13,10 @@
 ## v2
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://github.com/user-attachments/assets/fba191c6-4a66-43e9-b97a-a02b8c52cf7d">
-  <source media="(prefers-color-scheme: light)" srcset="https://github.com/user-attachments/assets/698a5051-78e8-430d-93a7-4319b83006f2">
+  <source media="(prefers-color-scheme: light)" srcset="https://github.com/user-attachments/assets/de9971c8-bb89-416e-863f-99327bd2f18c">
   <img width="1080" height="auto" alt="preview-v2" src="https://github.com/user-attachments/assets/fba191c6-4a66-43e9-b97a-a02b8c52cf7d" />
 </picture>
+<img width="1250" height="1234" alt="preview-v2-light" src="" />
 
 ## v1
 <picture>
@@ -26,6 +27,7 @@
 
 ## Inspiration
 
+* [Stefan Fisk](https://stefanfisk.com/) for originally inspiring the American Psycho business card aesthetic
 * [Keita Yamada](https://p5aholic.me)
 * [Ansub Khan](https://ansubkhan.com)
 * [Anthony Fu](https://antfu.me)
@@ -34,5 +36,3 @@
 * [Brittany Chiang](https://brittanychiang.com)
 * [Takuya Matsuyama](https://craftz.dog)
 * [Mads Hougesen](https://mhouge.dk)
-
-_I would also like to mention [Stefan Fisk's site](https://stefanfisk.com/) for originally inspiring the American Psycho business card aesthetic._
