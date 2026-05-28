@@ -2,8 +2,6 @@ name: Deploy Website
 on:
   push:
     branches: [main]
-  pull_request:
-    branches: [main]
   workflow_dispatch:
 
 jobs:
@@ -16,8 +14,8 @@ jobs:
         with:
           switches: -avzr --delete
           path: ./
-          remote_path: /srv/www/${{ vars.DOMAIN }}
-          remote_host: ${{ secrets.SERVER_IP }}
+          remote_path: /srv/www/${{ vars.DOMAIN }}/main
+          remote_host: ${{ vars.DOMAIN }}
           remote_user: ${{ secrets.SERVER_USER }}
           remote_key: ${{ secrets.SERVER_SSH_PRIVATE_KEY }}
           remote_port: ${{ vars.SERVER_SSH_PORT }}
