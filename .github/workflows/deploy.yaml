@@ -6,19 +6,26 @@ on:
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-slim
     environment:
-      name: production
+      name: Production
       url: https://${{ vars.DOMAIN }}
     steps:
-      - uses: actions/checkout@v6
-      - name: Deploy on Home Server
-        uses: Burnett01/rsync-deployments@8.0.5
-        with:
-          switches: -avzr --delete
-          path: ./
-          remote_path: /srv/www/${{ vars.DOMAIN }}/main
-          remote_host: ${{ vars.DOMAIN }}
-          remote_user: ${{ secrets.SERVER_USER }}
-          remote_key: ${{ secrets.SERVER_SSH_PRIVATE_KEY }}
-          remote_port: ${{ vars.SERVER_SSH_PORT }}
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Deploy
+        run: |
+          # 1. Setup local SSH environment safely
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SERVER_SSH_PRIVATE_KEY }}" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+
+          # 2. Add target domain to known_hosts to prevent stalling
+          ssh-keyscan -p ${{ vars.SERVER_SSH_PORT }} ${{ vars.DOMAIN }} >> ~/.ssh/known_hosts
+
+          # 3. Stream data using rsync (preserves commit metadata)
+          rsync -avzr --delete \
+            -e "ssh -i ~/.ssh/deploy_key -p ${{ vars.SERVER_SSH_PORT }}" \
+            ./ \
+            ${{ secrets.SERVER_USER }}@${{ vars.DOMAIN }}:/srv/www/${{ vars.DOMAIN }}/main
